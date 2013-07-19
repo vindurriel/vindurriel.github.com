@@ -10,13 +10,12 @@ lsi: false
 # so be sure to set them if your theme uses them.
 #
 title : vindurriel
-tagline: Site Tagline
+tagline: coder
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
-  feedburner : feedname
+  name : 杨帆
+  email : vindurriel@gmail.com
+  github : vindurriel
+  twitter : vindurriel
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -26,7 +25,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://username.github.io
+production_url : http://vindurriel.github.io
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -83,17 +82,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
-    livefyre :
-      site_id : 123
-    intensedebate :
-      account : 123abc
-    facebook :
-      appid : 123
-      num_posts: 5
-      width: 580
-      colorscheme: light
-   
+      short_name : vindurriel
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
@@ -117,7 +106,6 @@ JB :
   #
   sharing :
     provider : false
-    
   # Settings for all other include helpers can be defined by creating 
   # a hash with key named for the given helper. ex:
   #
@@ -128,4 +116,3 @@ JB :
   # and include your custom code. Your custom file must be defined at:
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
-  
