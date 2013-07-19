@@ -6,7 +6,7 @@ category: ruby
 tags: [gem,ruby]
 ---
 {% include JB/setup %}
-在编辑`.gemrc`，内容如下：
+编辑`.gemrc`，内容如下：
 
 	:bulk_threshold: 1000
 	:backtrace: false
