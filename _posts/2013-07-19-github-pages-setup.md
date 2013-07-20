@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "github pages 配置"
+tags: 
+- jekyll
+- github pages
+- setup
 description: ""
-category: misc
-tags: ["jekyll","github pages","setup"]
 ---
 
 首先去github pages申请一个页面，默认的域名是`http://USERNAME.github.io`，其中`USERNAME`是你的github用户名。
