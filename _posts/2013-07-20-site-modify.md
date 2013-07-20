@@ -2,10 +2,10 @@
 layout: post
 title: "site modify"
 description: ""
-categories: ["教程","设置"] 
-date: 2013-12-01
-tags: []
+category: setup
+tags: [setup]
 ---
+
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
