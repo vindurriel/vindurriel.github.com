@@ -58,11 +58,16 @@ disqus插件的语言可以切换为中文，需要在disqus.com登陆后进入a
 jekyll-bootstrap的分享功能还没写好，所以我找了个国内比较成熟的社会化分享平台：[加网](http://www.jiathis.com/getcode/icon)。把js粘到模板里就行。
 
 ###中文编码问题
-windows下本jekyll在解析中文的页面时会报编码错误。最简单的解决方法是把console的代码页改成utf-8：
+windows下本jekyll在解析中文的页面时会报编码错误。如果使用cmd的话，需要把代码页改成utf-8：
 
 	$ CHCP 65001
 
-然后就可以 `jekyll serve`了。
+如果是在git bash中的话，需要设置如下环境变量：
+	
+	export LC_ALL = enUS.UTF-8
+	export LANG   = enUS.UTF-8
+
+然后就可以 `jekyll serve --watch`了。
 
 ###代码高亮
 
