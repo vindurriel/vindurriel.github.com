@@ -1,13 +1,12 @@
 ---
 layout: page
 title: vindurriel
-tagline: a coding site
 ---
 {% include JB/setup %}
 
 
 <ul>
-{% for post in site.posts  %}
+{% for post in paginator.posts   %}
 	  <li>
     	<h3 style="display:inline" class="entry-title">
 	 		<a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
@@ -18,3 +17,21 @@ tagline: a coding site
   	  </li>
 {% endfor %}
 </ul>
+{% unless paginator.total_pages == 1 %}
+<div class="pagination">
+  {% assign Previous = "上一页" %}
+  {% assign Next = "下一页" %}
+  {% if paginator.previous_page %}
+     {% if paginator.previous_page == 1 %}
+        <a href="/">{{Previous}}</a>
+     {% else %}
+        <a href="{{ paginator.previous_page_path }}">{{Previous}}</a>
+     {% endif %}
+ 
+  {% endif %}
+  <span class="page_number ">第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页</span>
+  {% if paginator.next_page %}
+    <a href="/page{{ paginator.next_page }}" class="next">{{Next}}</a>
+  {% endif %}
+</div>
+{% endunless %}

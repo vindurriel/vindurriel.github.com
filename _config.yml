@@ -1,7 +1,8 @@
 # This is the default format. 
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink: /posts/:title 
-
+permalink: /blog/:title 
+paginate: 5
+paginate_path: "page:num"
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 pygments: true
 markdown: rdiscount
@@ -10,13 +11,14 @@ lsi: false
 # so be sure to set them if your theme uses them.
 #
 title : vindurriel
-tagline: coder
+tagline: 
 author :
   name : 杨帆
   email : vindurriel@gmail.com
   github : vindurriel
   twitter : vindurriel
   avatar: /images/avatar.png
+  bio: "just another coder"
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 

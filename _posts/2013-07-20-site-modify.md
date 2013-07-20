@@ -2,7 +2,7 @@
 layout: post
 title: "site modify"
 description: ""
-categories: [教程,设置] 
+categories: ["教程","设置"] 
 date: 2013-12-01
 tags: []
 ---
