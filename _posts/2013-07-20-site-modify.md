@@ -3,7 +3,8 @@ layout: post
 title: "site modify"
 description: ""
 category: setup
-tags: [setup,中文]
+tags: ["setup","中文"]
+
 ---
 
 中文
