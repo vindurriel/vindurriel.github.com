@@ -3,7 +3,7 @@ layout: post
 title: "为gem install 提速"
 description: ""
 category: ruby
-tags: ["gem","ruby"]
+tags: [gem,ruby]
 ---
 
 编辑`.gemrc`，内容如下：
