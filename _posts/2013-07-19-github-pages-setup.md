@@ -3,7 +3,7 @@ layout: post
 title: "github pages 配置"
 description: ""
 category: misc
-tags: [jekyll,github pages,setup]
+tags: ["jekyll","github pages","setup"]
 ---
 
 首先去github pages申请一个页面，默认的域名是`http://USERNAME.github.io`，其中`USERNAME`是你的github用户名。
@@ -55,7 +55,7 @@ disqus插件的语言可以切换为中文，需要在disqus.com登陆后进入a
 
 ###分享
 
-jekyll-bootstrap的分享功能还没写好，所以我找了个国内比较成熟的社会化分享平台：[加网](http://www.jiathis.com/getcode/icon)。把js粘到模板里就行。
+jekyll-bootstrap的分享功能还没写好， 所以我找了个国内比较成熟的社会化分享平台： [加网](http://www.jiathis.com/getcode/icon)。把js粘到模板里就行。
 
 ###中文编码问题
 windows下本jekyll在解析中文的页面时会报编码错误。如果使用cmd的话，需要把代码页改成utf-8：
