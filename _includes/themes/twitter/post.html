@@ -7,14 +7,6 @@
       {{ content }}
     </div>
   <hr/>
-  {% unless page.categories == empty %}
-    <ul class="tag_box inline">
-      <li><i class="icon-folder-open"></i></li>
-      {% assign categories_list = page.categories %}
-      {% include JB/categories_list %}
-    </ul>
-  {% endunless %}  
-
   {% unless page.tags == empty %}
     <ul class="tag_box inline">
       <li><i class="icon-tags"></i></li>

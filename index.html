@@ -18,6 +18,9 @@ title: vindurriel
   		<div class="entry-content">{{ post.excerpt }}</div>
   		<a href="{{ root_url }}{{ post.url }}">...更多</a>
   	  </li>
+      {% unless forloop.last %}
+        <hr/>
+      {% endunless %}
 {% endfor %}
 </ul>
 {% unless paginator.total_pages == 1 %}
