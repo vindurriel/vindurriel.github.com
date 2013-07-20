@@ -1,4 +1,8 @@
 /* Custom container */
+.avatar{
+  width: 2em;
+}
+
 .container-narrow {
   margin: 0 auto;
   max-width: 700px; }
@@ -6,6 +10,21 @@
 .container-narrow > hr {
   margin: 30px 0; }
 
+.navbar-inner{
+  background-color: #333;
+  background-image: none;
+}
+.navbar .brand{
+  padding: 0px;
+}
+.navbar .nav>li>a{
+  color: white;
+  text-shadow:none;
+}
+.navbar .nav>li>a:hover{
+  color: white;
+  text-shadow:black;
+}
 .navbar .nav {
   float: right; }
 

@@ -5,20 +5,20 @@ description: ""
 category: misc
 tags: [jekyll,github pages,setup]
 ---
-{% include JB/setup %}
 
 首先去github pages申请一个页面，默认的域名是`http://USERNAME.github.io`，其中`USERNAME`是你的github用户名。
 
 github使用jekyll做解析引擎。可以直接克隆一个别人写好的jekyll，然后把上传路径改成自己的，像这样：
-
-	$ git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com
-	$ cd USERNAME.github.com
-	$ git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
-	$ git push origin master
+{% highlight bash %}
+$ git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com
+$ cd USERNAME.github.com
+$ git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
+$ git push origin master
+{% endhighlight %}
 
 这个例子中使用的是[jekyll-bootstrap]("https://github.com/plusjade/jekyll-bootstrap")。
 
-##写文章
+###写文章
 
 如果装了ruby的话，直接在文件夹下执行
 
@@ -38,7 +38,7 @@ github使用jekyll做解析引擎。可以直接克隆一个别人写好的jekyl
 
 写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。
 
-##评论
+###评论
 
 jekyll-bootstrap本身不提供评论功能，而是通过配置文件引入第三方评论插件， 比如[disqus](http://disqus.com/)。 
 
@@ -53,13 +53,22 @@ jekyll-bootstrap本身不提供评论功能，而是通过配置文件引入第�
 
 disqus插件的语言可以切换为中文，需要在disqus.com登陆后进入admin->settings，也就是 [http://USERNAME.disqus.com/admin/settings/](http://USERNAME.disqus.com/admin/settings/)，里面可以设置language。
 
-##分享
+###分享
 
 jekyll-bootstrap的分享功能还没写好，所以我找了个国内比较成熟的社会化分享平台：[加网](http://www.jiathis.com/getcode/icon)。把js粘到模板里就行。
 
-##中文编码问题
+###中文编码问题
 windows下本jekyll在解析中文的页面时会报编码错误。最简单的解决方法是把console的代码页改成utf-8：
 
 	$ CHCP 65001
 
 然后就可以 `jekyll serve`了。
+
+###代码高亮
+
+默认使用pygments.rb。 版本高于0.5.0在windows和ruby1.9.3下显示不出来，需要安装0.5.0，即
+
+	gem uninstall pygments.rb --version ">0.5.0"
+	gem install pygments.rb --version "=0.5.0"
+
+还需要一个代码高亮的css的文件，google `pygments css style`可以找到好多。
