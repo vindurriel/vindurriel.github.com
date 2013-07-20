@@ -4,14 +4,17 @@ title: vindurriel
 ---
 {% include JB/setup %}
 
-
-<ul>
+<ul class="post-list">
 {% for post in paginator.posts   %}
 	  <li>
-    	<h3 style="display:inline" class="entry-title">
-	 		<a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+    	<h3  class="entry-title">
+	 		  <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
   		</h3>
-  		<span  class="date">{{ post.date | date: "%Y年%m月%d日" }}</span>
+          <ul class="tag_box inline">
+            <li class="date">{{ post.date | date: "%Y年%m月%d日" }}</li>
+            {% assign tags_list = post.tags %}
+            {% include JB/tags_list %}
+          </ul>
   		<div class="entry-content">{{ post.excerpt }}</div>
   		<a href="{{ root_url }}{{ post.url }}">...更多</a>
   	  </li>
@@ -21,17 +24,26 @@ title: vindurriel
 <div class="pagination">
   {% assign Previous = "上一页" %}
   {% assign Next = "下一页" %}
-  {% if paginator.previous_page %}
-     {% if paginator.previous_page == 1 %}
-        <a href="/">{{Previous}}</a>
-     {% else %}
-        <a href="{{ paginator.previous_page_path }}">{{Previous}}</a>
-     {% endif %}
- 
-  {% endif %}
-  <span class="page_number ">第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页</span>
-  {% if paginator.next_page %}
-    <a href="/page{{ paginator.next_page }}" class="next">{{Next}}</a>
-  {% endif %}
+  <ul>
+    <li class="prev">
+      {% if paginator.previous_page %}
+         {% if paginator.previous_page == 1 %}
+            <a href="/">{{Previous}}</a>
+         {% else %}
+            <a href="{{ paginator.previous_page_path }}">{{Previous}}</a>
+         {% endif %}
+      {% else %}
+        <span>{{Previous}}</span>
+      {% endif %}
+    </li>
+    <li><span>第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页</span></li>
+    <li class="next">
+      {% if paginator.next_page %}
+        <a href="/page{{ paginator.next_page }}"  >{{Next}}</a>
+      {% else %}
+        <span>{{Next}}</span>
+      {% endif %}
+    </li>
+  </ul>
 </div>
 {% endunless %}

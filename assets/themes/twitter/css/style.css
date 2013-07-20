@@ -2,7 +2,6 @@
 .avatar{
   width: 2em;
 }
-
 .container-narrow {
   margin: 0 auto;
   max-width: 700px; }
@@ -48,20 +47,24 @@
   font-weight: bold; }
 
 /* tag_box */
-.tag_box {
+.tag_box,.post-list{
   list-style: none;
   margin: 0;
   overflow: hidden; }
 
 .tag_box li {
-  line-height: 28px; }
+  line-height: 28px; 
+  margin: 2px;
+}
 
 .tag_box li i {
   opacity: 0.9; }
-
+.tag_box .date{
+  padding: 5px 0px;
+  margin: 2px 0px;
+}
 .tag_box.inline li {
   float: left; }
-
 .tag_box a {
   padding: 3px 6px;
   margin: 2px;
@@ -82,3 +85,7 @@
   background: #57A957;
   border: 1px solid #4c964d;
   color: #FFF; }
+
+.entry-content{
+  margin: 10px 0px;
+}
