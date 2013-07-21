@@ -4,6 +4,7 @@ title: 删除github pages的master分支
 description: ""
 tags: 
 - github pages
+
 ---
 
 github pages默认使用两个分支：master和gh-pages。 在两个分支间切换很不方便：在gh-pages写了一些blog，然后切回master进行一次push，才能让服务器重新build。
