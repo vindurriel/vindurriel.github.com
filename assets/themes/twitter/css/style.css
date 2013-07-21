@@ -2,12 +2,20 @@
 .avatar{
   width: 2em;
 }
+.banner{
+  padding: 2em;
+  background:url("/images/noise.png")
+}
 .container-narrow {
   margin: 0 auto;
   max-width: 700px; }
 
 .container-narrow > hr {
   margin: 30px 0; }
+
+.navbar{
+  margin:0;
+}
 
 .navbar-inner{
   background-color: #333;
