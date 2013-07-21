@@ -29,7 +29,6 @@
     <!-- atom & rss feed -->
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script TYPE="text/javascript">
       // Check if a new cache is available on page load.
       window.addEventListener('load', function(e) {
@@ -48,17 +47,18 @@
       }, false);
     </script>
   </head>
-
   <body>
     {% include JB/setup %}
+    <div  class="page-title" style="opacity:0">
+        <div class="container-narrow">
+          <h3 style="color:white;line-height:.8em;padding:0;margin:0">{{ page.title }}</h1>
+        </div>
+    </div>
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container-narrow">
-          <a class="brand" href="{{ HOME_PATH }}"><img class="avatar" src="{{site.author.avatar}}"/></a>
           <ul class="nav">
-<!--             {% assign pages_list = site.pages %}
-            {% assign group = 'navigation' %}
-            {% include JB/pages_list %} -->
+            <li><a href="/">首页</a></li>
             <li><a href="/about.html">关于</a></li>
             <li><a href="/archive.html">存档</a></li>
             <li><a href="/tags.html">标签</a></li>
@@ -67,24 +67,62 @@
         </div>
       </div>
     </div>
-    <div class="banner">
-      <div class="container-narrow">
-        <h1 >{{ page.title }}</h1>
-      </div> 
+    <div style="background-color:black">
+      <div class="banner">
+        <div class="container-narrow">
+          <h1>{{ page.title }}</h1>
+        </div> 
+      </div>
+      <div>
+        <div class="container-narrow">
+          <h3 style="color:white;line-height:1em;padding:0px;margin-bottom:5px">{{ page.date | date: "%Y年%m月%d日" }}</h1>
+        </div> 
+      </div>
     </div>
     <div class="container-narrow">
       <div class="content">
         {{ content }}
       </div>
-      <footer>
-        <!-- <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+    </div>
+    <div id="back">返回顶部</back>
+<!--<footer class="footer">
+      <div class="container-narrow">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
           with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
           and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p> -->
-      </footer>
-
-    </div>
-
+        </p>
+      </div> 
+    </footer> -->
     {% include JB/analytics %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("#back").hide();
+        $("#back").click(function(){
+          $("html, body").animate({ scrollTop: "0px" });
+        });
+        var h=$(".banner").outerHeight();
+        console.log(h);
+        $(window).scroll(function(){
+          console.log(h);
+          var o=1;
+          var top=$(window).scrollTop();
+          if(h-top<=0){
+            o=0;
+            $("#back").show();
+            $(".page-title").css({'opacity':1});
+          }else if (h-top<50){
+            o=(h-top)/50;
+            $("#back").hide();
+            $(".page-title").css({'opacity':0});
+          }
+          else{
+            $("#back").hide();
+            $(".page-title").css({'opacity':0});
+          }
+          $(".banner").css({'opacity':o});
+        });
+      });
+    </script>
   </body>
 </html>
