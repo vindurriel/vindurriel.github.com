@@ -1,4 +1,7 @@
 /* Custom container */
+code,pre{
+  font-family: Consolas,Menlo,"Droid Sans Mono";
+}
 .page-title{
   background: black;
   padding: 10px 0;
@@ -17,6 +20,7 @@ html,body{
   height: auto !important;
   height: 100%;
   margin: 0;
+  margin-bottom: 2em;
 }
 .footer{
   background: black;

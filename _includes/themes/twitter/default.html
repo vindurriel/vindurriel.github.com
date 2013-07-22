@@ -16,8 +16,9 @@
 
 			<!-- Le styles -->
 			<link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
-			<link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
-        <link href="/stylesheets/d3.parsets.css" rel="stylesheet" type="text/css" >
+      <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+			<link href="{{ ASSET_PATH }}/css/syntax.css" rel="stylesheet" type="text/css">
+      <link href="/stylesheets/d3.parsets.css" rel="stylesheet" type="text/css" >
 
 			<!-- Le fav and touch icons -->
 	<!-- Update these with your own images
@@ -95,6 +96,7 @@
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
    <script type="text/javascript">
    $(document).ready(function (){
+    //highlight.js
      $("#back").click(function(){
       $("html, body").animate({ scrollTop: "0px" });
     });
