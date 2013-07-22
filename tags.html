@@ -6,11 +6,11 @@ group: navigation
 ---
 {% include JB/setup %}
 
+<div id="vis"></div>
 <ul class="tag_box inline">
   {% assign tags_list = site.tags %}  
   {% include JB/tags_list %}
 </ul>
-
 
 {% for tag in site.tags %} 
   <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
@@ -19,3 +19,42 @@ group: navigation
     {% include JB/pages_list %}
   </ul>
 {% endfor %}
+<script type="text/javascript" src="/javascripts/d3.v3.min.js" ></script>
+<script type="text/javascript" src="/javascripts/d3.parsets.js" ></script>
+<script type="text/javascript">
+	var csv="post,tag";
+	var posts={};
+	{% for post in site.posts %}
+		posts["{{post.title}}"]={
+			"url":"{{post.url}}",
+		};
+		{% for tag in post.tags %}
+			csv+="\n{{post.title}},{{tag}}";
+		{% endfor %}
+	{% endfor %}
+	var chart = d3.parsets()
+		  .tension(0.8)
+		  .width("800")
+		  .height("480")
+		  .dimensionFormat(function(d){
+		  	var dic={
+		  		"tag":"标签",
+		  		"post":"博客",
+		  		"date":"日期",
+		  		"url":"博客链接",
+		  	}
+		  	if(d in dic)
+		  		return dic[d];
+		  	return d;
+		  })
+	      .dimensions(["tag","post"]);
+	var vis = d3.select("#vis").append("svg")
+	    .attr("width", chart.width())
+	    .attr("height", chart.height());
+	var parsed_csv=d3.csv.parse(csv);
+	vis.datum(parsed_csv).call(chart);
+	vis.selectAll(".category text").on("click",function(d){
+		if(!(d.name in posts)) return;
+		window.open(posts[d.name].url);
+	});
+</script>
