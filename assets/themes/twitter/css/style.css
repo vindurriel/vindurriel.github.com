@@ -1,7 +1,4 @@
 /* Custom container */
-.avatar{
-  width: 2em;
-}
 .page-title{
   background: black;
   padding: 10px 0;
@@ -9,16 +6,40 @@
   width: 100%;
   color:white;
 }
-#back{
-  position: fixed;
-  bottom: 1em;
-  right: 1em;  
+html,body{
+  height: 100%;
+  margin:0;
+  padding:0;
+}
+#wrap{
+  padding-top: 2em;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0;
+}
+.footer{
+  background: black;
+  color: white;
+  height: 2em;
+  line-height: 2em;
+}
+.footer a{
+  color:#ccc;
+}
+#back img{
   cursor: pointer;  
+  width: 1.5em;
+  height: 1.5em;
 }
 .banner{
   color:#fff;
-  padding: 5em 0 0.2em 0;
-  background:url("/images/bg.jpg");
+  padding: 5em 0;
+  background:transparent url("/images/banner.jpg")  fixed no-repeat;
+}
+.banner h3{
+  margin-top: 1em;
+  opacity: .6;
 }
 .container-narrow {
   margin: 0 auto;
@@ -28,36 +49,30 @@
   margin: 30px 0; }
 
 .navbar{
-  width: 100%;
-  position: fixed;
-  margin:0;
-  display: inline;
   color:#fff;
+  background-color: black;
+  line-height: 2em;
+}
+.nav-title{
+  opacity: 0
 }
 
-.navbar-inner{
-  border:0px;
-  border-radius: 0px;
-  background:transparent;
-  -moz-box-shadow:0px 0px 0px white;
-  -webkit-box-shadow:0px 0px 0px white;
-  box-shadow:0px 0px 0px white;
-}
-.navbar .brand{
-  padding: 10px;
-}
-
-.navbar .nav>li>a{
-  color: #ddd;
+.navbar li>a{
+  color: #ccc;
   text-shadow:none;
+  text-decoration: none;
 }
-.navbar .nav>li>a:hover{
+.navbar li>a:hover{
   color: white;
   text-shadow:black;
 }
-.navbar .nav {
-  display: inline;
-  float: right; }
+.nav{
+}
+
+.content{
+  margin-top: 1em;
+}
+
 /* posts index */
 .post > h3.title {
   position: relative;
@@ -77,15 +92,38 @@
   margin-bottom: 20px;
   font-weight: bold; }
 
+.post-list{
+  border-left: 1px solid #eee;
+  margin-top: -1em;
+  padding-top: 2em;
+}
+
+.entry-title{
+  padding-left: 1em;
+  border-left: 5px solid #0088cc;
+  line-height: 2em;
+}
+.entry-title li a{
+  color: black;
+}
+.entry-caption{
+  font-size: 2em;
+  padding-bottom: .5em;
+}
+
+.entry-content{
+  padding-left: 1em;
+  border-left: 5px solid transparent;
+}
 /* tag_box */
-.tag_box,.post-list{
+.tag_box,.post-list ul{
   list-style: none;
   margin: 0;
   overflow: hidden; }
 
 .tag_box li {
   line-height: 28px; 
-  margin: 2px;
+  margin: 0px 0px 0px 2px;
 }
 
 .tag_box li i {
@@ -114,6 +152,3 @@
   border: 1px solid #4c964d;
   color: #FFF; }
 
-.entry-content{
-  margin: 10px 0px;
-}
