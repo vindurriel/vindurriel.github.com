@@ -5,7 +5,6 @@
 	<title>{{ page.title }}</title>
 	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 	<meta name="author" content="{{ site.author.name }}">
-
 	<!-- Enable responsive viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -51,16 +50,15 @@
 		<body>
 			{% include JB/setup %}
 			<div id="wrap">
+				<div style="height:2em;background:black";
 				<div class="navbar navbar-fixed-top">
-					<div class="container-narrow">
+					<div class="container">
 						<div class="row-fluid">
-							<div class="span1 nav-title" id="back">
-								<img src="/images/up.png" title="返回顶部">
+							<div class="span8" style="margin-left:0">
+								<strong class="nav-title">{{ page.title }}</strong>
 							</div>
-							<div class="span7 nav-title">
-								<strong >{{ page.title }}</strong>
-							</div>
-							<ul class="span4 inline" style="margin:0;float:right;">
+							<ul class="span3 inline" style="margin:0;float:right">
+								<img src="/images/up.png"  id="back" style="opacity:0;" title="返回顶部">
 								<li><a href="/">首页</a></li>
 								<li><a href="/about.html">关于</a></li>
 								<li><a href="/archive.html">存档</a></li>
@@ -70,31 +68,18 @@
 						</div>
 					</div>
 				</div>
-				<div  style="background-color:black">
-						<div class="banner">
-							<div class="container-narrow">
-								<h1>{{ page.title }}</h1>
-								<h3>{{ page.date | date: "%Y年%m月%d日" }}</h1>
-							</div> 
-						</div>
+				<div style="background:black;">
+					<div class="banner" style="height:15em;">
 					</div>
-				<div class="container-fluid">
-					<div class="row-fluid">
-						<div class="span6 offset3">
-							<div class="content">
-								{{ content }}
-							</div>
-						</div>
-						<div class="span3">
-							<div class="comments">
-	    					{% include JB/comments %}
-							</div>
-						</div>
+				</div>
+				<div class="container">
+					<div class="content">
+						{{ content }}
 					</div>
 				</div>
 			</div>
 			<div class="footer">
-				<div class="container-narrow">
+				<div class="container">
 					<p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
 						with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
 						and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
@@ -105,24 +90,43 @@
 			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 			<script type="text/javascript">
 			$(document).ready(function (){
-//highlight.js
-$("#back").click(function(){
-	$("html, body").animate({ scrollTop: "0px" });
-});
-var h=$(".banner").outerHeight();
-$(window).scroll(function(){
-	var o=1;
-	var top=$(window).scrollTop();
-	if(top>=h){
-		o=0;
-	}
-	else{
-		o=1-top/h;
-	}
-	$(".banner").css({'opacity':o});
-	$(".nav-title").css({'opacity':1-o});
-});
-});
-			</script>
-		</body>
-		</html>
+				$("#back").click(function(){
+					$("html, body").animate({ scrollTop: "0px" });
+				});
+				var loc = window.location.pathname;
+				$(".navbar li>a").each(function(){
+					if ($(this).attr("href") == loc) {
+					$(this).addClass("active");
+				}
+			});
+			var h=$(".banner").outerHeight();
+			$(window).scroll(function(){
+				var top=$(window).scrollTop();
+				if(top>=h){
+					$(".nav-title").css({
+						"font-size":"1em",
+						"top":0,
+					});
+					$("#back").css({"opacity":1});
+				}
+				else{
+					$(".nav-title").css({
+						"font-size":(3-2*top/h).toString()+"em",
+						"top":(2-top/h).toString()+"em",
+					});
+					$("#back").css({"opacity":0});
+				}
+			});
+		});
+</script>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</body>
+</html>

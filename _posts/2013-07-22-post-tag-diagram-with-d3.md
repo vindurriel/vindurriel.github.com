@@ -8,7 +8,7 @@ tags:
 - visualization
 ---
 
-最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的[标签页面]("{{site.production_url}}/tags.html")。
+最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的[标签页面](/tags.html)。
 
 log和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。
 
