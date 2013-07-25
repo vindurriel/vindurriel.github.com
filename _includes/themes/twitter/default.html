@@ -5,128 +5,66 @@
 	<title>{{ page.title }}</title>
 	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 	<meta name="author" content="{{ site.author.name }}">
-	<!-- Enable responsive viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-			<![endif]-->
-
-			<!-- Le styles -->
-			<link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
-			<link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
-			<link href="{{ ASSET_PATH }}/css/syntax.css" rel="stylesheet" type="text/css">
-			<link href="/stylesheets/d3.parsets.css" rel="stylesheet" type="text/css" >
-
-			<!-- Le fav and touch icons -->
-	<!-- Update these with your own images
-		<link rel="shortcut icon" href="images/favicon.ico">
-		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-	-->
-	<!-- atom & rss feed -->
+	<link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+	<link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+	<link href="{{ ASSET_PATH }}/css/syntax.css" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/d3.parsets.css" rel="stylesheet" type="text/css" >
 	<link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
 	<link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-	<script TYPE="text/javascript">
-			// Check if a new cache is available on page load.
-			window.addEventListener('load', function(e) {
-				window.applicationCache.addEventListener('updateready', function(e) {
-					if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-						// Browser downloaded a new app cache.
-						// Swap it in and reload the page to get the new hotness.
-						window.applicationCache.swapCache();
-						if (confirm('A new version of this site is available. Load it?')) {
-							window.location.reload();
-						}
-					} else {
-						// Manifest didn't changed. Nothing new to server.
-					}
-				}, false);
-			}, false);
-			</script>
-		</head>
-		<body>
-			{% include JB/setup %}
-			<div id="wrap">
-				<div style="height:2em;background:black";
-				<div class="navbar navbar-fixed-top">
-					<div class="container">
-						<div class="row-fluid">
-							<div class="span8" style="margin-left:0">
-								<strong class="nav-title">{{ page.title }}</strong>
-							</div>
-							<ul class="span3 inline" style="margin:0;float:right">
-								<img src="/images/up.png"  id="back" style="opacity:0;" title="返回顶部">
-								<li><a href="/">首页</a></li>
-								<li><a href="/about.html">关于</a></li>
-								<li><a href="/archive.html">存档</a></li>
-								<li><a href="/tags.html">标签</a></li>
-								<li><a href="/rss.xml">订阅</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div style="background:black;">
-					<div class="banner" style="height:15em;">
-					</div>
-				</div>
-				<div class="container">
-					<div class="content">
-						{{ content }}
-					</div>
+</head>
+<body>
+	{% include JB/setup %}
+	<div class="frame">
+		<button id="nav-btn"></button>
+		<div class="menu">
+			<ul>
+				<img src="/images/up.png"  id="back" style="opacity:0;" title="返回顶部">
+				<li><a href="/">首页</a></li>
+				<li><a href="/about.html">关于</a></li>
+				<li><a href="/archive.html">存档</a></li>
+				<li><a href="/tags.html">标签</a></li>
+				<li><a href="/rss.xml">订阅</a></li>
+			</ul>
+		</div>
+		<div class="nav-overlay"></div>
+		<div class="view">
+			<div class="container">
+				<div class="content">
+					{{ content }}
 				</div>
 			</div>
-			<div class="footer">
-				<div class="container">
-					<p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-						with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-						and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-					</p>
-				</div>
-			</div> 
-			{% include JB/analytics %}
-			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-			<script type="text/javascript">
-			$(document).ready(function (){
-				$("#back").click(function(){
-					$("html, body").animate({ scrollTop: "0px" });
-				});
-				var loc = window.location.pathname;
-				$(".navbar li>a").each(function(){
-					if ($(this).attr("href") == loc) {
-					$(this).addClass("active");
-				}
-			});
-			var h=$(".banner").outerHeight();
-			$(window).scroll(function(){
-				var top=$(window).scrollTop();
-				if(top>=h){
-					$(".nav-title").css({
-						"font-size":"1em",
-						"top":0,
-					});
-					$("#back").css({"opacity":1});
-				}
-				else{
-					$(".nav-title").css({
-						"font-size":(3-2*top/h).toString()+"em",
-						"top":(2-top/h).toString()+"em",
-					});
-					$("#back").css({"opacity":0});
-				}
-			});
+		</div>
+	</div>
+	{% include JB/analytics %}
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function (){
+		$("#back").click(function(){
+			$("html, body").animate({ scrollTop: "0px" });
 		});
-</script>
-<script type="text/javascript">
-  window.___gcfg = {lang: 'zh-CN'};
+		var loc = window.location.pathname;
+		$(".menu li>a").each(function(){
+			if ($(this).attr("href") == loc) {
+				$(this).addClass("active");
+			}
+		});
+		$("#nav-btn").click(function(){
+			$("body").addClass("site-nav-in");
+		});
+		$(".nav-overlay").click(function(){
+			$("body").removeClass("site-nav-in");
+		});
+	});
+	</script>
+	<script type="text/javascript">
+	window.___gcfg = {lang: 'zh-CN'};
 
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
+	(function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/plusone.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
+	</script>
 </body>
 </html>

@@ -14,11 +14,11 @@ title : vindurriel
 tagline: 
 author :
   name : 杨帆
+  nick : vindurriel
+  weibo: vindurrielisme
   email : vindurriel@gmail.com
-  github : vindurriel
-  twitter : vindurriel
   avatar: /images/avatar.png
-  bio: "just another coder"
+  bio: "coding in python and c#"
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
