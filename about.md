@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title:
 ---
 ## <img class="img-circle" style="width:2em;" src="/images/avatar.png"></img>

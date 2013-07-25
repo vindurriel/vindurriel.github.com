@@ -12,11 +12,15 @@
 	<link href="/stylesheets/d3.parsets.css" rel="stylesheet" type="text/css" >
 	<link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
 	<link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery-tapir.min.js"></script>
 </head>
 <body>
 	{% include JB/setup %}
 	<div class="frame">
-		<button id="nav-btn"></button>
+		<div class="nav-bg">
+			<button id="nav-btn"></button>
+		</div>
 		<div class="menu">
 			<ul>
 				<img src="/images/up.png"  id="back" style="opacity:0;" title="返回顶部">
@@ -24,47 +28,50 @@
 				<li><a href="/about.html">关于</a></li>
 				<li><a href="/archive.html">存档</a></li>
 				<li><a href="/tags.html">标签</a></li>
-				<li><a href="/rss.xml">订阅</a></li>
-			</ul>
-		</div>
-		<div class="nav-overlay"></div>
-		<div class="view">
-			<div class="container">
-				<div class="content">
-					{{ content }}
-				</div>
+				<li><a href="/atom.xml">订阅</a></li>
+				<li>
+					<form class="pull-left" method="get" action="/search.html">
+						<input type="text"   name="query" class="search-query" placeholder="请输入关键字">
+						<br>
+						<br>
+						<button type="submit" class="btn btn-inverse">搜索</button>
+					</form></li>
+				</ul>
+			</div>
+			<div class="nav-overlay"></div>
+			<div class="view">
+				{{ content }}	
 			</div>
 		</div>
-	</div>
-	{% include JB/analytics %}
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function (){
-		$("#back").click(function(){
-			$("html, body").animate({ scrollTop: "0px" });
+		{% include JB/analytics %}
+		<script type="text/javascript">
+		$(document).ready(function (){
+			$("#back").click(function(){
+				$("html, body").animate({ scrollTop: "0px" });
+			});
+			var loc = window.location.pathname;
+			$(".menu li>a").each(function(){
+				if ($(this).attr("href") == loc) {
+					$(this).addClass("active");
+				}
+			});
+			$("#nav-btn").click(function(){
+				$("body").addClass("site-nav-in");
+			});
+			$(".nav-overlay").click(function(){
+				$("body").removeClass("site-nav-in");
+			});
 		});
-		var loc = window.location.pathname;
-		$(".menu li>a").each(function(){
-			if ($(this).attr("href") == loc) {
-				$(this).addClass("active");
-			}
-		});
-		$("#nav-btn").click(function(){
-			$("body").addClass("site-nav-in");
-		});
-		$(".nav-overlay").click(function(){
-			$("body").removeClass("site-nav-in");
-		});
-	});
-	</script>
-	<script type="text/javascript">
-	window.___gcfg = {lang: 'zh-CN'};
+		</script>
 
-	(function() {
-		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		po.src = 'https://apis.google.com/js/plusone.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	})();
-	</script>
-</body>
-</html>
+		<script type="text/javascript">
+		window.___gcfg = {lang: 'zh-CN'};
+
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+		</script>
+	</body>
+	</html>

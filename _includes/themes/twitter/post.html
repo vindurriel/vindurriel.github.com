@@ -1,40 +1,73 @@
-<div class="row-fluid">
-  <div class="span3">
-    <div class="blog-info">
-      <img class="img-circle"   src="/images/avatar.png"></img> 
-      <strong>{{site.author.name}}</strong>
-      <p>{{site.author.bio}}</p>
-      <hr>
-      <strong>发布时间</strong>
-      <p>{{ page.date | date: "%Y.%m.%d" }}</p>
-      <hr>
-      <strong>标签</strong>
-      {% assign tags_list = page.tags %}
-      {% include JB/tags_list %}
-    </div>
-  </div>
-  <div class="span9">
-    <div>
-      <h1 class="post-title">{{page.title}}</h1>
-      {{ content }}
-    </div>
-    <hr>
-    <div class="pagination">
-      <ul>
-        {% if page.previous %}
-        <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">前一篇</a></li>
-        {% else %}
-        {% endif %}
-        <li><a href="/">首页</a></li>
-        {% if page.next %}
-        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">后一篇</a></li>
-        {% else %}
-        {% endif %}
-      </ul>
-    </div>
-    {% include JB/share_baidu %}
-    <br></br>
-    {% include JB/comments %}
-  </div>
-
+<div class="content">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="blog-info">
+					<img class="img-circle"   src="/images/avatar.png"></img> 
+					<strong>{{site.author.name}}</strong>
+					<p>{{site.author.bio}}</p>
+					<hr>
+					<strong>发布时间</strong>
+					<p>{{ page.date | date: "%Y.%m.%d" }}</p>
+					<hr>
+					<strong>标签</strong>
+					{% assign tags_list = page.tags %}
+					{% include JB/tags_list %}
+					<hr>
+				</div>
+			</div>
+			<div class="span6">
+				<h1 class="post-title">{{page.title}}</h1>
+				{{ content }}
+				<div class="row-fluid">
+					<div class="span6">
+						<button id="btn_share" class="btn btn-success" style="margin:2em 0; padding:5px 2em;">分享</button>
+						<div id="share">
+							{% include JB/share_baidu %}
+						</div>
+					</div>
+					<div class="span6">
+						<button id="btn_comment" class="btn btn-inverse" style="margin:2em 0;padding:5px 2em; float:right">评论</button>
+						<div id="comment">
+							{% include JB/comments %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+{% assign post = page.next %}
+{% if post == null %}
+{% assign post = page.previous %}
+{% endif %}
+{% unless post == null %}
+<div class="next-page">
+	<div class="next-btn">
+		<a href="{{post.url}}">
+			下一篇
+		</a>
+	</div>
+	<div class="container">
+		<div class="row-fluid">
+			<div class="offset3 span6">
+				<h1>{{ post.title }}</h1>
+				<p style="opacity:0.5;"><i class="icon-time"></i> {{ post.date | date: "%Y.%m.%d" }} <i class="icon-tags"></i> {{post.tags | array_to_sentence_string}}</p>
+				<p>{{ post.excerpt | markdownify}}...<a href="{{ post.url }}">继续阅读</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endunless %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#share").hide();
+	$("#comment").hide();
+	$("#btn_share").click(function(){
+		$("#share").toggle();
+	})
+	$("#btn_comment").click(function(){
+		$("#comment").toggle();
+	})
+})
+</script>

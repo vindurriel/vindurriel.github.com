@@ -19,7 +19,7 @@ title: vindurriel
             </ul>
         </p>
       </div>
-      <div class="entry-content">{{ post.excerpt }}<a href="{{ root_url }}{{ post.url }}">继续阅读 &gt;</a></div>
+      <div class="entry-content">{{ post.excerpt | markdownify }}<a href="{{ root_url }}{{ post.url }}">继续阅读 &gt;</a></div>
       
       </li>
       {% unless forloop.last %}
