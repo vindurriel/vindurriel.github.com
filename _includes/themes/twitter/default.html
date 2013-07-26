@@ -29,49 +29,32 @@
 				<li><a href="/archive.html">存档</a></li>
 				<li><a href="/tags.html">标签</a></li>
 				<li><a href="/atom.xml">订阅</a></li>
-				<li>
-					<form class="pull-left" method="get" action="/search.html">
-						<input type="text"   name="query" class="search-query" placeholder="请输入关键字">
-						<br>
-						<br>
-						<button type="submit" class="btn btn-inverse">搜索</button>
-					</form></li>
-				</ul>
-			</div>
-			<div class="nav-overlay"></div>
-			<div class="view">
-				{{ content }}	
-			</div>
+			</ul>
 		</div>
-		{% include JB/analytics %}
-		<script type="text/javascript">
-		$(document).ready(function (){
-			$("#back").click(function(){
-				$("html, body").animate({ scrollTop: "0px" });
-			});
-			var loc = window.location.pathname;
-			$(".menu li>a").each(function(){
-				if ($(this).attr("href") == loc) {
-					$(this).addClass("active");
-				}
-			});
-			$("#nav-btn").click(function(){
-				$("body").addClass("site-nav-in");
-			});
-			$(".nav-overlay").click(function(){
-				$("body").removeClass("site-nav-in");
-			});
+		<div class="nav-overlay"></div>
+		<div class="view">
+			{{ content }}	
+		</div>
+	</div>
+	{% include JB/analytics %}
+	<script type="text/javascript">
+	$(document).ready(function (){
+		$("#back").click(function(){
+			$("html, body").animate({ scrollTop: "0px" });
 		});
-		</script>
-
-		<script type="text/javascript">
-		window.___gcfg = {lang: 'zh-CN'};
-
-		(function() {
-			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-			po.src = 'https://apis.google.com/js/plusone.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		})();
-		</script>
-	</body>
-	</html>
+		var loc = window.location.pathname;
+		$(".menu li>a").each(function(){
+			if ($(this).attr("href") == loc) {
+				$(this).addClass("active");
+			}
+		});
+		$("#nav-btn").click(function(){
+			$("body").addClass("site-nav-in");
+		});
+		$(".nav-overlay").click(function(){
+			$("body").removeClass("site-nav-in");
+		});
+	});
+	</script>
+</body>
+</html>
