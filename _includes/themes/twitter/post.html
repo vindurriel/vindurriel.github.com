@@ -38,7 +38,7 @@
 </div>
 {% assign post = page.next %}
 {% if post == null %}
-{% assign post = page.previous %}
+{% assign post = site.posts.last %}
 {% endif %}
 {% unless post == null %}
 <div class="next-page">
