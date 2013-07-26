@@ -25,7 +25,7 @@ title: vindurriel
           </ul>
         </p>
       </div>
-      <div class="entry-content">{{ post.excerpt | markdownify }}</div>
+      <div class="entry-content">{{ post.excerpt | markdownify|strip_html }}</div>
     </li>
     {% unless forloop.last %}
     <hr/>

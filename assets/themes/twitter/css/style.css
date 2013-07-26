@@ -1,4 +1,15 @@
 /* Custom container */
+.node {
+  color: black;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+.link {
+  color: black;
+  stroke: #999;
+  stroke-width:2px;
+  stroke-opacity: .6;
+}
 code,pre{
   font-family: Consolas,Menlo,"Droid Sans Mono";
 }
@@ -131,7 +142,9 @@ h1{
   font-weight: bold;
 }
 
-.post-list{
+.post-list hr{
+  padding-left: 1em;
+  width: 50px;
 }
 
 .entry-title{
@@ -140,6 +153,7 @@ h1{
 }
 .entry-title   a{
   color: black;
+  text-decoration: none;
 }
 .entry-caption{
   font-size: 2em;
