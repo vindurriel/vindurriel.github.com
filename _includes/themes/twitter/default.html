@@ -6,14 +6,13 @@
 	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 	<meta name="author" content="{{ site.author.name }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+	<link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 	<link href="{{ ASSET_PATH }}/css/syntax.css" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/d3.parsets.css" rel="stylesheet" type="text/css" >
 	<link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
 	<link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/jquery-tapir.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
 </head>
 <body>
 	{% include JB/setup %}
@@ -29,6 +28,12 @@
 				<li><a href="/archive.html">存档</a></li>
 				<li><a href="/tags.html">标签</a></li>
 				<li><a href="/atom.xml">订阅</a></li>
+				<li>
+					<form id="search" class="search-query">
+						<input type="search" name="q" id="q" placeholder="Enter keywords..."/>
+						<a href="#myModal"  class="btn" data-toggle="modal">搜索</a>
+					</form>
+				</li>
 			</ul>
 		</div>
 		<div class="nav-overlay"></div>
@@ -56,5 +61,16 @@
 		});
 	});
 	</script>
+	<script src="/javascripts/lunr.min.js"></script>
+	<script src="/javascripts/search.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<div id="myModal" class="modal hide fade"  >
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>Modal header</h3>
+		</div>
+		<div class="modal-body">
+		</div>
+	</div>
 </body>
 </html>

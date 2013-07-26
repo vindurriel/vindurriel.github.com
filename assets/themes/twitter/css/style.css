@@ -286,3 +286,6 @@ li{
     position: static;
   }
 } 
+.modal{
+  z-index: 3000;
+}
