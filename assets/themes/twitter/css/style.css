@@ -99,6 +99,7 @@ h1{
 }
 
 .menu li{
+  white-space: nowrap;
   font-size: 1.2em;
   list-style: none;
   padding: 2em;
