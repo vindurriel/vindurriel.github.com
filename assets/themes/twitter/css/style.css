@@ -98,11 +98,21 @@ h1{
   height: 1.5em;
 }
 
+.menu .gsc-control-cse{
+  padding: 0;
+}
+.menu .gsc-search-box{
+  padding: 0;
+}
+.menu .gsc-results-wrapper-overlay{
+  z-index: 100002;
+}
+
 .menu li{
   white-space: nowrap;
   font-size: 1.2em;
   list-style: none;
-  padding: 2em;
+  padding: 2em 0;
 }
 
 .menu li>a{
@@ -116,6 +126,9 @@ h1{
 }
 .menu li>a.active{
   color: white
+}
+.menu input{
+  margin-bottom: 0;
 }
 .content{
   margin-top: 10em;
