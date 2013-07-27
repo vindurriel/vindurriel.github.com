@@ -20,6 +20,7 @@ html,body{
   overflow-x:hidden;
   margin: 0;
   padding: 0;
+  background:black url("/images/bg.png");
   font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
 }
 h1{
@@ -46,14 +47,16 @@ h1{
   left: 0; 
   overflow-x: hidden;
 }
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 .menu{
   position: relative;
   z-index: 200;
   float: left;
   overflow-x:hidden;
   height: 100% !important;
-  background: black;
+  background: url("/images/bgb.png");
   width: 0px;
   -webkit-transition: width 0.25s ease-out;
   -moz-transition: width 0.25s ease-out;
@@ -157,6 +160,7 @@ h1{
 
 .post-list hr{
   margin-left: 1em;
+  border-top-color: #ccc;
   width: 70%;
 }
 
@@ -302,7 +306,7 @@ li{
   width: inherit;
   height: 100%;
   background-size: cover;
-  background: black url("/images/banner.jpg") center no-repeat;
+  background:  url("/images/banner.jpg") center no-repeat;
 }
 
 
