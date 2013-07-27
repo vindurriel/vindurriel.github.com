@@ -1,7 +1,27 @@
 <div class="content">
 	<div class="container">
 		<div class="row-fluid">
-			<div class="span2">
+			<div class="span8 offset2" style="padding:0 1em;">
+				<h1 class="post-title">{{page.title}}</h1>
+				{{ content }}
+				<table style="width:100%;">
+					<tr>
+						<td>
+							<button id="btn_share" class="mybtn">分享</button>
+							<div id="share">
+								{% include JB/share_baidu %}
+							</div>
+						</td>
+						<td>
+							<button id="btn_comment" class="mybtn" style="float:right;">评论</button>
+							<div id="comment">
+								{% include JB/comments %}
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="span2" style="padding:0 1em;">
 				<div class="blog-info">
 					<img class="img-circle"   src="/images/avatar.png"></img> 
 					<strong>{{site.author.name}}</strong>
@@ -13,24 +33,6 @@
 					<strong>标签</strong>
 					{% assign tags_list = page.tags %}
 					{% include JB/tags_list %}
-				</div>
-			</div>
-			<div class="span8">
-				<h1 class="post-title">{{page.title}}</h1>
-				{{ content }}
-				<div class="row-fluid">
-					<div class="span6">
-						<button id="btn_share" class="mybtn">分享</button>
-						<div id="share">
-							{% include JB/share_baidu %}
-						</div>
-					</div>
-					<div class="span6">
-						<button id="btn_comment" class="mybtn" style="float:right;">评论</button>
-						<div id="comment">
-							{% include JB/comments %}
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -48,7 +50,7 @@
 		</a>
 	</div>
 	<div class="container">
-		<div class="row-fluid">
+		<div class="row">
 			<div class="offset2 span8">
 				<h1>{{ post.title }}</h1>
 				<p style="opacity:0.5;"><i class="icon-time"></i> {{ post.date | date: "%Y.%m.%d" }} <i class="icon-tags"></i> {{post.tags | array_to_sentence_string}}</p>

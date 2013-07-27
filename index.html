@@ -8,7 +8,7 @@ title: vindurriel
     <div class="banner" >
     </div>
   </div>
-  <div class="span6" style="padding:5em 0 0 2em" >
+  <div class="span6" style="padding:5em 1em" >
     <div class="post-list">
       <ul  >
         {% for post in paginator.posts   %}
@@ -28,7 +28,7 @@ title: vindurriel
       <div class="entry-content">{{ post.excerpt | markdownify|strip_html }}</div>
     </li>
     {% unless forloop.last %}
-    <hr/>
+    <hr>
     {% endunless %}
     {% endfor %}
   </ul>

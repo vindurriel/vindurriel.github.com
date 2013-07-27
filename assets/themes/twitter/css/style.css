@@ -17,6 +17,7 @@ html,body{
   position: absolute;
   width: 100%;
   height: 100%;
+  overflow-x:hidden;
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
@@ -25,20 +26,16 @@ h1{
   font-family: "Microsoft Yahei";
   line-height:1.2em;
 }
-.nav-bg{
-  position: fixed;
-  left: 5px;
-  top: 5px;
-  padding: 2px;
-  z-index: 100;
-  background: rgba(255,255,255,0.5);
-}
 #nav-btn{
-
-  border:none;
+  -webkit-box-sizing: border-box;
+  z-index: 100;
+  border: none;
+  position: fixed;
+  left: 1em;
+  top: 1em;
   background: black url("/images/blacktocat.png") center no-repeat;
-  width:4em;
-  height:4em;
+  width:3em;
+  height:3em;
 }
 .frame {
   position: absolute;
@@ -50,10 +47,6 @@ h1{
   overflow-x: hidden;
 }
 
-.site-nav-in .menu{
-  width: 280px;
-}
-
 .menu{
   position: relative;
   z-index: 200;
@@ -62,11 +55,23 @@ h1{
   height: 100% !important;
   background: black;
   width: 0px;
-  overflow: hidden;
   -webkit-transition: width 0.25s ease-out;
   -moz-transition: width 0.25s ease-out;
   -o-transition: width 0.25s ease-out;
   transition: width 0.25s ease-out; 
+}
+
+
+.site-nav-in .menu{
+  width: 280px;
+}
+
+.view {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow-x: hidden; 
+  overflow-y: auto; 
 }
 
 .nav-overlay{
@@ -85,13 +90,7 @@ h1{
 .site-nav-in .view{
   overflow: hidden;
 }
-.view {
-  float: left;
-  width: 50%;
-  height: 100%;
-  overflow-x: hidden; 
-  overflow-y: visible; 
-}
+
 
 #back {
   cursor: pointer;  
@@ -143,8 +142,8 @@ h1{
 }
 
 .post-list hr{
-  padding-left: 1em;
-  width: 50px;
+  margin-left: 1em;
+  width: 70%;
 }
 
 .entry-title{
@@ -215,20 +214,17 @@ h1{
 
 .blog-info{
   color:#555;
-  padding-right: 30px;
-  text-align: right;
+  text-align: left;
 }
 .blog-info img{
+  margin-bottom: 2em;
   display: block;
   width: 40px;
   width: 40px;
-  margin: 0 0 40px auto;
 }
 
 .blog-info hr{
  width: 50px;
- margin-left: auto;
- margin-right: 0;
 }
 
 .blog-info strong{
@@ -295,11 +291,22 @@ li{
   background: black url("/images/banner.jpg") center no-repeat;
 }
 
+
+.modal{
+  z-index: 3000;
+}
+
 @media (max-width: 767px){
   .banner{
     position: static;
   }
+  .menu{
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none; 
+  }
+  #nav-btn{
+    position: absolute;
+  }
 } 
-.modal{
-  z-index: 3000;
-}
