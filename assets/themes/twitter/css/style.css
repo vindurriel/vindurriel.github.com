@@ -11,7 +11,15 @@
   stroke-opacity: .6;
 }
 code,pre{
-  font-family: Consolas,Menlo,"Droid Sans Mono";
+  font-family: Consolas,Menlo,"Droid Sans Mono","Ubuntu Mono";
+}
+.lineno{
+ -webkit-touch-callout: none;
+ -webkit-user-select: none;
+ -khtml-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
 }
 html,body{
   position: absolute;
@@ -20,7 +28,6 @@ html,body{
   overflow-x:hidden;
   margin: 0;
   padding: 0;
-  background:black url("/images/bg.png");
   font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
 }
 h1{
@@ -48,7 +55,7 @@ h1{
   overflow-x: hidden;
 }
 ::-webkit-scrollbar { 
-    display: none; 
+  display: none; 
 }
 .menu{
   position: relative;
@@ -301,12 +308,12 @@ li{
 
 
 .banner{
-  border-right:rgba(0,0,0,0.3) solid 1px;
+  border-right:rgba(0,0,0,0.5) solid 1px;
   position: fixed;
   width: inherit;
   height: 100%;
   background-size: cover;
-  background:  url("/images/banner.jpg") center no-repeat;
+  background:  url("/images/banner.png")  left top no-repeat;
 }
 
 

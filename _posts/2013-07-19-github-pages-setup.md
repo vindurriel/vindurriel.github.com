@@ -11,7 +11,7 @@ description: ""
 首先去github pages申请一个页面，默认的域名是`http://USERNAME.github.io`，其中`USERNAME`是你的github用户名。
 
 github使用jekyll做解析引擎。可以直接克隆一个别人写好的jekyll，然后把上传路径改成自己的，像这样：
-{% highlight bash %}
+{% highlight bash linenos=table %}
 $ git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com
 $ cd USERNAME.github.com
 $ git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
