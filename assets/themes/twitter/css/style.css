@@ -11,7 +11,7 @@
   stroke-opacity: .6;
 }
 code,pre{
-  font-family: Consolas,Menlo,"Droid Sans Mono","Ubuntu Mono";
+  font-family: Consolas,Menlo,"Droid Sans Mono","Ubuntu Mono","Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
 }
 .lineno{
  -webkit-touch-callout: none;
@@ -92,7 +92,7 @@ h1{
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 1800;
+  z-index: 1000;
 }
 .site-nav-in .nav-overlay{
   display: block;
@@ -297,9 +297,12 @@ li{
   height: 2em;
   width: 4em;
 }
-
+table td {
+    vertical-align: top;
+}
 .mybtn{
   background: #57ad68;
+  top:0;
   color: white;
   margin:2em 0; 
   padding:5px 2em;
