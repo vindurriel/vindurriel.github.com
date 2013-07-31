@@ -52,9 +52,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="offset2 span8">
-				<h1>{{ post.title }}</h1>
-				<p style="opacity:0.5;"><i class="icon-time"></i> {{ post.date | date: "%Y.%m.%d" }} <i class="icon-tags"></i> {{post.tags | array_to_sentence_string}}</p>
-				<p>{{ post.excerpt | markdownify| strip_html}}...<a href="{{ post.url }}">继续阅读</a></p>
+				<a href="{{ post.url }}"><h1>{{ post.title }}</h1></a>
+				<p style="opacity:0.5;"><i class="icon-time"></i> {{ post.date | date: "%Y.%m.%d" }}<i class="icon-tags"></i> {{post.tags | array_to_sentence_string}}</p>
+				<p>{{ post.excerpt | markdownify| strip_html}}...</p>
 			</div>
 		</div>
 	</div>
