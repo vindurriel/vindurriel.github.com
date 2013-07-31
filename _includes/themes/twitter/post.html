@@ -1,7 +1,7 @@
 <div class="content">
 	<div class="container">
 		<div class="row-fluid">
-			<div class="span8 offset2" style="padding:0 1em;">
+			<article class="span8 offset2" style="padding:0 1em;">
 				<h1 class="post-title">{{page.title}}</h1>
 				{{ content }}
 				<table style="width:100%;">
@@ -20,12 +20,10 @@
 						</td>
 					</tr>
 				</table>
-			</div>
+			</article>
 			<div class="span2" style="padding:0 1em;">
 				<div class="blog-info">
-					<img class="img-circle"   src="/images/avatar.png"></img> 
-					<strong>{{site.author.name}}</strong>
-					<p>{{site.author.bio}}</p>
+					<a href="/about.html" title="关于作者"><img class="img-circle"   src="/images/avatar.png"></img> </a>
 					<hr>
 					<strong>发布时间</strong>
 					<p>{{ page.date | date: "%Y.%m.%d" }}</p>
@@ -33,6 +31,10 @@
 					<strong>标签</strong>
 					{% assign tags_list = page.tags %}
 					{% include JB/tags_list %}
+					<hr>
+					<strong>地图</strong>
+					<br>
+					<canvas id="outline" width="200" height="400"></canvas>
 				</div>
 			</div>
 		</div>
@@ -60,8 +62,33 @@
 	</div>
 </div>
 {% endunless %}
+<script type="text/javascript" src="/javascripts/jquery.fracs-0.11.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.outline-0.11.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#outline").fracs("outline", {
+		crop: true,
+		styles: [
+		{
+			selector: 'header,footer,section,article',
+			fillStyle: 'rgb(240,240,240)'
+		},
+		{
+			selector: 'pre',
+			fillStyle: 'rgb(200,200,200)'
+		},
+		{
+			selector: 'h1,h2,h3,.mybtn',
+			fillStyle: 'rgb(100,100,100)',
+		}
+		],
+		viewportStyle: {
+			fillStyle: 'rgba(104,169,255,0.1)',
+		},
+		viewportDragStyle: {
+			fillStyle: 'rgba(104,169,255,0.3)'
+		}
+	});
 	$("#share").hide();
 	$("#comment").hide();
 	$("#btn_share").click(function(){

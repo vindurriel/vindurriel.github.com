@@ -22,15 +22,13 @@ code,pre{
  -ms-user-select: none;
  user-select: none;
 }
-p{
+article p{
   margin: 2em 0;
 }
-html,body{
-  font-size: 16px;
+body{
   position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow-x:hidden;
+  left: 0;top: 0;bottom: 0;right: 0;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
@@ -52,22 +50,23 @@ h1{
 }
 .frame {
   position: absolute;
-  width: 200%;
+  width: 100%;
   height: 100%;
   top: 0;
   bottom: 0;
   left: 0; 
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 ::-webkit-scrollbar { 
   display: none; 
 }
-.menu{
-  position: relative;
+.menu {
+  position: fixed;
   z-index: 200;
-  float: left;
+  top:0;
+  bottom: 0;
+  left:0;
   overflow-x:hidden;
-  height: 100% !important;
   background: url("/images/bgb.png");
   width: 0px;
   -webkit-transition: width 0.25s ease-out;
@@ -78,21 +77,25 @@ h1{
 
 
 .site-nav-in .menu{
-  width: 280px;
+  width: 350px;
 }
 
 .view {
-  float: left;
-  width: 50%;
-  height: 100%;
-  overflow-x: hidden; 
-  overflow-y: auto; 
+  width: 100%;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out; 
 }
+.site-nav-in .view{
+  margin-left: 350px;
+}
+
 
 .nav-overlay{
   display: none;
   position: absolute;
-  left:280px;
+  left:350px;
   height: 100%;
   top: 0;
   right: 0;
@@ -103,7 +106,7 @@ h1{
   display: block;
 }
 .site-nav-in .view{
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 
@@ -243,11 +246,17 @@ h1{
 }
 
 .blog-info{
-  color:#555;
+  position: fixed;
+  z-index: 100;
+  right:1em;
+  top:1em;
+  margin-top: 10em;
+  color:#888;
   text-align: left;
 }
+
 .blog-info img{
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   display: block;
   width: 40px;
   width: 40px;
@@ -258,14 +267,15 @@ h1{
 }
 
 .blog-info strong{
-  padding-bottom: 2em;
+  color:black;
+  padding-bottom: 1em;
 }
 
 li{
   list-style: none;
 }
 .blog-info li>a{
-  color: #555;
+  color: #888;
 }
 .post-title{
   margin:0;
@@ -304,7 +314,7 @@ li{
   width: 4em;
 }
 table td {
-    vertical-align: top;
+  vertical-align: top;
 }
 .mybtn{
   background: #57ad68;
@@ -342,5 +352,12 @@ table td {
   }
   #nav-btn{
     position: absolute;
+  }
+  .blog-info{
+    margin-top: 0;
+    position: static;
+  }
+  #outline{
+    display: none;
   }
 } 
