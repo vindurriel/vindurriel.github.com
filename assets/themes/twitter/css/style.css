@@ -12,6 +12,12 @@ a:hover,a:focus{
   color:#69a2a5;
   text-decoration: none;
 }
+input.search-query{
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+}
 .link {
   color: black;
   stroke: #999;
@@ -345,7 +351,12 @@ table td {
   background:  url("/images/banner.png")  left top no-repeat;
 }
 
-
+#search-results{
+  -webkit-transition: height .2s ease-out;
+  -moz-transition: height .2s ease-out;
+  -o-transition: height .2s ease-out;
+  transition:height .2s ease-out;
+}
 .modal{
   z-index: 3000;
 }

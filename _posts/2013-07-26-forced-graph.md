@@ -14,8 +14,6 @@ tags:
 
 {% highlight js %}
 {% raw %}
----
----
 //准备post和tag的关联数据
 var graph={
     "nodes":[],

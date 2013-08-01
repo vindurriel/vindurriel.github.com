@@ -60,8 +60,32 @@
 		$(".nav-overlay").click(function(){
 			$("body").removeClass("site-nav-in");
 		});
+		$("#btn-search").click(function(){
+			var query=$("#input-query").val();
+			$('#search-results').empty().tapir({
+				'token': '51f154a684516902000000b7',
+				'query':query,
+			});
+		})
 	});
 	</script>
 	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src="/javascripts/jquery-tapir.js"></script>
+	<script src="/javascripts/spin.min.js"></script>
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">搜索结果</h4>
+				</div>
+				<div class="modal-body">
+					<div id="search-results"></div>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </body>
 </html>
