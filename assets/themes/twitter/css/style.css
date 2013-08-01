@@ -4,6 +4,14 @@
   stroke: #fff;
   stroke-width: 1.5px;
 }
+a,code{
+  color:#15a89e;
+  text-decoration: none;
+}
+a:hover,a:focus{
+  color:#69a2a5;
+  text-decoration: none;
+}
 .link {
   color: black;
   stroke: #999;
@@ -24,6 +32,7 @@ code,pre{
 }
 article p{
   margin: 2em 0;
+  line-height: 1.5em;
 }
 body{
   position: absolute;
@@ -248,9 +257,10 @@ h1{
 .blog-info{
   position: fixed;
   z-index: 100;
-  right:1em;
+  left:80%;
   top:1em;
   margin-top: 10em;
+  margin-left:1em;
   color:#888;
   text-align: left;
 }
@@ -317,7 +327,7 @@ table td {
   vertical-align: top;
 }
 .mybtn{
-  background: #57ad68;
+  background: #15a89e;
   top:0;
   color: white;
   margin:2em 0; 
@@ -339,12 +349,15 @@ table td {
 .modal{
   z-index: 3000;
 }
-
+.pagination{
+  margin: 2em 1em;
+}
 @media (max-width: 767px){
   .banner{
     position: static;
+    min-height:800px; 
   }
-  .menu{
+  .view,.menu{
     -webkit-transition: none;
     -moz-transition: none;
     -o-transition: none;
