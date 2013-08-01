@@ -109,7 +109,7 @@ h1{
 
 .nav-overlay{
   display: none;
-  position: absolute;
+  position: fixed;
   left:350px;
   height: 100%;
   top: 0;
