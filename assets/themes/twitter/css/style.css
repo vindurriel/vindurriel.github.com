@@ -115,13 +115,12 @@ h1{
   top: 0;
   right: 0;
   bottom: 0;
+  background-color: rgba(255,255,255,.5);
+  -webkit-filter: blur(2px);
   z-index: 1000;
 }
 .site-nav-in .nav-overlay{
   display: block;
-}
-.site-nav-in .view{
-  /*overflow: hidden;*/
 }
 
 
@@ -260,6 +259,7 @@ h1{
   color: #FFF;
 }
 
+
 .blog-info{
   position: fixed;
   z-index: 100;
@@ -269,6 +269,10 @@ h1{
   margin-left:1em;
   color:#888;
   text-align: left;
+}
+
+.site-nav-in .blog-info{
+  display: none;
 }
 
 .blog-info img{
