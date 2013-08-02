@@ -17,6 +17,13 @@ input.search-query{
   -moz-border-radius: 0;
   border-radius: 0;
 }
+.search-btn{
+  background: #15a89e;
+  color: white;
+  margin:0; 
+  padding:5px 1em;
+  border:none;
+}
 
 .link {
   color: black;
@@ -59,10 +66,27 @@ h1{
   position: fixed;
   left: 1em;
   top: 1em;
+  color:white;
+  background: black;
+  background: black url("/images/blacktocat.png") center no-repeat;
+  width: 3em;
+  height: 3em;
+}
+
+#thumbnail{
+  position: fixed;
+  right: 1em;
+  top: 1em;
+}
+#thumbnail button{
+  float:right;
+  border: none;
+  display: block;
   background: black url("/images/blacktocat.png") center no-repeat;
   width:3em;
   height:3em;
 }
+
 .frame {
   position: absolute;
   width: 100%;
@@ -259,19 +283,17 @@ h1{
 
 
 .blog-info{
-  position: fixed;
+  /*position: fixed;*/
   z-index: 100;
   left:80%;
   top:1em;
-  margin-top: 10em;
-  margin-left:1em;
+  /*margin-top: 10em;*/
+  /*margin-left:1em;*/
   color:#888;
   text-align: left;
 }
 
-.site-nav-in .blog-info{
-  display: none;
-}
+
 
 .blog-info img{
   margin-bottom: 1em;
@@ -365,6 +387,9 @@ table td {
 .pagination{
   margin: 2em 1em;
 }
+.blog-info-bottom{
+  display: none;
+}
 @media (max-width: 767px){
   .banner{
     position: static;
@@ -383,7 +408,10 @@ table td {
     margin-top: 0;
     position: static;
   }
-  #outline{
+  #thumbnail,.blog-info{
     display: none;
   }
+  .blog-info-bottom{
+  display: block;
+}
 } 

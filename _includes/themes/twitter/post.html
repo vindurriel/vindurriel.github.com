@@ -1,7 +1,19 @@
 <div class="content">
 	<div class="container">
 		<div class="row-fluid">
-			<article class="span8 offset2" style="padding:0 1em;">
+			<div class="span2">
+				<div class="blog-info">
+					<a href="/about.html" title="关于作者"><img class="img-circle"   src="/images/avatar.png"></img> </a>
+					<hr>
+					<strong>发布时间</strong>
+					<p>{{ page.date | date: "%Y.%m.%d" }}</p>
+					<hr>
+					<strong>标签</strong>
+					{% assign tags_list = page.tags %}
+					{% include JB/tags_list %}
+				</div>
+			</div>
+			<article class="span8" style="padding:0 1em;">
 				<h1 class="post-title">{{page.title}}</h1>
 				{{ content }}
 				<table style="width:100%;">
@@ -20,9 +32,8 @@
 						</td>
 					</tr>
 				</table>
-			</article>
-			<div class="span2" style="padding:0 1em;">
-				<div class="blog-info">
+				<div class="blog-info blog-info-bottom">
+					<hr>
 					<a href="/about.html" title="关于作者"><img class="img-circle"   src="/images/avatar.png"></img> </a>
 					<hr>
 					<strong>发布时间</strong>
@@ -31,71 +42,78 @@
 					<strong>标签</strong>
 					{% assign tags_list = page.tags %}
 					{% include JB/tags_list %}
-					<hr>
-					<strong>地图</strong>
-					<br>
-					<canvas id="outline" width="200" height="400"></canvas>
+				</div>
+			</article>
+			<div id="thumbnail" class="dropdown">
+				<!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown trigger</a> -->
+				<button class="dropdown-toggle"  data-toggle="dropdown"></button>
+				<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+					<li>
+						<canvas  id="outline" width="200" height="400"></canvas>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-{% assign post = page.next %}
-{% if post == null %}
-{% assign post = site.posts.last %}
-{% endif %}
-{% unless post == null %}
-<div class="next-page">
-	<div class="next-btn">
-		<a href="{{post.url}}">
-			下一篇
-		</a>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="offset2 span8">
-				<a href="{{ post.url }}"><h1>{{ post.title }}</h1></a>
-				<p style="opacity:0.5;"><i class="icon-time"></i> {{ post.date | date: "%Y.%m.%d" }}<i class="icon-tags"></i> {{post.tags | array_to_sentence_string}}</p>
-				<p>{{ post.excerpt | markdownify| strip_html}}...</p>
+	{% assign post = page.next %}
+	{% if post == null %}
+	{% assign post = site.posts.last %}
+	{% endif %}
+	{% unless post == null %}
+	<div class="next-page">
+		<div class="next-btn">
+			<a href="{{post.url}}">
+				下一篇
+			</a>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="offset2 span8">
+					<a href="{{ post.url }}"><h1>{{ post.title }}</h1></a>
+					<p style="opacity:0.5;"><i class="icon-time"></i> {{ post.date | date: "%Y.%m.%d" }}<i class="icon-tags"></i> {{post.tags | array_to_sentence_string}}</p>
+					<p>{{ post.excerpt | markdownify| strip_html}}...</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-{% endunless %}
-<script type="text/javascript" src="/javascripts/jquery.fracs-0.11.min.js"></script>
-<script type="text/javascript" src="/javascripts/jquery.outline-0.11.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#outline").fracs("outline", {
-		crop: true,
-		styles: [
-		{
-			selector: 'header,footer,section,article',
-			fillStyle: 'rgb(240,240,240)'
-		},
-		{
-			selector: 'pre',
-			fillStyle: 'rgb(200,200,200)'
-		},
-		{
-			selector: 'h1,h2,h3,.mybtn',
-			fillStyle: 'rgb(100,100,100)',
-		}
-		],
-		viewportStyle: {
-			fillStyle: 'rgba(104,169,255,0.1)',
-		},
-		viewportDragStyle: {
-			fillStyle: 'rgba(104,169,255,0.3)'
-		}
-	});
-	$("#share").hide();
-	$("#comment").hide();
-	$("#btn_share").click(function(){
-		$("#share").toggle();
+	{% endunless %}
+	<script type="text/javascript" src="/javascripts/jquery.fracs-0.11.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.outline-0.11.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#outline").fracs("outline", {
+			crop: true,
+			styles: [
+			{
+				selector: 'header,footer,section,article',
+				fillStyle: 'rgb(240,240,240)'
+			},
+			{
+				selector: 'pre',
+				fillStyle: 'rgb(200,200,200)'
+			},
+			{
+				selector: 'h1,h2,h3',
+				fillStyle: 'rgb(100,100,100)',
+			}
+			],
+			viewportStyle: {
+				fillStyle: 'rgba(104,169,255,0.1)',
+			},
+			viewportDragStyle: {
+				fillStyle: 'rgba(104,169,255,0.3)'
+			}
+		});
+		$("#share").hide();
+		$("#comment").hide();
+		$("#btn_share").click(function(){
+			$("#share").toggle();
+		})
+		$("#btn_comment").click(function(){
+			$("#comment").toggle();
+		})
+		$("#outline").click(function(e){
+			e.stopPropagation();
+		})
 	})
-	$("#btn_comment").click(function(){
-		$("#comment").toggle();
-	})
-})
-</script>
+	</script>

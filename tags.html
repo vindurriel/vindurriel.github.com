@@ -32,9 +32,10 @@ group: navigation
 			csv+="\n{{post.title}},{{tag}}";
 		{% endfor %}
 	{% endfor %}
+	var width=$("#vis").width();
 	var chart = d3.parsets()
 		  .tension(0.8)
-		  .width("800")
+		  .width(width)
 		  .height("480")
 		  .dimensionFormat(function(d){
 		  	var dic={

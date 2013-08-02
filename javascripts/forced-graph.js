@@ -34,7 +34,7 @@ var post_id=0,tag_id=0;
     {% endfor %}
 {% endfor %}
 //数据准备完毕，开始画图
-var width = 400,
+var width = $("#svg").width();
 height = 400;
 //两个力场的中心位置
 var foci={

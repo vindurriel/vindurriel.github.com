@@ -109,7 +109,7 @@ force.on("tick", function(e) {
 
 <div id="svg"></div>
 <script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
-<script type="text/javascript" src="/forced-graph.js"></script>
+<script type="text/javascript" src="/javascripts/forced-graph.js"></script>
 
 参考了下面两个例子：
 
