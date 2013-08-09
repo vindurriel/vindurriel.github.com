@@ -3,55 +3,33 @@
 		<div class="row-fluid">
 			<div class="span2">
 				<div class="blog-info">
-					<a href="/about.html" title="关于作者"><img class="img-circle"   src="/images/avatar.png"></img> </a>
-					<hr>
-					<strong>发布时间</strong>
-					<p>{{ page.date | date: "%Y.%m.%d" }}</p>
-					<hr>
-					<strong>标签</strong>
-					{% assign tags_list = page.tags %}
-					{% include JB/tags_list %}
+					<canvas  id="outline" width="200" height="400"></canvas>
 				</div>
 			</div>
-			<article class="span8" style="padding:0 1em;">
+			<div class="span8" style="padding:0 1em;">
+				{% if page.banner %}
+				<img src="{{page.banner}}" class="post-banner">
+				{% endif%}
+				{% assign post = page %}
+				{% include JB/tags_list %}
 				<h1 class="post-title">{{page.title}}</h1>
 				{{ content }}
 				<table style="width:100%;">
 					<tr>
 						<td   style="width:50%;">
-							<button id="btn_share" class="mybtn">分享</button>
-							<div id="share">
+							<button id="btn_share"  class="mybtn">分享</button>
+							<div id="share" class="hide">
 								{% include JB/share_baidu %}
 							</div>
 						</td>
 						<td  style="width:50%;">
 							<button id="btn_comment" class="mybtn" style="float:right;">评论</button>
-							<div id="comment">
+							<div id="comment"  class="hide">
 								{% include JB/comments %}
 							</div>
 						</td>
 					</tr>
 				</table>
-				<div class="blog-info blog-info-bottom">
-					<hr>
-					<a href="/about.html" title="关于作者"><img class="img-circle"   src="/images/avatar.png"></img> </a>
-					<hr>
-					<strong>发布时间</strong>
-					<p>{{ page.date | date: "%Y.%m.%d" }}</p>
-					<hr>
-					<strong>标签</strong>
-					{% assign tags_list = page.tags %}
-					{% include JB/tags_list %}
-				</div>
-			</article>
-			<div id="thumbnail" class="dropdown">
-				<!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown trigger</a> -->
-				<button class="dropdown-toggle"  data-toggle="dropdown"></button>
-				<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-					<li>
-						<canvas  id="outline" width="200" height="400"></canvas>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -69,9 +47,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="offset2 span8">
-					<a href="{{ post.url }}"><h1>{{ post.title }}</h1></a>
-					<p style="opacity:0.5;"><i class="icon-time"></i> {{ post.date | date: "%Y.%m.%d" }}<i class="icon-tags"></i> {{post.tags | array_to_sentence_string}}</p>
-					<p>{{ post.excerpt | markdownify| strip_html}}...</p>
+					{% include JB/tags_list %}
+					<br>
+					<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+					<br>
+					<p>{{ post.excerpt | markdownify| strip_html}}</p>
+					<p>...</p>
 				</div>
 			</div>
 		</div>
@@ -79,41 +60,4 @@
 	{% endunless %}
 	<script type="text/javascript" src="/javascripts/jquery.fracs-0.11.min.js"></script>
 	<script type="text/javascript" src="/javascripts/jquery.outline-0.11.min.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$("#outline").fracs("outline", {
-			crop: true,
-			styles: [
-			{
-				selector: 'header,footer,section,article',
-				fillStyle: 'rgb(240,240,240)'
-			},
-			{
-				selector: 'pre',
-				fillStyle: 'rgb(200,200,200)'
-			},
-			{
-				selector: 'h1,h2,h3',
-				fillStyle: 'rgb(100,100,100)',
-			}
-			],
-			viewportStyle: {
-				fillStyle: 'rgba(104,169,255,0.1)',
-			},
-			viewportDragStyle: {
-				fillStyle: 'rgba(104,169,255,0.3)'
-			}
-		});
-		$("#share").hide();
-		$("#comment").hide();
-		$("#btn_share").click(function(){
-			$("#share").toggle();
-		})
-		$("#btn_comment").click(function(){
-			$("#comment").toggle();
-		})
-		$("#outline").click(function(e){
-			e.stopPropagation();
-		})
-	})
-	</script>
+	<script type="text/javascript" src="/javascripts/outline.js"></script>

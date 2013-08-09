@@ -13,52 +13,45 @@ title: vindurriel
       <ul  >
         {% for post in paginator.posts   %}
         <li>
-         <div  class="entry-title">
-          <a style="display:block" class="entry-caption" href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
-          <ul style="display:inline;opacity:0.5;" class="inline" >
-            <li style="padding-left:0"><i class="icon-time"></i> {{ post.date | date: "%Y年%m月%d日" }}</li>
-            {% unless post.tags == empty %}
-            <i class="icon-tags"></i>
-            {% assign tags_list = post.tags %}
-            {% include JB/tags_list %}
-            {% endunless %} 
-          </ul>
+          {% include JB/tags_list %}
+          <h2  class="entry-caption">
+            <a style="display:block" href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+          </h2>
         </p>
-      </div>
-      <div class="entry-content">{{ post.excerpt | markdownify|strip_html }}</div>
-    </li>
-    {% unless forloop.last %}
-    <hr>
-    {% endunless %}
-    {% endfor %}
-  </ul>
-</div>
-{% unless paginator.total_pages == 1 %}
-<div class="pagination">
-  {% assign Previous = "上一页" %}
-  {% assign Next = "下一页" %}
-  <ul>
-    <li class="prev">
-      {% if paginator.previous_page %}
-      {% if paginator.previous_page == 1 %}
-      <a href="/">{{Previous}}</a>
-      {% else %}
-      <a href="{{ paginator.previous_page_path }}">{{Previous}}</a>
-      {% endif %}
-      {% else %}
-      <span>{{Previous}}</span>
-      {% endif %}
-    </li>
-    <li><span>第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页</span></li>
-    <li class="next">
-      {% if paginator.next_page %}
-      <a href="/page{{ paginator.next_page }}"  >{{Next}}</a>
-      {% else %}
-      <span>{{Next}}</span>
-      {% endif %}
-    </li>
-  </ul>
-</div>
-{% endunless %}
+        <div class="entry-content">{{ post.excerpt | markdownify|strip_html }}</div>
+      </li>
+      {% unless forloop.last %}
+      <hr>
+      {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% unless paginator.total_pages == 1 %}
+  <div class="pagination">
+    {% assign Previous = "上一页" %}
+    {% assign Next = "下一页" %}
+    <ul>
+      <li class="prev">
+        {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+        <a href="/">{{Previous}}</a>
+        {% else %}
+        <a href="{{ paginator.previous_page_path }}">{{Previous}}</a>
+        {% endif %}
+        {% else %}
+        <span>{{Previous}}</span>
+        {% endif %}
+      </li>
+      <li><span>第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页</span></li>
+      <li class="next">
+        {% if paginator.next_page %}
+        <a href="/page{{ paginator.next_page }}"  >{{Next}}</a>
+        {% else %}
+        <span>{{Next}}</span>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+  {% endunless %}
 </div>
 </div>
