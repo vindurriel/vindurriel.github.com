@@ -3,7 +3,7 @@ layout: post
 title: "虾米下载介绍"
 description: ""
 banner: "/images/xiami/intro.png"
-published: "false"
+draft: false
 category: 
 tags:
 - xiami

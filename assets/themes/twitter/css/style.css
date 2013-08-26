@@ -109,10 +109,10 @@ body{
   overflow-x:hidden;
   background: url("/images/bgb.png");
   width: 0px;
-  -webkit-transition: width 0.25s ease-out;
-  -moz-transition: width 0.25s ease-out;
-  -o-transition: width 0.25s ease-out;
-  transition: width 0.25s ease-out; 
+  -webkit-transition: width 0.1s ease-out;
+  -moz-transition: width 0.1s ease-out;
+  -o-transition: width 0.1s ease-out;
+  transition: width 0.1s ease-out; 
 }
 
 
@@ -122,10 +122,10 @@ body{
 
 .view {
   width: 100%;
-  -webkit-transition: margin 0.25s ease-out;
-  -moz-transition: margin 0.25s ease-out;
-  -o-transition: margin 0.25s ease-out;
-  transition: margin 0.25s ease-out; 
+  -webkit-transition: margin 0.1s ease-out;
+  -moz-transition: margin 0.1s ease-out;
+  -o-transition: margin 0.1s ease-out;
+  transition: margin 0.1s ease-out; 
 }
 .site-nav-in .view{
   margin-left: 350px;
@@ -215,8 +215,13 @@ body{
   width: 70%;
 }
 
+.entry-caption{
+  display: inline;
+}
+
 .entry-caption   a{
   color: black;
+  margin: 10px 0;
 }
 
 .entry-content{
