@@ -1,15 +1,21 @@
 /* Custom container */
-.post-banner{
+.post-banner-inline{
   margin-bottom: 2em;
 }
 h1{
   line-height: 2em;
 }
+
+h1,h2,h3{
+  margin: 1em 0;
+}
+
 .tagline {
   opacity: 0.5;
 }
 .tagline a{
   color:black;
+  text-decoration: none;
 }
 .node {
   color: black;
@@ -20,8 +26,12 @@ code{
   color:black;
   text-decoration: none;
 }
+a{
+  color:black;
+  text-decoration: underline;
+}
 a:hover,a:focus{
-  text-decoration: none;
+  color: #4192e1;
 }
 input.search-query{
   -webkit-border-radius: 0;
@@ -29,7 +39,7 @@ input.search-query{
   border-radius: 0;
 }
 .search-btn{
-  background: #0088cc;
+  background: #4192e1;
   color: white;
   margin:0; 
   padding:5px 1em;
@@ -211,7 +221,8 @@ body{
 }
 
 .post-list hr{
-  border-top-color: #ccc;
+  margin:3em 0;
+  border-top-color: #eee;
   width: 70%;
 }
 
@@ -219,13 +230,15 @@ body{
   display: inline;
 }
 
-.entry-caption   a{
+.entry-caption  a{
   color: black;
-  margin: 10px 0;
+  text-decoration: none;
+  margin: 1em 0;
 }
 
 .entry-content{
   opacity: .7;
+  margin: 15px 0;
 }
 
 .entry-content a{
@@ -315,8 +328,8 @@ li{
   color: #888;
 }
 .post-title{
-  margin:0;
-  margin-bottom: 40px;
+  text-align: center;
+  margin: 0 auto 1.5em auto;
 }
 
 .next-page{
@@ -354,7 +367,7 @@ table td {
   vertical-align: top;
 }
 .mybtn{
-  background: #0088cc;
+  background: #4192e1;
   top:0;
   color: white;
   margin:2em 0; 
