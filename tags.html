@@ -7,18 +7,6 @@ group: navigation
 {% include JB/setup %}
 
 <div id="vis"></div>
-<ul class="tag_box inline">
-  {% assign tags_list = site.tags %}  
-  {% include JB/tags_list %}
-</ul>
-
-{% for tag in site.tags %} 
-  <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
-  <ul class="inline">
-    {% assign pages_list = tag[1] %}  
-    {% include JB/pages_list %}
-  </ul>
-{% endfor %}
 <script type="text/javascript" src="/javascripts/d3.v3.min.js" ></script>
 <script type="text/javascript" src="/javascripts/d3.parsets.js" ></script>
 <script type="text/javascript">

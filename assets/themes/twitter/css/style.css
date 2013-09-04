@@ -321,9 +321,7 @@ body{
   padding-bottom: 1em;
 }
 
-li{
-  list-style: none;
-}
+
 .blog-info li>a{
   color: #888;
 }
