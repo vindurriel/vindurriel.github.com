@@ -13,6 +13,7 @@
 	<link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
 	<link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
 	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/imageloaded.js"></script>
 </head>
 <body>
 	{% include JB/setup %}
@@ -44,7 +45,6 @@
 			if(e.which!==13)return;
 			$("body").removeClass("site-nav-in");
 		});
-
 		var loc = window.location.pathname;
 		$(".menu li>a").each(function(){
 			if ($(this).attr("href") == loc) {
@@ -67,7 +67,23 @@
 				'query':query,
 			});
 		})
-		var offset=$(".blog-info").offset().top;
+		
+		$('.bg-img').each(function(){
+		  var el = $(this)
+		    , image = el.css('background-image').match(/url\((['"])?(.*?)\1\)/);
+		  if(image)
+		  {
+		  	el.hide();
+		  	var a=$("<img/>").attr('src',el.css('background-image').replace(/url\((.+?)\)/,"$1"));
+		  	a.load(function(){
+		  		el.fadeIn(100);
+		  	});
+		  }
+		});
+		$(document).imagesLoaded()
+		.progress(function (instance,image){
+			$(image.img).addClass("img-show");
+		});
 	});
 	</script>
 	<script src="/javascripts/bootstrap.min.js"></script>
