@@ -8,8 +8,8 @@
 			</div>
 			<div class="span8 main-content" style="padding:0 1em;">
 				{% if page.banner %}
-				<img src="{{page.banner}}" class="post-banner-inline">
-				{% endif%}
+					<img src="{{page.banner}}" class="post-banner-inline" />
+				{% endif %}
 				<h1 class="post-title">{{page.title}}</h1>
 				{% assign post = page %}
 				{% include JB/tags_list %}
@@ -57,15 +57,18 @@
 		$('#btn_share').click(function(){
 			$('#share').toggleClass('hide');
 		})
-		$('.main-content').find('p,h1,h2').not('p img').inlineDisqussions({
-			identifier: 'disqussion',
-			displayCount: true,
-			highlighted: false,
-			position: 'left',
-			background: 'white',
-			maxWidth: 9999,
+		$(document).imagesLoaded( function() {
+			$(".main-content").find('p,h1,h2').filter(function(){
+				return !$(this).find(">:first-child").is('img');
+			}).inlineDisqussions({
+				identifier: 'disqussion',
+				displayCount: true,
+				highlighted: false,
+				position: 'left',
+				background: 'white',
+				maxWidth: 9999,
+			});
 		});
-
 	});
 		
 	</script>
