@@ -73,6 +73,7 @@
 	<script type="text/javascript" src="/javascripts/jquery.outline-0.11.min.js"></script>
 	<script type="text/javascript" src="/javascripts/outline.js"></script>
 	<script type="text/javascript">
+	disqus_shortname = '{{ site.JB.comments.disqus.short_name }}';
 	$(document).ready(function(){
 		$('.main-content').find('p,h1,h2,h3').not('p img').inlineDisqussions({
 			identifier: 'disqussion',
