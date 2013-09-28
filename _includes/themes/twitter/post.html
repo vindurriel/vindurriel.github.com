@@ -14,7 +14,7 @@
 				{% assign post = page %}
 				{% include JB/tags_list %}
 				{{ content }}
-				<h3 id="btn_share" data-toggle="collapse" data-target="#share" ><a style="cursor:pointer">分享</a></h3>
+				<h4 id="btn_share" data-toggle="collapse" data-target="#share" ><a style="cursor:pointer">分享</a></h4>
 				<div  id='share' class="hide inline"  >
 				   {% include JB/share_baidu %}
 				</div>
@@ -58,7 +58,7 @@
 			$('#share').toggleClass('hide');
 		})
 		$(document).imagesLoaded( function() {
-			$(".main-content").find('p,h1,h2').filter(function(){
+			$(".main-content").find('p,h1,h2,h3').filter(function(){
 				return !$(this).find(">:first-child").is('img');
 			}).inlineDisqussions({
 				identifier: 'disqussion',

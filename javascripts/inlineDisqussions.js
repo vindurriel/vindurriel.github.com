@@ -134,7 +134,7 @@ var disqus_url;
       var a = $('<a class="main-disqussion-link" />')
         .attr('href', window.location.pathname + '#disqus_thread')
         .text('评论')
-        .wrap('<h3 class="main-disqussion-link-wrp" />')
+        .wrap('<h4 class="main-disqussion-link-wrp" />')
         .parent()
         .insertBefore('#disqus_thread');
       // Load the relative discussion.
