@@ -21,7 +21,7 @@ var disqus_url;
 (function($) {
 
   var settings = {};
-
+  var origLeft;
   $.fn.extend({
     inlineDisqussions: function(options) {
 
@@ -97,9 +97,10 @@ var disqus_url;
       .wrap('<div class="disqussion" />')
       .parent()
       .appendTo('#disqussions_wrapper');
+    origLeft= settings.position == 'right' ? node.offset().left + node.outerWidth() : node.offset().left - a.outerWidth()
     a.css({
       'top': node.offset().top,
-      'left': settings.position == 'right' ? node.offset().left + node.outerWidth() : node.offset().left - a.outerWidth()
+      'left': origLeft,
     });
 
     node.attr('data-disqus-identifier', identifier).mouseover(function() {
@@ -127,17 +128,18 @@ var disqus_url;
   };
 
   var mainThreadHandler = function() {
-
     // Create the discussion note.
     if ($('a.main-disqussion-link').length === 0) {
 
-      var a = $('<a class="main-disqussion-link" />')
+      var a = $('<a class="main-disqussion-link hide" />')
         .attr('href', window.location.pathname + '#disqus_thread')
-        .text('Comments')
+        .text('评论')
         .wrap('<h2 class="main-disqussion-link-wrp" />')
         .parent()
         .insertBefore('#disqus_thread');
-
+      loadDisqus(a, function(source) {
+            relocateDisqussion(source, true);
+          });  
       // Load the relative discussion.
       a.delegate('a.main-disqussion-link', "click", function(e) {
         e.preventDefault();
@@ -213,7 +215,10 @@ var disqus_url;
   };
 
   var relocateDisqussion = function(el, main) {
-
+    if(main!==true)
+    {
+      $('body').addClass('disqussion-inbound');
+    }
     // Move the discussion to the right position.
     var css = {};
     if (main === true) {
@@ -229,8 +234,9 @@ var disqus_url;
         'position': 'absolute'
       };
     }
+    var left=550-el.parent().outerWidth();
+    $('.disqussion').css('left',left);
     css.backgroundColor = settings.background;
-
     var animate = {};
     if (el.attr('data-disqus-position') == 'right') {
       animate = {
@@ -252,7 +258,6 @@ var disqus_url;
   };
 
   var hideDisqussion = function() {
-
     $('#disqus_thread').stop().fadeOut('fast');
     $('a.disqussion-link').removeClass('active');
 
@@ -260,7 +265,8 @@ var disqus_url;
     $('#disqussions_overlay').fadeOut('fast');
     $('body').removeClass('disqussion-highlight');
     $('[data-disqus-identifier]').removeClass('disqussion-highlighted');
-
+    $('body').removeClass('disqussion-inbound');
+    $('.disqussion').css('left',origLeft);
   };
 
   var highlightDisqussion = function(identifier) {

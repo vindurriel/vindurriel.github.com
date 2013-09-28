@@ -6,7 +6,7 @@
 					<canvas  id="outline" width="200" height="400"></canvas>
 				</div>
 			</div>
-			<div class="span8" style="padding:0 1em;">
+			<div class="span8 main-content" style="padding:0 1em;">
 				{% if page.banner %}
 				<img src="{{page.banner}}" class="post-banner-inline">
 				{% endif%}
@@ -14,23 +14,33 @@
 				{% assign post = page %}
 				{% include JB/tags_list %}
 				{{ content }}
-				<table style="width:100%;">
+				<!-- <table style="width:100%;">
 					<tr>
 						<td   style="width:50%;">
 							<button id="btn_share"  class="mybtn">分享</button>
 							<div id="share" class="hide">
-								{% include JB/share_baidu %}
 							</div>
 						</td>
 						<td  style="width:50%;">
 							<button id="btn_comment" class="mybtn" style="float:right;">评论</button>
 							<div id="comment"  class="hide">
 								<div id="disqus_thread"></div>
-								<!-- {% include JB/comments %} -->
 							</div>
 						</td>
 					</tr>
-				</table>
+				</table> -->
+				<!-- <div id="disqus_thread"></div> -->
+				<div class="tabbable">
+					<button   data-toggle="tab" data-target="#share" class="mybtn">分享</button>
+					<button   class="mybtn" data-toggle="tab" data-target="#comment" style="float:right;">评论</button>
+					<div class="tab-content">
+						<div class="tab-pane active" id='comment'>
+						</div>
+						<div class="tab-pane" id='share'>
+						   {% include JB/share_baidu %}
+						</div>
+					</div>	
+				</div>
 			</div>
 		</div>
 	</div>
@@ -62,3 +72,17 @@
 	<script type="text/javascript" src="/javascripts/jquery.fracs-0.11.min.js"></script>
 	<script type="text/javascript" src="/javascripts/jquery.outline-0.11.min.js"></script>
 	<script type="text/javascript" src="/javascripts/outline.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.main-content').find('p,h1,h2,h3').not('p img').inlineDisqussions({
+			identifier: 'disqussion',
+			displayCount: true,
+			highlighted: false,
+			position: 'left',
+			background: 'white',
+			maxWidth: 9999,
+		});
+
+	});
+		
+	</script>

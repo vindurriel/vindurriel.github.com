@@ -37,10 +37,11 @@ code{
   text-decoration: none;
 }
 a{
-  color:black;
-  text-decoration: underline;
+  color:#4192e1;
+  text-decoration: none;
 }
 a:hover,a:focus{
+  text-decoration: underline;
   color: #4192e1;
 }
 input.search-query{
@@ -141,7 +142,7 @@ body{
 }
 
 .view {
-  width: 100%;
+  /*width: 100%;*/
   -webkit-transition: margin 0.1s ease-out;
   -moz-transition: margin 0.1s ease-out;
   -o-transition: margin 0.1s ease-out;
@@ -151,6 +152,12 @@ body{
   margin-left: 350px;
 }
 
+.disqussion-inbound .view{
+   margin-left: 350px;
+}
+.disqussion-inbound .blog-info{
+  display: none;
+}
 
 .nav-overlay{
   display: none;
@@ -430,6 +437,7 @@ table td {
     display: none;
   }
   .blog-info-bottom{
-  display: block;
-}
+    display: block;
+  }
 } 
+

@@ -28,11 +28,5 @@
 			fillStyle: 'rgba(104,169,255,0.3)'
 		}
 	});
-	$("#btn_share").click(function(){
-		$("#share").toggle();
-	})
-	$("#btn_comment").click(function(){
-		$("#comment").toggle();
-	})
 });
 })(jQuery);

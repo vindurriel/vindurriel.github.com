@@ -20,15 +20,15 @@
   text-decoration: none;
   cursor: pointer;
   background: #bbbbbb;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 .disqussion a.has-comments {
   opacity: .8;
@@ -46,17 +46,13 @@
   display: block;
   content: " ";
   position: absolute;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
 }
 .disqussion:hover a, .disqussion.hovered a {
   opacity: 1;
-  background: #999999;
+  background: #4192e1;
 }
 .disqussion:hover a:after, .disqussion.hovered a:after {
-  border-top-color: #999999;
+  border-top-color: #4192e1;
 }
 
 #disqussions_wrapper {
