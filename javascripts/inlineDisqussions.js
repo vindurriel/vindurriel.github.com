@@ -131,21 +131,19 @@ var disqus_url;
     // Create the discussion note.
     if ($('a.main-disqussion-link').length === 0) {
 
-      var a = $('<a class="main-disqussion-link hide" />')
+      var a = $('<a class="main-disqussion-link" />')
         .attr('href', window.location.pathname + '#disqus_thread')
         .text('评论')
-        .wrap('<h2 class="main-disqussion-link-wrp" />')
+        .wrap('<h3 class="main-disqussion-link-wrp" />')
         .parent()
         .insertBefore('#disqus_thread');
-      loadDisqus(a, function(source) {
-            relocateDisqussion(source, true);
-          });  
       // Load the relative discussion.
       a.delegate('a.main-disqussion-link', "click", function(e) {
         e.preventDefault();
-
         if ($(this).is('.active')) {
           e.stopPropagation();
+          hideDisqussion();
+          $(this).removeClass('active');
         }
         else {
           loadDisqus($(this), function(source) {
@@ -210,7 +208,13 @@ var disqus_url;
       $('.disqussion-link').filter(function() {
         return $(this).text().match(/[1-9]/g);
       }).addClass("has-comments");
-    }, 1000);
+      $('.disqussion-link').each(function(){
+        if($(this).text()==="")
+          $(this).text("+");
+      });
+      if($('.main-disqussion-link').text()==='')
+        $('.main-disqussion-link').text('评论');
+    }, 2000);
 
   };
 
@@ -258,7 +262,8 @@ var disqus_url;
   };
 
   var hideDisqussion = function() {
-    $('#disqus_thread').stop().fadeOut('fast');
+    // if($('#disqus_thread').hasClass('positioned'))
+      $('#disqus_thread').stop().fadeOut('fast');
     $('a.disqussion-link').removeClass('active');
 
     // settings.highlighted
