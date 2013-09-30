@@ -152,13 +152,19 @@ body{
   margin-left: 350px;
 }
 
-.disqussion-inbound .view{
-   margin-left: 350px;
+.main-content{
+    -webkit-transition: margin 0.1s ease-out;
+  -moz-transition: margin 0.1s ease-out;
+  -o-transition: margin 0.1s ease-out;
+  transition: margin 0.1s ease-out; 
 }
+
 .disqussion-inbound .blog-info{
   display: none;
 }
-
+.disqussion-inbound a.disqussion-link{
+  opacity: 0;
+}
 .nav-overlay{
   display: none;
   position: fixed;
@@ -438,6 +444,9 @@ table td {
   }
   .blog-info-bottom{
     display: block;
+  }
+  .disqussion{
+    display: none;
   }
 } 
 

@@ -25,10 +25,6 @@
   -ms-border-radius: 0px;
   -o-border-radius: 0px;
   border-radius: 0px;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
 }
 .disqussion a.has-comments {
   opacity: .8;
@@ -47,11 +43,23 @@
   content: " ";
   position: absolute;
 }
+
+
+
 .disqussion:hover a, .disqussion.hovered a {
   opacity: 1;
   background: #4192e1;
+  color: white;
+  text-decoration: none;
 }
-.disqussion:hover a:after, .disqussion.hovered a:after {
+
+.disqussion.hovered a{
+  background: #bbbbbb;
+}
+ .disqussion.hovered a:after {
+  border-top-color: #bbbbbb;
+}
+.disqussion:hover a:after {
   border-top-color: #4192e1;
 }
 

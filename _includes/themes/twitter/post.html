@@ -1,11 +1,10 @@
 <div class="content">
 	<div class="container">
+		<div class="blog-info">
+			<canvas  id="outline" width="200" height="400"></canvas>
+		</div>
 		<div class="row-fluid">
-			<div class="span2">
-				<div class="blog-info">
-					<canvas  id="outline" width="200" height="400"></canvas>
-				</div>
-			</div>
+			<div class="span2" style="padding:0 1em;"></div>
 			<div class="span8 main-content" style="padding:0 1em;">
 				{% if page.banner %}
 					<img src="{{page.banner}}" class="post-banner-inline" />
@@ -14,13 +13,12 @@
 				{% assign post = page %}
 				{% include JB/tags_list %}
 				{{ content }}
-				<h4 id="btn_share" data-toggle="collapse" data-target="#share" ><a style="cursor:pointer">分享</a></h4>
+				<h4 id="btn_share"  ><a style="cursor:pointer" data-toggle="collapse" data-target="#share">分享</a></h4>
 				<div  id='share' class="hide inline"  >
 				   {% include JB/share_baidu %}
 				</div>
 				<div id="disqus_thread"></div>
 			</div>
-
 		</div>
 	</div>
 	{% assign post = page.next %}
