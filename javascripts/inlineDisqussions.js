@@ -105,6 +105,11 @@ var disqus_url;
 
     node.attr('data-disqus-identifier', identifier).mouseover(function() {
         a.addClass("hovered");
+        origLeft= settings.position == 'right' ? node.offset().left + node.outerWidth() : node.offset().left - a.outerWidth()
+        a.css({
+          'top': node.offset().top,
+          'left': origLeft,
+        });
     }).mouseout(function() {
         a.removeClass("hovered");
     });
@@ -238,7 +243,7 @@ var disqus_url;
         'position': 'absolute'
       };
     }
-    var left=550-el.parent().outerWidth();
+    var left=$(".main-content").offset().left-el.parent().outerWidth();
     $('.disqussion').css('left',left);
     css.backgroundColor = settings.background;
     var animate = {};

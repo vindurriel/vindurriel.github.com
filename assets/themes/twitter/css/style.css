@@ -159,9 +159,7 @@ body{
   transition: margin 0.1s ease-out; 
 }
 
-.disqussion-inbound .blog-info{
-  display: none;
-}
+
 .disqussion-inbound a.disqussion-link{
   opacity: 0;
 }
