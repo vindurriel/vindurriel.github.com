@@ -159,6 +159,10 @@ body{
   transition: margin 0.1s ease-out; 
 }
 
+.main-content p{
+  line-height: 1.8em;
+
+}
 
 .disqussion-inbound a.disqussion-link{
   opacity: 0;
@@ -260,6 +264,7 @@ body{
 .entry-content{
   opacity: .7;
   margin: 15px 0;
+  line-height: 1.8em;
 }
 
 .entry-content a{
