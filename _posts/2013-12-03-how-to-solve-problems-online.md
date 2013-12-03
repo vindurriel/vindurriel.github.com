@@ -42,8 +42,7 @@ tags:
 
 
 ###5.信息的来源和信息的内容同等重要，甚至来源比内容更重要
-google
-stackoverlfow.com
+
 在搜索决策上，去哪搜>搜什么>怎么搜。
 
 举个例子，形如“如何用A在B中实现C功能”这样的编程问题，直接在google中输入英文关键词，然后site:stackoverflow.com，一般都能命中。 
