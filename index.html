@@ -18,7 +18,7 @@ title: vindurriel
           <h2  class="entry-caption">
             <a style="display:block" href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
           </h2>
-          <div class="entry-content">{{ post.excerpt | markdownify|strip_html }}</div>
+          <div class="entry-content">{{ post.description  }}</div>
         </li>
         {% unless forloop.last %}
         <hr>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "nest介绍之音乐地图"
-description: ""
+description: "一个节点(node)表示一个元素或者元素的某个属性，节点之间的连线(link)表示元素之间的关系。<br/>元素和关系的类型、属性都可以是任意定制的。<br/>传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。<br/>[](/images/nest/2.png)<br/>* 左键拖拽： 空白处平移，节点上调整节点位置。<br/>* 左键双击节点： 扩展该节点，即添加与该节点有关系的新节点。<br/>* alt+左键单击节点： 将该节点设为根节点。<br/>[](/images/nest/3.png)"
 category: ""
 banner: "/images/nest/1.png"
 tags:

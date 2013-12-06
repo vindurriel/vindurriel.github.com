@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "为gem install 提速"
-description: ""
+description: "```<br/>:bulk_threshold: 1000<br/>:backtrace: false<br/>gemcutter_key: XXXXX<br/>gem: --no-ri --no-rdoc<br/>:benchmark: false<br/>:verbose: true<br/>:update_sources: true<br/>:sources: <br/>- http://gems.rubyforge.org/<br/>- http://gems.opscode.com<br/>```<br/>主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。"
 tags: 
 - gem
 - ruby

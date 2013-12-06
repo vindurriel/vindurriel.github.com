@@ -5,7 +5,7 @@ tags:
 - jekyll
 - github pages
 - setup
-description: ""
+description: "rake post title=&quot;a new post&quot;<br/>comments :<br/>	    provider : disqus<br/>	    disqus :<br/>	      short_name : YOUR_DISQUS_SITE_NAME<br/>	      <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>$ CHCP 65001<br/>如果是在git bash中的话，需要设置如下环境变量： <br/>	<br/>	export LC_ALL = enUS.UTF-8<br/>	export LANG   = enUS.UTF-8<br/>然后就可以 `jekyll serve --watch`了。<br/>comments :<br/>	    provider : disqus<br/>	    disqus :<br/>	      short_name : YOUR_DISQUS_SITE_NAME<br/>	      <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>$ CHCP 65001<br/>如果是在git bash中的话，需要设置如下环境变量： <br/>	<br/>	export LC_ALL = enUS.UTF-8<br/>	export LANG   = enUS.UTF-8<br/>然后就可以 `jekyll serve --watch`了。"
 ---
 
 首先去github pages申请一个页面，默认的域名是`http://USERNAME.github.io`，其中`USERNAME`是你的github用户名。
@@ -35,7 +35,31 @@ git push origin master
 ---
 layout: post
 title: "github pages 配置"
-description: ""
+description: "rake post title=&quot;a new post&quot;
+```
+---
+layout: post
+title: &quot;github pages 配置&quot;
+description: &quot;&quot;
+category: misc
+tags: [jekyll,github pages,setup]
+---
+```
+写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。
+comments :
+	    provider : disqus
+	    disqus :
+	      short_name : YOUR_DISQUS_SITE_NAME
+	      
+你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。
+$ CHCP 65001
+如果是在git bash中的话，需要设置如下环境变量： 
+	
+	export LC_ALL = enUS.UTF-8
+	export LANG   = enUS.UTF-8
+然后就可以 `jekyll serve --watch`了。
+gem uninstall pygments.rb --version &quot;&gt;0.5.0&quot;
+	gem install pygments.rb --version &quot;=0.5.0&quot;"
 category: misc
 tags: [jekyll,github pages,setup]
 ---
