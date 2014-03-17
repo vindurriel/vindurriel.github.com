@@ -12,3 +12,4 @@ title:
 {{ site.author.weibo }}
 ###email:
 {{ site.author.email }}
+### [简历]({% post_url 2014-03-17-cv %})

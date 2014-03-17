@@ -1,5 +1,4 @@
 #encoding=utf-8
-text=file('in.txt','r').read().decode('utf-8')
 from collections import defaultdict
 import re
 MAX_SUMMARY_SIZE = 300

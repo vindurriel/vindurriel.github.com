@@ -387,8 +387,10 @@ body{
   height: 2em;
   width: 4em;
 }
-table td {
+th,td {
   vertical-align: top;
+  padding:10px;
+  border:1px solid #dddddd;
 }
 .mybtn{
   background: #4192e1;
