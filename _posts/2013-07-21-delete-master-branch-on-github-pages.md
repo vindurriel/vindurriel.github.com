@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 删除github pages的master分支
-description: "首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 `git branch -D master` 删除master分支。<br/>---<br/>###update 2013-08-07<br/>```bat<br/>@echo off<br/>rem 提示用户输入comment<br/>set /p comment=&quot;comments:&quot;<br/>rem 在master分支上commit<br/>git commit -am &quot;%comment%&quot;<br/>git checkout gh-pages<br/>rem rebase命令使得gh-pages和master同步，然后生成一个commit<br/>git rebase master<br/>git checkout master<br/>git push<br/>```"
+description: "在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。<br/>首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 `git branch -D master` 删除master分支。"
 date: "2013-08-07"
 tags:
 - github pages

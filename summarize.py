@@ -80,6 +80,8 @@ def create_summary(sentences):
 	# return set([x[0] for x in score])
 	return '\n'.join(summary)
 def decode_text(text):
+	if type(text)==type(u''):
+		return text
 	for x in ['utf-8','gbk']:
 		try:
 			return text.decode(x)
@@ -113,7 +115,7 @@ if __name__ == '__main__':
 		import cgi
 		summary=cgi.escape(summary,quote=True).replace(u"\n",u"<br/>")
 		import re
-		regex=re.compile("description:\s*\"(.*?)\"")
+		regex=re.compile(u"description:\s*\"(.*?)\"")
 		orgtext=regex.sub(u"description: \"{}\"".format(summary),orgtext)
 		with open(fname,'w') as f:
 			f.write(orgtext.encode('utf-8'))

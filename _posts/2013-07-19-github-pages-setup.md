@@ -5,7 +5,7 @@ tags:
 - jekyll
 - github pages
 - setup
-description: "rake post title=&quot;a new post&quot;<br/>comments :<br/>	    provider : disqus<br/>	    disqus :<br/>	      short_name : YOUR_DISQUS_SITE_NAME<br/>	      <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>$ CHCP 65001<br/>如果是在git bash中的话，需要设置如下环境变量： <br/>	<br/>	export LC_ALL = enUS.UTF-8<br/>	export LANG   = enUS.UTF-8<br/>然后就可以 `jekyll serve --watch`了。<br/>comments :<br/>	    provider : disqus<br/>	    disqus :<br/>	      short_name : YOUR_DISQUS_SITE_NAME<br/>	      <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>$ CHCP 65001<br/>如果是在git bash中的话，需要设置如下环境变量： <br/>	<br/>	export LC_ALL = enUS.UTF-8<br/>	export LANG   = enUS.UTF-8<br/>然后就可以 `jekyll serve --watch`了。"
+description: "comments :<br/>	    provider : disqus<br/>	    disqus :<br/>	      short_name : YOUR_DISQUS_SITE_NAME<br/>	      <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>$ CHCP 65001<br/>如果是在git bash中的话，需要设置如下环境变量： <br/>	<br/>	export LC_ALL = enUS.UTF-8<br/>	export LANG   = enUS.UTF-8<br/>然后就可以 `jekyll serve --watch`了。<br/>comments :<br/>	    provider : disqus<br/>	    disqus :<br/>	      short_name : YOUR_DISQUS_SITE_NAME<br/>	      <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>如果是在git bash中的话，需要设置如下环境变量： <br/>	<br/>	export LC_ALL = enUS.UTF-8<br/>	export LANG   = enUS.UTF-8"
 ---
 
 首先去github pages申请一个页面，默认的域名是`http://USERNAME.github.io`，其中`USERNAME`是你的github用户名。
