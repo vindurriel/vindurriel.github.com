@@ -409,7 +409,8 @@ th,td {
   height: 100%;
   background-size: cover;
   background-color: #2f3137;
-  background:  url("/images/banner.png")  left top no-repeat;
+  background-position: left top;
+  background-repeat: no-repeat;
 }
 
 #search-results{
