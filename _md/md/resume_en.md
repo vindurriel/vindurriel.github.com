@@ -9,7 +9,7 @@ github: vindurriel
 
 Male, born in 1987, currently resides in Tongzhou District, Beijing, China
 
-Graduated and got bachelor's degree from Beijing University of Post and Communication in 2010
+Graduated and got bachelor's degree from Beijing University of Posts and Telecommunications in 2010
 
 Years of research and development experience in software/internet industry, familiar with common architectures, frameworks and design patterns of content/info website,
 e-commercials, digital lottery, high concurrency systems, etc. had some experience in product managements.
@@ -31,7 +31,7 @@ Lead r&d / architecture in the internet industry, can code in golang/php/python/
 ### Education history
 date|university|major|degree
 -|-
-2006-2010|Beijing University of Post and Communication|Artificial Intelligence|bachelor's
+2006-2010|Beijing University of Posts and Telecommunications|Artificial Intelligence|bachelor's
 
 ### Career history 
 date|company|business unit|role
