@@ -3,15 +3,15 @@
 ### Contact
 email: vindurriel+job@gmail.com
 
-github/twitter: vindurriel
+github: vindurriel
 
 ### About me
 
-Male, born in 1987, currently resides in Tongzhou, Beijing
+Male, born in 1987, currently resides in Tongzhou District, Beijing, China
 
 Graduated and got bachelor's degree from Beijing University of Post and Communication in 2010
 
-8 years of research and development experience in software/internet industry, familiar with common architectures, frameworks and design patterns of content/info website,
+Years of research and development experience in software/internet industry, familiar with common architectures, frameworks and design patterns of content/info website,
 e-commercials, digital lottery, high concurrency systems, etc. had some experience in product managements.
 
 Expertised in designing, developing and maitaining online systems which has a page view of over 100 million per day (https://wenku.baidu.com), as well as enterprise client oriented systems
@@ -23,10 +23,10 @@ Can speak and write English, translated two techinical books from English to Chi
 
 ### Technical skills
 
-.net ELK WPF d3js git hadoop java javascript jquery markdown memcache mvc mysql nginx nmq odp openresty php python react redis shell svn Unity3D
+.net ELK WPF d3js git golang hadoop java javascript jquery markdown memcache mvc mysql nginx nmq odp openresty php python react redis shell svn swift Unity3D
 
 ### Job preference
-Senior r&d / architecture in internet industry, can code in php/python/java
+Lead r&d / architecture in the internet industry, can code in golang/php/python/java
 
 ### Education history
 date|university|major|degree
@@ -36,7 +36,8 @@ date|university|major|degree
 ### Career history 
 date|company|business unit|role
 -|-
-2016/05-now | Baidu | Nuomi | senior backend r&d
+2018/05-now | FreeWheel, a Comcast Company | UI/API department | senior software engineer
+2016/05-2018/04 | Baidu | Nuomi | senior backend r&d
 2014/05-2016/04 | Baidu | Education | backend r&d
 2013/05-2014/04 | Pera Global | Institute of Research | project manager
 2010/09-2013/04 | Pera Global | Institute of Research | full stack developer
