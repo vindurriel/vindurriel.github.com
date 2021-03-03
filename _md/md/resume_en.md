@@ -36,13 +36,22 @@ date|university|major|degree
 ### Career history 
 date|company|business unit|role
 -|-
-2018/05-now | FreeWheel, a Comcast Company | UI/API department | senior software engineer
+2018/05-now | FreeWheel, a Comcast Company | Biz-UI department | senior software engineer
 2016/05-2018/04 | Baidu | Nuomi | senior backend r&d
 2014/05-2016/04 | Baidu | Education | backend r&d
 2013/05-2014/04 | Pera Global | Institute of Research | project manager
 2010/09-2013/04 | Pera Global | Institute of Research | full stack developer
 
 ### Project history
+
+#### MRM, Comcast's advertising system 2018/05-now
+In: Freewheel, A Comcast Company
+
+Description: an advertising platform for ad serving, inventory managements, yield optimization and more.
+
+My work: design, development and maintainence of support-side plaform (partner service, marketplace)
+
+Skills involved : Golang, AWS, Kubernetes, React 16
 
 #### Juping advertise platform 2017/09-now
 In: Nuomi, Baidu
@@ -143,23 +152,3 @@ Description: a knowledge management system for enterprise research staff, featur
 My work: project management; design and development of algorithm intergration and data visualization systems
 
 Skills involved: IIS .net javascript d3js python mysql neo4j
-
-#### Office-4D 2011-2012
-
-In: Institute of Research, Pera global
-
-Description: a demonstration of 3D interactive exhibition desktop app, powered by game engine Unity3D.
-
-My work: project management; design and development desktip app in Unity3D
-
-Skills involved: .net/Unity3D
-
-#### Flexware 2010/09-2013
-
-In: Institute of Research, Pera global
-
-Description: a intergration tool set for CAD/CAE softwares, enabling data exchange and graphical inter-operation beween industrial design softwares like Ansys, CATIA, Synergy, etc
-
-My work: design, development and maintaing a command line interface for cross-software inter-operations, using AutoHotKey
-
-Skills involved: .net AutoHotKey python dsl
