@@ -4,9 +4,9 @@ permalink: /blog/:title
 paginate: 5
 paginate_path: "page:num"
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+highlighter: rouge
 plugins: [jekyll-paginate]
-markdown: redcarpet
+markdown: kramdown
 redcarpet:
   extensions: ['tables']
 lsi: false
