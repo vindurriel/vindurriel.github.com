@@ -4,8 +4,8 @@
     <script src="d3.v5.min.js"></script>
     <script src="d3-simple-slider.min.js"></script>
     <style>
-        .hidden {
-            display: none;
+        .slider .handle {
+            outline: none;
         }
 
         div.tooltip {
@@ -18,6 +18,24 @@
             opacity: 0.9;
             position: absolute;
         }
+
+        .playButton {
+            background-color: #696969;
+            border-radius: 3px;
+            border: none;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            margin: 0;
+            padding: 0 10px;
+            width: 50px;
+            cursor: pointer;
+            height: 30px;
+        }
+
+        .playButton:hover {
+            background: #f08080;
+        }
     </style>
 </head>
 <body>
@@ -26,7 +44,10 @@
     <svg class="topchart" width="400" height="500"></svg>
 </div>
 <svg class="bar" width="1200" height="120"></svg>
-<div class="slider"></div>
+<div style="display: flex">
+    <div class="playButton"></div>
+    <div class="slider"></div>
+</div>
 <div class="tooltip"></div>
 <script>
     const margin = {top: 10, right: 10, bottom: 10, left: 10};
@@ -72,7 +93,7 @@
         const xBand = d3
             .scaleBand()
             .domain(barData.map(d => d.ts))
-            .range([30, 1200 - 30]);
+            .range([100, 1200]);
 
         const yValue = d3
             .scaleLog()
@@ -135,30 +156,58 @@
 
         drawTopChart(topChartData(dailyData));
 
+        const sliderValueChange = (day) => {
+            dailyData = day.data;
+            svg.selectAll("path").attr("fill", d => color(d));
+            barsEnter.merge(bars)
+                .attr("fill", d => barColor(d, day.ts))
+                .attr("opacity", d => barOpacity(d, day.ts))
+            drawTopChart(topChartData(dailyData));
+
+        }
 
         const slider = d3.sliderHorizontal()
             .min(0).max(numberOfDays - 1).step(1)
-            .width(1200 - 60).height(120)
+            .width(1100).height(120)
             .value(numberOfDays - 1)
             .displayValue(true)
             .tickFormat(v => d.days[v].ts)
             .ticks(10)
             .on('onchange', v => {
                 const day = d.days[v];
-                dailyData = day.data;
-                svg.selectAll("path").attr("fill", d => color(d));
-                barsEnter.merge(bars)
-                    .attr("fill", d => barColor(d, day.ts))
-                    .attr("opacity", d => barOpacity(d, day.ts))
-                drawTopChart(topChartData(dailyData));
+                sliderValueChange(day);
             });
+
+        var timer;
+        const playButton = d3.select(".playButton");
+        const stepFunc = () => {
+            const currentValue = slider.value();
+            if (currentValue < numberOfDays - 1) {
+                slider.value(currentValue + 1);
+                const day = d.days[currentValue + 1];
+                sliderValueChange(day);
+            } else {
+                playButton.text("Play");
+                clearInterval(timer);
+            }
+        }
+        playButton.text("Play");
+        playButton.on("click", () => {
+            if (playButton.text() === "Pause") {
+                playButton.text("Play");
+                clearInterval(timer);
+            } else {
+                playButton.text("Pause");
+                timer = setInterval(stepFunc, 50);
+            }
+        })
 
         d3.select('.slider')
             .append('svg')
             .attr('width', 1200)
             .attr('height', 120)
             .append('g')
-            .attr('transform', 'translate(30,10)')
+            .attr('transform', 'translate(30,6)')
             .call(slider);
 
         const getTooltipText = d => {

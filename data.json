@@ -617,7 +617,7 @@
     {
       "ts": "2020-05-14",
       "data": {
-        "吉林": 4
+        "ji_lin": 4
       }
     },
     {
@@ -745,13 +745,13 @@
     {
       "ts": "2020-06-11",
       "data": {
-        "北京": 1
+        "bei_jing": 1
       }
     },
     {
       "ts": "2020-06-12",
       "data": {
-        "北京": 6
+        "bei_jing": 6
       }
     },
     {
@@ -6444,6 +6444,20 @@
         "nei_meng_gu": 8,
         "shan_dong": 3,
         "si_chuan": 1
+      }
+    },
+    {
+      "ts": "2022-08-03",
+      "data": {
+        "chong_qing": 1,
+        "fu_jian": 2,
+        "guang_xi": 2,
+        "hai_nan": 24,
+        "he_nan": 2,
+        "nei_meng_gu": 10,
+        "shan_dong": 2,
+        "si_chuan": 1,
+        "zhe_jiang": 9
       }
     }
   ]
