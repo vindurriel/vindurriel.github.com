@@ -9,7 +9,9 @@ tags:
 - nhc
 ---
 
-Data descrition: Daily new confirmed covid cases of every province in the China mainland area.
+[link](/covid_report.html)
+
+Data description: Daily new confirmed covid cases of every province in the China mainland area.
 
 Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.
 
