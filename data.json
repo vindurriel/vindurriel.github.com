@@ -6562,6 +6562,83 @@
         "xi_zang": 2,
         "zhe_jiang": 11
       }
+    },
+    {
+      "ts": "2022-08-11",
+      "data": {
+        "chong_qing": 1,
+        "fu_jian": 5,
+        "gan_su": 1,
+        "guang_dong": 22,
+        "gui_zhou": 1,
+        "hai_nan": 595,
+        "he_nan": 1,
+        "nei_meng_gu": 9,
+        "shan_xi_1": 1,
+        "shang_hai": 2,
+        "si_chuan": 1,
+        "xi_zang": 7,
+        "xin_jiang": 1,
+        "yun_nan": 1
+      }
+    },
+    {
+      "ts": "2022-08-12",
+      "data": {
+        "chong_qing": 4,
+        "fu_jian": 2,
+        "guang_dong": 12,
+        "guang_xi": 1,
+        "hai_nan": 594,
+        "jiang_su": 1,
+        "jiang_xi": 9,
+        "nei_meng_gu": 2,
+        "qing_hai": 2,
+        "shang_hai": 1,
+        "si_chuan": 5,
+        "xi_zang": 4,
+        "xin_jiang": 2,
+        "zhe_jiang": 7
+      }
+    },
+    {
+      "ts": "2022-08-13",
+      "data": {
+        "chong_qing": 3,
+        "fu_jian": 3,
+        "guang_dong": 14,
+        "guang_xi": 1,
+        "hai_nan": 494,
+        "hu_bei": 1,
+        "jiang_xi": 10,
+        "nei_meng_gu": 6,
+        "qing_hai": 1,
+        "shan_xi_1": 1,
+        "si_chuan": 4,
+        "xi_zang": 59,
+        "xin_jiang": 2,
+        "zhe_jiang": 24
+      }
+    },
+    {
+      "ts": "2022-08-14",
+      "data": {
+        "chong_qing": 2,
+        "fu_jian": 6,
+        "guang_dong": 12,
+        "hai_nan": 582,
+        "he_nan": 1,
+        "jiang_su": 1,
+        "jiang_xi": 1,
+        "nei_meng_gu": 2,
+        "qing_hai": 3,
+        "shan_xi_1": 1,
+        "shang_hai": 1,
+        "si_chuan": 2,
+        "xi_zang": 69,
+        "xin_jiang": 1,
+        "zhe_jiang": 8
+      }
     }
   ]
 }
