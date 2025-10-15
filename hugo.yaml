@@ -17,7 +17,7 @@ menus:
     - name: Resume
       pageRef: /resume_en
       weight: 20
-    - name: Resume
+    - name: 简历
       pageRef: /resume
       weight: 30
     - name: RSS feed
