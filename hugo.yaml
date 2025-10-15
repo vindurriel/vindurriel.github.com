@@ -5,22 +5,19 @@ theme:
   - PaperMod
 ignoreLogs:
   - warning-goldmark-raw-html
-
 outputs:
   home:
     - html
     - rss
+menus:
+  main:
+  - name: Home
+    pageRef: /
+  - name: Posts
+    pageRef: /post
+  - name: Resume
+    pageRef: /resume_en
+  - name: 简历
+    pageRef: /resume
 params:
-  hideFooter: false
   ShowBreadCrumbs: true
-  profileMode:
-    enabled: true
-    buttons:
-      - name: 简历
-        url: "/resume"
-      - name: Resume
-        url: "/resume_en"
-      - name: Posts
-        url: "/post"
-      - name: RSS
-        url: "/index.xml"
