@@ -19,5 +19,7 @@ menus:
     pageRef: /resume_en
   - name: 简历
     pageRef: /resume
+  - name: RSS feed
+    pageRef: /index.xml
 params:
   ShowBreadCrumbs: true
