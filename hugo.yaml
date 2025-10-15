@@ -11,15 +11,17 @@ outputs:
     - rss
 menus:
   main:
-  - name: Home
-    pageRef: /
-  - name: Posts
-    pageRef: /post
-  - name: Resume
-    pageRef: /resume_en
-  - name: 简历
-    pageRef: /resume
-  - name: RSS feed
-    pageRef: /index.xml
+    - name: Home
+      pageRef: /
+      weight: 10
+    - name: Resume
+      pageRef: /resume_en
+      weight: 20
+    - name: Resume
+      pageRef: /resume
+      weight: 30
+    - name: RSS feed
+      pageRef: /index.xml
+      weight: 40
 params:
   ShowBreadCrumbs: true
