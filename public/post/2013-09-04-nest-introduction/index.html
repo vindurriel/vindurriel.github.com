@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>nest介绍之音乐地图 | vindurriel</title>
+<meta name="keywords" content="visualization, graph, d3">
+<meta name="description" content="节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&lt;br/&gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。&lt;br/&gt;现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。&lt;br/&gt;* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）">
+<meta name="author" content="">
+<link rel="canonical" href="https://vindurriel.github.io/post/2013-09-04-nest-introduction/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://vindurriel.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://vindurriel.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vindurriel.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://vindurriel.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/2013-09-04-nest-introduction/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://vindurriel.github.io/post/2013-09-04-nest-introduction/">
+  <meta property="og:site_name" content="vindurriel">
+  <meta property="og:title" content="nest介绍之音乐地图">
+  <meta property="og:description" content="节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2013-09-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2013-09-04T00:00:00+00:00">
+    <meta property="article:tag" content="Visualization">
+    <meta property="article:tag" content="Graph">
+    <meta property="article:tag" content="D3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nest介绍之音乐地图">
+<meta name="twitter:description" content="节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&lt;br/&gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。&lt;br/&gt;现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。&lt;br/&gt;* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://vindurriel.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "nest介绍之音乐地图",
+      "item": "https://vindurriel.github.io/post/2013-09-04-nest-introduction/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "nest介绍之音乐地图",
+  "name": "nest介绍之音乐地图",
+  "description": "节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）",
+  "keywords": [
+    "visualization", "graph", "d3"
+  ],
+  "articleBody": "nest(https://github.com/vindurriel/nest)是一个视觉组件，它用图(graph)来展示元素之间的关系。一个节点(node)表示一个元素或者元素的某个属性，节点之间的连线(link)表示元素之间的关系。 元素和关系的类型、属性都可以是任意定制的。使用者可以和图进行交互， 允许的操作包括拖拽、添加、删除、聚焦、平移和放缩。 节点的颜色由数据实体的type属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。\n##为什么要做\n传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。而图可以表示非DAG的拓扑关系，也就是所谓的网络。\nnest是为了展示图而生的视觉组件，它能在二维平面展示复杂的元素关系，并且用户可以实时地修改图的布局、增删节点。\nnest可以作为脑图使用，也可以作为更一般意义上的关系展示图，参见下面的例子。\n##例子\n音乐地图(http://nest.ap01.aws.af.cm/model/python?theme=light)是一个探索音乐元素之间关系的动态地图，展示歌曲、艺术家、专辑和精选集之间的关系。数据抓取自虾米网。\n使用方法如下：\n搜索框中可搜索音乐。\n点击see all可查看其他用户已经探索过的音乐地图。\n保存按钮可以上传当前音乐地图。\n?按钮中可显示图例。\n左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）\n左键拖拽： 空白处平移，节点上调整节点位置。\n左键双击节点： 扩展该节点，即添加与该节点有关系的新节点。支持svg动画的浏览器上(chrome、firefox、IE)该节点会振动，并弹出同类型的新节点。\nctrl+左键单击节点： 同左键双击节点。\nshift+左键单击节点： 删除该节点，同时一并删除只与该节点有连线的所有节点\nalt+左键单击节点： 将该节点设为根节点。图本身无所谓根节点，根节点的唯一目的在于以该节点的id来存储图。\n地址栏中可修改theme参数,支持light和dark。\n##技术\nnest在前台采用了d3.js，而d3.js采用了svg。 后台是web.py。 前后台通信采用了ajax和json。\n源代码在github https://github.com/vindurriel/nest。\n##开发计划\n将nest组件化， 允许嵌入到任意的html网页中\n固化二次开发的接口， 提供SDK\n",
+  "wordCount" : "41",
+  "inLanguage": "en",
+  "datePublished": "2013-09-04T00:00:00Z",
+  "dateModified": "2013-09-04T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://vindurriel.github.io/post/2013-09-04-nest-introduction/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "vindurriel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vindurriel.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://vindurriel.github.io/" accesskey="h" title="vindurriel (Alt + H)">vindurriel</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      nest介绍之音乐地图
+    </h1>
+    <div class="post-description">
+      节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&lt;br/&gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。&lt;br/&gt;现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。&lt;br/&gt;* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）
+    </div>
+    <div class="post-meta"><span title='2013-09-04 00:00:00 +0000 UTC'>September 4, 2013</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>nest(<a href="https://github.com/vindurriel/nest">https://github.com/vindurriel/nest</a>)是一个视觉组件，它用图(graph)来展示元素之间的关系。一个节点(node)表示一个元素或者元素的某个属性，节点之间的连线(link)表示元素之间的关系。 元素和关系的类型、属性都可以是任意定制的。使用者可以和图进行交互， 允许的操作包括拖拽、添加、删除、聚焦、平移和放缩。
+节点的颜色由数据实体的<code>type</code>属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。</p>
+<p>##为什么要做</p>
+<p>传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。而图可以表示非DAG的拓扑关系，也就是所谓的网络。</p>
+<p>nest是为了展示图而生的视觉组件，它能在二维平面展示复杂的元素关系，并且用户可以实时地修改图的布局、增删节点。</p>
+<p>nest可以作为脑图使用，也可以作为更一般意义上的关系展示图，参见下面的<a href="http://nest.ap01.aws.af.cm/model/artist_23401?theme=light">例子</a>。</p>
+<p>##例子</p>
+<p>音乐地图(<a href="http://nest.ap01.aws.af.cm/model/artist_23401?theme=light">http://nest.ap01.aws.af.cm/model/python?theme=light</a>)是一个探索音乐元素之间关系的动态地图，展示歌曲、艺术家、专辑和精选集之间的关系。数据抓取自<a href="http://www.xiami.com">虾米网</a>。</p>
+<p><img loading="lazy" src="/images/nest/2.png"></p>
+<p>使用方法如下：</p>
+<ul>
+<li>
+<p>搜索框中可搜索音乐。</p>
+</li>
+<li>
+<p>点击<code>see all</code>可查看其他用户已经探索过的音乐地图。</p>
+</li>
+<li>
+<p><code>保存</code>按钮可以上传当前音乐地图。</p>
+</li>
+<li>
+<p><code>?</code>按钮中可显示图例。</p>
+</li>
+<li>
+<p>左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）</p>
+</li>
+<li>
+<p>左键拖拽： 空白处平移，节点上调整节点位置。</p>
+</li>
+<li>
+<p>左键双击节点： 扩展该节点，即添加与该节点有关系的新节点。支持svg动画的浏览器上(chrome、firefox、<!-- raw HTML omitted -->IE<!-- raw HTML omitted -->)该节点会振动，并弹出同类型的新节点。</p>
+</li>
+<li>
+<p>ctrl+左键单击节点： 同左键双击节点。</p>
+</li>
+<li>
+<p>shift+左键单击节点： 删除该节点，同时一并删除<strong>只与</strong>该节点有连线的所有节点</p>
+</li>
+<li>
+<p>alt+左键单击节点： 将该节点设为根节点。图本身无所谓根节点，根节点的唯一目的在于以该节点的id来存储图。</p>
+</li>
+<li>
+<p>地址栏中可修改theme参数,支持light和dark。</p>
+</li>
+</ul>
+<p><img loading="lazy" src="/images/nest/3.png"></p>
+<p>##技术</p>
+<p>nest在前台采用了<a href="https://github.com/mbostock/d3/wiki">d3.js</a>，而d3.js采用了svg。 后台是<a href="http://webpy.org">web.py</a>。 前后台通信采用了ajax和json。</p>
+<p>源代码在github <a href="https://github.com/vindurriel/nest">https://github.com/vindurriel/nest</a>。</p>
+<p>##开发计划</p>
+<ol>
+<li>
+<p>将nest组件化， 允许嵌入到任意的html网页中</p>
+</li>
+<li>
+<p>固化二次开发的接口， 提供SDK</p>
+</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://vindurriel.github.io/tags/visualization/">Visualization</a></li>
+      <li><a href="https://vindurriel.github.io/tags/graph/">Graph</a></li>
+      <li><a href="https://vindurriel.github.io/tags/d3/">D3</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://vindurriel.github.io/">vindurriel</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

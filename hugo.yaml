@@ -1,0 +1,26 @@
+baseURL: https://vindurriel.github.io/
+languageCode: en-us
+title: vindurriel
+theme:
+  - PaperMod
+ignoreLogs:
+  - warning-goldmark-raw-html
+
+outputs:
+  home:
+    - html
+    - rss
+params:
+  hideFooter: false
+  ShowBreadCrumbs: true
+  profileMode:
+    enabled: true
+    buttons:
+      - name: 简历
+        url: "/resume"
+      - name: Resume
+        url: "/resume_en"
+      - name: Posts
+        url: "/post"
+      - name: RSS
+        url: "/index.xml"

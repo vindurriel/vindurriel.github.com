@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <script src="d3.v5.min.js"></script>
+  <script src="d3-simple-slider.min.js"></script>
+  <style>
+    .slider .handle {
+      outline: none;
+    }
+
+    div.tooltip {
+      color: #222;
+      background: #fff;
+      border-radius: 3px;
+      box-shadow: 0px 0px 2px 0px #a6a6a6;
+      padding: 0.2em;
+      text-shadow: #f5f5f5 0 1px 0;
+      opacity: 0.9;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .playButton {
+      background-color: #696969;
+      border-radius: 3px;
+      border: none;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+      margin: 0;
+      padding: 0 10px;
+      width: 50px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+    .playButton:hover {
+      background: #f08080;
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex">
+    <svg class="map" width="800" height="500"></svg>
+    <div>
+      <h3><span title="newly confirmed cases this day">本日新增确诊几例</span></h3>
+      <svg class="topchart" width="200" height="500"></svg>
+    </div>
+    <div>
+      <h3><span title="days without newly confirmed cases">最近几天无新增确诊</span></h3>
+      <svg class="no_case_chart" width="200" height="500"></svg>
+    </div>
+  </div>
+  <svg class="bar" width="1200" height="120"></svg>
+  <div style="display: flex">
+    <div class="playButton"></div>
+    <div class="slider"></div>
+  </div>
+  <div class="tooltip"></div>
+  <script>
+    const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+    const width = 800 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+    const projection = d3.geoMercator().center([110, 25]).scale([600]).translate([450, 400]).precision([0.1]);
+    const path = d3.geoPath().projection(projection);
+    const svg = d3.select(".map").append("g").attr("width", width).attr("height", height);
+    const tooltip = d3.select("div.tooltip");
+    const noCaseColor = "#d7f7d9";
+    var dailyData = {};
+    fetch("data.json")
+      .then((x) => x.json())
+      .then((d) => {
+        const provinces = d.provinces;
+        const pIndex = {};
+        provinces.forEach((p) => (pIndex[p.id] = p.index));
+        const numberOfDays = d.days.length;
+        const day = d.days[numberOfDays - 1];
+        dailyData = day;
+        const colorPattern = d3.scaleSequential().interpolator(d3.interpolatePlasma).domain([2000, 1e-8]);
+        const colorValue = (d) => d * 10 + 200;
+        const color = (d) => {
+          const v = dailyData.data?.[pIndex[d.id]] ?? 0;
+          const v2 = Object.keys(dailyData.data2 ?? {}).filter((index) => provinces[index].id === d.id).length;
+          if (v2 > 0) {
+            return noCaseColor;
+          }
+          if (v === 0) {
+            return "white";
+          }
+          return colorPattern(colorValue(v));
+        };
+
+        const dayValue = {};
+        const barData = d.days.map((x) => {
+          const value = Object.values(x.data ?? {}).reduce((partialSum, a) => partialSum + a, 0) || 0;
+          dayValue[x.ts] = value;
+          return { ts: x.ts, value: dayValue[x.ts] };
+        });
+
+        const xBand = d3
+          .scaleBand()
+          .domain(barData.map((d) => d.ts))
+          .range([100, 1200]);
+
+        const yValue = d3
+          .scaleLog()
+          .domain([1, d3.max(barData, (d) => d.value + 1)])
+          .nice()
+          .range([120, 0]);
+
+        const barColor = (d, selected) => {
+          return d.ts === selected ? colorPattern(2000) : colorPattern(colorValue(d.value));
+        };
+        const barOpacity = (d, selected) => {
+          return d.ts === selected ? 1 : 0.5;
+        };
+        const bars = d3.select(".bar").append("g").selectAll("rect").data(barData);
+
+        const barsEnter = bars
+          .enter()
+          .append("rect")
+          .attr("fill", (d) => barColor(d, day.ts))
+          .attr("opacity", (d) => barOpacity(d, day.ts))
+          .attr("x", (d) => xBand(d.ts))
+          .attr("y", (d) => yValue(d.value + 1))
+          .attr("height", (d) => yValue(1) - yValue(d.value + 1))
+          .attr("width", xBand.bandwidth());
+
+        const drawCharts = ({ rankList, noCaseList }) => {
+          const topChart = d3.select(".topchart").selectAll("g").remove().exit().data(rankList);
+          const noCaseChart = d3.select(".no_case_chart").selectAll("g").remove().exit().data(noCaseList);
+
+          const topChartEnter = topChart.enter().append("g").merge(topChart);
+          const noCaseChartEnter = noCaseChart.enter().append("g").merge(noCaseChart);
+
+          topChartEnter
+            .append("text")
+            .text((d) => `${provinces[d.index]?.name ?? d.name} (${provinces[d.index]?.id ?? d.id}): ${d.value}`)
+            .attr("x", 0)
+            .attr("fill", "black")
+            .attr("y", (d, i) => i * 40 + 20)
+            .attr("font-size", "12px")
+            .attr("text-anchor", "right");
+          topChartEnter
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", (d, i) => i * 40 + 25)
+            .attr("fill", (d) => colorPattern(colorValue(d.value)))
+            .attr("width", (d) => Math.log2(d.value + 1) * 20)
+            .attr("height", 10);
+
+          noCaseChartEnter
+            .append("text")
+            .text((d) => `${provinces[d.index]?.name ?? d.index} (${provinces[d.index]?.id ?? ""}): ${d.value}`)
+            .attr("x", 0)
+            .attr("fill", "black")
+            .attr("y", (d, i) => i * 40 + 20)
+            .attr("font-size", "12px")
+            .attr("text-anchor", "right")
+            .on("click", function(d) {window.open(`http://www.bytravel.cn/view/${provinces[d.index]?.travel }`)})
+            .on("mouseover",function(){
+                d3.select(this).style("cursor", "pointer")
+                     .attr("fill","green")})
+
+            .on("mouseout",function(d,i){
+                d3.select(this).style("cursor", "default").transition().duration(500)
+                     .attr("fill","black");
+                  });
+          noCaseChartEnter
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", (d, i) => i * 40 + 25)
+            .attr("fill", noCaseColor)
+            .attr("width", (d) => Math.log2(d.value + 1) * 20)
+            .attr("height", 10);
+        };
+
+        const chartData = (dailyData) => {
+          const rankList = Object.keys(dailyData.data ?? {})
+            .map((index) => {
+              return { index, value: dailyData.data[index] };
+            })
+            .sort((a, b) => b.value - a.value);
+          const noCaseList = Object.keys(dailyData.data2 ?? {})
+            .map((index) => {
+              return { index, value: dailyData.data2[index] };
+            })
+            .sort((a, b) => b.value - a.value);
+
+          const maxLength = 11;
+          if (rankList.length > maxLength) {
+            const rest = {
+              id: "others",
+              name: "其它",
+              value: 0
+            };
+            for (let i = maxLength; i < rankList.length; i++) {
+              rest.value += rankList[i].value;
+            }
+            rankList.splice(maxLength, rankList.length - maxLength, rest);
+          }
+          if (noCaseList.length > maxLength) {
+            noCaseList.splice(maxLength, noCaseList.length - maxLength);
+          }
+          return {
+            rankList,
+            noCaseList
+          };
+        };
+
+        drawCharts(chartData(dailyData));
+
+        const sliderValueChange = (day) => {
+          dailyData = day;
+          svg.selectAll("path").attr("fill", (d) => color(d));
+          barsEnter
+            .merge(bars)
+            .attr("fill", (d) => barColor(d, day.ts))
+            .attr("opacity", (d) => barOpacity(d, day.ts));
+          drawCharts(chartData(dailyData));
+        };
+
+        const slider = d3
+          .sliderHorizontal()
+          .min(0)
+          .max(numberOfDays - 1)
+          .step(1)
+          .width(1100)
+          .height(120)
+          .value(numberOfDays - 1)
+          .displayValue(true)
+          .tickFormat((v) => d.days[v].ts)
+          .ticks(10)
+          .on("onchange", (v) => {
+            const day = d.days[v];
+            sliderValueChange(day);
+          });
+
+        var timer;
+        const playButton = d3.select(".playButton");
+        const stepFunc = () => {
+          const currentValue = slider.value();
+          if (currentValue < numberOfDays - 1) {
+            slider.value(currentValue + 1);
+            const day = d.days[currentValue + 1];
+            sliderValueChange(day);
+          } else {
+            playButton.text("Play");
+            clearInterval(timer);
+          }
+        };
+        playButton.text("Play");
+        playButton.on("click", () => {
+          if (playButton.text() === "Pause") {
+            playButton.text("Play");
+            clearInterval(timer);
+          } else {
+            playButton.text("Pause");
+            timer = setInterval(stepFunc, 50);
+          }
+        });
+
+        d3.select(".slider").append("svg").attr("width", 1200).attr("height", 120).append("g").attr("transform", "translate(30,6)").call(slider);
+
+        const getTooltipText = (d) => {
+          return `${d.properties.name} (${d.id}): ${dailyData.data?.[pIndex[d.id]] || 0}`;
+        };
+
+        fetch("china.geo.json")
+          .then((x) => x.json())
+          .then((d) => {
+            svg
+              .selectAll("path")
+              .data(d.features)
+              .enter()
+              .append("path")
+              .attr("stroke", "grey")
+              .attr("stroke-width", 1)
+              .attr("fill", (d) => color(d))
+              .attr("d", path)
+              .on("mouseover", function (d) {
+                d3.select(this).attr("stroke-width", 2);
+                return tooltip.style("hidden", false).text(getTooltipText(d));
+              })
+              .on("mousemove", function (d) {
+                tooltip
+                  .classed("hidden", false)
+                  .style("top", d3.event.pageY + "px")
+                  .style("left", d3.event.pageX + 10 + "px")
+                  .text(getTooltipText(d));
+              })
+              .on("mouseout", function (d, i) {
+                d3.select(this).attr("fill", color).attr("stroke-width", 1);
+                tooltip.classed("hidden", true);
+              });
+          });
+      });
+  </script>
+</body>

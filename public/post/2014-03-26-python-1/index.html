@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>python 初探 | vindurriel</title>
+<meta name="keywords" content="python, tutorial">
+<meta name="description" content="最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&lt;br&gt;本文是系列的第一篇。">
+<meta name="author" content="">
+<link rel="canonical" href="https://vindurriel.github.io/post/2014-03-26-python-1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://vindurriel.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://vindurriel.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vindurriel.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://vindurriel.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/2014-03-26-python-1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://vindurriel.github.io/post/2014-03-26-python-1/">
+  <meta property="og:site_name" content="vindurriel">
+  <meta property="og:title" content="python 初探">
+  <meta property="og:description" content="最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。
+本文是系列的第一篇。">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2014-03-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2014-03-26T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Tutorial">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 初探">
+<meta name="twitter:description" content="最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&lt;br&gt;本文是系列的第一篇。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://vindurriel.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "python 初探",
+      "item": "https://vindurriel.github.io/post/2014-03-26-python-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "python 初探",
+  "name": "python 初探",
+  "description": "最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。\n本文是系列的第一篇。",
+  "keywords": [
+    "python", "tutorial"
+  ],
+  "articleBody": "最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。\n###python 初探 ###[Python web api]({% post_url 2014-03-26-python-2 %}) ###[用Python做文本摘要]({% post_url 2014-03-26-python-3 %})\n本文是系列的第一篇。\n##起源 ###作者 Guido Van Rossum (GvR)\n“仁慈的终身独裁者”\n###得名\n“1989年12月，我在寻找一门“课余”编程项目来打发圣诞节前后的时间。我的办公室会关门，但我有一台家用电脑，而且没有太多其它东西。我决定为当时我正构思的一个新的脚本语言写一个解释器，它是 ABC 语言的后代，对 UNIX / C 程序员会有吸引力。作为一个略微有些无关想法的人，和一个蒙提·派森（Monty Python）的飞行马戏团的狂热爱好者，我选择了 Python 作为项目的标题。”\n###每个人都会 1999年，Guido向DARPA阐述Python语言的特性：\n简单、直观、强大 开源，以便任何人都可以为它做贡献 代码像纯英语那样容易理解 适用于短期开发的日常任务 这些想法中的一些已经成为现实。Python 已经成为一门流行的 编程语言，尤其是在互联网环境下。\n##特性 ###交互式命令行(Interactive console) Python可以单步直译运行。运行Python解释器进入交互式。\n命令行的环境，你可以在提示符号»\u003e旁输入代码，按Enter键输出结果：\n\u003e\u003e\u003eprint(\"Hello, Python!\") Hello, Python! 有点像Shell 脚本的执行方式。\n不只是脚本 “脚本语言”如Linux shell script、windows batch file等，只能处理简单的任务。\n而Python是面向对象编程（OOP)的，支持异常处理和类型检查。Python的支持者较喜欢称它为一种高阶动态编程语言\n###强大易用的标准库 核心库不超过10Mb\nHtml、Xml解析：BeautifulSoup, Expat\n字符串处理：字典、数组切片、正则表达式 re\n单元测试： PyUnit\n代码版本控制： PySVN\n网络访问： urllib2\n图形模块： Tkinter、PyTCL、WxPython\n串行化、多线程等\n扩展标准库十分容易 ###胶水语言(glue language) Python经常用作将不同语言编写的程序“粘”在一起的胶水语言。 Google内部的很多项目使用C++编写性能要求极高的部分，然后用Python调用相应的模块。\nC/C++:\nBoost.Python使得 Python 和 C++ 的类库能互相调用（.pyc）\nJava:\nJython 是用Java实现的Python，可同时使用二者的类库\n.NET:\nIronPython是Python在.NET平台上的版本。\n###收放自如(scalability) Python内建的数据结构（variable, list 和 dict）以及对多线程 分布式操作的支持，使得程序可以用相同的代码处理不同规模 的数据，以及并发的用户需求。\n###不要括号 Python使用缩进而不是括号来进行代码段标识，减少了视觉上 的混乱，并且使程序变短，从而提高了程序的可读性。\n###发行版本\nCPython: www.python.org\n主流：2.5-2.7\n最新：3.0 不向下兼容\nActivePython:\nWindows 下的Python，文档和库较全\nIronPython： http://ironpython.codeplex.com/\n与.NET集成较好\n可使用CPython的类库\nNumPy，Python(x,y)：\n对科学计算进行了优化的Python版本\n###vs. Perl Perl是另一种广泛使用(滥用)的动态高级语言, 经常被用来与Python 比较。\n正则表达式的典范 催生了CGI、PHP 黑客最喜爱的语言 作者：\nLarry Wall\nPerl语言之父，语言学家；两届国际C语言混乱代码大赛（IOCCC） 的冠军；第一届自由软件奖得主。\n程序员的三大美德：\n懒惰：能让人尽量减少总能量支出的美德。它使你写出节省脑力、可以重用的代码；也督促你为程序写注释和文档，那样你就不用回答各种问题。 不耐烦：你会对试图偷懒的计算机代码大发雷霆。 你写出的代码能预测并适应、而非被动满足用户的需求，或者至少看上去是这样。 傲慢：自傲到人神共愤的程度，让你编写（维护）的程序拥有无可挑剔的品质。 ###vs. Ruby\nRuby：比Python更年轻的动态语言\n完全面向对象 支持正则表达式 整合了多种语言的优势 作者：松本行弘 @yukihiro_matz\nRuby on Rails （RoR） 网站快速开发工具\n###观点 Perl之父Larry Wall:\n“做一件事有很多种方法” TIMTOWTDI\nPython之父Guido Van Rossum ：\n“做一件事，应该有一种最直观的方法，而且最好只有一种。”\nRuby之父松本行弘 (“Matz”)\n“不要重复自己” DRY原则\n###国籍？\n语言 作者 国籍 风格 Perl Larry Wall 美国 随性自由 Python Guido van Rossum 荷兰 优雅统一 Ruby 松本行弘 (“Matz”) 日本 兼容并包 ##用途\n脚本程序 大型程序的原型开发 科学计算 网络应用 计算机图形编程 ###知名的Python应用\nZope：www.zope.com\n一个应用程序服务器，具有内容管理、团队开发、XML、面向对象、SOAP接口等一系先进特性，开源。\nGadfly：http://www.chordate.com/gadfly.html\n一个用Python写的面向对象关系型数据库，具有小巧、快速、可移植性好的 特点，具有大部分SQL语言特性。开源。\nWallbase: http://wallbase.net\nPython编写的图片站点。\nuTorrent : http://www.utorrent.com\nBitTorrent下载软件，主程序仅2Mb，支持ipv6地址解析。开源。\nTorchlight: torchlight.perfectworld.com\nPython编写的大型3D游戏，原Blizzard公司人员制作发行，开源。\n###Google Apps Engine Google App Engine，GAE\n“Google App Engine 可让您在 Google 的基础架构上运行您的网络 应用程序。App Engine 应用程序易于构建和维护，并可根据您的访 问量和数据存储需要的增长轻松扩展。使用 Google App Engine， 将不再需要维护服务器：您只需上传您的应用程序，它便可立即为您的用户提供服务。”\nPython 为GAE的数据存储区、Google 帐户、网址抓取和电子邮件服务提供了丰富的 Python API。GAE还提供了一个称为 webapp 的简单 Python 网络应用程序框架，从而可以轻松开始构建应用程序。 ###GAE的主要服务\n动态网络服务，提供对常用网络技术的完全支持 持久存储空间，支持查询、分类和事务 自动扩展和负载平衡 用户身份验证和使用 Google 帐户发送电子邮件的 API 一套在本地模拟 GAE的开发环境 用于在指定时间和定期触发事件的计划任务 ##硬币的另一面 限制Python发展的因素有：\n数据库访问层的局限性 相比现有的成熟技术，比如ODBC和JDBC，Python的数据库访问层看起来就过于原始了。虽然这一方面也在发生变化，但是，开发部门需要平滑地接合现有的复杂遗留数据，同时需要快速的SQL数据库访问，所有这一些使其在短时期内难以对Python表现出什么太大的兴趣。\n文档差距 相比其对手语言，比如Perl、Java，在某种程度上再算上PHP，Python确实深受文档缺乏之苦，Python没有广泛、易于获得的文档和图书。市面上冠以PHP标题的图书数量几乎是Python的两倍多；而Perl就更多了，有400多种。\nPython的在线文档倒还组织得比较好，但是这些文档几乎全是些参考资料。幸而Python相当容易的学习曲线减轻了对图书资料的过多需要。\n缺乏GUI和团队协作工具 给Python应用程序创建图形用户界面未必复杂。Python分发版本随带的Tk就是Python开发人员最常用的工具。但是Tk缺乏可访问、易用的GUI工具。\u000b相比GUI工具的缺乏更要命的是Python几乎没有支持团队开发的协议工具。 Java在这些工具领域可谓相当丰富。在企业软件开发市场上，这一缺陷简直可视为致命的要害。没有这类工具要让很多程序员共同开发同一项目几乎是不可能的。Python利用其模块化和命名空间分析等特性减轻了这一方面的需求，这些特性可以让多个程序员开发项目时不可能发生代码冲突的情况。但是，这同样改变不了其协同性能缺乏的严重性。\n##如何学习\n“Don’t learn. Just use it.”\n##工具 SublimeText\nIDLE：CPython自带\nPythonWin：ActivePython自带\nNotepad++：查找/替换 tab和空格 语法高亮\nUlipad: 转到函数定义 Code Snippets\nEclipse：Java\nKomodo Editor/IDE\nVim/Emacs: Linux下流行的IDE\n##资料 集体智慧编程\n简明Python教程\nPython Cookbook\nIronPython In Action\nOr just Google it.\n##代码与注释\n请大家改变传统的编程态度，“向计算机发出指令”不再是我们的主要工作任务，我们应该把精力集中在“如何向其他的人类解释，我们想让计算机做什么”这件事上。\n码农应该像散文家一样，掌握化繁为简的阐述技巧，保持漂亮一致的风格。他（她）应该字典在手，仔细斟酌变量的名字，并解释其含义。他（她）会以一种由浅入深的次序介绍各种概念，交叉地使用形式化和非形式化的手段，互为解释和补充，不遗余力地让程序更加被人类所理解。\n—— 高德纳 (Donald Knuth, Literal Programming)\n###为什么？\n易开发：对自己好一点 （6个月法则） 易维护：对同事好一点 （spm） 易使用：对开发者社区好一点 （ nih ） ##编程示例1：唇形科\nScarborough Fair是1968年奥斯卡获奖影片《毕业生》的主题曲, 歌词里反复吟唱提到的植物，Parsley欧洲香芹，sage鼠尾草，rosemary迷迭香，thyme百里香，这里的四种植物，就有三种出自香草植物辈出的帝国：唇形科。\n“唇形科”这个名词对于普通人也许会略感陌生，但接下来开始列举的这些名字，你一定很早以前就曾听过，或者品尝过：薄荷、留兰、黄芩、紫苏、香薷、藿香、薰衣草、牛至、香蜂草、迷迭香、百里香、罗勒、香青兰、鼠尾草、丹参、风轮菜、益母草、夏枯草……是的，这些弥漫着梦幻小清新香味和草药味道的植物，它们都来自于唇形科。\n###问题描述 唇形科的部分香料所属的分类树如下：\n唇形科 Lamiaceae 迷迭香属 Rosmarinus 迷迭香 Rosmarinus officinalis 紫苏属 Perilla 紫苏 Perilla frutescens 薰衣草属 Lavandula 狭叶薰衣草 Lavandula angustifolia 西班牙薰衣草 Lavandula stoechas 宽叶薰衣草 Lavandula latifolia 薄荷属 Mentha 薄荷 Mentha haplocalyx 胡椒薄荷 Mentha piperita 刺蕊草属 Pogostemon 广藿香 Pogostemon cablin\t现有一个扁平化的记录文件\na _ 唇形科 Lamiaceae b a 迷迭香属 Rosmarinus c b 迷迭香 Rosmarinus officinalis d a 紫苏属 Perilla e d 紫苏 Perilla frutescens f a 薰衣草属 Lavandula g f 狭叶薰衣草 Lavandula angustifolia h f 宽叶薰衣草 Lavandula latifolia i f 西班牙薰衣草 Lavandula stoechas j a 薄荷属 Mentha k j 薄荷 Mentha haplocalyx l j 胡椒薄荷 Mentha piperita m a 刺蕊草属 Pogostemon n m 广藿香 Pogostemon cablin 每一行是一个植物学上的分类实体（科、属、种）\n每行按空格分隔，第一个域是实体id，第二个是父级实体的id（_表示没有父），第三个是中文名，剩下的是拉丁文名。\n请根据扁平化的文件中的实体id和父级id，重建并显示分类树。\n###问题分析\n其实是从行列储存的数据文件中构造树的问题。\n涉及到的python知识点：\n文件读写 类的写法 基本数据结构（list、dict、sequence） 树的构建与遍历 迭代器的写法（yield关键字） 字符串的格式化（print） ###文件读写\n#输入文件的名称\tinput_file_name='spices.txt'\t#写文件，w\t#如果是在文件后附加（例如log）则为a\tfile(input_file_name,\"w\").write(flat)\t#读文件, r flat=file(input_file_name,'r').read() ###类的写法\nclass Plant(object): #类的说明，在help(Plant)时显示 \"\"\"docstring for Plant\"\"\" #构造函数 def __init__(self,plant_id,parent_id,chinese_name,latin_name): super(Plant, self).__init__() self.plant_id=plant_id #实体id self.chinese_name=chinese_name #中文名 self.latin_name=latin_name #拉丁名 self.parent=None #父实体 self.parent_id=parent_id #父id self.children=[] #孩子实体列表 self.depth=0 #实体的深度（级别），根节点为0，每一级+1 #类方法，所有类方法的第一个参数都是self，表示类的实例本身 self.foo是实例的foo #显示实体信息，返回字符串 def display(self) return str(self.plant_id) ###基本数据结构：list、dict、sequence http://sebug.net/paper/python/ch09s02.html\nhttp://sebug.net/paper/python/ch09s04.html\nhttp://sebug.net/paper/python/ch09s05.html ###树的构建与遍历 见代码 ###迭代器的写法（yield）\ndef walk_tree(current,root=None): yield current for child in current.children: for x in walk_tree(child,current): yield x 简单地讲，yield 的作用就是把一个函数变成一个迭代器，在 for 循环执行时，每次循环都会执行 walk_tree 函数内部的代码，执行到 yield 时，就返回一个迭代值，下次迭代时，代码从 yield 的下一条语句继续执行，而函数的内部变量看起来和上次中断执行前是完全一样的，于是函数继续执行，直到再次遇到 yield。 ###字符串的格式化 看这里 ###完整代码\n#encoding=utf-8 \"\"\" 从平面化的文件中恢复对象树的结构，并打印出来，保存 \"\"\" flat=\"\"\" a _ 唇形科 Lamiaceae b a 迷迭香属 Rosmarinus c b 迷迭香 Rosmarinus officinalis d a 紫苏属 Perilla e d 紫苏 Perilla frutescens f a 薰衣草属 Lavandula g f 狭叶薰衣草 Lavandula angustifolia h f 宽叶薰衣草 Lavandula latifolia i f 西班牙薰衣草 Lavandula stoechas j a 薄荷属 Mentha k j 薄荷 Mentha haplocalyx l j 胡椒薄荷 Mentha piperita m a 刺蕊草属 Pogostemon n m 广藿香 Pogostemon cablin \"\"\" tree=\"\"\" 唇形科 Lamiaceae 迷迭香属 Rosmarinus 迷迭香 Rosmarinus officinalis 紫苏属 Perilla 紫苏 Perilla frutescens 薰衣草属 狭叶薰衣草 Lavandula angustifolia 宽叶薰衣草 Lavandula latifolia 西班牙薰衣草（Lavandula stoechas） 薄荷属 Mentha 薄荷 Mentha haplocalyx 胡椒薄荷 Mentha piperita 刺蕊草属 Pogostemon 广藿香 Pogostemon cablin \"\"\" #输入文件的名称 input_file_name='spices.txt' #写文件，w #如果是在文件后附加（例如log）则为a file(input_file_name,\"w\").write(flat) #读文件， r flat=file(input_file_name,'r').read() class Plant(object): #类的说明，在help(Plant)时显示 \"\"\"docstring for Plant\"\"\" #构造函数 def __init__(self,plant_id,parent_id,chinese_name,latin_name): super(Plant, self).__init__() self.plant_id=plant_id #实体id self.parent_id=parent_id #实体id self.chinese_name=chinese_name #实体id self.latin_name=latin_name #实体id #类方法，所有类方法的第一个参数都是self，表示类的实例本身 self.foo是实例的foo #显示实体信息，返回 def display(self): return \"{}{} {}\".format (\"\\t\"*x.depth, x.chinese_name, x.latin_name) def get_tree_from_flat_file(flat): dic={} #字典，key为plant_id, value为Plant对象 root=None #记录树的根实体 #逐行读取并生成实体，然后装入dic中 for line in flat.split(\"\\n\"): #line为string，split函数将sring分割成list，也就是words words=line.split(\" \") #空行不做处理 if len(words)\u003c=1: continue #获取各种属性 plant_id, parent_id, chinese_name = words[0], words[1], words[2] latin_name=\" \".join(words[3:]) #从list的第3个元素到最后，用空格连接成string #Plant类的实例化 plant=Plant(plant_id,parent_id,chinese_name,latin_name) #dict的赋值方法 dic[plant_id]=plant #补充实体的parent_id、parent和children属性 for x in dic.values(): #dict的遍历，可根据需要遍历.keys() .values() 和 .items() if x.parent_id==\"_\": root=x elif x.parent_id in dic: x.parent=dic[x.parent_id]\tif x.parent: #也可写作x.parent!=None True False x.parent.children.append(x) return root root=get_tree_from_flat_file(flat) #介绍递归函数和迭代器的写法 #walk_tree是一个递归函数，返回的是一个迭代器 #可用在for x in walk_tree中 def walk_tree(current,root=None,depth=0): current.depth=depth yield current for child in current.children: for x in walk_tree(child,current,depth+1): yield x output=[] for x in walk_tree(root): s= x.display() print s output.append(s) file(\"tree.txt\",\"w\").write(\"\\n\".join(output)) output=[] for x in walk_tree(root): s= x.display() print s output.append(s) file(\"tree.txt\",\"w\").write(\"\\n\".join(output)) ###思考题 输入为上面的示例1中输出的分类树文件，请生成扁平化的数据文件，也就是示例1的输入文件。plant_id可随意取，不重复即可。parent_id要等于父节点的id。\n提示1: 如何生成唯一id google “python 唯一id” 提示2: 获取一行中前缀空格数的方法: 设行字符串存在变量line中,\nlen(line)为line的长度\nline1=line.lstrip()为去掉所有的前缀空格后的line\nlen(line)-len(line1)为前缀空格数。\n也可用正则表达式s/^\\s+//。\n",
+  "wordCount" : "764",
+  "inLanguage": "en",
+  "datePublished": "2014-03-26T00:00:00Z",
+  "dateModified": "2014-03-26T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://vindurriel.github.io/post/2014-03-26-python-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "vindurriel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vindurriel.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://vindurriel.github.io/" accesskey="h" title="vindurriel (Alt + H)">vindurriel</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      python 初探
+    </h1>
+    <div class="post-description">
+      最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&lt;br&gt;本文是系列的第一篇。
+    </div>
+    <div class="post-meta"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。</p>
+<p>###<a href="#start">python 初探</a>
+###[Python web api]({% post_url 2014-03-26-python-2 %})
+###[用Python做文本摘要]({% post_url 2014-03-26-python-3 %})</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->本文是系列的第一篇。</p>
+<p>##起源
+###作者
+<img loading="lazy" src="/images/python_1/1.png"></p>
+<p><a href="https://plus.google.com/115212051037621986145">Guido Van Rossum (GvR)</a></p>
+<blockquote>
+<p>“仁慈的终身独裁者”</p></blockquote>
+<p>###得名</p>
+<blockquote>
+<p>“1989年12月，我在寻找一门“课余”编程项目来打发圣诞节前后的时间。我的办公室会关门，但我有一台家用电脑，而且没有太多其它东西。我决定为当时我正构思的一个新的脚本语言写一个解释器，它是 ABC 语言的后代，对 UNIX / C 程序员会有吸引力。作为一个略微有些无关想法的人，和一个<strong>蒙提·派森（Monty Python）的飞行马戏团</strong>的狂热爱好者，我选择了 Python 作为项目的标题。”</p></blockquote>
+<p>###每个人都会
+1999年，Guido向DARPA阐述Python语言的特性：</p>
+<ul>
+<li>简单、直观、强大</li>
+<li>开源，以便任何人都可以为它做贡献</li>
+<li>代码像纯英语那样容易理解</li>
+<li>适用于短期开发的日常任务</li>
+</ul>
+<p>这些想法中的一些已经成为现实。Python 已经成为一门流行的
+编程语言，尤其是在互联网环境下。</p>
+<p>##特性
+###交互式命令行(Interactive console)
+Python可以单步直译运行。运行Python解释器进入交互式。</p>
+<p>命令行的环境，你可以在提示符号&raquo;&gt;旁输入代码，按Enter键输出结果：</p>
+<pre tabindex="0"><code>&gt;&gt;&gt;print(&#34;Hello, Python!&#34;) 
+Hello, Python!
+</code></pre><p>有点像Shell 脚本的执行方式。</p>
+<h3></h3>
+<p>不只是脚本
+“脚本语言”如Linux shell script、windows batch file等，只能处理简单的任务。</p>
+<p>而Python是面向对象编程（OOP)的，支持异常处理和类型检查。Python的支持者较喜欢称它为一种<strong>高阶动态编程语言</strong></p>
+<p>###强大易用的标准库
+核心库不超过10Mb</p>
+<p>Html、Xml解析：BeautifulSoup, Expat</p>
+<p>字符串处理：字典、数组切片、正则表达式 re</p>
+<p>单元测试： PyUnit</p>
+<p>代码版本控制： PySVN</p>
+<p>网络访问： urllib2</p>
+<p>图形模块： Tkinter、PyTCL、WxPython</p>
+<p>串行化、多线程等</p>
+<p><strong>扩展标准库十分容易</strong>
+###胶水语言(glue language)
+Python经常用作将不同语言编写的程序“粘”在一起的胶水语言。
+Google内部的很多项目使用C++编写性能要求极高的部分，然后用Python调用相应的模块。</p>
+<ul>
+<li>
+<p>C/C++:</p>
+<p>Boost.Python使得 Python 和 C++ 的类库能互相调用（.pyc）</p>
+</li>
+<li>
+<p>Java:</p>
+<p>Jython 是用Java实现的Python，可同时使用二者的类库</p>
+</li>
+<li>
+<p>.NET:</p>
+<p>IronPython是Python在.NET平台上的版本。</p>
+</li>
+</ul>
+<p>###收放自如(scalability)
+Python内建的数据结构（variable, list 和 dict）以及对多线程
+分布式操作的支持，使得程序可以用相同的代码处理不同规模
+的数据，以及并发的用户需求。</p>
+<p>###不要括号
+Python使用缩进而不是括号来进行代码段标识，减少了视觉上
+的混乱，并且使程序变短，从而提高了程序的可读性。</p>
+<p><img loading="lazy" src="/images/python_1/2.png"></p>
+<p>###发行版本</p>
+<ul>
+<li>
+<p>CPython:  <a href="https://www.python.org">www.python.org</a></p>
+<p>主流：2.5-2.7</p>
+<p>最新：3.0 不向下兼容</p>
+</li>
+<li>
+<p>ActivePython:</p>
+<p>Windows 下的Python，文档和库较全</p>
+</li>
+<li>
+<p>IronPython： <a href="http://ironpython.codeplex.com/">http://ironpython.codeplex.com/</a></p>
+<p>与.NET集成较好</p>
+<p>可使用CPython的类库</p>
+</li>
+<li>
+<p>NumPy，Python(x,y)：</p>
+<p>对科学计算进行了优化的Python版本</p>
+</li>
+</ul>
+<p>###vs. Perl
+Perl是另一种广泛使用(滥用)的动态高级语言,
+经常被用来与Python 比较。</p>
+<ul>
+<li>正则表达式的典范</li>
+<li>催生了CGI、PHP</li>
+<li>黑客最喜爱的语言</li>
+</ul>
+<p>作者：</p>
+<p><img loading="lazy" src="/images/python_1/3.png"></p>
+<p><a href="www.wall.org/~larry/">Larry Wall</a></p>
+<p>Perl语言之父，语言学家；两届国际C语言混乱代码大赛（IOCCC） 的冠军；第一届自由软件奖得主。</p>
+<p><strong>程序员的三大美德：</strong></p>
+<ul>
+<li>懒惰：能让人尽量减少总能量支出的美德。它使你写出节省脑力、可以重用的代码；也督促你为程序写注释和文档，那样你就不用回答各种问题。</li>
+<li>不耐烦：你会对试图偷懒的计算机代码大发雷霆。 你写出的代码能预测并适应、而非被动满足用户的需求，或者至少看上去是这样。</li>
+<li>傲慢：自傲到人神共愤的程度，让你编写（维护）的程序拥有无可挑剔的品质。</li>
+</ul>
+<p>###vs. Ruby</p>
+<p>Ruby：比Python更年轻的动态语言</p>
+<ul>
+<li>完全面向对象</li>
+<li>支持正则表达式</li>
+<li>整合了多种语言的优势</li>
+</ul>
+<p><img loading="lazy" src="/images/python_1/4.png"></p>
+<p>作者：松本行弘 <a href="https://twitter.com/yukihiro_matz">@yukihiro_matz</a></p>
+<p>Ruby on Rails （RoR） 网站快速开发工具</p>
+<p>###观点
+Perl之父Larry Wall:</p>
+<blockquote>
+<p>“做一件事有很多种方法” TIMTOWTDI</p></blockquote>
+<p>Python之父Guido Van Rossum ：</p>
+<blockquote>
+<p>“做一件事，应该有一种最直观的方法，而且最好只有一种。”</p></blockquote>
+<p>Ruby之父松本行弘 (“Matz”)</p>
+<blockquote>
+<p>“不要重复自己” DRY原则</p></blockquote>
+<p>###国籍？</p>
+<table>
+  <thead>
+      <tr>
+          <th>语言</th>
+          <th>作者</th>
+          <th>国籍</th>
+          <th>风格</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Perl</td>
+          <td>Larry Wall</td>
+          <td>美国</td>
+          <td>随性自由</td>
+      </tr>
+      <tr>
+          <td>Python</td>
+          <td>Guido van Rossum</td>
+          <td>荷兰</td>
+          <td>优雅统一</td>
+      </tr>
+      <tr>
+          <td>Ruby</td>
+          <td>松本行弘 (“Matz”)</td>
+          <td>日本</td>
+          <td>兼容并包</td>
+      </tr>
+  </tbody>
+</table>
+<p>##用途</p>
+<ul>
+<li>脚本程序</li>
+<li>大型程序的原型开发</li>
+<li>科学计算</li>
+<li>网络应用</li>
+<li>计算机图形编程</li>
+</ul>
+<p>###知名的Python应用</p>
+<ul>
+<li>
+<p>Zope：www.zope.com</p>
+<p>一个应用程序服务器，具有内容管理、团队开发、XML、面向对象、SOAP接口等一系先进特性，开源。</p>
+</li>
+<li>
+<p>Gadfly：http://www.chordate.com/gadfly.html</p>
+<p>一个用Python写的面向对象关系型数据库，具有小巧、快速、可移植性好的
+特点，具有大部分SQL语言特性。开源。</p>
+</li>
+<li>
+<p>Wallbase: <a href="http://wallbase.net">http://wallbase.net</a></p>
+<p>Python编写的图片站点。</p>
+</li>
+<li>
+<p>uTorrent : <a href="http://www.utorrent.com">http://www.utorrent.com</a></p>
+<p>BitTorrent下载软件，主程序仅2Mb，支持ipv6地址解析。开源。</p>
+</li>
+<li>
+<p>Torchlight:   torchlight.perfectworld.com</p>
+<p>Python编写的大型3D游戏，原Blizzard公司人员制作发行，开源。</p>
+</li>
+</ul>
+<p>###Google Apps Engine
+<a href="https://developers.google.com/appengine/">Google App Engine，GAE</a></p>
+<blockquote>
+<p>“Google App Engine 可让您在 Google 的基础架构上运行您的网络
+应用程序。App Engine 应用程序易于构建和维护，并可根据您的访
+问量和数据存储需要的增长轻松扩展。使用 Google App Engine，
+将不再需要维护服务器：您只需上传您的应用程序，它便可立即为您的用户提供服务。”</p></blockquote>
+<p>Python 为GAE的数据存储区、Google 帐户、网址抓取和电子邮件服务提供了丰富的 Python API。GAE还提供了一个称为 webapp 的简单 Python 网络应用程序框架，从而可以轻松开始构建应用程序。
+###GAE的主要服务</p>
+<ul>
+<li>动态网络服务，提供对常用网络技术的完全支持</li>
+<li>持久存储空间，支持查询、分类和事务</li>
+<li>自动扩展和负载平衡</li>
+<li>用户身份验证和使用 Google 帐户发送电子邮件的 API</li>
+<li>一套在本地模拟 GAE的开发环境</li>
+<li>用于在指定时间和定期触发事件的计划任务</li>
+</ul>
+<p>##硬币的另一面
+限制Python发展的因素有：</p>
+<ul>
+<li>数据库访问层的局限性</li>
+</ul>
+<p>相比现有的成熟技术，比如ODBC和JDBC，Python的数据库访问层看起来就过于原始了。虽然这一方面也在发生变化，但是，开发部门需要平滑地接合现有的复杂遗留数据，同时需要快速的SQL数据库访问，所有这一些使其在短时期内难以对Python表现出什么太大的兴趣。</p>
+<ul>
+<li>文档差距</li>
+</ul>
+<p>相比其对手语言，比如Perl、Java，在某种程度上再算上PHP，Python确实深受文档缺乏之苦，Python没有广泛、易于获得的文档和图书。市面上冠以PHP标题的图书数量几乎是Python的两倍多；而Perl就更多了，有400多种。</p>
+<p>Python的在线文档倒还组织得比较好，但是这些文档几乎全是些参考资料。幸而Python相当容易的学习曲线减轻了对图书资料的过多需要。</p>
+<ul>
+<li>缺乏GUI和团队协作工具</li>
+</ul>
+<p>给Python应用程序创建图形用户界面未必复杂。Python分发版本随带的Tk就是Python开发人员最常用的工具。但是Tk缺乏可访问、易用的GUI工具。相比GUI工具的缺乏更要命的是Python几乎没有支持团队开发的协议工具。 Java在这些工具领域可谓相当丰富。在企业软件开发市场上，这一缺陷简直可视为致命的要害。没有这类工具要让很多程序员共同开发同一项目几乎是不可能的。Python利用其模块化和命名空间分析等特性减轻了这一方面的需求，这些特性可以让多个程序员开发项目时不可能发生代码冲突的情况。但是，这同样改变不了其协同性能缺乏的严重性。</p>
+<p>##如何学习</p>
+<blockquote>
+<p>“Don&rsquo;t learn. Just use it.”</p></blockquote>
+<p>##工具
+SublimeText</p>
+<p>IDLE：CPython自带</p>
+<p>PythonWin：ActivePython自带</p>
+<p>Notepad++：查找/替换  tab和空格  语法高亮</p>
+<p>Ulipad: 转到函数定义 Code Snippets</p>
+<p>Eclipse：Java</p>
+<p>Komodo Editor/IDE</p>
+<p>Vim/Emacs:  Linux下流行的IDE</p>
+<p>##资料
+集体智慧编程</p>
+<p>简明Python教程</p>
+<p>Python Cookbook</p>
+<p>IronPython In Action</p>
+<p>Or just Google it.</p>
+<p><img loading="lazy" src="/images/python_1/5.png"></p>
+<p>##代码与注释</p>
+<blockquote>
+<p>请大家改变传统的编程态度，“向计算机发出指令”不再是我们的主要工作任务，我们应该把精力集中在“如何向其他的人类解释，我们想让计算机做什么”这件事上。</p></blockquote>
+<blockquote>
+<p>码农应该像散文家一样，掌握化繁为简的阐述技巧，保持漂亮一致的风格。他（她）应该字典在手，仔细斟酌变量的名字，并解释其含义。他（她）会以一种由浅入深的次序介绍各种概念，交叉地使用形式化和非形式化的手段，互为解释和补充，不遗余力地让程序更加被人类所理解。</p></blockquote>
+<p>—— 高德纳 (Donald Knuth, <a href="http://www.literateprogramming.com/">Literal Programming</a>)</p>
+<p>###为什么？</p>
+<ul>
+<li>易开发：对自己好一点 （6个月法则）</li>
+<li>易维护：对同事好一点 （<a href="https://twitter.com/sayfun/status/245147390565298177">spm</a>）</li>
+<li>易使用：对开发者社区好一点  （ <a href="http://en.wikipedia.org/wiki/Not_invented_here">nih</a> ）</li>
+</ul>
+<p>##编程示例1：唇形科</p>
+<p>Scarborough Fair是1968年奥斯卡获奖影片《毕业生》的主题曲,
+歌词里反复吟唱提到的植物，Parsley欧洲香芹，sage鼠尾草，rosemary迷迭香，thyme百里香，这里的四种植物，就有三种出自香草植物辈出的帝国：<a href="http://zh.wikipedia.org/zh-cn/%E5%94%87%E5%BD%A2%E7%A7%91">唇形科</a>。</p>
+<p>“唇形科”这个名词对于普通人也许会略感陌生，但接下来开始列举的这些名字，你一定很早以前就曾听过，或者品尝过：薄荷、留兰、黄芩、紫苏、香薷、藿香、薰衣草、牛至、香蜂草、迷迭香、百里香、罗勒、香青兰、鼠尾草、丹参、风轮菜、益母草、夏枯草……是的，这些弥漫着梦幻小清新香味和草药味道的植物，它们都来自于唇形科。</p>
+<p>###问题描述
+唇形科的部分香料所属的分类树如下：</p>
+<pre tabindex="0"><code>唇形科 Lamiaceae
+	迷迭香属 Rosmarinus
+		迷迭香 Rosmarinus officinalis
+	紫苏属 Perilla
+		紫苏 Perilla frutescens
+	薰衣草属 Lavandula
+		狭叶薰衣草 Lavandula angustifolia
+		西班牙薰衣草 Lavandula stoechas
+		宽叶薰衣草 Lavandula latifolia
+	薄荷属 Mentha
+		薄荷 Mentha haplocalyx
+		胡椒薄荷 Mentha piperita
+	刺蕊草属 Pogostemon
+		广藿香 Pogostemon cablin		
+</code></pre><p>现有一个扁平化的记录文件</p>
+<pre tabindex="0"><code>a _ 唇形科 Lamiaceae
+b a 迷迭香属 Rosmarinus
+c b 迷迭香 Rosmarinus officinalis
+d a 紫苏属 Perilla
+e d 紫苏 Perilla frutescens
+f a 薰衣草属 Lavandula
+g f 狭叶薰衣草 Lavandula angustifolia
+h f 宽叶薰衣草 Lavandula latifolia
+i f 西班牙薰衣草 Lavandula stoechas
+j a 薄荷属 Mentha
+k j 薄荷 Mentha haplocalyx
+l j 胡椒薄荷 Mentha piperita
+m a 刺蕊草属 Pogostemon
+n m 广藿香 Pogostemon cablin
+</code></pre><p>每一行是一个植物学上的分类实体（科、属、种）</p>
+<p>每行按空格分隔，第一个域是实体id，第二个是父级实体的id（_表示没有父），第三个是中文名，剩下的是拉丁文名。</p>
+<p>请根据扁平化的文件中的实体id和父级id，重建并显示分类树。</p>
+<p>###问题分析</p>
+<p>其实是从行列储存的数据文件中构造树的问题。</p>
+<p>涉及到的python知识点：</p>
+<ul>
+<li>文件读写</li>
+<li>类的写法</li>
+<li>基本数据结构（list、dict、sequence）</li>
+<li>树的构建与遍历</li>
+<li>迭代器的写法（yield关键字）</li>
+<li>字符串的格式化（print）</li>
+</ul>
+<p>###文件读写</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#输入文件的名称	</span>
+</span></span><span style="display:flex;"><span>input_file_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spices.txt&#39;</span>	
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#写文件，w	</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#如果是在文件后附加（例如log）则为a	</span>
+</span></span><span style="display:flex;"><span>file(input_file_name,<span style="color:#e6db74">&#34;w&#34;</span>)<span style="color:#f92672">.</span>write(flat)	
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#读文件, r</span>
+</span></span><span style="display:flex;"><span>flat<span style="color:#f92672">=</span>file(input_file_name,<span style="color:#e6db74">&#39;r&#39;</span>)<span style="color:#f92672">.</span>read()
+</span></span></code></pre></div><p>###类的写法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Plant</span>(object):
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#类的说明，在help(Plant)时显示</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;&#34;&#34;docstring for Plant&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#构造函数</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self,plant_id,parent_id,chinese_name,latin_name):
+</span></span><span style="display:flex;"><span>		super(Plant, self)<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>plant_id<span style="color:#f92672">=</span>plant_id <span style="color:#75715e">#实体id</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>chinese_name<span style="color:#f92672">=</span>chinese_name <span style="color:#75715e">#中文名</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>latin_name<span style="color:#f92672">=</span>latin_name <span style="color:#75715e">#拉丁名</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>parent<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span> <span style="color:#75715e">#父实体</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>parent_id<span style="color:#f92672">=</span>parent_id <span style="color:#75715e">#父id</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>children<span style="color:#f92672">=</span>[] <span style="color:#75715e">#孩子实体列表</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>depth<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> <span style="color:#75715e">#实体的深度（级别），根节点为0，每一级+1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#类方法，所有类方法的第一个参数都是self，表示类的实例本身 self.foo是实例的foo</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#显示实体信息，返回字符串</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">display</span>(self)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> str(self<span style="color:#f92672">.</span>plant_id)
+</span></span></code></pre></div><p>###基本数据结构：list、dict、sequence
+<a href="http://sebug.net/paper/python/ch09s02.html">http://sebug.net/paper/python/ch09s02.html</a></p>
+<p><a href="http://sebug.net/paper/python/ch09s04.html">http://sebug.net/paper/python/ch09s04.html</a></p>
+<p><a href="http://sebug.net/paper/python/ch09s05.html">http://sebug.net/paper/python/ch09s05.html</a>
+###树的构建与遍历
+见代码
+###迭代器的写法（yield）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">walk_tree</span>(current,root<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">yield</span>  current
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> child <span style="color:#f92672">in</span> current<span style="color:#f92672">.</span>children:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> walk_tree(child,current):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">yield</span> x
+</span></span></code></pre></div><p>简单地讲，yield 的作用就是把一个函数变成一个迭代器，在 for 循环执行时，每次循环都会执行 walk_tree 函数内部的代码，执行到 yield 时，就返回一个迭代值，下次迭代时，代码从 yield  的下一条语句继续执行，而函数的内部变量看起来和上次中断执行前是完全一样的，于是函数继续执行，直到再次遇到 yield。
+###字符串的格式化
+<a href="http://youngsterxyf.github.io/2013/01/26/python-string-format/">看这里</a>
+###完整代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#encoding=utf-8</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">从平面化的文件中恢复对象树的结构，并打印出来，保存
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>flat<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">a _ 唇形科 Lamiaceae
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">b a 迷迭香属 Rosmarinus
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">c b 迷迭香 Rosmarinus officinalis
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">d a 紫苏属 Perilla
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">e d 紫苏 Perilla frutescens
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">f a 薰衣草属 Lavandula
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">g f 狭叶薰衣草 Lavandula angustifolia
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">h f 宽叶薰衣草 Lavandula latifolia
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">i f 西班牙薰衣草 Lavandula stoechas
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">j a 薄荷属 Mentha
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">k j 薄荷 Mentha haplocalyx
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">l j 胡椒薄荷 Mentha piperita
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">m a 刺蕊草属 Pogostemon
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">n m 广藿香 Pogostemon cablin
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>tree<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">唇形科 Lamiaceae
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	迷迭香属 Rosmarinus
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		迷迭香 Rosmarinus officinalis
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	紫苏属 Perilla
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		紫苏 Perilla frutescens
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	薰衣草属
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		狭叶薰衣草 Lavandula angustifolia
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		宽叶薰衣草 Lavandula latifolia
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		西班牙薰衣草（Lavandula stoechas）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	薄荷属 Mentha
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		薄荷 Mentha haplocalyx
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		胡椒薄荷 Mentha piperita
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	刺蕊草属 Pogostemon
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		广藿香 Pogostemon cablin
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#输入文件的名称</span>
+</span></span><span style="display:flex;"><span>input_file_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spices.txt&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#写文件，w</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#如果是在文件后附加（例如log）则为a</span>
+</span></span><span style="display:flex;"><span>file(input_file_name,<span style="color:#e6db74">&#34;w&#34;</span>)<span style="color:#f92672">.</span>write(flat)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#读文件， r</span>
+</span></span><span style="display:flex;"><span>flat<span style="color:#f92672">=</span>file(input_file_name,<span style="color:#e6db74">&#39;r&#39;</span>)<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Plant</span>(object):
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#类的说明，在help(Plant)时显示</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;&#34;&#34;docstring for Plant&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#构造函数</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self,plant_id,parent_id,chinese_name,latin_name):
+</span></span><span style="display:flex;"><span>		super(Plant, self)<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>plant_id<span style="color:#f92672">=</span>plant_id <span style="color:#75715e">#实体id</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>parent_id<span style="color:#f92672">=</span>parent_id <span style="color:#75715e">#实体id</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>chinese_name<span style="color:#f92672">=</span>chinese_name <span style="color:#75715e">#实体id</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>latin_name<span style="color:#f92672">=</span>latin_name <span style="color:#75715e">#实体id</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#类方法，所有类方法的第一个参数都是self，表示类的实例本身 self.foo是实例的foo</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#显示实体信息，返回</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">display</span>(self):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}{}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format (<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">*</span>x<span style="color:#f92672">.</span>depth, x<span style="color:#f92672">.</span>chinese_name, x<span style="color:#f92672">.</span>latin_name)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_tree_from_flat_file</span>(flat):
+</span></span><span style="display:flex;"><span>	dic<span style="color:#f92672">=</span>{} <span style="color:#75715e">#字典，key为plant_id, value为Plant对象</span>
+</span></span><span style="display:flex;"><span>	root<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span> <span style="color:#75715e">#记录树的根实体</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#逐行读取并生成实体，然后装入dic中</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> flat<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#line为string，split函数将sring分割成list，也就是words</span>
+</span></span><span style="display:flex;"><span>		words<span style="color:#f92672">=</span>line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#空行不做处理</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> len(words)<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">1</span>: 
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#获取各种属性</span>
+</span></span><span style="display:flex;"><span>		plant_id, parent_id, chinese_name <span style="color:#f92672">=</span> words[<span style="color:#ae81ff">0</span>], words[<span style="color:#ae81ff">1</span>], words[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>		latin_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(words[<span style="color:#ae81ff">3</span>:]) <span style="color:#75715e">#从list的第3个元素到最后，用空格连接成string</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Plant类的实例化</span>
+</span></span><span style="display:flex;"><span>		plant<span style="color:#f92672">=</span>Plant(plant_id,parent_id,chinese_name,latin_name)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#dict的赋值方法</span>
+</span></span><span style="display:flex;"><span>		dic[plant_id]<span style="color:#f92672">=</span>plant
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#补充实体的parent_id、parent和children属性</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values(): <span style="color:#75715e">#dict的遍历，可根据需要遍历.keys() .values() 和 .items()</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> x<span style="color:#f92672">.</span>parent_id<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;_&#34;</span>:
+</span></span><span style="display:flex;"><span>			root<span style="color:#f92672">=</span>x
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">elif</span> x<span style="color:#f92672">.</span>parent_id <span style="color:#f92672">in</span> dic:
+</span></span><span style="display:flex;"><span>			x<span style="color:#f92672">.</span>parent<span style="color:#f92672">=</span>dic[x<span style="color:#f92672">.</span>parent_id]		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> x<span style="color:#f92672">.</span>parent: <span style="color:#75715e">#也可写作x.parent!=None True False</span>
+</span></span><span style="display:flex;"><span>			x<span style="color:#f92672">.</span>parent<span style="color:#f92672">.</span>children<span style="color:#f92672">.</span>append(x)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> root
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">=</span>get_tree_from_flat_file(flat)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#介绍递归函数和迭代器的写法</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#walk_tree是一个递归函数，返回的是一个迭代器</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#可用在for x in walk_tree中</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">walk_tree</span>(current,root<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>,depth<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>	current<span style="color:#f92672">.</span>depth<span style="color:#f92672">=</span>depth
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">yield</span>  current
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> child <span style="color:#f92672">in</span> current<span style="color:#f92672">.</span>children:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> walk_tree(child,current,depth<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">yield</span> x
+</span></span><span style="display:flex;"><span>output<span style="color:#f92672">=</span>[]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> walk_tree(root):
+</span></span><span style="display:flex;"><span>	s<span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>display()
+</span></span><span style="display:flex;"><span>	print s
+</span></span><span style="display:flex;"><span>	output<span style="color:#f92672">.</span>append(s)
+</span></span><span style="display:flex;"><span>file(<span style="color:#e6db74">&#34;tree.txt&#34;</span>,<span style="color:#e6db74">&#34;w&#34;</span>)<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(output))
+</span></span><span style="display:flex;"><span>	output<span style="color:#f92672">=</span>[]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> walk_tree(root):
+</span></span><span style="display:flex;"><span>		s<span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>display()
+</span></span><span style="display:flex;"><span>		print s
+</span></span><span style="display:flex;"><span>		output<span style="color:#f92672">.</span>append(s)
+</span></span><span style="display:flex;"><span>	file(<span style="color:#e6db74">&#34;tree.txt&#34;</span>,<span style="color:#e6db74">&#34;w&#34;</span>)<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(output))
+</span></span></code></pre></div><p>###思考题
+输入为上面的示例1中输出的分类树文件，请生成扁平化的数据文件，也就是示例1的输入文件。plant_id可随意取，不重复即可。parent_id要等于父节点的id。</p>
+<ul>
+<li>提示1: 如何生成唯一id
+google “python 唯一id”</li>
+<li>提示2: 获取一行中前缀空格数的方法:</li>
+</ul>
+<p>设行字符串存在变量line中,</p>
+<p>len(line)为line的长度</p>
+<p>line1=line.lstrip()为去掉所有的前缀空格后的line</p>
+<p>len(line)-len(line1)为前缀空格数。</p>
+<p>也可用正则表达式<code>s/^\s+//</code>。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://vindurriel.github.io/tags/python/">Python</a></li>
+      <li><a href="https://vindurriel.github.io/tags/tutorial/">Tutorial</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://vindurriel.github.io/">vindurriel</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

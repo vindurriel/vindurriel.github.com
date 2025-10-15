@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ruby on vindurriel</title>
+    <link>https://vindurriel.github.io/tags/ruby/</link>
+    <description>Recent content in Ruby on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>为gem install 提速</title>
+      <link>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</guid>
+      <description>```&amp;lt;br/&amp;gt;:bulk_threshold: 1000&amp;lt;br/&amp;gt;:backtrace: false&amp;lt;br/&amp;gt;gemcutter_key: XXXXX&amp;lt;br/&amp;gt;gem: --no-ri --no-rdoc&amp;lt;br/&amp;gt;:benchmark: false&amp;lt;br/&amp;gt;:verbose: true&amp;lt;br/&amp;gt;:update_sources: true&amp;lt;br/&amp;gt;:sources: &amp;lt;br/&amp;gt;- http://gems.rubyforge.org/&amp;lt;br/&amp;gt;- http://gems.opscode.com&amp;lt;br/&amp;gt;```&amp;lt;br/&amp;gt;主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。</description>
+    </item>
+  </channel>
+</rss>

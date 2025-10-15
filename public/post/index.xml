@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on vindurriel</title>
+    <link>https://vindurriel.github.io/post/</link>
+    <description>Recent content in Posts on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>想跳槽？学学人猿泰山</title>
+      <link>https://vindurriel.github.io/post/2014-04-10-tarzan/</link>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2014-04-10-tarzan/</guid>
+      <description>&lt;p&gt;翻译自&lt;a href=&#34;http://sivers.org/tarzan&#34;&gt;Derek Sivers&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;在确认下一根藤条能支持你的重量之前，不要放开手中的藤条。&lt;/li&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;不要停顿，保持冲劲。&lt;/li&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/tarzan/tarzan.gif&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python web api</title>
+      <link>https://vindurriel.github.io/post/2014-03-26-python-2/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2014-03-26-python-2/</guid>
+      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第二篇。</description>
+    </item>
+    <item>
+      <title>python 初探</title>
+      <link>https://vindurriel.github.io/post/2014-03-26-python-1/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2014-03-26-python-1/</guid>
+      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第一篇。</description>
+    </item>
+    <item>
+      <title>用Python做文本摘要</title>
+      <link>https://vindurriel.github.io/post/2014-03-26-python-3/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2014-03-26-python-3/</guid>
+      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第三篇。</description>
+    </item>
+    <item>
+      <title>程序调试心得</title>
+      <link>https://vindurriel.github.io/post/2013-12-05-debug-tips/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-12-05-debug-tips/</guid>
+      <description>必须保证你改的代码，可以很方便地看到结果（或影响）。&amp;lt;br/&amp;gt;一次改动太多的地方，就无法判断结果的变化是哪处改动造成的。&amp;lt;br/&amp;gt;- 分离有问题的部分，做手术的创口尽可能小。&amp;lt;br/&amp;gt;问题的出现往往是重构的机会，一个bug往往能牵出更多的bug。</description>
+    </item>
+    <item>
+      <title>如何使用互联网解决编程问题</title>
+      <link>https://vindurriel.github.io/post/2013-12-03-how-to-solve-problems-online/</link>
+      <pubDate>Tue, 03 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-12-03-how-to-solve-problems-online/</guid>
+      <description>有的时候用关键词描述问题能更好地帮你看清问题的本质，即：要描述或定义我的问题，哪些词是**不可能绕过去**的？&amp;lt;br/&amp;gt;这时候，对结果的分析就很重要，有助于你认识到自己做了哪些假设，哪些假设是符合意图的，哪些是不合理的。&amp;lt;br/&amp;gt;2.你提问的方式正确，但是问题本身，不是你想的那样，你需要重新审视你的问题。&amp;lt;br/&amp;gt;再如，位置相关的搜索，如北京周边的美食、酒店什么的，百度的服务一般优于google的。</description>
+    </item>
+    <item>
+      <title>电子游戏让你上瘾的5个可怕方法</title>
+      <link>https://vindurriel.github.io/post/2013-09-09-why-video-games-is-addictive/</link>
+      <pubDate>Mon, 09 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-09-09-why-video-games-is-addictive/</guid>
+      <description>作者是微软的一个游戏研究人员，行为学和脑科学博士，讲的是如何把玩家钩在游戏上，欲罢不能。&amp;lt;br/&amp;gt;&amp;amp;gt; “每个游戏场景都是时间、行动与奖励的有机体，你可以随意操控它们之间的排列组合，让玩家按预先设定的模式来行动。&amp;lt;br/&amp;gt;请注意，他的文章根本没提到“好玩”或者“愉悦”，这不是他的研究领域。&amp;lt;br/&amp;gt;所以他们必须改变游戏的机制，让玩家重复地做同样的事，一遍又一遍，欲罢不能。&amp;lt;br/&amp;gt;只能通过花费时间、精力和技巧才能得到的东西，必定是有价值的，无论是它是钻石做的，还是二进制码或者牛肉筋。&amp;lt;br/&amp;gt;设计者绝对是故意的，迎合人们收集的自然本能，让玩家是为了收集而收集。&amp;lt;br/&amp;gt;游戏中充满了各种宝箱，里面可能有一个随机的物品，要打开箱子，你需要钥匙。&amp;lt;br/&amp;gt;除了利用到人的赌博天性，成千上万的玩家都在彼此竞争，看谁能开最多的箱子。&amp;lt;br/&amp;gt;同样的，竞技性的游戏，如现代战争2，是缺乏强健体魄的人们的运动。&amp;lt;br/&amp;gt;大多数人，尤其是年轻的游戏人群，都缺乏这三样东西，工作中如此，生活中的其他方面亦如此。</description>
+    </item>
+    <item>
+      <title>nest介绍之音乐地图</title>
+      <link>https://vindurriel.github.io/post/2013-09-04-nest-introduction/</link>
+      <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-09-04-nest-introduction/</guid>
+      <description>节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&amp;lt;br/&amp;gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。&amp;lt;br/&amp;gt;现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。&amp;lt;br/&amp;gt;* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）</description>
+    </item>
+    <item>
+      <title>凯撒方阵</title>
+      <link>https://vindurriel.github.io/post/2013-09-03-caesar-encryption/</link>
+      <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-09-03-caesar-encryption/</guid>
+      <description>加密字符串的第一位是选定的数字n，接下来按从左往右、从上往下的顺序把方阵中的字符写下来，如果方阵的最后没有写满的话，最后要写下空位的个数m。&amp;lt;br/&amp;gt;该字符串长度为84，m = n - (84 &#43; 1) % n =3 。</description>
+    </item>
+    <item>
+      <title>虾米下载介绍</title>
+      <link>https://vindurriel.github.io/post/2013-08-09-xiami-introduction/</link>
+      <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-08-09-xiami-introduction/</guid>
+      <description>下载高音质歌曲是收费的，而且官方软件（虾客）不好用。&amp;lt;br/&amp;gt;原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。&amp;lt;br/&amp;gt;然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。&amp;lt;br/&amp;gt;界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。&amp;lt;br/&amp;gt;xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。&amp;lt;br/&amp;gt;做自己每天都会使用的软件，是一件很快乐的事。&amp;lt;br/&amp;gt;百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。</description>
+    </item>
+    <item>
+      <title>forced graph</title>
+      <link>https://vindurriel.github.io/post/2013-07-26-forced-graph/</link>
+      <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-26-forced-graph/</guid>
+      <description>- d3.parsets.css&amp;lt;br/&amp;gt;- d3.v3.min.js&amp;lt;br/&amp;gt;- d3.parsets.js&amp;lt;br/&amp;gt;{% highlight text %}&amp;lt;br/&amp;gt;{{ page.title }},d3&amp;lt;br/&amp;gt;{{ page.title }},visualization&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var csv=&amp;amp;quot;post,tag&amp;amp;quot;;&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	{% for tag in post.tags %}&amp;lt;br/&amp;gt;		csv&#43;=&amp;amp;quot; {{post.title}},{{tag}}&amp;amp;quot;;&amp;lt;br/&amp;gt;	{% endfor %}&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;{%endraw%}&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;var chart = d3.parsets()&amp;lt;br/&amp;gt;	  .tension(0.8)&amp;lt;br/&amp;gt;	  .width(&amp;amp;quot;800&amp;amp;quot;)&amp;lt;br/&amp;gt;	  .height(&amp;amp;quot;480&amp;amp;quot;)&amp;lt;br/&amp;gt;      .dimensions([&amp;amp;quot;tag&amp;amp;quot;,&amp;amp;quot;post&amp;amp;quot;]);&amp;lt;br/&amp;gt;var vis = d3.select(&amp;amp;quot;#vis&amp;amp;quot;).append(&amp;amp;quot;svg&amp;amp;quot;)&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;width&amp;amp;quot;, chart.width())&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;height&amp;amp;quot;, chart.height());&amp;lt;br/&amp;gt;var parsed_csv=d3.csv.parse(csv);&amp;lt;br/&amp;gt;vis.datum(parsed_csv).call(chart);&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var posts={};&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	posts[&amp;amp;quot;{{post.title}}&amp;amp;quot;]={&amp;lt;br/&amp;gt;		&amp;amp;quot;url&amp;amp;quot;:&amp;amp;quot;{{post.url}}&amp;amp;quot;,&amp;lt;br/&amp;gt;	};&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;vis.selectAll(&amp;amp;quot;.category text&amp;amp;quot;).on(&amp;amp;quot;click&amp;amp;quot;,function(d){&amp;lt;br/&amp;gt;	if(!</description>
+    </item>
+    <item>
+      <title>用d3.js来呈现post-tag的多对多关系</title>
+      <link>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</link>
+      <pubDate>Mon, 22 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</guid>
+      <description>- d3.parsets.css&amp;lt;br/&amp;gt;- d3.v3.min.js&amp;lt;br/&amp;gt;- d3.parsets.js&amp;lt;br/&amp;gt;{% highlight text %}&amp;lt;br/&amp;gt;{{ page.title }},d3&amp;lt;br/&amp;gt;{{ page.title }},visualization&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var csv=&amp;amp;quot;post,tag&amp;amp;quot;;&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	{% for tag in post.tags %}&amp;lt;br/&amp;gt;		csv&#43;=&amp;amp;quot; {{post.title}},{{tag}}&amp;amp;quot;;&amp;lt;br/&amp;gt;	{% endfor %}&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;{%endraw%}&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;var chart = d3.parsets()&amp;lt;br/&amp;gt;	  .tension(0.8)&amp;lt;br/&amp;gt;	  .width(&amp;amp;quot;800&amp;amp;quot;)&amp;lt;br/&amp;gt;	  .height(&amp;amp;quot;480&amp;amp;quot;)&amp;lt;br/&amp;gt;      .dimensions([&amp;amp;quot;tag&amp;amp;quot;,&amp;amp;quot;post&amp;amp;quot;]);&amp;lt;br/&amp;gt;var vis = d3.select(&amp;amp;quot;#vis&amp;amp;quot;).append(&amp;amp;quot;svg&amp;amp;quot;)&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;width&amp;amp;quot;, chart.width())&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;height&amp;amp;quot;, chart.height());&amp;lt;br/&amp;gt;var parsed_csv=d3.csv.parse(csv);&amp;lt;br/&amp;gt;vis.datum(parsed_csv).call(chart);&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var posts={};&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	posts[&amp;amp;quot;{{post.title}}&amp;amp;quot;]={&amp;lt;br/&amp;gt;		&amp;amp;quot;url&amp;amp;quot;:&amp;amp;quot;{{post.url}}&amp;amp;quot;,&amp;lt;br/&amp;gt;	};&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;vis.selectAll(&amp;amp;quot;.category text&amp;amp;quot;).on(&amp;amp;quot;click&amp;amp;quot;,function(d){&amp;lt;br/&amp;gt;	if(!</description>
+    </item>
+    <item>
+      <title>删除github pages的master分支</title>
+      <link>https://vindurriel.github.io/post/2013-07-21-delete-master-branch-on-github-pages/</link>
+      <pubDate>Sun, 21 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-21-delete-master-branch-on-github-pages/</guid>
+      <description>在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。&amp;lt;br/&amp;gt;首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 `git branch -D master` 删除master分支。</description>
+    </item>
+    <item>
+      <title>github pages 配置</title>
+      <link>https://vindurriel.github.io/post/2013-07-19-github-pages-setup/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-19-github-pages-setup/</guid>
+      <description>comments :&amp;lt;br/&amp;gt;	    provider : disqus&amp;lt;br/&amp;gt;	    disqus :&amp;lt;br/&amp;gt;	      short_name : YOUR_DISQUS_SITE_NAME&amp;lt;br/&amp;gt;	      &amp;lt;br/&amp;gt;你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。&amp;lt;br/&amp;gt;$ CHCP 65001&amp;lt;br/&amp;gt;如果是在git bash中的话，需要设置如下环境变量： &amp;lt;br/&amp;gt;	&amp;lt;br/&amp;gt;	export LC_ALL = enUS.UTF-8&amp;lt;br/&amp;gt;	export LANG   = enUS.UTF-8&amp;lt;br/&amp;gt;然后就可以 `jekyll serve --watch`了。&amp;lt;br/&amp;gt;comments :&amp;lt;br/&amp;gt;	    provider : disqus&amp;lt;br/&amp;gt;	    disqus :&amp;lt;br/&amp;gt;	      short_name : YOUR_DISQUS_SITE_NAME&amp;lt;br/&amp;gt;	      &amp;lt;br/&amp;gt;你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。&amp;lt;br/&amp;gt;如果是在git bash中的话，需要设置如下环境变量： &amp;lt;br/&amp;gt;	&amp;lt;br/&amp;gt;	export LC_ALL = enUS.UTF-8&amp;lt;br/&amp;gt;	export LANG   = enUS.UTF-8</description>
+    </item>
+    <item>
+      <title>为gem install 提速</title>
+      <link>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</guid>
+      <description>```&amp;lt;br/&amp;gt;:bulk_threshold: 1000&amp;lt;br/&amp;gt;:backtrace: false&amp;lt;br/&amp;gt;gemcutter_key: XXXXX&amp;lt;br/&amp;gt;gem: --no-ri --no-rdoc&amp;lt;br/&amp;gt;:benchmark: false&amp;lt;br/&amp;gt;:verbose: true&amp;lt;br/&amp;gt;:update_sources: true&amp;lt;br/&amp;gt;:sources: &amp;lt;br/&amp;gt;- http://gems.rubyforge.org/&amp;lt;br/&amp;gt;- http://gems.opscode.com&amp;lt;br/&amp;gt;```&amp;lt;br/&amp;gt;主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。</description>
+    </item>
+    <item>
+      <title>Covid Report</title>
+      <link>https://vindurriel.github.io/post/2022-08-08-covid-report/</link>
+      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2022-08-08-covid-report/</guid>
+      <description>&lt;p&gt;Data description: Daily new confirmed covid cases of every province in the China mainland area.&lt;/p&gt;
+&lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
+&lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Data are updated weekly.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;link&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

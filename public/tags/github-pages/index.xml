@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Github Pages on vindurriel</title>
+    <link>https://vindurriel.github.io/tags/github-pages/</link>
+    <description>Recent content in Github Pages on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>删除github pages的master分支</title>
+      <link>https://vindurriel.github.io/post/2013-07-21-delete-master-branch-on-github-pages/</link>
+      <pubDate>Sun, 21 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-21-delete-master-branch-on-github-pages/</guid>
+      <description>在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。&amp;lt;br/&amp;gt;首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 `git branch -D master` 删除master分支。</description>
+    </item>
+    <item>
+      <title>github pages 配置</title>
+      <link>https://vindurriel.github.io/post/2013-07-19-github-pages-setup/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2013-07-19-github-pages-setup/</guid>
+      <description>comments :&amp;lt;br/&amp;gt;	    provider : disqus&amp;lt;br/&amp;gt;	    disqus :&amp;lt;br/&amp;gt;	      short_name : YOUR_DISQUS_SITE_NAME&amp;lt;br/&amp;gt;	      &amp;lt;br/&amp;gt;你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。&amp;lt;br/&amp;gt;$ CHCP 65001&amp;lt;br/&amp;gt;如果是在git bash中的话，需要设置如下环境变量： &amp;lt;br/&amp;gt;	&amp;lt;br/&amp;gt;	export LC_ALL = enUS.UTF-8&amp;lt;br/&amp;gt;	export LANG   = enUS.UTF-8&amp;lt;br/&amp;gt;然后就可以 `jekyll serve --watch`了。&amp;lt;br/&amp;gt;comments :&amp;lt;br/&amp;gt;	    provider : disqus&amp;lt;br/&amp;gt;	    disqus :&amp;lt;br/&amp;gt;	      short_name : YOUR_DISQUS_SITE_NAME&amp;lt;br/&amp;gt;	      &amp;lt;br/&amp;gt;你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。&amp;lt;br/&amp;gt;如果是在git bash中的话，需要设置如下环境变量： &amp;lt;br/&amp;gt;	&amp;lt;br/&amp;gt;	export LC_ALL = enUS.UTF-8&amp;lt;br/&amp;gt;	export LANG   = enUS.UTF-8</description>
+    </item>
+  </channel>
+</rss>
