@@ -225,31 +225,6 @@ Labeled Force Layout
   var hash_tag={};
   var post_id=0,tag_id=0;
       graph.nodes.push({
-          "name": "想跳槽？学学人猿泰山",
-          "url":"https:\/\/vindurriel.github.io\/post\/2014-04-10-tarzan\/",
-          "type":"post", 
-      });
-      post_id=graph.nodes.length-1;
-      
-          if(hash_tag["Job"]===undefined){
-              graph.nodes.push({
-                  "name": "Job",
-                  "url":"https:\/\/vindurriel.github.io\/tags\/job\/",
-                  "type":"tag",
-              });
-              tag_id=graph.nodes.length-1;
-              hash_tag["Job"]=tag_id;
-          } else {
-              tag_id=hash_tag["Job"];
-          }
-          graph.links.push({
-              "source":post_id,
-              "target":tag_id,
-              "value":1    
-          });
-      
-  
-      graph.nodes.push({
           "name": "用Python做文本摘要",
           "url":"https:\/\/vindurriel.github.io\/post\/2014-03-26-python-3\/",
           "type":"post", 

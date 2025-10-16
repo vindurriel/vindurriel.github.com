@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Testing on vindurriel</title>
+    <link>https://vindurriel.github.io/en/tags/testing/</link>
+    <description>Recent content in Testing on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 20 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/en/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Testing</title>
+      <link>https://vindurriel.github.io/en/post/on-testing/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-testing/</guid>
+      <description>&lt;h2 id=&#34;why&#34;&gt;why?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;the only proper way to do any kind of research&lt;/li&gt;
+&lt;li&gt;for quality assurance goals&lt;/li&gt;
+&lt;li&gt;find and fix bugs as early as possible&lt;/li&gt;
+&lt;li&gt;ensure code changes work as expected without breaking any released features&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tests-as-in-software-system-development&#34;&gt;Tests as in software system development&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;when to do&lt;/th&gt;
+          &lt;th&gt;done by whom&lt;/th&gt;
+          &lt;th&gt;granularity&lt;/th&gt;
+          &lt;th&gt;whitebox/blackbox&lt;/th&gt;
+          &lt;th&gt;tools&lt;/th&gt;
+          &lt;th&gt;business impact&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;unit test&lt;/td&gt;
+          &lt;td&gt;during coding&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per function&lt;/td&gt;
+          &lt;td&gt;whitebox&lt;/td&gt;
+          &lt;td&gt;code libs&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;smoke test&lt;/td&gt;
+          &lt;td&gt;after coding&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per api, per service&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;cucumber, etc.&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;integration test&lt;/td&gt;
+          &lt;td&gt;system integration&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per system&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;cucumber, etc.&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;performance test&lt;/td&gt;
+          &lt;td&gt;before release&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per system&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;gatlin, jmeters, etc.&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;regression test&lt;/td&gt;
+          &lt;td&gt;during &amp;amp; after release&lt;/td&gt;
+          &lt;td&gt;engineers, product owners&lt;/td&gt;
+          &lt;td&gt;per system&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;cucumber, etc.&lt;/td&gt;
+          &lt;td&gt;low&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;alpha &amp;amp; beta test&lt;/td&gt;
+          &lt;td&gt;after release&lt;/td&gt;
+          &lt;td&gt;product owners, selected users&lt;/td&gt;
+          &lt;td&gt;per product&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;high&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;test-case-design-criteria--what-factors-contribute-to-a-good-test-case-design-and-how-good-is-enough&#34;&gt;Test case design criteria : what factors contribute to a &amp;ldquo;good&amp;rdquo; test case design (and how good is enough)?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;collectively exhaustive: cover all lines of codes / all possible use cases&lt;/li&gt;
+&lt;li&gt;mutually exclusive: use as few test cases / codes  as possible&lt;/li&gt;
+&lt;li&gt;rational methodology:
+&lt;ul&gt;
+&lt;li&gt;repeatable: given inputs should have stable outputs&lt;/li&gt;
+&lt;li&gt;explicit inputs and outputs without side effects ( &amp;ldquo;pure&amp;rdquo; )&lt;/li&gt;
+&lt;li&gt;eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies&lt;/li&gt;
+&lt;li&gt;change only one variable per case&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;test-framework-criteria&#34;&gt;Test framework criteria&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;adaptive to code, input and environment changes&lt;/li&gt;
+&lt;li&gt;open for extension, closed for modification&lt;/li&gt;
+&lt;li&gt;fully integrated in all phases of development processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tests-are-basically-simulations&#34;&gt;Tests are basically simulations&lt;/h2&gt;
+&lt;h3 id=&#34;why-test-on-simulations-instead-of-real-ones&#34;&gt;Why test on simulations instead of &amp;ldquo;real&amp;rdquo; ones?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;test on real subjects are costly, in some cases with business impacts&lt;/li&gt;
+&lt;li&gt;separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;prerequisites-for-doing-simulation-tests&#34;&gt;Prerequisites for doing simulation tests&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;subject codes rely on interfaces instead of specific implementations&lt;/li&gt;
+&lt;li&gt;subject codes use dependency injection (all dependencies are specified in object creation)&lt;/li&gt;
+&lt;li&gt;aspect oriented programming: subject codes have middleware injection points for testing purposes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;variances-of-simulation-objects&#34;&gt;Variances of simulation objects&lt;/h3&gt;
+&lt;p&gt;excerpt from &lt;a href=&#34;http://xunitpatterns.com/Test%20Double%20Patterns.html&#34;&gt;http://xunitpatterns.com/Test%20Double%20Patterns.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

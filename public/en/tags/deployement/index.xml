@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Deployement on vindurriel</title>
+    <link>https://vindurriel.github.io/en/tags/deployement/</link>
+    <description>Recent content in Deployement on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 13 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/en/tags/deployement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deployment evolutions</title>
+      <link>https://vindurriel.github.io/en/post/deployment/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/deployment/</guid>
+      <description>&lt;h2 id=&#34;case-1-whatis-a-slack-command-server&#34;&gt;Case 1. &amp;ldquo;/whatis&amp;rdquo;: a slack command server&lt;/h2&gt;
+&lt;p&gt;Business: When Slack users input a command like &amp;ldquo;/whatis GDPR&amp;rdquo;, search on wiki pages and respond in 3 seconds what GDPR is.&lt;/p&gt;
+&lt;h2 id=&#34;generation-1-servers-on-machines&#34;&gt;Generation 1. servers on machines&lt;/h2&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;ElasticSearch: to respond in less than a second&lt;/p&gt;
+&lt;p&gt;Ngrok: to pierce the private network&lt;/p&gt;
+&lt;h3 id=&#34;gen-2-containerized&#34;&gt;Gen 2. containerized&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Docker: to make deployments reliable&lt;/p&gt;
+&lt;h3 id=&#34;gen-3-cloud-aws-ec2--amazon-elasticsearch-service&#34;&gt;Gen 3. Cloud (AWS EC2 + Amazon ElasticSearch Service)&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;To get rid of on-premise server room, which occasionally suffers from power outages.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>On Software Delivery</title>
+      <link>https://vindurriel.github.io/en/post/on-software-delivery/</link>
+      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-software-delivery/</guid>
+      <description>&lt;h1 id=&#34;a-brief-history&#34;&gt;A brief history&lt;/h1&gt;
+&lt;p&gt;The beginning: trade software for money
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/begin.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Distribution problems: installation, licensing, upgrades
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/problems.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Client / Server
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/cs.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Distributed services (Conway&amp;rsquo;s law)
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/distributed.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Exploiting resources: Andy and Bill&amp;rsquo;s law
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/andy-bill.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Outsourcing hardwares
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/hardware.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Outsourcing Infra-Softwares
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/infra.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Cloud industry
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/cloud.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;software-delivery-concept-evolution-swot-analysis&#34;&gt;Software delivery concept evolution (SWOT analysis)&lt;/h1&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Concept&lt;/th&gt;
+          &lt;th&gt;strength&lt;/th&gt;
+          &lt;th&gt;weakness&lt;/th&gt;
+          &lt;th&gt;opportunity&lt;/th&gt;
+          &lt;th&gt;threat&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;library&lt;/td&gt;
+          &lt;td&gt;extension and consolidation&lt;/td&gt;
+          &lt;td&gt;requires build; cannot deploy independently&lt;/td&gt;
+          &lt;td&gt;semantic versions&lt;/td&gt;
+          &lt;td&gt;dependency hell; backward / forward compatibility&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;runtime binary + scripts&lt;/td&gt;
+          &lt;td&gt;deploy independently; cross-platform;&lt;/td&gt;
+          &lt;td&gt;slow; cannot conceal information; need a large runtime to do small things&lt;/td&gt;
+          &lt;td&gt;fast development&lt;/td&gt;
+          &lt;td&gt;hard to maintain; cannot hide sensitive information&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;binary packages / installers&lt;/td&gt;
+          &lt;td&gt;does not require build; has more complexity&lt;/td&gt;
+          &lt;td&gt;cannot cross-platform; cannot fully control the deployment environment&lt;/td&gt;
+          &lt;td&gt;sell as products, license and fee&lt;/td&gt;
+          &lt;td&gt;hard to upgrade; security risks.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;services on servers&lt;/td&gt;
+          &lt;td&gt;more control on the deployment sites; upgrade anytime&lt;/td&gt;
+          &lt;td&gt;performance / experience depends on network connections&lt;/td&gt;
+          &lt;td&gt;APIs; social networks; zero down time; freeminum&lt;/td&gt;
+          &lt;td&gt;network security; do not control client upgrades&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;distributed / tiered services&lt;/td&gt;
+          &lt;td&gt;independent deployment and evolution, divide and conquer&lt;/td&gt;
+          &lt;td&gt;coupled with the human structure (Conway’s law)&lt;/td&gt;
+          &lt;td&gt;business can hire more people&lt;/td&gt;
+          &lt;td&gt;single point of failure; service explosion and governance; inconsistency&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;virtualization&lt;/td&gt;
+          &lt;td&gt;higher efficiency on hardware resources&lt;/td&gt;
+          &lt;td&gt;start / stop is slow (in minutes)&lt;/td&gt;
+          &lt;td&gt;scale up and down; pay as you go&lt;/td&gt;
+          &lt;td&gt;more security loopholes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;containerization&lt;/td&gt;
+          &lt;td&gt;a new interface to deliver and run software fast and cheap&lt;/td&gt;
+          &lt;td&gt;docker / containerd  dependency; loss of observability and performance;&lt;/td&gt;
+          &lt;td&gt;docker image repos; CI / CD&lt;/td&gt;
+          &lt;td&gt;docker vendor turf wars&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;container orchestration&lt;/td&gt;
+          &lt;td&gt;container operations&lt;/td&gt;
+          &lt;td&gt;still need to maintain nodes&lt;/td&gt;
+          &lt;td&gt;multi-tenancy container clusters; sidecars&lt;/td&gt;
+          &lt;td&gt;vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;service mesh&lt;/td&gt;
+          &lt;td&gt;observability, network routing, more ways of load balancing and flow control&lt;/td&gt;
+          &lt;td&gt;more network hops and latencies; over design for most systems;&lt;/td&gt;
+          &lt;td&gt;chaos engineering, system-level performance testing&lt;/td&gt;
+          &lt;td&gt;Sidecar errors may be a single point of failure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Serverless&lt;/td&gt;
+          &lt;td&gt;divide between functional and non-functional requirements&lt;/td&gt;
+          &lt;td&gt;reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements.&lt;/td&gt;
+          &lt;td&gt;low-code, no-code: faster development with less qualified developer.&lt;/td&gt;
+          &lt;td&gt;too many hidden layers; vendor lock-in&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;IDC&lt;/td&gt;
+          &lt;td&gt;outsourcing hardwares&lt;/td&gt;
+          &lt;td&gt;performance dependent on IDC connections and power supply&lt;/td&gt;
+          &lt;td&gt;multi-region availability; CDN; pay as you go on hardware layer.&lt;/td&gt;
+          &lt;td&gt;data security; cannot evolve on hardware  / software integrations&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Cloud&lt;/td&gt;
+          &lt;td&gt;outsourcing softwares and system operations&lt;/td&gt;
+          &lt;td&gt;system has more hidden layers&lt;/td&gt;
+          &lt;td&gt;easy infrastructure; pay as you go on more layers; no need to maintain hardwares&lt;/td&gt;
+          &lt;td&gt;vendor lock-in; Hotel California pricing&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+  </channel>
+</rss>

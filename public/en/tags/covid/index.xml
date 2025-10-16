@@ -6,12 +6,12 @@
     <description>Recent content in Covid on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 08 Aug 2012 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Aug 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/en/tags/covid/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Covid Report</title>
       <link>https://vindurriel.github.io/en/post/2022-08-08-covid-report/</link>
-      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 08 Aug 2022 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/post/2022-08-08-covid-report/</guid>
       <description>&lt;p&gt;Data description: Daily new confirmed covid cases of every province in the China mainland area.&lt;/p&gt;
 &lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;

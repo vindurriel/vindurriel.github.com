@@ -6,18 +6,294 @@
     <description>Recent content in Posts on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 08 Aug 2012 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On innovation</title>
+      <link>https://vindurriel.github.io/en/post/on-innovation/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-innovation/</guid>
+      <description>&lt;h2 id=&#34;whats-the-difference-of-creation-innovation-and-improvement&#34;&gt;What’s the difference of creation, innovation, and improvement?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Creation is making something, like making a pot or a baby.&lt;/li&gt;
+&lt;li&gt;Innovation is making something different and new, like making an AI.&lt;/li&gt;
+&lt;li&gt;Improvement is making things better, it does not have to be new.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Different and new is relatively easy. Doing something that’s genuinely better is very hard. - Jonathan Ive&lt;/p&gt;
+&lt;h2 id=&#34;why-innovation-matters-to-business&#34;&gt;Why Innovation matters to business&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Companies want to make more money for a longer time.&lt;/li&gt;
+&lt;li&gt;Predicting the future is very profitable.&lt;/li&gt;
+&lt;li&gt;The best the way to predict the future is to create it. - Peter Drucker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-to-do-innovation&#34;&gt;How to do innovation&lt;/h2&gt;
+&lt;p&gt;In Two steps: exploration and exploitation.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Covid Report</title>
       <link>https://vindurriel.github.io/en/post/2022-08-08-covid-report/</link>
-      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 08 Aug 2022 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/post/2022-08-08-covid-report/</guid>
       <description>&lt;p&gt;Data description: Daily new confirmed covid cases of every province in the China mainland area.&lt;/p&gt;
 &lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
 &lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Data are updated weekly.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Deployment evolutions</title>
+      <link>https://vindurriel.github.io/en/post/deployment/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/deployment/</guid>
+      <description>&lt;h2 id=&#34;case-1-whatis-a-slack-command-server&#34;&gt;Case 1. &amp;ldquo;/whatis&amp;rdquo;: a slack command server&lt;/h2&gt;
+&lt;p&gt;Business: When Slack users input a command like &amp;ldquo;/whatis GDPR&amp;rdquo;, search on wiki pages and respond in 3 seconds what GDPR is.&lt;/p&gt;
+&lt;h2 id=&#34;generation-1-servers-on-machines&#34;&gt;Generation 1. servers on machines&lt;/h2&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;ElasticSearch: to respond in less than a second&lt;/p&gt;
+&lt;p&gt;Ngrok: to pierce the private network&lt;/p&gt;
+&lt;h3 id=&#34;gen-2-containerized&#34;&gt;Gen 2. containerized&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Docker: to make deployments reliable&lt;/p&gt;
+&lt;h3 id=&#34;gen-3-cloud-aws-ec2--amazon-elasticsearch-service&#34;&gt;Gen 3. Cloud (AWS EC2 + Amazon ElasticSearch Service)&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;To get rid of on-premise server room, which occasionally suffers from power outages.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>On Software Delivery</title>
+      <link>https://vindurriel.github.io/en/post/on-software-delivery/</link>
+      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-software-delivery/</guid>
+      <description>&lt;h1 id=&#34;a-brief-history&#34;&gt;A brief history&lt;/h1&gt;
+&lt;p&gt;The beginning: trade software for money
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/begin.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Distribution problems: installation, licensing, upgrades
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/problems.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Client / Server
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/cs.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Distributed services (Conway&amp;rsquo;s law)
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/distributed.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Exploiting resources: Andy and Bill&amp;rsquo;s law
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/andy-bill.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Outsourcing hardwares
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/hardware.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Outsourcing Infra-Softwares
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/infra.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Cloud industry
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/on-software-delivery/cloud.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;software-delivery-concept-evolution-swot-analysis&#34;&gt;Software delivery concept evolution (SWOT analysis)&lt;/h1&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Concept&lt;/th&gt;
+          &lt;th&gt;strength&lt;/th&gt;
+          &lt;th&gt;weakness&lt;/th&gt;
+          &lt;th&gt;opportunity&lt;/th&gt;
+          &lt;th&gt;threat&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;library&lt;/td&gt;
+          &lt;td&gt;extension and consolidation&lt;/td&gt;
+          &lt;td&gt;requires build; cannot deploy independently&lt;/td&gt;
+          &lt;td&gt;semantic versions&lt;/td&gt;
+          &lt;td&gt;dependency hell; backward / forward compatibility&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;runtime binary + scripts&lt;/td&gt;
+          &lt;td&gt;deploy independently; cross-platform;&lt;/td&gt;
+          &lt;td&gt;slow; cannot conceal information; need a large runtime to do small things&lt;/td&gt;
+          &lt;td&gt;fast development&lt;/td&gt;
+          &lt;td&gt;hard to maintain; cannot hide sensitive information&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;binary packages / installers&lt;/td&gt;
+          &lt;td&gt;does not require build; has more complexity&lt;/td&gt;
+          &lt;td&gt;cannot cross-platform; cannot fully control the deployment environment&lt;/td&gt;
+          &lt;td&gt;sell as products, license and fee&lt;/td&gt;
+          &lt;td&gt;hard to upgrade; security risks.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;services on servers&lt;/td&gt;
+          &lt;td&gt;more control on the deployment sites; upgrade anytime&lt;/td&gt;
+          &lt;td&gt;performance / experience depends on network connections&lt;/td&gt;
+          &lt;td&gt;APIs; social networks; zero down time; freeminum&lt;/td&gt;
+          &lt;td&gt;network security; do not control client upgrades&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;distributed / tiered services&lt;/td&gt;
+          &lt;td&gt;independent deployment and evolution, divide and conquer&lt;/td&gt;
+          &lt;td&gt;coupled with the human structure (Conway’s law)&lt;/td&gt;
+          &lt;td&gt;business can hire more people&lt;/td&gt;
+          &lt;td&gt;single point of failure; service explosion and governance; inconsistency&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;virtualization&lt;/td&gt;
+          &lt;td&gt;higher efficiency on hardware resources&lt;/td&gt;
+          &lt;td&gt;start / stop is slow (in minutes)&lt;/td&gt;
+          &lt;td&gt;scale up and down; pay as you go&lt;/td&gt;
+          &lt;td&gt;more security loopholes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;containerization&lt;/td&gt;
+          &lt;td&gt;a new interface to deliver and run software fast and cheap&lt;/td&gt;
+          &lt;td&gt;docker / containerd  dependency; loss of observability and performance;&lt;/td&gt;
+          &lt;td&gt;docker image repos; CI / CD&lt;/td&gt;
+          &lt;td&gt;docker vendor turf wars&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;container orchestration&lt;/td&gt;
+          &lt;td&gt;container operations&lt;/td&gt;
+          &lt;td&gt;still need to maintain nodes&lt;/td&gt;
+          &lt;td&gt;multi-tenancy container clusters; sidecars&lt;/td&gt;
+          &lt;td&gt;vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;service mesh&lt;/td&gt;
+          &lt;td&gt;observability, network routing, more ways of load balancing and flow control&lt;/td&gt;
+          &lt;td&gt;more network hops and latencies; over design for most systems;&lt;/td&gt;
+          &lt;td&gt;chaos engineering, system-level performance testing&lt;/td&gt;
+          &lt;td&gt;Sidecar errors may be a single point of failure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Serverless&lt;/td&gt;
+          &lt;td&gt;divide between functional and non-functional requirements&lt;/td&gt;
+          &lt;td&gt;reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements.&lt;/td&gt;
+          &lt;td&gt;low-code, no-code: faster development with less qualified developer.&lt;/td&gt;
+          &lt;td&gt;too many hidden layers; vendor lock-in&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;IDC&lt;/td&gt;
+          &lt;td&gt;outsourcing hardwares&lt;/td&gt;
+          &lt;td&gt;performance dependent on IDC connections and power supply&lt;/td&gt;
+          &lt;td&gt;multi-region availability; CDN; pay as you go on hardware layer.&lt;/td&gt;
+          &lt;td&gt;data security; cannot evolve on hardware  / software integrations&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Cloud&lt;/td&gt;
+          &lt;td&gt;outsourcing softwares and system operations&lt;/td&gt;
+          &lt;td&gt;system has more hidden layers&lt;/td&gt;
+          &lt;td&gt;easy infrastructure; pay as you go on more layers; no need to maintain hardwares&lt;/td&gt;
+          &lt;td&gt;vendor lock-in; Hotel California pricing&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    <item>
+      <title>On Testing</title>
+      <link>https://vindurriel.github.io/en/post/on-testing/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-testing/</guid>
+      <description>&lt;h2 id=&#34;why&#34;&gt;why?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;the only proper way to do any kind of research&lt;/li&gt;
+&lt;li&gt;for quality assurance goals&lt;/li&gt;
+&lt;li&gt;find and fix bugs as early as possible&lt;/li&gt;
+&lt;li&gt;ensure code changes work as expected without breaking any released features&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tests-as-in-software-system-development&#34;&gt;Tests as in software system development&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;when to do&lt;/th&gt;
+          &lt;th&gt;done by whom&lt;/th&gt;
+          &lt;th&gt;granularity&lt;/th&gt;
+          &lt;th&gt;whitebox/blackbox&lt;/th&gt;
+          &lt;th&gt;tools&lt;/th&gt;
+          &lt;th&gt;business impact&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;unit test&lt;/td&gt;
+          &lt;td&gt;during coding&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per function&lt;/td&gt;
+          &lt;td&gt;whitebox&lt;/td&gt;
+          &lt;td&gt;code libs&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;smoke test&lt;/td&gt;
+          &lt;td&gt;after coding&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per api, per service&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;cucumber, etc.&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;integration test&lt;/td&gt;
+          &lt;td&gt;system integration&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per system&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;cucumber, etc.&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;performance test&lt;/td&gt;
+          &lt;td&gt;before release&lt;/td&gt;
+          &lt;td&gt;engineers&lt;/td&gt;
+          &lt;td&gt;per system&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;gatlin, jmeters, etc.&lt;/td&gt;
+          &lt;td&gt;none&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;regression test&lt;/td&gt;
+          &lt;td&gt;during &amp;amp; after release&lt;/td&gt;
+          &lt;td&gt;engineers, product owners&lt;/td&gt;
+          &lt;td&gt;per system&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;cucumber, etc.&lt;/td&gt;
+          &lt;td&gt;low&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;alpha &amp;amp; beta test&lt;/td&gt;
+          &lt;td&gt;after release&lt;/td&gt;
+          &lt;td&gt;product owners, selected users&lt;/td&gt;
+          &lt;td&gt;per product&lt;/td&gt;
+          &lt;td&gt;blackbox&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;high&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;test-case-design-criteria--what-factors-contribute-to-a-good-test-case-design-and-how-good-is-enough&#34;&gt;Test case design criteria : what factors contribute to a &amp;ldquo;good&amp;rdquo; test case design (and how good is enough)?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;collectively exhaustive: cover all lines of codes / all possible use cases&lt;/li&gt;
+&lt;li&gt;mutually exclusive: use as few test cases / codes  as possible&lt;/li&gt;
+&lt;li&gt;rational methodology:
+&lt;ul&gt;
+&lt;li&gt;repeatable: given inputs should have stable outputs&lt;/li&gt;
+&lt;li&gt;explicit inputs and outputs without side effects ( &amp;ldquo;pure&amp;rdquo; )&lt;/li&gt;
+&lt;li&gt;eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies&lt;/li&gt;
+&lt;li&gt;change only one variable per case&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;test-framework-criteria&#34;&gt;Test framework criteria&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;adaptive to code, input and environment changes&lt;/li&gt;
+&lt;li&gt;open for extension, closed for modification&lt;/li&gt;
+&lt;li&gt;fully integrated in all phases of development processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tests-are-basically-simulations&#34;&gt;Tests are basically simulations&lt;/h2&gt;
+&lt;h3 id=&#34;why-test-on-simulations-instead-of-real-ones&#34;&gt;Why test on simulations instead of &amp;ldquo;real&amp;rdquo; ones?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;test on real subjects are costly, in some cases with business impacts&lt;/li&gt;
+&lt;li&gt;separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;prerequisites-for-doing-simulation-tests&#34;&gt;Prerequisites for doing simulation tests&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;subject codes rely on interfaces instead of specific implementations&lt;/li&gt;
+&lt;li&gt;subject codes use dependency injection (all dependencies are specified in object creation)&lt;/li&gt;
+&lt;li&gt;aspect oriented programming: subject codes have middleware injection points for testing purposes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;variances-of-simulation-objects&#34;&gt;Variances of simulation objects&lt;/h3&gt;
+&lt;p&gt;excerpt from &lt;a href=&#34;http://xunitpatterns.com/Test%20Double%20Patterns.html&#34;&gt;http://xunitpatterns.com/Test%20Double%20Patterns.html&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

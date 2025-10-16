@@ -1,5 +1,5 @@
 ---
-date: "2012-08-08T00:00:00Z"
+date: "2022-08-08T00:00:00Z"
 tags:
 - visualization
 - covid

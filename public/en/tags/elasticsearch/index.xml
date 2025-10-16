@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Elasticsearch on vindurriel</title>
+    <link>https://vindurriel.github.io/en/tags/elasticsearch/</link>
+    <description>Recent content in Elasticsearch on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 13 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/en/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deployment evolutions</title>
+      <link>https://vindurriel.github.io/en/post/deployment/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/deployment/</guid>
+      <description>&lt;h2 id=&#34;case-1-whatis-a-slack-command-server&#34;&gt;Case 1. &amp;ldquo;/whatis&amp;rdquo;: a slack command server&lt;/h2&gt;
+&lt;p&gt;Business: When Slack users input a command like &amp;ldquo;/whatis GDPR&amp;rdquo;, search on wiki pages and respond in 3 seconds what GDPR is.&lt;/p&gt;
+&lt;h2 id=&#34;generation-1-servers-on-machines&#34;&gt;Generation 1. servers on machines&lt;/h2&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;ElasticSearch: to respond in less than a second&lt;/p&gt;
+&lt;p&gt;Ngrok: to pierce the private network&lt;/p&gt;
+&lt;h3 id=&#34;gen-2-containerized&#34;&gt;Gen 2. containerized&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Docker: to make deployments reliable&lt;/p&gt;
+&lt;h3 id=&#34;gen-3-cloud-aws-ec2--amazon-elasticsearch-service&#34;&gt;Gen 3. Cloud (AWS EC2 + Amazon ElasticSearch Service)&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/deployment/g3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;To get rid of on-premise server room, which occasionally suffers from power outages.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

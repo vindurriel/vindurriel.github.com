@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>On Software Delivery | vindurriel</title>
+<meta name="keywords" content="cloud, deployement, container">
+<meta name="description" content="A brief history
+The beginning: trade software for money
+
+Distribution problems: installation, licensing, upgrades
+
+Client / Server
+
+Distributed services (Conway&rsquo;s law)
+
+Exploiting resources: Andy and Bill&rsquo;s law
+
+Outsourcing hardwares
+
+Outsourcing Infra-Softwares
+
+Cloud industry
+
+Software delivery concept evolution (SWOT analysis)
+
+  
+      
+          Concept
+          strength
+          weakness
+          opportunity
+          threat
+      
+  
+  
+      
+          library
+          extension and consolidation
+          requires build; cannot deploy independently
+          semantic versions
+          dependency hell; backward / forward compatibility
+      
+      
+          runtime binary &#43; scripts
+          deploy independently; cross-platform;
+          slow; cannot conceal information; need a large runtime to do small things
+          fast development
+          hard to maintain; cannot hide sensitive information
+      
+      
+          binary packages / installers
+          does not require build; has more complexity
+          cannot cross-platform; cannot fully control the deployment environment
+          sell as products, license and fee
+          hard to upgrade; security risks.
+      
+      
+          services on servers
+          more control on the deployment sites; upgrade anytime
+          performance / experience depends on network connections
+          APIs; social networks; zero down time; freeminum
+          network security; do not control client upgrades
+      
+      
+          distributed / tiered services
+          independent deployment and evolution, divide and conquer
+          coupled with the human structure (Conway’s law)
+          business can hire more people
+          single point of failure; service explosion and governance; inconsistency
+      
+      
+          virtualization
+          higher efficiency on hardware resources
+          start / stop is slow (in minutes)
+          scale up and down; pay as you go
+          more security loopholes
+      
+      
+          containerization
+          a new interface to deliver and run software fast and cheap
+          docker / containerd  dependency; loss of observability and performance;
+          docker image repos; CI / CD
+          docker vendor turf wars
+      
+      
+          container orchestration
+          container operations
+          still need to maintain nodes
+          multi-tenancy container clusters; sidecars
+          vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility
+      
+      
+          service mesh
+          observability, network routing, more ways of load balancing and flow control
+          more network hops and latencies; over design for most systems;
+          chaos engineering, system-level performance testing
+          Sidecar errors may be a single point of failure
+      
+      
+          Serverless
+          divide between functional and non-functional requirements
+          reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements.
+          low-code, no-code: faster development with less qualified developer.
+          too many hidden layers; vendor lock-in
+      
+      
+          IDC
+          outsourcing hardwares
+          performance dependent on IDC connections and power supply
+          multi-region availability; CDN; pay as you go on hardware layer.
+          data security; cannot evolve on hardware  / software integrations
+      
+      
+          Cloud
+          outsourcing softwares and system operations
+          system has more hidden layers
+          easy infrastructure; pay as you go on more layers; no need to maintain hardwares
+          vendor lock-in; Hotel California pricing
+      
+  
+">
+<meta name="author" content="">
+<link rel="canonical" href="/post/on-software-delivery.en-copy/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="/post/on-software-delivery.en-copy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="/post/on-software-delivery.en-copy/">
+  <meta property="og:site_name" content="vindurriel">
+  <meta property="og:title" content="On Software Delivery">
+  <meta property="og:description" content="A brief history The beginning: trade software for money Distribution problems: installation, licensing, upgrades Client / Server Distributed services (Conway’s law) Exploiting resources: Andy and Bill’s law Outsourcing hardwares Outsourcing Infra-Softwares Cloud industry Software delivery concept evolution (SWOT analysis) Concept strength weakness opportunity threat library extension and consolidation requires build; cannot deploy independently semantic versions dependency hell; backward / forward compatibility runtime binary &#43; scripts deploy independently; cross-platform; slow; cannot conceal information; need a large runtime to do small things fast development hard to maintain; cannot hide sensitive information binary packages / installers does not require build; has more complexity cannot cross-platform; cannot fully control the deployment environment sell as products, license and fee hard to upgrade; security risks. services on servers more control on the deployment sites; upgrade anytime performance / experience depends on network connections APIs; social networks; zero down time; freeminum network security; do not control client upgrades distributed / tiered services independent deployment and evolution, divide and conquer coupled with the human structure (Conway’s law) business can hire more people single point of failure; service explosion and governance; inconsistency virtualization higher efficiency on hardware resources start / stop is slow (in minutes) scale up and down; pay as you go more security loopholes containerization a new interface to deliver and run software fast and cheap docker / containerd dependency; loss of observability and performance; docker image repos; CI / CD docker vendor turf wars container orchestration container operations still need to maintain nodes multi-tenancy container clusters; sidecars vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility service mesh observability, network routing, more ways of load balancing and flow control more network hops and latencies; over design for most systems; chaos engineering, system-level performance testing Sidecar errors may be a single point of failure Serverless divide between functional and non-functional requirements reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements. low-code, no-code: faster development with less qualified developer. too many hidden layers; vendor lock-in IDC outsourcing hardwares performance dependent on IDC connections and power supply multi-region availability; CDN; pay as you go on hardware layer. data security; cannot evolve on hardware / software integrations Cloud outsourcing softwares and system operations system has more hidden layers easy infrastructure; pay as you go on more layers; no need to maintain hardwares vendor lock-in; Hotel California pricing ">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-07-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-07-28T00:00:00+00:00">
+    <meta property="article:tag" content="Cloud">
+    <meta property="article:tag" content="Deployement">
+    <meta property="article:tag" content="Container">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="On Software Delivery">
+<meta name="twitter:description" content="A brief history
+The beginning: trade software for money
+
+Distribution problems: installation, licensing, upgrades
+
+Client / Server
+
+Distributed services (Conway&rsquo;s law)
+
+Exploiting resources: Andy and Bill&rsquo;s law
+
+Outsourcing hardwares
+
+Outsourcing Infra-Softwares
+
+Cloud industry
+
+Software delivery concept evolution (SWOT analysis)
+
+  
+      
+          Concept
+          strength
+          weakness
+          opportunity
+          threat
+      
+  
+  
+      
+          library
+          extension and consolidation
+          requires build; cannot deploy independently
+          semantic versions
+          dependency hell; backward / forward compatibility
+      
+      
+          runtime binary &#43; scripts
+          deploy independently; cross-platform;
+          slow; cannot conceal information; need a large runtime to do small things
+          fast development
+          hard to maintain; cannot hide sensitive information
+      
+      
+          binary packages / installers
+          does not require build; has more complexity
+          cannot cross-platform; cannot fully control the deployment environment
+          sell as products, license and fee
+          hard to upgrade; security risks.
+      
+      
+          services on servers
+          more control on the deployment sites; upgrade anytime
+          performance / experience depends on network connections
+          APIs; social networks; zero down time; freeminum
+          network security; do not control client upgrades
+      
+      
+          distributed / tiered services
+          independent deployment and evolution, divide and conquer
+          coupled with the human structure (Conway’s law)
+          business can hire more people
+          single point of failure; service explosion and governance; inconsistency
+      
+      
+          virtualization
+          higher efficiency on hardware resources
+          start / stop is slow (in minutes)
+          scale up and down; pay as you go
+          more security loopholes
+      
+      
+          containerization
+          a new interface to deliver and run software fast and cheap
+          docker / containerd  dependency; loss of observability and performance;
+          docker image repos; CI / CD
+          docker vendor turf wars
+      
+      
+          container orchestration
+          container operations
+          still need to maintain nodes
+          multi-tenancy container clusters; sidecars
+          vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility
+      
+      
+          service mesh
+          observability, network routing, more ways of load balancing and flow control
+          more network hops and latencies; over design for most systems;
+          chaos engineering, system-level performance testing
+          Sidecar errors may be a single point of failure
+      
+      
+          Serverless
+          divide between functional and non-functional requirements
+          reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements.
+          low-code, no-code: faster development with less qualified developer.
+          too many hidden layers; vendor lock-in
+      
+      
+          IDC
+          outsourcing hardwares
+          performance dependent on IDC connections and power supply
+          multi-region availability; CDN; pay as you go on hardware layer.
+          data security; cannot evolve on hardware  / software integrations
+      
+      
+          Cloud
+          outsourcing softwares and system operations
+          system has more hidden layers
+          easy infrastructure; pay as you go on more layers; no need to maintain hardwares
+          vendor lock-in; Hotel California pricing
+      
+  
+">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/post/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "On Software Delivery",
+      "item": "/post/on-software-delivery.en-copy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "On Software Delivery",
+  "name": "On Software Delivery",
+  "description": "A brief history The beginning: trade software for money Distribution problems: installation, licensing, upgrades Client / Server Distributed services (Conway\u0026rsquo;s law) Exploiting resources: Andy and Bill\u0026rsquo;s law Outsourcing hardwares Outsourcing Infra-Softwares Cloud industry Software delivery concept evolution (SWOT analysis) Concept strength weakness opportunity threat library extension and consolidation requires build; cannot deploy independently semantic versions dependency hell; backward / forward compatibility runtime binary + scripts deploy independently; cross-platform; slow; cannot conceal information; need a large runtime to do small things fast development hard to maintain; cannot hide sensitive information binary packages / installers does not require build; has more complexity cannot cross-platform; cannot fully control the deployment environment sell as products, license and fee hard to upgrade; security risks. services on servers more control on the deployment sites; upgrade anytime performance / experience depends on network connections APIs; social networks; zero down time; freeminum network security; do not control client upgrades distributed / tiered services independent deployment and evolution, divide and conquer coupled with the human structure (Conway’s law) business can hire more people single point of failure; service explosion and governance; inconsistency virtualization higher efficiency on hardware resources start / stop is slow (in minutes) scale up and down; pay as you go more security loopholes containerization a new interface to deliver and run software fast and cheap docker / containerd dependency; loss of observability and performance; docker image repos; CI / CD docker vendor turf wars container orchestration container operations still need to maintain nodes multi-tenancy container clusters; sidecars vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility service mesh observability, network routing, more ways of load balancing and flow control more network hops and latencies; over design for most systems; chaos engineering, system-level performance testing Sidecar errors may be a single point of failure Serverless divide between functional and non-functional requirements reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements. low-code, no-code: faster development with less qualified developer. too many hidden layers; vendor lock-in IDC outsourcing hardwares performance dependent on IDC connections and power supply multi-region availability; CDN; pay as you go on hardware layer. data security; cannot evolve on hardware / software integrations Cloud outsourcing softwares and system operations system has more hidden layers easy infrastructure; pay as you go on more layers; no need to maintain hardwares vendor lock-in; Hotel California pricing ",
+  "keywords": [
+    "cloud", "deployement", "container"
+  ],
+  "articleBody": "A brief history The beginning: trade software for money Distribution problems: installation, licensing, upgrades Client / Server Distributed services (Conway’s law) Exploiting resources: Andy and Bill’s law Outsourcing hardwares Outsourcing Infra-Softwares Cloud industry Software delivery concept evolution (SWOT analysis) Concept strength weakness opportunity threat library extension and consolidation requires build; cannot deploy independently semantic versions dependency hell; backward / forward compatibility runtime binary + scripts deploy independently; cross-platform; slow; cannot conceal information; need a large runtime to do small things fast development hard to maintain; cannot hide sensitive information binary packages / installers does not require build; has more complexity cannot cross-platform; cannot fully control the deployment environment sell as products, license and fee hard to upgrade; security risks. services on servers more control on the deployment sites; upgrade anytime performance / experience depends on network connections APIs; social networks; zero down time; freeminum network security; do not control client upgrades distributed / tiered services independent deployment and evolution, divide and conquer coupled with the human structure (Conway’s law) business can hire more people single point of failure; service explosion and governance; inconsistency virtualization higher efficiency on hardware resources start / stop is slow (in minutes) scale up and down; pay as you go more security loopholes containerization a new interface to deliver and run software fast and cheap docker / containerd dependency; loss of observability and performance; docker image repos; CI / CD docker vendor turf wars container orchestration container operations still need to maintain nodes multi-tenancy container clusters; sidecars vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility service mesh observability, network routing, more ways of load balancing and flow control more network hops and latencies; over design for most systems; chaos engineering, system-level performance testing Sidecar errors may be a single point of failure Serverless divide between functional and non-functional requirements reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements. low-code, no-code: faster development with less qualified developer. too many hidden layers; vendor lock-in IDC outsourcing hardwares performance dependent on IDC connections and power supply multi-region availability; CDN; pay as you go on hardware layer. data security; cannot evolve on hardware / software integrations Cloud outsourcing softwares and system operations system has more hidden layers easy infrastructure; pay as you go on more layers; no need to maintain hardwares vendor lock-in; Hotel California pricing ",
+  "wordCount" : "397",
+  "inLanguage": "zh",
+  "datePublished": "2021-07-28T00:00:00Z",
+  "dateModified": "2021-07-28T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/on-software-delivery.en-copy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "vindurriel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="vindurriel (Alt + H)">vindurriel</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/archives/" title="Archive">
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/resume/" title="简历">
+                    <span>简历</span>
+                </a>
+            </li>
+            <li>
+                <a href="/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="/">主页</a>&nbsp;»&nbsp;<a href="/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      On Software Delivery
+    </h1>
+    <div class="post-meta"><span title='2021-07-28 00:00:00 +0000 UTC'>2021年7月28日</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="a-brief-history">A brief history<a hidden class="anchor" aria-hidden="true" href="#a-brief-history">#</a></h1>
+<p>The beginning: trade software for money
+<img loading="lazy" src="/images/on-software-delivery/begin.png"></p>
+<p>Distribution problems: installation, licensing, upgrades
+<img loading="lazy" src="/images/on-software-delivery/problems.png"></p>
+<p>Client / Server
+<img loading="lazy" src="/images/on-software-delivery/cs.png"></p>
+<p>Distributed services (Conway&rsquo;s law)
+<img loading="lazy" src="/images/on-software-delivery/distributed.png"></p>
+<p>Exploiting resources: Andy and Bill&rsquo;s law
+<img loading="lazy" src="/images/on-software-delivery/andy-bill.png"></p>
+<p>Outsourcing hardwares
+<img loading="lazy" src="/images/on-software-delivery/hardware.png"></p>
+<p>Outsourcing Infra-Softwares
+<img loading="lazy" src="/images/on-software-delivery/infra.png"></p>
+<p>Cloud industry
+<img loading="lazy" src="/images/on-software-delivery/cloud.png"></p>
+<h1 id="software-delivery-concept-evolution-swot-analysis">Software delivery concept evolution (SWOT analysis)<a hidden class="anchor" aria-hidden="true" href="#software-delivery-concept-evolution-swot-analysis">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>strength</th>
+          <th>weakness</th>
+          <th>opportunity</th>
+          <th>threat</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>library</td>
+          <td>extension and consolidation</td>
+          <td>requires build; cannot deploy independently</td>
+          <td>semantic versions</td>
+          <td>dependency hell; backward / forward compatibility</td>
+      </tr>
+      <tr>
+          <td>runtime binary + scripts</td>
+          <td>deploy independently; cross-platform;</td>
+          <td>slow; cannot conceal information; need a large runtime to do small things</td>
+          <td>fast development</td>
+          <td>hard to maintain; cannot hide sensitive information</td>
+      </tr>
+      <tr>
+          <td>binary packages / installers</td>
+          <td>does not require build; has more complexity</td>
+          <td>cannot cross-platform; cannot fully control the deployment environment</td>
+          <td>sell as products, license and fee</td>
+          <td>hard to upgrade; security risks.</td>
+      </tr>
+      <tr>
+          <td>services on servers</td>
+          <td>more control on the deployment sites; upgrade anytime</td>
+          <td>performance / experience depends on network connections</td>
+          <td>APIs; social networks; zero down time; freeminum</td>
+          <td>network security; do not control client upgrades</td>
+      </tr>
+      <tr>
+          <td>distributed / tiered services</td>
+          <td>independent deployment and evolution, divide and conquer</td>
+          <td>coupled with the human structure (Conway’s law)</td>
+          <td>business can hire more people</td>
+          <td>single point of failure; service explosion and governance; inconsistency</td>
+      </tr>
+      <tr>
+          <td>virtualization</td>
+          <td>higher efficiency on hardware resources</td>
+          <td>start / stop is slow (in minutes)</td>
+          <td>scale up and down; pay as you go</td>
+          <td>more security loopholes</td>
+      </tr>
+      <tr>
+          <td>containerization</td>
+          <td>a new interface to deliver and run software fast and cheap</td>
+          <td>docker / containerd  dependency; loss of observability and performance;</td>
+          <td>docker image repos; CI / CD</td>
+          <td>docker vendor turf wars</td>
+      </tr>
+      <tr>
+          <td>container orchestration</td>
+          <td>container operations</td>
+          <td>still need to maintain nodes</td>
+          <td>multi-tenancy container clusters; sidecars</td>
+          <td>vendor lock-in on k8s designs and cloud providers; too many yamls; loss of dev agility</td>
+      </tr>
+      <tr>
+          <td>service mesh</td>
+          <td>observability, network routing, more ways of load balancing and flow control</td>
+          <td>more network hops and latencies; over design for most systems;</td>
+          <td>chaos engineering, system-level performance testing</td>
+          <td>Sidecar errors may be a single point of failure</td>
+      </tr>
+      <tr>
+          <td>Serverless</td>
+          <td>divide between functional and non-functional requirements</td>
+          <td>reinventing PaaS; maybe a wrong division; hard to work on special non-functional requirements.</td>
+          <td>low-code, no-code: faster development with less qualified developer.</td>
+          <td>too many hidden layers; vendor lock-in</td>
+      </tr>
+      <tr>
+          <td>IDC</td>
+          <td>outsourcing hardwares</td>
+          <td>performance dependent on IDC connections and power supply</td>
+          <td>multi-region availability; CDN; pay as you go on hardware layer.</td>
+          <td>data security; cannot evolve on hardware  / software integrations</td>
+      </tr>
+      <tr>
+          <td>Cloud</td>
+          <td>outsourcing softwares and system operations</td>
+          <td>system has more hidden layers</td>
+          <td>easy infrastructure; pay as you go on more layers; no need to maintain hardwares</td>
+          <td>vendor lock-in; Hotel California pricing</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/cloud/">Cloud</a></li>
+      <li><a href="/tags/deployement/">Deployement</a></li>
+      <li><a href="/tags/container/">Container</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="/">vindurriel</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

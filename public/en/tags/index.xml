@@ -6,27 +6,83 @@
     <description>Recent content in Tags on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 08 Aug 2012 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prose</title>
+      <link>https://vindurriel.github.io/en/tags/prose/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/prose/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Covid</title>
       <link>https://vindurriel.github.io/en/tags/covid/</link>
-      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 08 Aug 2022 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/tags/covid/</guid>
       <description></description>
     </item>
     <item>
       <title>NHC</title>
       <link>https://vindurriel.github.io/en/tags/nhc/</link>
-      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 08 Aug 2022 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/tags/nhc/</guid>
       <description></description>
     </item>
     <item>
       <title>Visualization</title>
       <link>https://vindurriel.github.io/en/tags/visualization/</link>
-      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 08 Aug 2022 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/tags/visualization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Aws</title>
+      <link>https://vindurriel.github.io/en/tags/aws/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/aws/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Container</title>
+      <link>https://vindurriel.github.io/en/tags/container/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/container/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deployement</title>
+      <link>https://vindurriel.github.io/en/tags/deployement/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/deployement/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Elasticsearch</title>
+      <link>https://vindurriel.github.io/en/tags/elasticsearch/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Slack</title>
+      <link>https://vindurriel.github.io/en/tags/slack/</link>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/slack/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud</title>
+      <link>https://vindurriel.github.io/en/tags/cloud/</link>
+      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Testing</title>
+      <link>https://vindurriel.github.io/en/tags/testing/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/testing/</guid>
       <description></description>
     </item>
   </channel>

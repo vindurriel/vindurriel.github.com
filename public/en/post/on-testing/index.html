@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>On Testing | vindurriel</title>
+<meta name="keywords" content="prose, testing">
+<meta name="description" content="why?
+
+the only proper way to do any kind of research
+for quality assurance goals
+find and fix bugs as early as possible
+ensure code changes work as expected without breaking any released features
+
+Tests as in software system development
+
+  
+      
+          name
+          when to do
+          done by whom
+          granularity
+          whitebox/blackbox
+          tools
+          business impact
+      
+  
+  
+      
+          unit test
+          during coding
+          engineers
+          per function
+          whitebox
+          code libs
+          none
+      
+      
+          smoke test
+          after coding
+          engineers
+          per api, per service
+          blackbox
+          cucumber, etc.
+          none
+      
+      
+          integration test
+          system integration
+          engineers
+          per system
+          blackbox
+          cucumber, etc.
+          none
+      
+      
+          performance test
+          before release
+          engineers
+          per system
+          blackbox
+          gatlin, jmeters, etc.
+          none
+      
+      
+          regression test
+          during &amp; after release
+          engineers, product owners
+          per system
+          blackbox
+          cucumber, etc.
+          low
+      
+      
+          alpha &amp; beta test
+          after release
+          product owners, selected users
+          per product
+          blackbox
+          
+          high
+      
+  
+
+Test case design criteria : what factors contribute to a &ldquo;good&rdquo; test case design (and how good is enough)?
+
+collectively exhaustive: cover all lines of codes / all possible use cases
+mutually exclusive: use as few test cases / codes  as possible
+rational methodology:
+
+repeatable: given inputs should have stable outputs
+explicit inputs and outputs without side effects ( &ldquo;pure&rdquo; )
+eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies
+change only one variable per case
+
+
+
+Test framework criteria
+
+adaptive to code, input and environment changes
+open for extension, closed for modification
+fully integrated in all phases of development processes
+
+Tests are basically simulations
+Why test on simulations instead of &ldquo;real&rdquo; ones?
+
+test on real subjects are costly, in some cases with business impacts
+separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects
+
+Prerequisites for doing simulation tests
+
+subject codes rely on interfaces instead of specific implementations
+subject codes use dependency injection (all dependencies are specified in object creation)
+aspect oriented programming: subject codes have middleware injection points for testing purposes
+
+Variances of simulation objects
+excerpt from http://xunitpatterns.com/Test%20Double%20Patterns.html">
+<meta name="author" content="">
+<link rel="canonical" href="https://vindurriel.github.io/en/post/on-testing/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://vindurriel.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://vindurriel.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vindurriel.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://vindurriel.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/en/post/on-testing/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://vindurriel.github.io/en/post/on-testing/">
+  <meta property="og:site_name" content="vindurriel">
+  <meta property="og:title" content="On Testing">
+  <meta property="og:description" content="why? the only proper way to do any kind of research for quality assurance goals find and fix bugs as early as possible ensure code changes work as expected without breaking any released features Tests as in software system development name when to do done by whom granularity whitebox/blackbox tools business impact unit test during coding engineers per function whitebox code libs none smoke test after coding engineers per api, per service blackbox cucumber, etc. none integration test system integration engineers per system blackbox cucumber, etc. none performance test before release engineers per system blackbox gatlin, jmeters, etc. none regression test during &amp; after release engineers, product owners per system blackbox cucumber, etc. low alpha &amp; beta test after release product owners, selected users per product blackbox high Test case design criteria : what factors contribute to a “good” test case design (and how good is enough)? collectively exhaustive: cover all lines of codes / all possible use cases mutually exclusive: use as few test cases / codes as possible rational methodology: repeatable: given inputs should have stable outputs explicit inputs and outputs without side effects ( “pure” ) eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies change only one variable per case Test framework criteria adaptive to code, input and environment changes open for extension, closed for modification fully integrated in all phases of development processes Tests are basically simulations Why test on simulations instead of “real” ones? test on real subjects are costly, in some cases with business impacts separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects Prerequisites for doing simulation tests subject codes rely on interfaces instead of specific implementations subject codes use dependency injection (all dependencies are specified in object creation) aspect oriented programming: subject codes have middleware injection points for testing purposes Variances of simulation objects excerpt from http://xunitpatterns.com/Test%20Double%20Patterns.html">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-06-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-06-20T00:00:00+00:00">
+    <meta property="article:tag" content="Prose">
+    <meta property="article:tag" content="Testing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="On Testing">
+<meta name="twitter:description" content="why?
+
+the only proper way to do any kind of research
+for quality assurance goals
+find and fix bugs as early as possible
+ensure code changes work as expected without breaking any released features
+
+Tests as in software system development
+
+  
+      
+          name
+          when to do
+          done by whom
+          granularity
+          whitebox/blackbox
+          tools
+          business impact
+      
+  
+  
+      
+          unit test
+          during coding
+          engineers
+          per function
+          whitebox
+          code libs
+          none
+      
+      
+          smoke test
+          after coding
+          engineers
+          per api, per service
+          blackbox
+          cucumber, etc.
+          none
+      
+      
+          integration test
+          system integration
+          engineers
+          per system
+          blackbox
+          cucumber, etc.
+          none
+      
+      
+          performance test
+          before release
+          engineers
+          per system
+          blackbox
+          gatlin, jmeters, etc.
+          none
+      
+      
+          regression test
+          during &amp; after release
+          engineers, product owners
+          per system
+          blackbox
+          cucumber, etc.
+          low
+      
+      
+          alpha &amp; beta test
+          after release
+          product owners, selected users
+          per product
+          blackbox
+          
+          high
+      
+  
+
+Test case design criteria : what factors contribute to a &ldquo;good&rdquo; test case design (and how good is enough)?
+
+collectively exhaustive: cover all lines of codes / all possible use cases
+mutually exclusive: use as few test cases / codes  as possible
+rational methodology:
+
+repeatable: given inputs should have stable outputs
+explicit inputs and outputs without side effects ( &ldquo;pure&rdquo; )
+eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies
+change only one variable per case
+
+
+
+Test framework criteria
+
+adaptive to code, input and environment changes
+open for extension, closed for modification
+fully integrated in all phases of development processes
+
+Tests are basically simulations
+Why test on simulations instead of &ldquo;real&rdquo; ones?
+
+test on real subjects are costly, in some cases with business impacts
+separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects
+
+Prerequisites for doing simulation tests
+
+subject codes rely on interfaces instead of specific implementations
+subject codes use dependency injection (all dependencies are specified in object creation)
+aspect oriented programming: subject codes have middleware injection points for testing purposes
+
+Variances of simulation objects
+excerpt from http://xunitpatterns.com/Test%20Double%20Patterns.html">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://vindurriel.github.io/en/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "On Testing",
+      "item": "https://vindurriel.github.io/en/post/on-testing/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "On Testing",
+  "name": "On Testing",
+  "description": "why? the only proper way to do any kind of research for quality assurance goals find and fix bugs as early as possible ensure code changes work as expected without breaking any released features Tests as in software system development name when to do done by whom granularity whitebox/blackbox tools business impact unit test during coding engineers per function whitebox code libs none smoke test after coding engineers per api, per service blackbox cucumber, etc. none integration test system integration engineers per system blackbox cucumber, etc. none performance test before release engineers per system blackbox gatlin, jmeters, etc. none regression test during \u0026amp; after release engineers, product owners per system blackbox cucumber, etc. low alpha \u0026amp; beta test after release product owners, selected users per product blackbox high Test case design criteria : what factors contribute to a \u0026ldquo;good\u0026rdquo; test case design (and how good is enough)? collectively exhaustive: cover all lines of codes / all possible use cases mutually exclusive: use as few test cases / codes as possible rational methodology: repeatable: given inputs should have stable outputs explicit inputs and outputs without side effects ( \u0026ldquo;pure\u0026rdquo; ) eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies change only one variable per case Test framework criteria adaptive to code, input and environment changes open for extension, closed for modification fully integrated in all phases of development processes Tests are basically simulations Why test on simulations instead of \u0026ldquo;real\u0026rdquo; ones? test on real subjects are costly, in some cases with business impacts separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects Prerequisites for doing simulation tests subject codes rely on interfaces instead of specific implementations subject codes use dependency injection (all dependencies are specified in object creation) aspect oriented programming: subject codes have middleware injection points for testing purposes Variances of simulation objects excerpt from http://xunitpatterns.com/Test%20Double%20Patterns.html\n",
+  "keywords": [
+    "prose", "testing"
+  ],
+  "articleBody": "why? the only proper way to do any kind of research for quality assurance goals find and fix bugs as early as possible ensure code changes work as expected without breaking any released features Tests as in software system development name when to do done by whom granularity whitebox/blackbox tools business impact unit test during coding engineers per function whitebox code libs none smoke test after coding engineers per api, per service blackbox cucumber, etc. none integration test system integration engineers per system blackbox cucumber, etc. none performance test before release engineers per system blackbox gatlin, jmeters, etc. none regression test during \u0026 after release engineers, product owners per system blackbox cucumber, etc. low alpha \u0026 beta test after release product owners, selected users per product blackbox high Test case design criteria : what factors contribute to a “good” test case design (and how good is enough)? collectively exhaustive: cover all lines of codes / all possible use cases mutually exclusive: use as few test cases / codes as possible rational methodology: repeatable: given inputs should have stable outputs explicit inputs and outputs without side effects ( “pure” ) eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies change only one variable per case Test framework criteria adaptive to code, input and environment changes open for extension, closed for modification fully integrated in all phases of development processes Tests are basically simulations Why test on simulations instead of “real” ones? test on real subjects are costly, in some cases with business impacts separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects Prerequisites for doing simulation tests subject codes rely on interfaces instead of specific implementations subject codes use dependency injection (all dependencies are specified in object creation) aspect oriented programming: subject codes have middleware injection points for testing purposes Variances of simulation objects excerpt from http://xunitpatterns.com/Test%20Double%20Patterns.html\nspy: inputs and outputs recorder stub: spy + control inputs, respond with predefined outputs mock: stub + set expectations on calling behaviors fake: a simpler and “pure” implementation of an interface Mentality of testing set up testing data and environments define test cases that consist of : a. inputs that change only one variable at a time b. simulated inputs and outputs on dependencies expectations on outputs and dependency calling behaviors run all cases, compare test results to expectations build test reports, identify bugs and improvements in testing subjects and the testing itself. repeat Process of writing unit tests for golang struct methods find the method’s inputs (easy) find all callees (hard without tools, could use reflections ) decide which callees should be mocked (easy if dependency is on interfaces) permute method inputs \u0026 mocked-callee input/outputs, in order to cover all lines of code (whitebox testing) cover all possible use cases (blackbox testing) Golang unit test best practises test case structure use subtests to run in parallel or case-by-case, with common steps defined in parent tests https://blog.golang.org/subtests\ntest case naming Test{function_name_of_test_subject}[_{sub_groups_of_cases}]\nerror handling for non-blocking issues, use testify.Assert or testing.Error for blocing issues, use testing.Fatal\ntest package naming test code files are usually in the same package with subject code files. could use “{pkg_name}_test” to break dependency loops in some cases.\nReference links http://xunitpatterns.com/Test%20Double%20Patterns.html https://golang.org/doc/faq#Packages_Testing\n",
+  "wordCount" : "542",
+  "inLanguage": "en",
+  "datePublished": "2021-06-20T00:00:00Z",
+  "dateModified": "2021-06-20T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://vindurriel.github.io/en/post/on-testing/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "vindurriel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vindurriel.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://vindurriel.github.io/en/" accesskey="h" title="vindurriel (Alt + H)">vindurriel</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/" title="简体中文 🇨🇳"
+                                aria-label="简体中文 :cn:">简体中文 🇨🇳</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://vindurriel.github.io/en/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vindurriel.github.io/en/resume/" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vindurriel.github.io/en/index.xml" title="RSS feed">
+                    <span>RSS feed</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/en/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/en/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      On Testing
+    </h1>
+    <div class="post-meta"><span title='2021-06-20 00:00:00 +0000 UTC'>June 20, 2021</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="why">why?<a hidden class="anchor" aria-hidden="true" href="#why">#</a></h2>
+<ul>
+<li>the only proper way to do any kind of research</li>
+<li>for quality assurance goals</li>
+<li>find and fix bugs as early as possible</li>
+<li>ensure code changes work as expected without breaking any released features</li>
+</ul>
+<h2 id="tests-as-in-software-system-development">Tests as in software system development<a hidden class="anchor" aria-hidden="true" href="#tests-as-in-software-system-development">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>name</th>
+          <th>when to do</th>
+          <th>done by whom</th>
+          <th>granularity</th>
+          <th>whitebox/blackbox</th>
+          <th>tools</th>
+          <th>business impact</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>unit test</td>
+          <td>during coding</td>
+          <td>engineers</td>
+          <td>per function</td>
+          <td>whitebox</td>
+          <td>code libs</td>
+          <td>none</td>
+      </tr>
+      <tr>
+          <td>smoke test</td>
+          <td>after coding</td>
+          <td>engineers</td>
+          <td>per api, per service</td>
+          <td>blackbox</td>
+          <td>cucumber, etc.</td>
+          <td>none</td>
+      </tr>
+      <tr>
+          <td>integration test</td>
+          <td>system integration</td>
+          <td>engineers</td>
+          <td>per system</td>
+          <td>blackbox</td>
+          <td>cucumber, etc.</td>
+          <td>none</td>
+      </tr>
+      <tr>
+          <td>performance test</td>
+          <td>before release</td>
+          <td>engineers</td>
+          <td>per system</td>
+          <td>blackbox</td>
+          <td>gatlin, jmeters, etc.</td>
+          <td>none</td>
+      </tr>
+      <tr>
+          <td>regression test</td>
+          <td>during &amp; after release</td>
+          <td>engineers, product owners</td>
+          <td>per system</td>
+          <td>blackbox</td>
+          <td>cucumber, etc.</td>
+          <td>low</td>
+      </tr>
+      <tr>
+          <td>alpha &amp; beta test</td>
+          <td>after release</td>
+          <td>product owners, selected users</td>
+          <td>per product</td>
+          <td>blackbox</td>
+          <td></td>
+          <td>high</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="test-case-design-criteria--what-factors-contribute-to-a-good-test-case-design-and-how-good-is-enough">Test case design criteria : what factors contribute to a &ldquo;good&rdquo; test case design (and how good is enough)?<a hidden class="anchor" aria-hidden="true" href="#test-case-design-criteria--what-factors-contribute-to-a-good-test-case-design-and-how-good-is-enough">#</a></h2>
+<ul>
+<li>collectively exhaustive: cover all lines of codes / all possible use cases</li>
+<li>mutually exclusive: use as few test cases / codes  as possible</li>
+<li>rational methodology:
+<ul>
+<li>repeatable: given inputs should have stable outputs</li>
+<li>explicit inputs and outputs without side effects ( &ldquo;pure&rdquo; )</li>
+<li>eliminate implicit variables, e.g. testing person biases, environment assumptions and dependencies</li>
+<li>change only one variable per case</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-framework-criteria">Test framework criteria<a hidden class="anchor" aria-hidden="true" href="#test-framework-criteria">#</a></h2>
+<ul>
+<li>adaptive to code, input and environment changes</li>
+<li>open for extension, closed for modification</li>
+<li>fully integrated in all phases of development processes</li>
+</ul>
+<h2 id="tests-are-basically-simulations">Tests are basically simulations<a hidden class="anchor" aria-hidden="true" href="#tests-are-basically-simulations">#</a></h2>
+<h3 id="why-test-on-simulations-instead-of-real-ones">Why test on simulations instead of &ldquo;real&rdquo; ones?<a hidden class="anchor" aria-hidden="true" href="#why-test-on-simulations-instead-of-real-ones">#</a></h3>
+<ul>
+<li>test on real subjects are costly, in some cases with business impacts</li>
+<li>separation of testing subjects ( by defining a test scope ) to eliminate implicit variables and side effects</li>
+</ul>
+<h3 id="prerequisites-for-doing-simulation-tests">Prerequisites for doing simulation tests<a hidden class="anchor" aria-hidden="true" href="#prerequisites-for-doing-simulation-tests">#</a></h3>
+<ul>
+<li>subject codes rely on interfaces instead of specific implementations</li>
+<li>subject codes use dependency injection (all dependencies are specified in object creation)</li>
+<li>aspect oriented programming: subject codes have middleware injection points for testing purposes</li>
+</ul>
+<h3 id="variances-of-simulation-objects">Variances of simulation objects<a hidden class="anchor" aria-hidden="true" href="#variances-of-simulation-objects">#</a></h3>
+<p>excerpt from <a href="http://xunitpatterns.com/Test%20Double%20Patterns.html">http://xunitpatterns.com/Test%20Double%20Patterns.html</a></p>
+<ul>
+<li>spy: inputs and outputs recorder</li>
+<li>stub: spy + control inputs, respond with predefined outputs</li>
+<li>mock: stub + set expectations on calling behaviors</li>
+<li>fake: a simpler and &ldquo;pure&rdquo; implementation of an interface</li>
+</ul>
+<h2 id="mentality-of-testing">Mentality of testing<a hidden class="anchor" aria-hidden="true" href="#mentality-of-testing">#</a></h2>
+<ol>
+<li>set up testing data and environments</li>
+<li>define test cases that consist of :
+a. inputs that change only one variable at a time
+b. simulated inputs and outputs on dependencies</li>
+<li>expectations on outputs and dependency calling behaviors</li>
+<li>run all cases, compare test results to expectations</li>
+<li>build test reports, identify bugs and improvements in testing subjects and the testing itself.</li>
+<li>repeat</li>
+</ol>
+<h2 id="process-of-writing-unit-tests-for-golang-struct-methods">Process of writing unit tests for golang struct methods<a hidden class="anchor" aria-hidden="true" href="#process-of-writing-unit-tests-for-golang-struct-methods">#</a></h2>
+<ul>
+<li>find the method&rsquo;s inputs (easy)</li>
+<li>find all callees (hard without tools, could use reflections )</li>
+<li>decide which callees should be mocked (easy if dependency is on interfaces)</li>
+<li>permute method inputs &amp; mocked-callee input/outputs, in order to</li>
+<li>cover all lines of code (whitebox testing)</li>
+<li>cover all possible use cases (blackbox testing)</li>
+</ul>
+<h2 id="golang-unit-test-best-practises">Golang unit test best practises<a hidden class="anchor" aria-hidden="true" href="#golang-unit-test-best-practises">#</a></h2>
+<h3 id="test-case-structure">test case structure<a hidden class="anchor" aria-hidden="true" href="#test-case-structure">#</a></h3>
+<p>use subtests to run in parallel or case-by-case, with common steps defined in parent tests <a href="https://blog.golang.org/subtests">https://blog.golang.org/subtests</a></p>
+<h3 id="test-case-naming">test case naming<a hidden class="anchor" aria-hidden="true" href="#test-case-naming">#</a></h3>
+<p>Test{function_name_of_test_subject}[_{sub_groups_of_cases}]</p>
+<h3 id="error-handling">error handling<a hidden class="anchor" aria-hidden="true" href="#error-handling">#</a></h3>
+<p>for non-blocking issues, use testify.Assert or testing.Error
+for blocing issues, use testing.Fatal</p>
+<h3 id="test-package-naming">test package naming<a hidden class="anchor" aria-hidden="true" href="#test-package-naming">#</a></h3>
+<p>test code files are usually in the same package with subject code files.
+could use &ldquo;{pkg_name}_test&rdquo; to break dependency loops in some cases.</p>
+<h2 id="reference-links">Reference links<a hidden class="anchor" aria-hidden="true" href="#reference-links">#</a></h2>
+<p><a href="http://xunitpatterns.com/Test%20Double%20Patterns.html">http://xunitpatterns.com/Test%20Double%20Patterns.html</a>
+<a href="https://golang.org/doc/faq#Packages_Testing">https://golang.org/doc/faq#Packages_Testing</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://vindurriel.github.io/en/tags/prose/">Prose</a></li>
+      <li><a href="https://vindurriel.github.io/en/tags/testing/">Testing</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://vindurriel.github.io/en/">vindurriel</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
