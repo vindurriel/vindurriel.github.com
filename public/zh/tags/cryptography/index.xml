@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cryptography on vindurriel</title>
+    <link>/zh/tags/cryptography/</link>
+    <description>Recent content in Cryptography on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 03 Sep 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/zh/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>凯撒方阵</title>
+      <link>/zh/post/2013-09-03-caesar-encryption/</link>
+      <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-09-03-caesar-encryption/</guid>
+      <description>加密字符串的第一位是选定的数字n，接下来按从左往右、从上往下的顺序把方阵中的字符写下来，如果方阵的最后没有写满的话，最后要写下空位的个数m。&amp;lt;br/&amp;gt;该字符串长度为84，m = n - (84 &#43; 1) % n =3 。</description>
+    </item>
+  </channel>
+</rss>

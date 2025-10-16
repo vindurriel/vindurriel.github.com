@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>NHC on vindurriel</title>
-    <link>https://vindurriel.github.io/tags/nhc/</link>
+    <link>/tags/nhc/</link>
     <description>Recent content in NHC on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <lastBuildDate>Wed, 08 Aug 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vindurriel.github.io/tags/nhc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/nhc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Covid Report</title>
-      <link>https://vindurriel.github.io/post/2022-08-08-covid-report/</link>
+      <link>/post/2022-08-08-covid-report/</link>
       <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
-      <guid>https://vindurriel.github.io/post/2022-08-08-covid-report/</guid>
+      <guid>/post/2022-08-08-covid-report/</guid>
       <description>&lt;p&gt;Data description: Daily new confirmed covid cases of every province in the China mainland area.&lt;/p&gt;
 &lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
 &lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Data are updated weekly.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

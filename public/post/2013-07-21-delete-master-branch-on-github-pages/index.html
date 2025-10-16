@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/2013-07-21-delete-master-branch-on-github-pages/">
+<link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/post/2013-07-21-delete-master-branch-on-github-pages/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,7 +59,7 @@
   <meta property="og:site_name" content="vindurriel">
   <meta property="og:title" content="删除github pages的master分支">
   <meta property="og:description" content="在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 `git branch -D master` 删除master分支。">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2013-07-21T00:00:00+00:00">
@@ -102,7 +102,7 @@
   ],
   "articleBody": "github pages默认使用两个分支：master和gh-pages。 在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。\n但是可以删除master。 首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 git branch -D master 删除master分支。\n但是删除master后，发现远端页面更新非常缓慢，而且页面状态不稳定（有的页面更新了，有的则没有）。因此后来恢复了用两个分支。有文章介绍可以用post commit hook来保持两个分支的一致性。\nupdate 2013-08-07 写了一个bat脚本，取名push.bat\n@echo off rem 提示用户输入comment set /p comment=\"comments:\" rem 在master分支上commit git commit -am \"%comment%\" git checkout gh-pages rem rebase命令使得gh-pages和master同步，然后生成一个commit git rebase master git checkout master git push 使用时直接输入push\n",
   "wordCount" : "44",
-  "inLanguage": "en",
+  "inLanguage": "zh",
   "datePublished": "2013-07-21T00:00:00Z",
   "dateModified": "2013-07-21T00:00:00Z",
   "mainEntityOfPage": {
@@ -157,17 +157,18 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://vindurriel.github.io/archives/" title="Archive">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://vindurriel.github.io/resume_en/" title="Resume">
-                    <span>Resume</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li>
@@ -176,24 +177,25 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
-                    <span>RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main">
+
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       删除github pages的master分支
     </h1>
     <div class="post-description">
       在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。&lt;br/&gt;首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 `git branch -D master` 删除master分支。
     </div>
-    <div class="post-meta"><span title='2013-07-21 00:00:00 +0000 UTC'>July 21, 2013</span>
+    <div class="post-meta"><span title='2013-07-21 00:00:00 +0000 UTC'>2013年7月21日</span>
 
 </div>
   </header> 

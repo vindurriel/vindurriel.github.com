@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,8 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://vindurriel.github.io/post/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/">
+<link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/post/">
+<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/en/post/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,7 +60,7 @@
 </noscript><meta property="og:url" content="https://vindurriel.github.io/post/">
   <meta property="og:site_name" content="vindurriel">
   <meta property="og:title" content="Posts">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Posts">
@@ -118,17 +119,18 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://vindurriel.github.io/archives/" title="Archive">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://vindurriel.github.io/resume_en/" title="Resume">
-                    <span>Resume</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li>
@@ -137,15 +139,15 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
-                    <span>RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://vindurriel.github.io/">主页</a></div>
   <h1>
     Posts
   </h1>
@@ -160,7 +162,7 @@
     <p>翻译自Derek Sivers
 在确认下一根藤条能支持你的重量之前，不要放开手中的藤条。 不要停顿，保持冲劲。 </p>
   </div>
-  <footer class="entry-footer"><span title='2014-04-10 00:00:00 +0000 UTC'>April 10, 2014</span></footer>
+  <footer class="entry-footer"><span title='2014-04-10 00:00:00 +0000 UTC'>2014年4月10日</span></footer>
   <a class="entry-link" aria-label="post link to 想跳槽？学学人猿泰山" href="https://vindurriel.github.io/post/2014-04-10-tarzan/"></a>
 </article>
 
@@ -202,7 +204,7 @@ genius分词
 词性 名词、动词一般比副词、形容词重要
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span></footer>
+  <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>2014年3月26日</span></footer>
   <a class="entry-link" aria-label="post link to 用Python做文本摘要" href="https://vindurriel.github.io/post/2014-03-26-python-3/"></a>
 </article>
 
@@ -229,7 +231,7 @@ Json.dumps(json, indent=2) #indent为缩进空格数 Requests：http for humans 
 # encoding=utf-8 u&#39;&#39;&#39; pm25.py Usage: pm25.py &lt;cityname&gt; Options: &lt;cityname&gt; 城市名 &#39;&#39;&#39; from docopt import docopt def wget_pm25(city): token=&#34;5j1znBVAsnSf5xQyNQyq&#34; import requests as r result=r.get(&#34;http://www.pm25.in/api/querys/pm2_5.json&#34;,params={ &#34;city&#34;:city, &#34;token&#34;:token, }) return result.json() def needs_refresh(filename,timeout=3600): return False import os,time mtime=os.path.getmtime(filename) now=time.time() return now-mtime&gt;timeout def get_pm25(city): filename=&#39;pm25.data.{}.json&#39;.format(city) import os,json data=None if os.path.isfile(filename) and not needs_refresh(filename): data=file(filename,&#39;r&#39;).read() data=json.loads(data) else: data=wget_pm25(city) if type(data)==type({}): print data[&#39;error&#39;] return -1 else: file(filename,&#39;w&#39;).write(json.dumps(data,indent=2)) return data[-1][&#34;pm2_5&#34;] if __name__ == &#39;__main__&#39;: args=docopt(__doc__) cities=args[&#39;&lt;cityname&gt;&#39;] print get_pm25(args[&#39;&lt;cityname&gt;&#39;]) 示例3 使用flask-rest搭建rest服务 flask-rest 是一个使用flash框架搭建rest服务的工具，使用方法如下：
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2014-03-25 00:00:00 +0000 UTC'>March 25, 2014</span></footer>
+  <footer class="entry-footer"><span title='2014-03-25 00:00:00 +0000 UTC'>2014年3月25日</span></footer>
   <a class="entry-link" aria-label="post link to Python web api" href="https://vindurriel.github.io/post/2014-03-26-python-2/"></a>
 </article>
 
@@ -262,7 +264,7 @@ Html、Xml解析：BeautifulSoup, Expat
 扩展标准库十分容易
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2014-03-24 00:00:00 +0000 UTC'>March 24, 2014</span></footer>
+  <footer class="entry-footer"><span title='2014-03-24 00:00:00 +0000 UTC'>2014年3月24日</span></footer>
   <a class="entry-link" aria-label="post link to Python 初探" href="https://vindurriel.github.io/post/2014-03-26-python-1/"></a>
 </article>
 
@@ -280,7 +282,7 @@ Html、Xml解析：BeautifulSoup, Expat
 6.持续重构，持续思考 排计划时要为重构预留出时间，定期做代码质量的改善，比如每周抽出1天时间来重构、写注释和说明文档。这有助于减少技术债务，提升编程能力。
 </p>
   </div>
-  <footer class="entry-footer"><span title='2013-12-05 00:00:00 +0000 UTC'>December 5, 2013</span></footer>
+  <footer class="entry-footer"><span title='2013-12-05 00:00:00 +0000 UTC'>2013年12月5日</span></footer>
   <a class="entry-link" aria-label="post link to 程序调试心得" href="https://vindurriel.github.io/post/2013-12-05-debug-tips/"></a>
 </article>
 
@@ -308,7 +310,7 @@ Html、Xml解析：BeautifulSoup, Expat
 除了信息的来源，其他用户对信息的反馈（有多少个赞/up/star）也是衡量信息价值的重要标准。如果搜索结果可以根据反馈来排序，那就更好了，例如上面提到的知乎、quora和stackoverflow等问答社区。
 </p>
   </div>
-  <footer class="entry-footer"><span title='2013-12-03 00:00:00 +0000 UTC'>December 3, 2013</span></footer>
+  <footer class="entry-footer"><span title='2013-12-03 00:00:00 +0000 UTC'>2013年12月3日</span></footer>
   <a class="entry-link" aria-label="post link to 如何使用互联网解决编程问题" href="https://vindurriel.github.io/post/2013-12-03-how-to-solve-problems-online/"></a>
 </article>
 
@@ -352,7 +354,7 @@ So What’s The Problem? 有什么问题吗？ 你能想象她坐在那，看着
 如果你不了解，你会觉得她有严重的心理疾病。一个有理性的人怎么可能表现出这种“雨人”一样的强迫症行为？
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2013-09-09 00:00:00 +0000 UTC'>September 9, 2013</span></footer>
+  <footer class="entry-footer"><span title='2013-09-09 00:00:00 +0000 UTC'>2013年9月9日</span></footer>
   <a class="entry-link" aria-label="post link to 电子游戏让你上瘾的5个可怕方法" href="https://vindurriel.github.io/post/2013-09-09-why-video-games-is-addictive/"></a>
 </article>
 
@@ -385,7 +387,7 @@ alt&#43;左键单击节点： 将该节点设为根节点。图本身无所谓�
 固化二次开发的接口， 提供SDK
 </p>
   </div>
-  <footer class="entry-footer"><span title='2013-09-04 00:00:00 +0000 UTC'>September 4, 2013</span></footer>
+  <footer class="entry-footer"><span title='2013-09-04 00:00:00 +0000 UTC'>2013年9月4日</span></footer>
   <a class="entry-link" aria-label="post link to nest介绍之音乐地图" href="https://vindurriel.github.io/post/2013-09-04-nest-introduction/"></a>
 </article>
 
@@ -406,7 +408,7 @@ h2xt912653. tFi%%959E5m t%a22%2457p p2mFF2%%%%3 %Fi23F55553 3f.371EEEE A1n21412_
 8h2xt912653.tFi%%959E5mt%a22%2457pp2mFF2%%%%3%Fi23F55553f.371EEEEA1n21412_1%.e51%7%18 加密完成。
 </p>
   </div>
-  <footer class="entry-footer"><span title='2013-09-03 00:00:00 +0000 UTC'>September 3, 2013</span></footer>
+  <footer class="entry-footer"><span title='2013-09-03 00:00:00 +0000 UTC'>2013年9月3日</span></footer>
   <a class="entry-link" aria-label="post link to 凯撒方阵" href="https://vindurriel.github.io/post/2013-09-03-caesar-encryption/"></a>
 </article>
 
@@ -443,12 +445,12 @@ RESTful API以及OAuth 虾米推出了自己在iOS和android平台的apps, 伴�
 对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对xiami_downloader说一声：谢谢，再见。
 </p>
   </div>
-  <footer class="entry-footer"><span title='2013-08-09 00:00:00 +0000 UTC'>August 9, 2013</span></footer>
+  <footer class="entry-footer"><span title='2013-08-09 00:00:00 +0000 UTC'>2013年8月9日</span></footer>
   <a class="entry-link" aria-label="post link to 虾米下载介绍" href="https://vindurriel.github.io/post/2013-08-09-xiami-introduction/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="next" href="https://vindurriel.github.io/post/page/2/">Next&nbsp;&nbsp;»
+    <a class="next" href="https://vindurriel.github.io/post/page/2/">下一页&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>

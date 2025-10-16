@@ -5,7 +5,7 @@
     <link>https://vindurriel.github.io/</link>
     <description>Recent content on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
-    <language>en-us</language>
+    <language>zh-CN</language>
     <lastBuildDate>Thu, 10 Apr 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -29,7 +29,7 @@
       <link>https://vindurriel.github.io/post/2014-03-26-python-3/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2014-03-26-python-3/</guid>
-      <description>&lt;p&gt;本文是&lt;a href=&#34;https://vindurriel.github.io/post/2014-03-26-python-1&#34;&gt;系列&lt;/a&gt;的第三篇。&lt;/p&gt;
+      <description>&lt;p&gt;本文是&lt;a href=&#34;https://vindurriel.github.io/post/2014-03-26-python-1/&#34;&gt;系列&lt;/a&gt;的第三篇。&lt;/p&gt;
 &lt;h2 id=&#34;文本摘要&#34;&gt;文本摘要&lt;/h2&gt;
 &lt;p&gt;以下新闻来自&lt;a href=&#34;http://www.leiphone.com/yahoo-summly.html&#34;&gt;雷锋网&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -268,7 +268,7 @@
       <link>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</link>
       <pubDate>Mon, 22 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</guid>
-      <description>&lt;p&gt;最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的&lt;a href=&#34;https://vindurriel.github.io/tags&#34;&gt;标签页面&lt;/a&gt;。&lt;/p&gt;
+      <description>&lt;p&gt;最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的&lt;a href=&#34;https://vindurriel.github.io/tags/&#34;&gt;标签页面&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;blog和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。&lt;/p&gt;
 &lt;p&gt;平行集是反应两组或以上数据集之间映射关系的图表。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/mbostock/d3/wiki/Gallery&#34;&gt;d3&lt;/a&gt;是一个用javascript的库，主要用途是用svg做数据可视化。&lt;/p&gt;
@@ -334,7 +334,7 @@
 cd USERNAME.github.com
 git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
 git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中使用的是&lt;a href=&#34;%22https://github.com/plusjade/jekyll-bootstrap%22&#34;&gt;jekyll-bootstrap&lt;/a&gt;。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中使用的是&lt;a href=&#34;https://github.com/plusjade/jekyll-bootstrap&#34;&gt;jekyll-bootstrap&lt;/a&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;写文章&#34;&gt;写文章&lt;/h3&gt;
 &lt;p&gt;如果装了ruby的话，直接在文件夹下执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;rake post title=&amp;quot;a new post&amp;quot;
@@ -389,24 +389,13 @@ gem: --no-ri --no-rdoc
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要起作用的是&lt;code&gt;gem: --no-ri --no-rdoc&lt;/code&gt;,少下载了很多文档。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Covid Report</title>
-      <link>https://vindurriel.github.io/post/2022-08-08-covid-report/</link>
-      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
-      <guid>https://vindurriel.github.io/post/2022-08-08-covid-report/</guid>
-      <description>&lt;p&gt;Data description: Daily new confirmed covid cases of every province in the China mainland area.&lt;/p&gt;
-&lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
-&lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Data are updated weekly.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
       <title></title>
       <link>https://vindurriel.github.io/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/resume/</guid>
       <description>&lt;h1 id=&#34;杨帆的简历&#34;&gt;杨帆的简历&lt;/h1&gt;
 &lt;h3 id=&#34;联系方式&#34;&gt;联系方式&lt;/h3&gt;
-&lt;p&gt;邮箱: &lt;a href=&#34;mailto:vindurriel+job@gmail.com&#34;&gt;vindurriel+job@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;邮箱: &lt;a href=&#34;mailto:vindurriel&amp;#43;job@gmail.com&#34;&gt;vindurriel+job@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;github/twitter: vindurriel&lt;/p&gt;
 &lt;h3 id=&#34;自我介绍&#34;&gt;自我介绍&lt;/h3&gt;
 &lt;p&gt;男, 1987年生，现居住于北京通州区&lt;/p&gt;
@@ -431,23 +420,6 @@ gem: --no-ri --no-rdoc
 2014/05-2016/04 | 百度 | 教育事业部-产品及研发部 | 后端研发T4
 2013/05-2014/04 | 安世亚太科技（北京）有限公司 | 研究院 | 研发经理
 2010/09-2013/04 | 安世亚太科技（北京）有限公司 | 研究院 | 全栈研发&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://vindurriel.github.io/resume_en/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vindurriel.github.io/resume_en/</guid>
-      <description>&lt;h1 id=&#34;fan-yangs-resume&#34;&gt;Fan YANG&amp;rsquo;s resume&lt;/h1&gt;
-&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;
-&lt;p&gt;email: &lt;a href=&#34;mailto:vindurriel+job@gmail.com&#34;&gt;vindurriel+job@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;github: vindurriel&lt;/p&gt;
-&lt;h3 id=&#34;about-me&#34;&gt;About me&lt;/h3&gt;
-&lt;p&gt;Male, born in 1987, currently resides in Tongzhou District, Beijing, China&lt;/p&gt;
-&lt;p&gt;Graduated and got bachelor&amp;rsquo;s degree from Beijing University of Posts and Telecommunications in 2010&lt;/p&gt;
-&lt;p&gt;Years of research and development experience in software/internet industry, familiar with common architectures, frameworks and design patterns of content/info website,
-e-commercials, digital lottery, high concurrency systems, etc. had some experience in product managements.&lt;/p&gt;
-&lt;p&gt;Expertised in designing, developing and maitaining online systems which has a page view of over 100 million per day (&lt;a href=&#34;https://wenku.baidu.com&#34;&gt;https://wenku.baidu.com&lt;/a&gt;), as well as enterprise client oriented systems
-with complicated business logic (e.g. nuomi app&amp;rsquo;s admin system/to-b app/advertise platform).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

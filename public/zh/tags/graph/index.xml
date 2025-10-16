@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Graph on vindurriel</title>
+    <link>/zh/tags/graph/</link>
+    <description>Recent content in Graph on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 04 Sep 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/zh/tags/graph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nest介绍之音乐地图</title>
+      <link>/zh/post/2013-09-04-nest-introduction/</link>
+      <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-09-04-nest-introduction/</guid>
+      <description>&lt;p&gt;nest(&lt;a href=&#34;https://github.com/vindurriel/nest&#34;&gt;https://github.com/vindurriel/nest&lt;/a&gt;)是一个视觉组件，它用图(graph)来展示元素之间的关系。一个节点(node)表示一个元素或者元素的某个属性，节点之间的连线(link)表示元素之间的关系。 元素和关系的类型、属性都可以是任意定制的。使用者可以和图进行交互， 允许的操作包括拖拽、添加、删除、聚焦、平移和放缩。
+节点的颜色由数据实体的&lt;code&gt;type&lt;/code&gt;属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&lt;/p&gt;
+&lt;h2 id=&#34;为什么要做&#34;&gt;为什么要做&lt;/h2&gt;
+&lt;p&gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。而图可以表示非DAG的拓扑关系，也就是所谓的网络。&lt;/p&gt;
+&lt;p&gt;nest是为了展示图而生的视觉组件，它能在二维平面展示复杂的元素关系，并且用户可以实时地修改图的布局、增删节点。&lt;/p&gt;
+&lt;p&gt;nest可以作为脑图使用，也可以作为更一般意义上的关系展示图，参见下面的&lt;a href=&#34;http://nest.ap01.aws.af.cm/model/artist_23401?theme=light&#34;&gt;例子&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
+&lt;p&gt;音乐地图(&lt;a href=&#34;http://nest.ap01.aws.af.cm/model/artist_23401?theme=light&#34;&gt;http://nest.ap01.aws.af.cm/model/python?theme=light&lt;/a&gt;)是一个探索音乐元素之间关系的动态地图，展示歌曲、艺术家、专辑和精选集之间的关系。数据抓取自&lt;a href=&#34;http://www.xiami.com&#34;&gt;虾米网&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/nest/2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用方法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;搜索框中可搜索音乐。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击&lt;code&gt;see all&lt;/code&gt;可查看其他用户已经探索过的音乐地图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;保存&lt;/code&gt;按钮可以上传当前音乐地图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;?&lt;/code&gt;按钮中可显示图例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键拖拽： 空白处平移，节点上调整节点位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键双击节点： 扩展该节点，即添加与该节点有关系的新节点。支持svg动画的浏览器上(chrome、firefox、&lt;del&gt;IE&lt;/del&gt;)该节点会振动，并弹出同类型的新节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ctrl+左键单击节点： 同左键双击节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;shift+左键单击节点： 删除该节点，同时一并删除&lt;strong&gt;只与&lt;/strong&gt;该节点有连线的所有节点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;alt+左键单击节点： 将该节点设为根节点。图本身无所谓根节点，根节点的唯一目的在于以该节点的id来存储图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;地址栏中可修改theme参数,支持light和dark。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/nest/3.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;技术&#34;&gt;技术&lt;/h2&gt;
+&lt;p&gt;nest在前台采用了&lt;a href=&#34;https://github.com/mbostock/d3/wiki&#34;&gt;d3.js&lt;/a&gt;，而d3.js采用了svg。 后台是&lt;a href=&#34;http://webpy.org&#34;&gt;web.py&lt;/a&gt;。 前后台通信采用了ajax和json。&lt;/p&gt;
+&lt;p&gt;源代码在github &lt;a href=&#34;https://github.com/vindurriel/nest&#34;&gt;https://github.com/vindurriel/nest&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;开发计划&#34;&gt;开发计划&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将nest组件化， 允许嵌入到任意的html网页中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;固化二次开发的接口， 提供SDK&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>forced graph</title>
+      <link>/zh/post/2013-07-26-forced-graph/</link>
+      <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-07-26-forced-graph/</guid>
+      <description>&lt;p&gt;下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
+并且施加了两个力场，把post向左推，tag向右推。&lt;/p&gt;
+&lt;p&gt;参考了下面两个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/1021841&#34;&gt;Custom Forces&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/950642&#34;&gt;Labeled Force Layout&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

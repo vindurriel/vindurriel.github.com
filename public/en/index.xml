@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>vindurriel</title>
+    <link>https://vindurriel.github.io/en/</link>
+    <description>Recent content on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 08 Aug 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Covid Report</title>
+      <link>https://vindurriel.github.io/en/post/2022-08-08-covid-report/</link>
+      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/2022-08-08-covid-report/</guid>
+      <description>&lt;p&gt;Data description: Daily new confirmed covid cases of every province in the China mainland area.&lt;/p&gt;
+&lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
+&lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Data are updated weekly.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://vindurriel.github.io/en/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/resume/</guid>
+      <description>&lt;h1 id=&#34;fan-yangs-resume&#34;&gt;Fan YANG&amp;rsquo;s resume&lt;/h1&gt;
+&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;
+&lt;p&gt;email: &lt;a href=&#34;mailto:vindurriel&amp;#43;job@gmail.com&#34;&gt;vindurriel+job@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;github: vindurriel&lt;/p&gt;
+&lt;h3 id=&#34;about-me&#34;&gt;About me&lt;/h3&gt;
+&lt;p&gt;Male, born in 1987, currently resides in Tongzhou District, Beijing, China&lt;/p&gt;
+&lt;p&gt;Graduated and got bachelor&amp;rsquo;s degree from Beijing University of Posts and Telecommunications in 2010&lt;/p&gt;
+&lt;p&gt;Years of research and development experience in software/internet industry, familiar with common architectures, frameworks and design patterns of content/info website,
+e-commercials, digital lottery, high concurrency systems, etc. had some experience in product managements.&lt;/p&gt;
+&lt;p&gt;Expertised in designing, developing and maitaining online systems which has a page view of over 100 million per day (&lt;a href=&#34;https://wenku.baidu.com&#34;&gt;https://wenku.baidu.com&lt;/a&gt;), as well as enterprise client oriented systems
+with complicated business logic (e.g. nuomi app&amp;rsquo;s admin system/to-b app/advertise platform).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -78,7 +78,7 @@ N-Gram
 <link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/2014-03-26-python-3/">
+<link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/post/2014-03-26-python-3/">
 <noscript>
     <style>
         #theme-toggle,
@@ -148,7 +148,7 @@ genius分词
 2.2 词的重要程度如何衡量？ 词频（TF） 需要去掉词频太高的词（停用词）
 固定搭配的频率 N-Gram
 词性 名词、动词一般比副词、形容词重要">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2014-03-26T00:00:00+00:00">
@@ -252,7 +252,7 @@ N-Gram
   ],
   "articleBody": "本文是系列的第三篇。\n文本摘要 以下新闻来自雷锋网\nYahoo收购新闻摘要应用Summly\n宗仁 2013-03-26 07:53 没有评论\n标签：Summly 新闻摘要\nYahoo 昨日宣布收购新闻摘要移动公司Summly，价格可能为3000万美金，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。\nSummly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。\n自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。\n以下是雅虎在其官方博客上发布的声明：\n今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。\n尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。\n这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。\n下面我们就来看看做文本摘要的大致思路。\n大致思路 文本摘要 顾名思义，就是找出一部分重要的句子。 这句话有三个逻辑重点。\n1. 找出一部分重要的句子 也就是说要把文章切成句子。比较直观的想法是根据标点符号以及空格、换行符等。断句这个问题，英文反而比中文要复杂，例如句号.和单引号'都是有多个意思的，都不一定能标明一句话的结尾。\n2. 找出一部分重要的句子 如何衡量一篇文章里的每句话是否重要？怎样量化这个重要性？有以下思考的角度。\n根据位置（标题、导语、段首段尾） 一般来说，文章尤其是新闻的标题、节标题、导语和段首段尾比较重要。对于html解析而言，就是title、h1、h2、a、strong等标记中的文字更重要。\n根据内容 内容方面，需要把粒度细分到词的重要程度，如果一句话中的词很重要，那么这句话很重要。\n那么就有下面的两个问题：\n怎么获得一句话中的词？也就是分词问题。\n词的重要程度如何衡量？\n下面分别来介绍这两个问题。\n2.1 分词 就是在词与词之间插入标记，一般是空格。英文文本不需要这一步，本来就有空格。但中文没有，而且一词多义现象很多， 语法结构还会随着词的位置而变化，因此中文分词是一个比较独特的问题。\n但是中文分词和语音识别很像，因为语音信号在词与词之间也是没有空格的，因此可共用技术（HMM，CRF）。\nPython比较好的中文分词工具有：\n结巴分词\ngenius分词\n2.2 词的重要程度如何衡量？ 词频（TF） 需要去掉词频太高的词（停用词）\n固定搭配的频率 N-Gram\n词性 名词、动词一般比副词、形容词重要\n专业词典+文章分类信息 有了专业词典以及文章分类的数据，就可以用更高级的统计工具，甚至是信息论的知识，利用词在不同类别和领域中的分布差异以及权重， 计算词对文章的互信息。这方面简单的方法有TF-IDF，相对复杂的方法有LDA（主题词的提取）。\n3. 找出一部分重要的句子 需要根据重要性对句子进行一个排序，选出排名靠前的，加入最后的摘要。最后，最好能恢复句子原有的顺序，以便人们阅读和理解。\n到底要几句？摘要的长度应该是可以参数化的，策略可以采取最少一句，最多N句，N是参数，也可以用百分比来定义，即文章总句数的x%，x为参数。\n示例4 一个简单的文本摘要的python实现 # encoding=utf-8 from collections import defaultdict frequencies=defaultdict(int) stop_words=set() DISPLAY_FULLTEXT=False SUMMARY_RATIO= 0.1 def init_stopwords(): global stop_words stop_words= set(u\"where the of is and to in that we for an are by be as on with can if from which you it this then at have all not one has or that\".split()) file_stopwords=\"stop_words.txt\" import os if os.path.isfile(file_stopwords): lines=file(file_stopwords,'r').read().split(\"\\n\") stop_words=stop_words | set(lines) def split_to_sentences(text): '''Very simple spliting to sentences by [.!?] and paragraphs. In real life we'll be much more fancy. ''' import nltk.data tokenizer = nltk.data.load('tokenizers/punkt/english.pickle') text =\"\\n\\n\".join(tokenizer.tokenize(text)) import re sentences=[] start = 0 for match in re.finditer(u'(\\s*[。？！]\\s*)|(\\n{2,})', text): sentences.append(text[start:match.end()].strip()) start = match.end() sentences=filter(lambda x:len(x)\u003e2,sentences) return sentences def tokenize(text): '''tokenize using jieba ''' import jieba return jieba.cut(text) def token_frequency(text): '''Return frequency (count) for each token in the text''' res = defaultdict(int) for token in tokenize(text): res[token] += 1 return res def sentence_score(sentences): '''get sentence score using word frequencey''' global frequencies,stop_words if not len(stop_words): init_stopwords() scores=[] import math num_sentences=len(sentences) len_sentences=map(len,sentences) max_len_sentences=max(len_sentences) min_len_sentences=min(len_sentences) for i,sentence in enumerate(sentences): tokens=tokenize(sentence) #词频的和，去掉停用词 score= sum((frequencies[token] for token in tokens if token not in stop_words)) #削弱句子长度的影响 length_factor=1-1.0*(len_sentences[i]-min_len_sentences)/max_len_sentences score*=length_factor #增加句子位置的影响(越靠前越好) position_factor=1-0.3*i/num_sentences score*=position_factor scores.append(score) return scores def create_summary(sentences): global frequencies summary = [] import math len_sentence=int(math.ceil(len(sentences)*SUMMARY_RATIO)) len_sentence=max(len_sentence,1) len_sentence=min(len_sentence,10) score=sentence_score(sentences) score=[(i,s) for i,s in enumerate(score)] #根据得分排序 score.sort(key=lambda s:s[1],reverse=1) #取出得分靠前的句子 score=score[:len_sentence] #恢复原来句子的顺序 score.sort(key=lambda s:s[0]) summary=[sentences[x[0]] for x in score] return set([x[0] for x in score]) # return '\\n'.join(summary) def decode_text(text): for x in ['utf-8','gbk']: try: return text.decode(x) except Exception, e: pass raise Exception('cannot decode using all codings') def summarize(text): global frequencies text=decode_text(text) frequencies = token_frequency(text) sentences = split_to_sentences(text) if not len(sentences): return ([],set()) index = create_summary(sentences) return (sentences,index) if __name__ == '__main__': from colorize import Color clr = Color() s=file('test.txt','r').read() sentences,index=summarize(s) for i,sentence in enumerate(sentences): s=sentence.encode('gbk') if i in index: print s # clr.print_red_text(s) elif DISPLAY_FULLTEXT: print s print sorted(list(index)) 思考题3 请从句子的位置和内容两方面入手，思考如何改进上面简单文本摘要程序的表现。\n",
   "wordCount" : "369",
-  "inLanguage": "en",
+  "inLanguage": "zh",
   "datePublished": "2014-03-26T00:00:00Z",
   "dateModified": "2014-03-26T00:00:00Z",
   "mainEntityOfPage": {
@@ -307,17 +307,18 @@ N-Gram
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://vindurriel.github.io/archives/" title="Archive">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://vindurriel.github.io/resume_en/" title="Resume">
-                    <span>Resume</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li>
@@ -326,25 +327,26 @@ N-Gram
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
-                    <span>RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main">
+
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       用Python做文本摘要
     </h1>
-    <div class="post-meta"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span>
+    <div class="post-meta"><span title='2014-03-26 00:00:00 +0000 UTC'>2014年3月26日</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>本文是<a href="/post/2014-03-26-python-1">系列</a>的第三篇。</p>
+  <div class="post-content"><p>本文是<a href="/post/2014-03-26-python-1/">系列</a>的第三篇。</p>
 <h2 id="文本摘要">文本摘要<a hidden class="anchor" aria-hidden="true" href="#文本摘要">#</a></h2>
 <p>以下新闻来自<a href="http://www.leiphone.com/yahoo-summly.html">雷锋网</a></p>
 <blockquote>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Github Pages on vindurriel</title>
+    <link>/zh/tags/github-pages/</link>
+    <description>Recent content in Github Pages on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 21 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/zh/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>删除github pages的master分支</title>
+      <link>/zh/post/2013-07-21-delete-master-branch-on-github-pages/</link>
+      <pubDate>Sun, 21 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-07-21-delete-master-branch-on-github-pages/</guid>
+      <description>在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。&amp;lt;br/&amp;gt;首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 `git branch -D master` 删除master分支。</description>
+    </item>
+    <item>
+      <title>github pages 配置</title>
+      <link>/zh/post/2013-07-19-github-pages-setup/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-07-19-github-pages-setup/</guid>
+      <description>&lt;p&gt;首先去github pages申请一个页面，默认的域名是&lt;code&gt;http://USERNAME.github.io&lt;/code&gt;，其中&lt;code&gt;USERNAME&lt;/code&gt;是你的github用户名。&lt;/p&gt;
+&lt;p&gt;github使用jekyll做解析引擎。可以直接克隆一个别人写好的jekyll，然后把上传路径改成自己的，像这样：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com
+cd USERNAME.github.com
+git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中使用的是&lt;a href=&#34;https://github.com/plusjade/jekyll-bootstrap&#34;&gt;jekyll-bootstrap&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;写文章&#34;&gt;写文章&lt;/h3&gt;
+&lt;p&gt;如果装了ruby的话，直接在文件夹下执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rake post title=&amp;quot;a new post&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就可以新建一篇文章。内容支持markdown。&lt;/p&gt;
+&lt;p&gt;其实就是在_post目录下新建了一个md文件，文件名格式为&lt;code&gt;年-月-日-标题.md&lt;/code&gt;。 文件开始是一些元信息，比如本文的md文件开头是这样的：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;---
+layout: post
+title: &amp;#34;github pages 配置&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&#34;tags-jekyllgithub-pagessetup&#34;&gt;layout: post
+title: &amp;quot;github pages 配置&amp;quot;
+description: &amp;quot;&amp;quot;
+category: misc
+tags: [jekyll,github pages,setup]&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。
+comments :
+	    provider : disqus
+	    disqus :
+	      short_name : YOUR_DISQUS_SITE_NAME
+	      
+你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。
+$ CHCP 65001
+如果是在git bash中的话，需要设置如下环境变量： 
+	
+	export LC_ALL = enUS.UTF-8
+	export LANG   = enUS.UTF-8
+然后就可以 `jekyll serve --watch`了。
+gem uninstall pygments.rb --version &amp;amp;quot;&amp;amp;gt;0.5.0&amp;amp;quot;
+	gem install pygments.rb --version &amp;amp;quot;=0.5.0&amp;amp;quot;&amp;#34;
+category: misc
+tags: [jekyll,github pages,setup]
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;写好了内容部分，直接&lt;code&gt;git commit&lt;/code&gt;然后&lt;code&gt;git push&lt;/code&gt;到master分支就可以了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

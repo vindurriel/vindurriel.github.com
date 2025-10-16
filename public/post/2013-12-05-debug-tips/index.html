@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/2013-12-05-debug-tips/">
+<link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/post/2013-12-05-debug-tips/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,7 +59,7 @@
   <meta property="og:site_name" content="vindurriel">
   <meta property="og:title" content="程序调试心得">
   <meta property="og:description" content="必须保证你改的代码，可以很方便地看到结果（或影响）。一次改动太多的地方，就无法判断结果的变化是哪处改动造成的。- 分离有问题的部分，做手术的创口尽可能小。问题的出现往往是重构的机会，一个bug往往能牵出更多的bug。">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2013-12-05T00:00:00+00:00">
@@ -103,7 +103,7 @@
   ],
   "articleBody": "1.首先建立从改动到输出的管道 必须保证你改的代码，可以很方便地看到结果（或影响）。可见是可控的必要条件。\n2.尽可能缩短反应链 尽可能缩短输入改动到输出改动的时间，最好是所见即所得（WYSIWYG）。曾经做过一个项目，在做出某些修改后，需要先编译半分钟，然后把编译后的文件上传到服务器上，再重启服务器，才能看到结果的改动，特别崩溃。这就好像大型食草恐龙的神经系统一样，切下它的尾巴，大概半分钟后神经信号才会传到大脑。 动态语言（python、javascirpt、ruby等）在这方面有天生的优势，而静态语言（c++、java）则可以通过IDE的自动编译和自动化脚本来缩短反应链。如果IDE不可用，编写自动编译脚本和测试工具绝对事半功倍。如果反应链无法缩减，那么做出任何改动之前都必须深思熟虑，还得有那么一点运气，再加上代码是你自己写的，才能一针见效。\n3.理性思考的能力对于调试是很重要的，包括： 做出假设（问题出在哪里），然后以最小的代价（以时间或代码量来衡量）来验证这个假设。 单变量控制。一次改动太多的地方，就无法判断结果的变化是哪处改动造成的。 分离有问题的部分，做手术的创口尽可能小。这和上面提到的缩短反应链是一脉相承的。 极端情况下，也可以合理使用暴力手段。比如使用log或其他手段，只能定位到bug出在file1的第10行到第30行中间（假设顺序执行），那么可以用折半查找法，在第20行输出调试信息…\n4.善于总结 问题的出现往往是重构的机会，一个bug往往能牵出更多的bug。如果同类的问题频繁出现，有可能标志着编写者思考方式上的漏洞。 class的职责是否不够清晰和专一？ 是否缺乏合理的错误记录和处理机制？文档结构和变量命名是否规范、无歧义？ 擅长总结，有助于编写者认识和弥补这些思维和编程实践上的不足，从而提升职业素养。\n5.源代码管理是你最好的朋友 问题往往是日积月累才出现的，而且往往无独有偶。在着手解决bug之前，先看看有没有类似的bug被提交或解决过。除了查看代码本身的注释，也要查看出错文件的提交历史。当然，前提是大家在提交代码的时候能提供有用的注释。\n6.持续重构，持续思考 排计划时要为重构预留出时间，定期做代码质量的改善，比如每周抽出1天时间来重构、写注释和说明文档。这有助于减少技术债务，提升编程能力。\n",
   "wordCount" : "19",
-  "inLanguage": "en",
+  "inLanguage": "zh",
   "datePublished": "2013-12-05T00:00:00Z",
   "dateModified": "2013-12-05T00:00:00Z",
   "mainEntityOfPage": {
@@ -158,17 +158,18 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://vindurriel.github.io/archives/" title="Archive">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://vindurriel.github.io/resume_en/" title="Resume">
-                    <span>Resume</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li>
@@ -177,24 +178,25 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
-                    <span>RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main">
+
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       程序调试心得
     </h1>
     <div class="post-description">
       必须保证你改的代码，可以很方便地看到结果（或影响）。&lt;br/&gt;一次改动太多的地方，就无法判断结果的变化是哪处改动造成的。&lt;br/&gt;- 分离有问题的部分，做手术的创口尽可能小。&lt;br/&gt;问题的出现往往是重构的机会，一个bug往往能牵出更多的bug。
     </div>
-    <div class="post-meta"><span title='2013-12-05 00:00:00 +0000 UTC'>December 5, 2013</span>
+    <div class="post-meta"><span title='2013-12-05 00:00:00 +0000 UTC'>2013年12月5日</span>
 
 </div>
   </header> 

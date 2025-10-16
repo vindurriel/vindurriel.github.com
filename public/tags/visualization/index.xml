@@ -5,7 +5,7 @@
     <link>https://vindurriel.github.io/tags/visualization/</link>
     <description>Recent content in Visualization on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
-    <language>en-us</language>
+    <language>zh-CN</language>
     <lastBuildDate>Wed, 04 Sep 2013 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -90,7 +90,7 @@
       <link>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</link>
       <pubDate>Mon, 22 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</guid>
-      <description>&lt;p&gt;最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的&lt;a href=&#34;https://vindurriel.github.io/tags&#34;&gt;标签页面&lt;/a&gt;。&lt;/p&gt;
+      <description>&lt;p&gt;最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的&lt;a href=&#34;https://vindurriel.github.io/tags/&#34;&gt;标签页面&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;blog和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。&lt;/p&gt;
 &lt;p&gt;平行集是反应两组或以上数据集之间映射关系的图表。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/mbostock/d3/wiki/Gallery&#34;&gt;d3&lt;/a&gt;是一个用javascript的库，主要用途是用svg做数据可视化。&lt;/p&gt;
@@ -137,17 +137,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;});
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上很独特，非常地描述化。
 &lt;a href=&#34;http://bost.ocks.org/mike/join/&#34;&gt;这篇文章&lt;/a&gt;是作者自己总结的d3处理数据上的一种模式，也就是所谓的&lt;code&gt;join&lt;/code&gt;。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Covid Report</title>
-      <link>https://vindurriel.github.io/post/2022-08-08-covid-report/</link>
-      <pubDate>Wed, 08 Aug 2012 00:00:00 +0000</pubDate>
-      <guid>https://vindurriel.github.io/post/2022-08-08-covid-report/</guid>
-      <description>&lt;p&gt;Data description: Daily new confirmed covid cases of every province in the China mainland area.&lt;/p&gt;
-&lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
-&lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Data are updated weekly.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

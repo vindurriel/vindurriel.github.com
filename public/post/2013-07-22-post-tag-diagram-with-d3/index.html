@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,7 +64,7 @@ d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上
 <link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/">
+<link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/">
 <noscript>
     <style>
         #theme-toggle,
@@ -116,7 +116,7 @@ d3.parsets.css d3.v3.min.js d3.parsets.js 然后在tags.html里写一些javascri
 var csv=&#34;post,tag&#34;; {% for post in site.posts %} {% for tag in post.tags %} csv&#43;=&#34;\n{{post.title}},{{tag}}&#34;; {% endfor %} {% endfor %} 接着实例化一个chart，再把数据给它：
 var chart = d3.parsets() .tension(0.8) .width(&#34;800&#34;) .height(&#34;480&#34;) .dimensions([&#34;tag&#34;,&#34;post&#34;]); var vis = d3.select(&#34;#vis&#34;).append(&#34;svg&#34;) .attr(&#34;width&#34;, chart.width()) .attr(&#34;height&#34;, chart.height()); var parsed_csv=d3.csv.parse(csv); vis.datum(parsed_csv).call(chart); 我还想实现这样一个功能：点击图中的博客时可以跳转到博客页面。
 var posts={}; {% for post in site.posts %} posts[&#34;{{post.title}}&#34;]={ &#34;url&#34;:&#34;{{post.url}}&#34;, }; {% endfor %} vis.selectAll(&#34;.category text&#34;).on(&#34;click&#34;,function(d){ if(!(d.name in posts)) return; window.open(posts[d.name].url); }); d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上很独特，非常地描述化。 这篇文章是作者自己总结的d3处理数据上的一种模式，也就是所谓的join。">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2013-07-22T00:00:00+00:00">
@@ -206,7 +206,7 @@ d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上
   ],
   "articleBody": "最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的标签页面。\nblog和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。\n平行集是反应两组或以上数据集之间映射关系的图表。\nd3是一个用javascript的库，主要用途是用svg做数据可视化。\nd3非常强大，基本上能想到的图表都可以实现。而对于平行集，d3有一个插件d3.parsets。\n需要添加如下css和js：\nd3.parsets.css d3.v3.min.js d3.parsets.js 然后在tags.html里写一些javascript。\n先构造出所有post和tag的对应数据。d3.parsets使用csv格式，所以要先生成一个csv格式的字符串。在这里，列名就是post,tag。 比如本篇blog对应两个tag：d3和visualization，那么要在csv里添加两行:\n{{ page.title }},d3 {{ page.title }},visualization 相关代码如下：\nvar csv=\"post,tag\"; {% for post in site.posts %} {% for tag in post.tags %} csv+=\"\\n{{post.title}},{{tag}}\"; {% endfor %} {% endfor %} 接着实例化一个chart，再把数据给它：\nvar chart = d3.parsets() .tension(0.8) .width(\"800\") .height(\"480\") .dimensions([\"tag\",\"post\"]); var vis = d3.select(\"#vis\").append(\"svg\") .attr(\"width\", chart.width()) .attr(\"height\", chart.height()); var parsed_csv=d3.csv.parse(csv); vis.datum(parsed_csv).call(chart); 我还想实现这样一个功能：点击图中的博客时可以跳转到博客页面。\nvar posts={}; {% for post in site.posts %} posts[\"{{post.title}}\"]={ \"url\":\"{{post.url}}\", }; {% endfor %} vis.selectAll(\".category text\").on(\"click\",function(d){ if(!(d.name in posts)) return; window.open(posts[d.name].url); }); d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上很独特，非常地描述化。 这篇文章是作者自己总结的d3处理数据上的一种模式，也就是所谓的join。\n",
   "wordCount" : "87",
-  "inLanguage": "en",
+  "inLanguage": "zh",
   "datePublished": "2013-07-22T00:00:00Z",
   "dateModified": "2013-07-22T00:00:00Z",
   "mainEntityOfPage": {
@@ -261,17 +261,18 @@ d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://vindurriel.github.io/archives/" title="Archive">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://vindurriel.github.io/resume_en/" title="Resume">
-                    <span>Resume</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li>
@@ -280,25 +281,26 @@ d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
-                    <span>RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main">
+
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       用d3.js来呈现post-tag的多对多关系
     </h1>
-    <div class="post-meta"><span title='2013-07-22 00:00:00 +0000 UTC'>July 22, 2013</span>
+    <div class="post-meta"><span title='2013-07-22 00:00:00 +0000 UTC'>2013年7月22日</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的<a href="/tags">标签页面</a>。</p>
+  <div class="post-content"><p>最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的<a href="/tags/">标签页面</a>。</p>
 <p>blog和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。</p>
 <p>平行集是反应两组或以上数据集之间映射关系的图表。</p>
 <p><a href="https://github.com/mbostock/d3/wiki/Gallery">d3</a>是一个用javascript的库，主要用途是用svg做数据可视化。</p>

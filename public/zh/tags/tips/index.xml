@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tips on vindurriel</title>
+    <link>/zh/tags/tips/</link>
+    <description>Recent content in Tips on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 Dec 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/zh/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>程序调试心得</title>
+      <link>/zh/post/2013-12-05-debug-tips/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-12-05-debug-tips/</guid>
+      <description>必须保证你改的代码，可以很方便地看到结果（或影响）。&amp;lt;br/&amp;gt;一次改动太多的地方，就无法判断结果的变化是哪处改动造成的。&amp;lt;br/&amp;gt;- 分离有问题的部分，做手术的创口尽可能小。&amp;lt;br/&amp;gt;问题的出现往往是重构的机会，一个bug往往能牵出更多的bug。</description>
+    </item>
+    <item>
+      <title>如何使用互联网解决编程问题</title>
+      <link>/zh/post/2013-12-03-how-to-solve-problems-online/</link>
+      <pubDate>Tue, 03 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-12-03-how-to-solve-problems-online/</guid>
+      <description>有的时候用关键词描述问题能更好地帮你看清问题的本质，即：要描述或定义我的问题，哪些词是**不可能绕过去**的？&amp;lt;br/&amp;gt;这时候，对结果的分析就很重要，有助于你认识到自己做了哪些假设，哪些假设是符合意图的，哪些是不合理的。&amp;lt;br/&amp;gt;2.你提问的方式正确，但是问题本身，不是你想的那样，你需要重新审视你的问题。&amp;lt;br/&amp;gt;再如，位置相关的搜索，如北京周边的美食、酒店什么的，百度的服务一般优于google的。</description>
+    </item>
+  </channel>
+</rss>

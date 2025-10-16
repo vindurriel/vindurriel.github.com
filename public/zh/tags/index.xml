@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on vindurriel</title>
+    <link>/zh/tags/</link>
+    <description>Recent content in Tags on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 10 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/zh/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Job</title>
+      <link>/zh/tags/job/</link>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/job/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>/zh/tags/python/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tutorial</title>
+      <link>/zh/tags/tutorial/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Problem Solving</title>
+      <link>/zh/tags/problem-solving/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/problem-solving/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tips</title>
+      <link>/zh/tags/tips/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/tips/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Psychology</title>
+      <link>/zh/tags/psychology/</link>
+      <pubDate>Mon, 09 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/psychology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Translation</title>
+      <link>/zh/tags/translation/</link>
+      <pubDate>Mon, 09 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/translation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>D3</title>
+      <link>/zh/tags/d3/</link>
+      <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/d3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graph</title>
+      <link>/zh/tags/graph/</link>
+      <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/graph/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Visualization</title>
+      <link>/zh/tags/visualization/</link>
+      <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/visualization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cryptography</title>
+      <link>/zh/tags/cryptography/</link>
+      <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/cryptography/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xiami</title>
+      <link>/zh/tags/xiami/</link>
+      <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/xiami/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Physics</title>
+      <link>/zh/tags/physics/</link>
+      <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/physics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Github Pages</title>
+      <link>/zh/tags/github-pages/</link>
+      <pubDate>Sun, 21 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/github-pages/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gem</title>
+      <link>/zh/tags/gem/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/gem/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jekyll</title>
+      <link>/zh/tags/jekyll/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/jekyll/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ruby</title>
+      <link>/zh/tags/ruby/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/ruby/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Setup</title>
+      <link>/zh/tags/setup/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/tags/setup/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

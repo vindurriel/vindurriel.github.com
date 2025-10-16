@@ -18,7 +18,7 @@ git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
 git push origin master
 ```
 
-这个例子中使用的是[jekyll-bootstrap]("https://github.com/plusjade/jekyll-bootstrap")。
+这个例子中使用的是[jekyll-bootstrap](https://github.com/plusjade/jekyll-bootstrap)。
 
 ### 写文章
 

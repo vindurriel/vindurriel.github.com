@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Gem on vindurriel</title>
+    <link>/zh/tags/gem/</link>
+    <description>Recent content in Gem on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 19 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/zh/tags/gem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>为gem install 提速</title>
+      <link>/zh/post/2013-07-19-gem-acceleration/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-07-19-gem-acceleration/</guid>
+      <description>&lt;p&gt;编辑&lt;code&gt;.gemrc&lt;/code&gt;，内容如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;:bulk_threshold: 1000
+:backtrace: false
+gemcutter_key: XXXXX
+gem: --no-ri --no-rdoc
+:benchmark: false
+:verbose: true
+:update_sources: true
+:sources: 
+- http://gems.rubyforge.org/
+- http://gems.opscode.com
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要起作用的是&lt;code&gt;gem: --no-ri --no-rdoc&lt;/code&gt;,少下载了很多文档。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/post/2014-03-26-python-2/">
+<link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/post/2014-03-26-python-2/">
 <noscript>
     <style>
         #theme-toggle,
@@ -60,7 +60,7 @@
   <meta property="og:title" content="Python web api">
   <meta property="og:description" content="最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。
 本文是系列的第二篇。">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2014-03-25T00:00:00+00:00">
@@ -104,7 +104,7 @@
   ],
   "articleBody": "本文是系列的第二篇。\nrest服务 这里有简介\njson Json\nJson与pojo\nPython处理json的库 import json #基本库 import simplejson #需用pip安装 Json-\u003epython object：\njson.loads(string_of_json) Python object-\u003ejson:\nJson.dumps(json, indent=2) #indent为缩进空格数 Requests：http for humans 这里有中文简介\n个人认为，requests是对Python价值观最好的体现。\n示例2 pm2.5 问题：寻找可用的api，获取城市的pm2.5及空气质量数据\n知识点：用requests写rest客户端\n子问题1：寻找可用的api\n通过google，找到这个有态度的网站 子问题2： 使用api\n子问题3：结果缓存与定时获取\n代码如下\n# encoding=utf-8 u''' pm25.py Usage: pm25.py Options: 城市名 ''' from docopt import docopt def wget_pm25(city): token=\"5j1znBVAsnSf5xQyNQyq\" import requests as r result=r.get(\"http://www.pm25.in/api/querys/pm2_5.json\",params={ \"city\":city, \"token\":token, }) return result.json() def needs_refresh(filename,timeout=3600): return False import os,time mtime=os.path.getmtime(filename) now=time.time() return now-mtime\u003etimeout def get_pm25(city): filename='pm25.data.{}.json'.format(city) import os,json data=None if os.path.isfile(filename) and not needs_refresh(filename): data=file(filename,'r').read() data=json.loads(data) else: data=wget_pm25(city) if type(data)==type({}): print data['error'] return -1 else: file(filename,'w').write(json.dumps(data,indent=2)) return data[-1][\"pm2_5\"] if __name__ == '__main__': args=docopt(__doc__) cities=args[''] print get_pm25(args['']) 示例3 使用flask-rest搭建rest服务 flask-rest 是一个使用flash框架搭建rest服务的工具，使用方法如下：\n安装pip，方法见这个网页\npip install flask-restful\nhello flask-rest\nfrom flask import Flask from flask.ext import restful app = Flask(__name__) api = restful.Api(app) class HelloWorld(restful.Resource): def get(self): return {'hello': 'world'} api.add_resource(HelloWorld, '/') if __name__ == '__main__': app.run(debug=True) 4.在此基础上调用pm25.py，并且把作为http get的参数传递\n代码如下：\nfrom flask import Flask from flask.ext import restful app = Flask(__name__) api = restful.Api(app) class PM25(restful.Resource): def get(self,city): import pm25 res=pm25.get_pm25(city) return {city: res} api.add_resource(PM25, '/pm25/') if __name__ == '__main__': app.run(debug=True) 思考题2 写一个天气服务\n输入:\nhttp:///\n输出json：\n{ \"city_name\":\"beijing\", \"high_temperature\":\"5\", \"low_temperature\":\"-3\", } 数据源可选择如下api：\nhttp://www.thinkpage.cn/weather/api/#all.json\nhttp://li600-131.members.linode.com/mapi/?term=beijing\u0026jsoncallback=jQuery17100569556609261781_1363159265751\nhttp://blog.csdn.net/duxinfeng2010/article/details/7830136\n也可以自己找。\n拓展阅读 Python Shortcuts for the Python Beginner\n",
   "wordCount" : "201",
-  "inLanguage": "en",
+  "inLanguage": "zh",
   "datePublished": "2014-03-25T00:00:00Z",
   "dateModified": "2014-03-25T00:00:00Z",
   "mainEntityOfPage": {
@@ -159,17 +159,18 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://vindurriel.github.io/archives/" title="Archive">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://vindurriel.github.io/resume_en/" title="Resume">
-                    <span>Resume</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li>
@@ -178,28 +179,29 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
-                    <span>RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main">
+
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Python web api
     </h1>
     <div class="post-description">
       最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&lt;br&gt;本文是系列的第二篇。
     </div>
-    <div class="post-meta"><span title='2014-03-25 00:00:00 +0000 UTC'>March 25, 2014</span>
+    <div class="post-meta"><span title='2014-03-25 00:00:00 +0000 UTC'>2014年3月25日</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>本文是<a href="/post/2014-03-26-python-1">系列</a>的第二篇。</p>
+  <div class="post-content"><p>本文是<a href="/post/2014-03-26-python-1/">系列</a>的第二篇。</p>
 <h2 id="rest服务">rest服务<a hidden class="anchor" aria-hidden="true" href="#rest服务">#</a></h2>
 <p><a href="http://www.cnblogs.com/shanyou/archive/2012/05/12/2496959.html">这里</a>有简介</p>
 <h2 id="json">json<a hidden class="anchor" aria-hidden="true" href="#json">#</a></h2>

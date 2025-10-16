@@ -5,7 +5,7 @@
     <link>https://vindurriel.github.io/tags/setup/</link>
     <description>Recent content in Setup on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
-    <language>en-us</language>
+    <language>zh-CN</language>
     <lastBuildDate>Fri, 19 Jul 2013 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -19,7 +19,7 @@
 cd USERNAME.github.com
 git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
 git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中使用的是&lt;a href=&#34;%22https://github.com/plusjade/jekyll-bootstrap%22&#34;&gt;jekyll-bootstrap&lt;/a&gt;。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中使用的是&lt;a href=&#34;https://github.com/plusjade/jekyll-bootstrap&#34;&gt;jekyll-bootstrap&lt;/a&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;写文章&#34;&gt;写文章&lt;/h3&gt;
 &lt;p&gt;如果装了ruby的话，直接在文件夹下执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;rake post title=&amp;quot;a new post&amp;quot;

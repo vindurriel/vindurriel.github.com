@@ -1,5 +1,34 @@
 baseURL: https://vindurriel.github.io
-languageCode: en-us
+defaultContentLanguage: zh
+languages:
+  zh:
+    languageCode: zh-CN
+    languageName: "简体中文 :cn:"
+    menus:
+      main:
+        - name: 存档
+          pageRef: /archives
+          weight: 10
+        - name: 简历
+          pageRef: /resume
+          weight: 30
+        - name: RSS 源
+          url: /index.xml
+          weight: 40
+  en:
+    languageCode: en-US
+    languageName: "English US :us:"
+    menus:
+      main:
+        - name: Archives
+          pageRef: /archives
+          weight: 10
+        - name: Resume
+          pageRef: /resume
+          weight: 20
+        - name: RSS feed
+          url: /index.xml
+          weight: 40
 title: vindurriel
 theme:
   - PaperMod
@@ -7,22 +36,9 @@ outputs:
   home:
     - html
     - rss
-menus:
-  main:
-    - name: Archives
-      pageRef: /archives
-      weight: 10
-    - name: Resume
-      pageRef: /resume_en
-      weight: 20
-    - name: 简历
-      pageRef: /resume
-      weight: 30
-    - name: RSS feed
-      url: /index.xml
-      weight: 40
 params:
   showBreadCrumbs: true
+  displayFullLangName: true
   disableSpecial1stPost: true
   cover:
     responsiveImages: false

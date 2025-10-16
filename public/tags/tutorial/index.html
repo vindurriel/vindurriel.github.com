@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://vindurriel.github.io/tags/tutorial/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/tags/tutorial/">
+<link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/tags/tutorial/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,7 +59,7 @@
 </noscript><meta property="og:url" content="https://vindurriel.github.io/tags/tutorial/">
   <meta property="og:site_name" content="vindurriel">
   <meta property="og:title" content="Tutorial">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tutorial">
@@ -103,17 +103,18 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://vindurriel.github.io/archives/" title="Archive">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://vindurriel.github.io/resume_en/" title="Resume">
-                    <span>Resume</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li>
@@ -122,15 +123,15 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
-                    <span>RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/tags/">Tags</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://vindurriel.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/tags/">Tags</a></div>
   <h1>
     Tutorial
   </h1>
@@ -174,7 +175,7 @@ genius分词
 词性 名词、动词一般比副词、形容词重要
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span></footer>
+  <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>2014年3月26日</span></footer>
   <a class="entry-link" aria-label="post link to 用Python做文本摘要" href="https://vindurriel.github.io/post/2014-03-26-python-3/"></a>
 </article>
 
@@ -201,7 +202,7 @@ Json.dumps(json, indent=2) #indent为缩进空格数 Requests：http for humans 
 # encoding=utf-8 u&#39;&#39;&#39; pm25.py Usage: pm25.py &lt;cityname&gt; Options: &lt;cityname&gt; 城市名 &#39;&#39;&#39; from docopt import docopt def wget_pm25(city): token=&#34;5j1znBVAsnSf5xQyNQyq&#34; import requests as r result=r.get(&#34;http://www.pm25.in/api/querys/pm2_5.json&#34;,params={ &#34;city&#34;:city, &#34;token&#34;:token, }) return result.json() def needs_refresh(filename,timeout=3600): return False import os,time mtime=os.path.getmtime(filename) now=time.time() return now-mtime&gt;timeout def get_pm25(city): filename=&#39;pm25.data.{}.json&#39;.format(city) import os,json data=None if os.path.isfile(filename) and not needs_refresh(filename): data=file(filename,&#39;r&#39;).read() data=json.loads(data) else: data=wget_pm25(city) if type(data)==type({}): print data[&#39;error&#39;] return -1 else: file(filename,&#39;w&#39;).write(json.dumps(data,indent=2)) return data[-1][&#34;pm2_5&#34;] if __name__ == &#39;__main__&#39;: args=docopt(__doc__) cities=args[&#39;&lt;cityname&gt;&#39;] print get_pm25(args[&#39;&lt;cityname&gt;&#39;]) 示例3 使用flask-rest搭建rest服务 flask-rest 是一个使用flash框架搭建rest服务的工具，使用方法如下：
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2014-03-25 00:00:00 +0000 UTC'>March 25, 2014</span></footer>
+  <footer class="entry-footer"><span title='2014-03-25 00:00:00 +0000 UTC'>2014年3月25日</span></footer>
   <a class="entry-link" aria-label="post link to Python web api" href="https://vindurriel.github.io/post/2014-03-26-python-2/"></a>
 </article>
 
@@ -234,7 +235,7 @@ Html、Xml解析：BeautifulSoup, Expat
 扩展标准库十分容易
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2014-03-24 00:00:00 +0000 UTC'>March 24, 2014</span></footer>
+  <footer class="entry-footer"><span title='2014-03-24 00:00:00 +0000 UTC'>2014年3月24日</span></footer>
   <a class="entry-link" aria-label="post link to Python 初探" href="https://vindurriel.github.io/post/2014-03-26-python-1/"></a>
 </article>
     </main>

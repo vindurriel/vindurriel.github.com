@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Physics on vindurriel</title>
+    <link>/zh/tags/physics/</link>
+    <description>Recent content in Physics on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 26 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/zh/tags/physics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>forced graph</title>
+      <link>/zh/post/2013-07-26-forced-graph/</link>
+      <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>/zh/post/2013-07-26-forced-graph/</guid>
+      <description>&lt;p&gt;下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
+并且施加了两个力场，把post向左推，tag向右推。&lt;/p&gt;
+&lt;p&gt;参考了下面两个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/1021841&#34;&gt;Custom Forces&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/950642&#34;&gt;Labeled Force Layout&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
