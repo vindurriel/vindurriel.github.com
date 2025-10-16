@@ -13,7 +13,18 @@
       <link>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</link>
       <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</guid>
-      <description>```&amp;lt;br/&amp;gt;:bulk_threshold: 1000&amp;lt;br/&amp;gt;:backtrace: false&amp;lt;br/&amp;gt;gemcutter_key: XXXXX&amp;lt;br/&amp;gt;gem: --no-ri --no-rdoc&amp;lt;br/&amp;gt;:benchmark: false&amp;lt;br/&amp;gt;:verbose: true&amp;lt;br/&amp;gt;:update_sources: true&amp;lt;br/&amp;gt;:sources: &amp;lt;br/&amp;gt;- http://gems.rubyforge.org/&amp;lt;br/&amp;gt;- http://gems.opscode.com&amp;lt;br/&amp;gt;```&amp;lt;br/&amp;gt;主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。</description>
+      <description>&lt;p&gt;编辑&lt;code&gt;.gemrc&lt;/code&gt;，内容如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;:bulk_threshold: 1000
+:backtrace: false
+gemcutter_key: XXXXX
+gem: --no-ri --no-rdoc
+:benchmark: false
+:verbose: true
+:update_sources: true
+:sources: 
+- http://gems.rubyforge.org/
+- http://gems.opscode.com
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要起作用的是&lt;code&gt;gem: --no-ri --no-rdoc&lt;/code&gt;,少下载了很多文档。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

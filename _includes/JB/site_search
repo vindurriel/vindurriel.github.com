@@ -1,4 +1,0 @@
-<form >
-  <input type="text" class="search-query" id="input-query" placeholder="输入搜索关键字">
-  <button data-toggle="modal" id="btn-search" href="#myModal" class="search-btn">搜索</button>
-</form>

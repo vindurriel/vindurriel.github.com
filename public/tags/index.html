@@ -78,7 +78,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -108,8 +107,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -123,7 +122,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -161,7 +160,7 @@
         <a href="https://vindurriel.github.io/tags/job/">job <sup><strong><sup>1</sup></strong></sup> </a>
     </li>
     <li>
-        <a href="https://vindurriel.github.io/tags/nhc/">nhc <sup><strong><sup>1</sup></strong></sup> </a>
+        <a href="https://vindurriel.github.io/tags/nhc/">NHC <sup><strong><sup>1</sup></strong></sup> </a>
     </li>
     <li>
         <a href="https://vindurriel.github.io/tags/physics/">physics <sup><strong><sup>1</sup></strong></sup> </a>
@@ -197,6 +196,172 @@
         <a href="https://vindurriel.github.io/tags/xiami/">xiami <sup><strong><sup>2</sup></strong></sup> </a>
     </li>
 </ul>
+<div id="vis"></div>
+<link rel="stylesheet" href="/stylesheets/d3.parsets.css" />
+<script type="text/javascript" src="/javascripts/d3.v3.min.js" ></script>
+<script type="text/javascript" src="/javascripts/d3.parsets.js" ></script>
+<script type="text/javascript">
+	var csv="post,tag";
+	var posts={};
+    
+		posts["想跳槽？学学人猿泰山"]={
+			"url":"\/post\/2014-04-10-tarzan\/",
+		};
+      csv+="\n想跳槽？学学人猿泰山,Job";
+    
+    
+		posts["用Python做文本摘要"]={
+			"url":"\/post\/2014-03-26-python-3\/",
+		};
+      csv+="\n用Python做文本摘要,Python";
+    
+      csv+="\n用Python做文本摘要,Tutorial";
+    
+    
+		posts["Python web api"]={
+			"url":"\/post\/2014-03-26-python-2\/",
+		};
+      csv+="\nPython web api,Python";
+    
+      csv+="\nPython web api,Tutorial";
+    
+    
+		posts["Python 初探"]={
+			"url":"\/post\/2014-03-26-python-1\/",
+		};
+      csv+="\nPython 初探,Python";
+    
+      csv+="\nPython 初探,Tutorial";
+    
+    
+		posts["程序调试心得"]={
+			"url":"\/post\/2013-12-05-debug-tips\/",
+		};
+      csv+="\n程序调试心得,Problem Solving";
+    
+      csv+="\n程序调试心得,Tips";
+    
+    
+		posts["如何使用互联网解决编程问题"]={
+			"url":"\/post\/2013-12-03-how-to-solve-problems-online\/",
+		};
+      csv+="\n如何使用互联网解决编程问题,Problem Solving";
+    
+      csv+="\n如何使用互联网解决编程问题,Tips";
+    
+    
+		posts["电子游戏让你上瘾的5个可怕方法"]={
+			"url":"\/post\/2013-09-09-why-video-games-is-addictive\/",
+		};
+      csv+="\n电子游戏让你上瘾的5个可怕方法,Translation";
+    
+      csv+="\n电子游戏让你上瘾的5个可怕方法,Psychology";
+    
+    
+		posts["nest介绍之音乐地图"]={
+			"url":"\/post\/2013-09-04-nest-introduction\/",
+		};
+      csv+="\nnest介绍之音乐地图,Visualization";
+    
+      csv+="\nnest介绍之音乐地图,Graph";
+    
+      csv+="\nnest介绍之音乐地图,D3";
+    
+    
+		posts["凯撒方阵"]={
+			"url":"\/post\/2013-09-03-caesar-encryption\/",
+		};
+      csv+="\n凯撒方阵,Xiami";
+    
+      csv+="\n凯撒方阵,Cryptography";
+    
+    
+		posts["虾米下载介绍"]={
+			"url":"\/post\/2013-08-09-xiami-introduction\/",
+		};
+      csv+="\n虾米下载介绍,Xiami";
+    
+    
+		posts["forced graph"]={
+			"url":"\/post\/2013-07-26-forced-graph\/",
+		};
+      csv+="\nforced graph,D3";
+    
+      csv+="\nforced graph,Visualization";
+    
+      csv+="\nforced graph,Physics";
+    
+      csv+="\nforced graph,Graph";
+    
+    
+		posts["用d3.js来呈现post-tag的多对多关系"]={
+			"url":"\/post\/2013-07-22-post-tag-diagram-with-d3\/",
+		};
+      csv+="\n用d3.js来呈现post-tag的多对多关系,D3";
+    
+      csv+="\n用d3.js来呈现post-tag的多对多关系,Visualization";
+    
+    
+		posts["删除github pages的master分支"]={
+			"url":"\/post\/2013-07-21-delete-master-branch-on-github-pages\/",
+		};
+      csv+="\n删除github pages的master分支,Github Pages";
+    
+    
+		posts["github pages 配置"]={
+			"url":"\/post\/2013-07-19-github-pages-setup\/",
+		};
+      csv+="\ngithub pages 配置,Jekyll";
+    
+      csv+="\ngithub pages 配置,Github Pages";
+    
+      csv+="\ngithub pages 配置,Setup";
+    
+    
+		posts["为gem install 提速"]={
+			"url":"\/post\/2013-07-19-gem-acceleration\/",
+		};
+      csv+="\n为gem install 提速,Gem";
+    
+      csv+="\n为gem install 提速,Ruby";
+    
+    
+		posts["Covid Report"]={
+			"url":"\/post\/2022-08-08-covid-report\/",
+		};
+      csv+="\nCovid Report,Visualization";
+    
+      csv+="\nCovid Report,Covid";
+    
+      csv+="\nCovid Report,NHC";
+    
+    
+		posts[""]={
+			"url":"\/resume\/",
+		};
+    
+		posts[""]={
+			"url":"\/resume_en\/",
+		};
+    
+		posts["Archive"]={
+			"url":"\/archives\/",
+		};
+	var chart = d3.parsets()
+		  .tension(0.8)
+		  .width(800)
+		  .height(480)
+	    .dimensions(["tag","post"]);
+	var vis = d3.select("#vis").append("svg")
+	    .attr("width", chart.width())
+	    .attr("height", chart.height());
+	var parsed_csv=d3.csv.parse(csv);
+	vis.datum(parsed_csv).call(chart);
+	vis.selectAll(".category text").on("click",function(d){
+		if(!(d.name in posts)) return;
+		window.open(posts[d.name].url);
+	});
+</script>
     </main>
     
 <footer class="footer">

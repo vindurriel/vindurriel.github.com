@@ -1,40 +1,5 @@
----
----
-//准备post和tag的关联数据
-var graph={
-    "nodes":[],
-    "links":[],
-};
-var hash_tag={};
-var post_id=0,tag_id=0;
-{% for post in site.posts %}
-    graph.nodes.push({
-        "name": "{{ post.title }}",
-        "url":"{{post.url}}",
-        "type":"post", 
-    });
-    post_id=graph.nodes.length-1;
-    {% for tag in post.tags %}
-        if(hash_tag["{{tag}}"]===undefined){
-            graph.nodes.push({
-                "name": "{{ tag }}",
-                "url":"/tags.html",
-                "type":"tag",
-            });
-            tag_id=graph.nodes.length-1;
-            hash_tag["{{tag}}"]=tag_id;
-        } else {
-            tag_id=hash_tag["{{tag}}"];
-        }
-        graph.links.push({
-            "source":post_id,
-            "target":tag_id,
-            "value":1    
-        });
-    {% endfor %}
-{% endfor %}
 //数据准备完毕，开始画图
-var width = $("#svg").width();
+var width = window.innerWidth/2;
 height = 400;
 //两个力场的中心位置
 var foci={

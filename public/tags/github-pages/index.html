@@ -78,7 +78,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -108,8 +107,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -123,7 +122,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -146,8 +145,7 @@
     <p>github pages默认使用两个分支：master和gh-pages。 在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。
 但是可以删除master。 首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 git branch -D master 删除master分支。
 但是删除master后，发现远端页面更新非常缓慢，而且页面状态不稳定（有的页面更新了，有的则没有）。因此后来恢复了用两个分支。有文章介绍可以用post commit hook来保持两个分支的一致性。
-###update 2013-08-07
-写了一个bat脚本，取名push.bat
+update 2013-08-07 写了一个bat脚本，取名push.bat
 @echo off rem 提示用户输入comment set /p comment=&#34;comments:&#34; rem 在master分支上commit git commit -am &#34;%comment%&#34; git checkout gh-pages rem rebase命令使得gh-pages和master同步，然后生成一个commit git rebase master git checkout master git push 使用时直接输入push
 </p>
   </div>
@@ -164,11 +162,10 @@
     <p>首先去github pages申请一个页面，默认的域名是http://USERNAME.github.io，其中USERNAME是你的github用户名。
 github使用jekyll做解析引擎。可以直接克隆一个别人写好的jekyll，然后把上传路径改成自己的，像这样：
 git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com cd USERNAME.github.com git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git git push origin master 这个例子中使用的是jekyll-bootstrap。
-###写文章
-如果装了ruby的话，直接在文件夹下执行
+写文章 如果装了ruby的话，直接在文件夹下执行
 rake post title=&#34;a new post&#34; 就可以新建一篇文章。内容支持markdown。
 其实就是在_post目录下新建了一个md文件，文件名格式为年-月-日-标题.md。 文件开始是一些元信息，比如本文的md文件开头是这样的：
---- layout: post title: &#34;github pages 配置&#34; description: &#34;rake post title=&amp;quot;a new post&amp;quot; layout: post title: &#34;github pages 配置&#34; description: &#34;&#34; category: misc tags: [jekyll,github pages,setup] 写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。 comments : provider : disqus disqus : short_name : YOUR_DISQUS_SITE_NAME 你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。 $ CHCP 65001 如果是在git bash中的话，需要设置如下环境变量： export LC_ALL = enUS.UTF-8 export LANG = enUS.UTF-8 然后就可以 `jekyll serve --watch`了。 gem uninstall pygments.rb --version &amp;quot;&amp;gt;0.5.0&amp;quot; gem install pygments.rb --version &amp;quot;=0.5.0&amp;quot;&#34; category: misc tags: [jekyll,github pages,setup] --- 写好了内容部分，直接git commit然后git push到master分支就可以了。
+--- layout: post title: &#34;github pages 配置&#34; layout: post title: &#34;github pages 配置&#34; description: &#34;&#34; category: misc tags: [jekyll,github pages,setup] 写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。 comments : provider : disqus disqus : short_name : YOUR_DISQUS_SITE_NAME 你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。 $ CHCP 65001 如果是在git bash中的话，需要设置如下环境变量： export LC_ALL = enUS.UTF-8 export LANG = enUS.UTF-8 然后就可以 `jekyll serve --watch`了。 gem uninstall pygments.rb --version &amp;quot;&amp;gt;0.5.0&amp;quot; gem install pygments.rb --version &amp;quot;=0.5.0&amp;quot;&#34; category: misc tags: [jekyll,github pages,setup] --- 写好了内容部分，直接git commit然后git push到master分支就可以了。
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2013-07-19 00:00:00 +0000 UTC'>July 19, 2013</span></footer>

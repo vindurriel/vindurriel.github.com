@@ -25,25 +25,85 @@
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/tarzan/tarzan.gif&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Python web api</title>
-      <link>https://vindurriel.github.io/post/2014-03-26-python-2/</link>
-      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
-      <guid>https://vindurriel.github.io/post/2014-03-26-python-2/</guid>
-      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第二篇。</description>
-    </item>
-    <item>
-      <title>python 初探</title>
-      <link>https://vindurriel.github.io/post/2014-03-26-python-1/</link>
-      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
-      <guid>https://vindurriel.github.io/post/2014-03-26-python-1/</guid>
-      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第一篇。</description>
-    </item>
-    <item>
       <title>用Python做文本摘要</title>
       <link>https://vindurriel.github.io/post/2014-03-26-python-3/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2014-03-26-python-3/</guid>
-      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第三篇。</description>
+      <description>&lt;p&gt;本文是&lt;a href=&#34;https://vindurriel.github.io/post/2014-03-26-python-1&#34;&gt;系列&lt;/a&gt;的第三篇。&lt;/p&gt;
+&lt;h2 id=&#34;文本摘要&#34;&gt;文本摘要&lt;/h2&gt;
+&lt;p&gt;以下新闻来自&lt;a href=&#34;http://www.leiphone.com/yahoo-summly.html&#34;&gt;雷锋网&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Yahoo收购新闻摘要应用Summly&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;宗仁 2013-03-26 07:53 没有评论&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;标签：Summly 新闻摘要&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Yahoo 昨日宣布收购新闻摘要移动公司Summly，&lt;strong&gt;价格可能为3000万美金&lt;/strong&gt;，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Summly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下是雅虎在其官方博客上发布的声明：&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用&lt;/strong&gt;。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。&lt;/p&gt;
+&lt;p&gt;下面我们就来看看做文本摘要的大致思路。&lt;/p&gt;
+&lt;h2 id=&#34;大致思路&#34;&gt;大致思路&lt;/h2&gt;
+&lt;p&gt;文本摘要 顾名思义，就是&lt;strong&gt;找出一部分重要的句子&lt;/strong&gt;。 这句话有三个逻辑重点。&lt;/p&gt;
+&lt;h3 id=&#34;1-找出一部分重要的句子&#34;&gt;1. 找出一部分重要的&lt;em&gt;句子&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;也就是说要把文章切成句子。比较直观的想法是根据标点符号以及空格、换行符等。断句这个问题，英文反而比中文要复杂，例如句号&lt;code&gt;.&lt;/code&gt;和单引号&lt;code&gt;&#39;&lt;/code&gt;都是有多个意思的，都不一定能标明一句话的结尾。&lt;/p&gt;
+&lt;h3 id=&#34;2-找出一部分重要的句子&#34;&gt;2. 找出一部分&lt;em&gt;重要&lt;/em&gt;的句子&lt;/h3&gt;
+&lt;p&gt;如何衡量一篇文章里的每句话是否重要？怎样量化这个重要性？有以下思考的角度。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据位置（标题、导语、段首段尾）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一般来说，文章尤其是新闻的标题、节标题、导语和段首段尾比较重要。对于html解析而言，就是title、h1、h2、a、strong等标记中的文字更重要。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;内容方面，需要把粒度细分到词的重要程度，如果一句话中的词很重要，那么这句话很重要。&lt;/p&gt;
+&lt;p&gt;那么就有下面的两个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;怎么获得一句话中的词？也就是分词问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;词的重要程度如何衡量？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面分别来介绍这两个问题。&lt;/p&gt;
+&lt;h3 id=&#34;21-分词&#34;&gt;2.1 分词&lt;/h3&gt;
+&lt;p&gt;就是在词与词之间插入标记，一般是空格。英文文本不需要这一步，本来就有空格。但中文没有，而且一词多义现象很多，
+语法结构还会随着词的位置而变化，因此中文分词是一个比较独特的问题。&lt;/p&gt;
+&lt;p&gt;但是中文分词和语音识别很像，因为语音信号在词与词之间也是没有空格的，因此可共用技术（HMM，CRF）。&lt;/p&gt;
+&lt;p&gt;Python比较好的中文分词工具有：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.oschina.net/p/jieba&#34;&gt;结巴分词&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.oschina.net/p/genius-fc&#34;&gt;genius分词&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;22-词的重要程度如何衡量&#34;&gt;2.2 词的重要程度如何衡量？&lt;/h3&gt;
+&lt;h4 id=&#34;词频tf&#34;&gt;词频（TF）&lt;/h4&gt;
+&lt;p&gt;需要去掉词频太高的词（停用词）&lt;/p&gt;
+&lt;h4 id=&#34;固定搭配的频率&#34;&gt;固定搭配的频率&lt;/h4&gt;
+&lt;p&gt;N-Gram&lt;/p&gt;
+&lt;h4 id=&#34;词性&#34;&gt;词性&lt;/h4&gt;
+&lt;p&gt;名词、动词一般比副词、形容词重要&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python web api</title>
+      <link>https://vindurriel.github.io/post/2014-03-26-python-2/</link>
+      <pubDate>Tue, 25 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2014-03-26-python-2/</guid>
+      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第二篇。</description>
+    </item>
+    <item>
+      <title>Python 初探</title>
+      <link>https://vindurriel.github.io/post/2014-03-26-python-1/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/2014-03-26-python-1/</guid>
+      <description>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&amp;lt;br&amp;gt;本文是系列的第一篇。</description>
     </item>
     <item>
       <title>程序调试心得</title>
@@ -71,7 +131,64 @@
       <link>https://vindurriel.github.io/post/2013-09-04-nest-introduction/</link>
       <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-09-04-nest-introduction/</guid>
-      <description>节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&amp;lt;br/&amp;gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。&amp;lt;br/&amp;gt;现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。&amp;lt;br/&amp;gt;* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）</description>
+      <description>&lt;p&gt;nest(&lt;a href=&#34;https://github.com/vindurriel/nest&#34;&gt;https://github.com/vindurriel/nest&lt;/a&gt;)是一个视觉组件，它用图(graph)来展示元素之间的关系。一个节点(node)表示一个元素或者元素的某个属性，节点之间的连线(link)表示元素之间的关系。 元素和关系的类型、属性都可以是任意定制的。使用者可以和图进行交互， 允许的操作包括拖拽、添加、删除、聚焦、平移和放缩。
+节点的颜色由数据实体的&lt;code&gt;type&lt;/code&gt;属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&lt;/p&gt;
+&lt;h2 id=&#34;为什么要做&#34;&gt;为什么要做&lt;/h2&gt;
+&lt;p&gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。而图可以表示非DAG的拓扑关系，也就是所谓的网络。&lt;/p&gt;
+&lt;p&gt;nest是为了展示图而生的视觉组件，它能在二维平面展示复杂的元素关系，并且用户可以实时地修改图的布局、增删节点。&lt;/p&gt;
+&lt;p&gt;nest可以作为脑图使用，也可以作为更一般意义上的关系展示图，参见下面的&lt;a href=&#34;http://nest.ap01.aws.af.cm/model/artist_23401?theme=light&#34;&gt;例子&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
+&lt;p&gt;音乐地图(&lt;a href=&#34;http://nest.ap01.aws.af.cm/model/artist_23401?theme=light&#34;&gt;http://nest.ap01.aws.af.cm/model/python?theme=light&lt;/a&gt;)是一个探索音乐元素之间关系的动态地图，展示歌曲、艺术家、专辑和精选集之间的关系。数据抓取自&lt;a href=&#34;http://www.xiami.com&#34;&gt;虾米网&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/nest/2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用方法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;搜索框中可搜索音乐。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击&lt;code&gt;see all&lt;/code&gt;可查看其他用户已经探索过的音乐地图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;保存&lt;/code&gt;按钮可以上传当前音乐地图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;?&lt;/code&gt;按钮中可显示图例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键拖拽： 空白处平移，节点上调整节点位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键双击节点： 扩展该节点，即添加与该节点有关系的新节点。支持svg动画的浏览器上(chrome、firefox、&lt;del&gt;IE&lt;/del&gt;)该节点会振动，并弹出同类型的新节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ctrl+左键单击节点： 同左键双击节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;shift+左键单击节点： 删除该节点，同时一并删除&lt;strong&gt;只与&lt;/strong&gt;该节点有连线的所有节点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;alt+左键单击节点： 将该节点设为根节点。图本身无所谓根节点，根节点的唯一目的在于以该节点的id来存储图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;地址栏中可修改theme参数,支持light和dark。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/nest/3.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;技术&#34;&gt;技术&lt;/h2&gt;
+&lt;p&gt;nest在前台采用了&lt;a href=&#34;https://github.com/mbostock/d3/wiki&#34;&gt;d3.js&lt;/a&gt;，而d3.js采用了svg。 后台是&lt;a href=&#34;http://webpy.org&#34;&gt;web.py&lt;/a&gt;。 前后台通信采用了ajax和json。&lt;/p&gt;
+&lt;p&gt;源代码在github &lt;a href=&#34;https://github.com/vindurriel/nest&#34;&gt;https://github.com/vindurriel/nest&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;开发计划&#34;&gt;开发计划&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将nest组件化， 允许嵌入到任意的html网页中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;固化二次开发的接口， 提供SDK&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
     <item>
       <title>凯撒方阵</title>
@@ -85,21 +202,119 @@
       <link>https://vindurriel.github.io/post/2013-08-09-xiami-introduction/</link>
       <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-08-09-xiami-introduction/</guid>
-      <description>下载高音质歌曲是收费的，而且官方软件（虾客）不好用。&amp;lt;br/&amp;gt;原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。&amp;lt;br/&amp;gt;然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。&amp;lt;br/&amp;gt;界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。&amp;lt;br/&amp;gt;xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。&amp;lt;br/&amp;gt;做自己每天都会使用的软件，是一件很快乐的事。&amp;lt;br/&amp;gt;百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。</description>
+      <description>&lt;p&gt;每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 &lt;a href=&#34;https://github.com/vindurriel/xiami_downloader&#34;&gt;xiami_downloader&lt;/a&gt; 是我近两年来的宠物项目。&lt;/p&gt;
+&lt;h2 id=&#34;初心&#34;&gt;初心&lt;/h2&gt;
+&lt;p&gt;最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在&lt;a href=&#34;http://www.xiami.com/&#34;&gt;虾米网&lt;/a&gt;在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。
+有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。&lt;/p&gt;
+&lt;p&gt;通过google找到了&lt;a href=&#34;http://longkeymusic.com/&#34;&gt;LongkeyMusic&lt;/a&gt;(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。&lt;/p&gt;
+&lt;p&gt;LKM是用.NET写的，而且作者很厚道地没有做混淆。同事&lt;a href=&#34;http://weibo.com/818871231&#34;&gt;胖子&lt;/a&gt;向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。&lt;/p&gt;
+&lt;p&gt;第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。&lt;/p&gt;
+&lt;p&gt;从此开始了漫长的hacking 之路。&lt;/p&gt;
+&lt;h2 id=&#34;道阻且长&#34;&gt;道阻且长&lt;/h2&gt;
+&lt;p&gt;xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。
+这个过程中学到了很多东西，总结起来如下：&lt;/p&gt;
+&lt;h3 id=&#34;产品&#34;&gt;产品&lt;/h3&gt;
+&lt;p&gt;最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。&lt;/p&gt;
+&lt;p&gt;做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。&lt;/p&gt;
+&lt;p&gt;如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。&lt;/p&gt;
+&lt;h3 id=&#34;重构&#34;&gt;重构&lt;/h3&gt;
+&lt;p&gt;经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don&amp;rsquo;t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。&lt;/p&gt;
+&lt;h3 id=&#34;git&#34;&gt;git&lt;/h3&gt;
+&lt;p&gt;之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。&lt;/p&gt;
+&lt;h3 id=&#34;异步方法与非阻塞ui&#34;&gt;异步方法与非阻塞UI&lt;/h3&gt;
+&lt;p&gt;以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。&lt;/p&gt;
+&lt;h3 id=&#34;密码学&#34;&gt;密码学&lt;/h3&gt;
+&lt;p&gt;包括凯撒方阵、api signature的生成、md5的使用等。&lt;/p&gt;
+&lt;h3 id=&#34;跨进程通信ipc&#34;&gt;跨进程通信（IPC）&lt;/h3&gt;
+&lt;p&gt;主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者&lt;a href=&#34;http://www.zeromq.org/&#34;&gt;ZeroMq&lt;/a&gt;、.NET自带的WCF，还有最原始的基于文件的IPC。&lt;/p&gt;
+&lt;h3 id=&#34;restful-api以及oauth&#34;&gt;RESTful API以及OAuth&lt;/h3&gt;
+&lt;p&gt;虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。&lt;/p&gt;
+&lt;p&gt;虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。
+大概是想和第三方app的登录验证兼容吧。&lt;/p&gt;
+&lt;h3 id=&#34;扁平化设计&#34;&gt;扁平化设计&lt;/h3&gt;
+&lt;p&gt;最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。&lt;/p&gt;
+&lt;h3 id=&#34;自动更新&#34;&gt;自动更新&lt;/h3&gt;
+&lt;p&gt;考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。&lt;/p&gt;
+&lt;h3 id=&#34;断点续传与下载器的线程控制&#34;&gt;断点续传与下载器的线程控制&lt;/h3&gt;
+&lt;p&gt;通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制&lt;/p&gt;
+&lt;h2 id=&#34;下一站&#34;&gt;下一站？&lt;/h2&gt;
+&lt;p&gt;某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。&lt;/p&gt;
+&lt;p&gt;对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对&lt;a href=&#34;https://github.com/vindurriel/xiami_downloader&#34;&gt;xiami_downloader&lt;/a&gt;说一声：谢谢，再见。&lt;/p&gt;</description>
     </item>
     <item>
       <title>forced graph</title>
       <link>https://vindurriel.github.io/post/2013-07-26-forced-graph/</link>
       <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-26-forced-graph/</guid>
-      <description>- d3.parsets.css&amp;lt;br/&amp;gt;- d3.v3.min.js&amp;lt;br/&amp;gt;- d3.parsets.js&amp;lt;br/&amp;gt;{% highlight text %}&amp;lt;br/&amp;gt;{{ page.title }},d3&amp;lt;br/&amp;gt;{{ page.title }},visualization&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var csv=&amp;amp;quot;post,tag&amp;amp;quot;;&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	{% for tag in post.tags %}&amp;lt;br/&amp;gt;		csv&#43;=&amp;amp;quot; {{post.title}},{{tag}}&amp;amp;quot;;&amp;lt;br/&amp;gt;	{% endfor %}&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;{%endraw%}&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;var chart = d3.parsets()&amp;lt;br/&amp;gt;	  .tension(0.8)&amp;lt;br/&amp;gt;	  .width(&amp;amp;quot;800&amp;amp;quot;)&amp;lt;br/&amp;gt;	  .height(&amp;amp;quot;480&amp;amp;quot;)&amp;lt;br/&amp;gt;      .dimensions([&amp;amp;quot;tag&amp;amp;quot;,&amp;amp;quot;post&amp;amp;quot;]);&amp;lt;br/&amp;gt;var vis = d3.select(&amp;amp;quot;#vis&amp;amp;quot;).append(&amp;amp;quot;svg&amp;amp;quot;)&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;width&amp;amp;quot;, chart.width())&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;height&amp;amp;quot;, chart.height());&amp;lt;br/&amp;gt;var parsed_csv=d3.csv.parse(csv);&amp;lt;br/&amp;gt;vis.datum(parsed_csv).call(chart);&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var posts={};&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	posts[&amp;amp;quot;{{post.title}}&amp;amp;quot;]={&amp;lt;br/&amp;gt;		&amp;amp;quot;url&amp;amp;quot;:&amp;amp;quot;{{post.url}}&amp;amp;quot;,&amp;lt;br/&amp;gt;	};&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;vis.selectAll(&amp;amp;quot;.category text&amp;amp;quot;).on(&amp;amp;quot;click&amp;amp;quot;,function(d){&amp;lt;br/&amp;gt;	if(!</description>
+      <description>&lt;p&gt;下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
+并且施加了两个力场，把post向左推，tag向右推。&lt;/p&gt;
+&lt;p&gt;参考了下面两个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/1021841&#34;&gt;Custom Forces&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/950642&#34;&gt;Labeled Force Layout&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     <item>
       <title>用d3.js来呈现post-tag的多对多关系</title>
       <link>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</link>
       <pubDate>Mon, 22 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</guid>
-      <description>- d3.parsets.css&amp;lt;br/&amp;gt;- d3.v3.min.js&amp;lt;br/&amp;gt;- d3.parsets.js&amp;lt;br/&amp;gt;{% highlight text %}&amp;lt;br/&amp;gt;{{ page.title }},d3&amp;lt;br/&amp;gt;{{ page.title }},visualization&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var csv=&amp;amp;quot;post,tag&amp;amp;quot;;&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	{% for tag in post.tags %}&amp;lt;br/&amp;gt;		csv&#43;=&amp;amp;quot; {{post.title}},{{tag}}&amp;amp;quot;;&amp;lt;br/&amp;gt;	{% endfor %}&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;{%endraw%}&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;var chart = d3.parsets()&amp;lt;br/&amp;gt;	  .tension(0.8)&amp;lt;br/&amp;gt;	  .width(&amp;amp;quot;800&amp;amp;quot;)&amp;lt;br/&amp;gt;	  .height(&amp;amp;quot;480&amp;amp;quot;)&amp;lt;br/&amp;gt;      .dimensions([&amp;amp;quot;tag&amp;amp;quot;,&amp;amp;quot;post&amp;amp;quot;]);&amp;lt;br/&amp;gt;var vis = d3.select(&amp;amp;quot;#vis&amp;amp;quot;).append(&amp;amp;quot;svg&amp;amp;quot;)&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;width&amp;amp;quot;, chart.width())&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;height&amp;amp;quot;, chart.height());&amp;lt;br/&amp;gt;var parsed_csv=d3.csv.parse(csv);&amp;lt;br/&amp;gt;vis.datum(parsed_csv).call(chart);&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var posts={};&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	posts[&amp;amp;quot;{{post.title}}&amp;amp;quot;]={&amp;lt;br/&amp;gt;		&amp;amp;quot;url&amp;amp;quot;:&amp;amp;quot;{{post.url}}&amp;amp;quot;,&amp;lt;br/&amp;gt;	};&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;vis.selectAll(&amp;amp;quot;.category text&amp;amp;quot;).on(&amp;amp;quot;click&amp;amp;quot;,function(d){&amp;lt;br/&amp;gt;	if(!</description>
+      <description>&lt;p&gt;最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的&lt;a href=&#34;https://vindurriel.github.io/tags&#34;&gt;标签页面&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;blog和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。&lt;/p&gt;
+&lt;p&gt;平行集是反应两组或以上数据集之间映射关系的图表。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/mbostock/d3/wiki/Gallery&#34;&gt;d3&lt;/a&gt;是一个用javascript的库，主要用途是用svg做数据可视化。&lt;/p&gt;
+&lt;p&gt;d3非常强大，基本上能想到的图表都可以实现。而对于平行集，d3有一个插件&lt;a href=&#34;https://github.com/jasondavies/d3-parsets&#34;&gt;d3.parsets&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;需要添加如下css和js：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d3.parsets.css&lt;/li&gt;
+&lt;li&gt;d3.v3.min.js&lt;/li&gt;
+&lt;li&gt;d3.parsets.js&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后在tags.html里写一些javascript。&lt;/p&gt;
+&lt;p&gt;先构造出所有post和tag的对应数据。&lt;a href=&#34;https://github.com/jasondavies/d3-parsets&#34;&gt;d3.parsets&lt;/a&gt;使用csv格式，所以要先生成一个csv格式的字符串。在这里，列名就是&lt;code&gt;post,tag&lt;/code&gt;。
+比如本篇blog对应两个tag：&lt;code&gt;d3&lt;/code&gt;和&lt;code&gt;visualization&lt;/code&gt;，那么要在csv里添加两行:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ page.title }},d3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ page.title }},visualization
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;相关代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post,tag&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;site&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tag&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;tags&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\n{{post.title}},{{tag}}&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;endfor&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;endfor&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接着实例化一个chart，再把数据给它：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;parsets&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  .&lt;span style=&#34;color:#a6e22e&#34;&gt;tension&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.8&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  .&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;800&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  .&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;480&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      .&lt;span style=&#34;color:#a6e22e&#34;&gt;dimensions&lt;/span&gt;([&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tag&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt;]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;vis&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#vis&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;svg&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    .&lt;span style=&#34;color:#a6e22e&#34;&gt;attr&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;width&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    .&lt;span style=&#34;color:#a6e22e&#34;&gt;attr&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;height&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;parsed_csv&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;parse&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;vis&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;datum&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;parsed_csv&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我还想实现这样一个功能：点击图中的博客时可以跳转到博客页面。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;site&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{post.title}}&amp;#34;&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{post.url}}&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;endfor&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;vis&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.category text&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;click&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;)) &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	window.&lt;span style=&#34;color:#a6e22e&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;].&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;});
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上很独特，非常地描述化。
+&lt;a href=&#34;http://bost.ocks.org/mike/join/&#34;&gt;这篇文章&lt;/a&gt;是作者自己总结的d3处理数据上的一种模式，也就是所谓的&lt;code&gt;join&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>删除github pages的master分支</title>
@@ -113,14 +328,65 @@
       <link>https://vindurriel.github.io/post/2013-07-19-github-pages-setup/</link>
       <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-19-github-pages-setup/</guid>
-      <description>comments :&amp;lt;br/&amp;gt;	    provider : disqus&amp;lt;br/&amp;gt;	    disqus :&amp;lt;br/&amp;gt;	      short_name : YOUR_DISQUS_SITE_NAME&amp;lt;br/&amp;gt;	      &amp;lt;br/&amp;gt;你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。&amp;lt;br/&amp;gt;$ CHCP 65001&amp;lt;br/&amp;gt;如果是在git bash中的话，需要设置如下环境变量： &amp;lt;br/&amp;gt;	&amp;lt;br/&amp;gt;	export LC_ALL = enUS.UTF-8&amp;lt;br/&amp;gt;	export LANG   = enUS.UTF-8&amp;lt;br/&amp;gt;然后就可以 `jekyll serve --watch`了。&amp;lt;br/&amp;gt;comments :&amp;lt;br/&amp;gt;	    provider : disqus&amp;lt;br/&amp;gt;	    disqus :&amp;lt;br/&amp;gt;	      short_name : YOUR_DISQUS_SITE_NAME&amp;lt;br/&amp;gt;	      &amp;lt;br/&amp;gt;你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。&amp;lt;br/&amp;gt;如果是在git bash中的话，需要设置如下环境变量： &amp;lt;br/&amp;gt;	&amp;lt;br/&amp;gt;	export LC_ALL = enUS.UTF-8&amp;lt;br/&amp;gt;	export LANG   = enUS.UTF-8</description>
+      <description>&lt;p&gt;首先去github pages申请一个页面，默认的域名是&lt;code&gt;http://USERNAME.github.io&lt;/code&gt;，其中&lt;code&gt;USERNAME&lt;/code&gt;是你的github用户名。&lt;/p&gt;
+&lt;p&gt;github使用jekyll做解析引擎。可以直接克隆一个别人写好的jekyll，然后把上传路径改成自己的，像这样：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com
+cd USERNAME.github.com
+git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中使用的是&lt;a href=&#34;%22https://github.com/plusjade/jekyll-bootstrap%22&#34;&gt;jekyll-bootstrap&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;写文章&#34;&gt;写文章&lt;/h3&gt;
+&lt;p&gt;如果装了ruby的话，直接在文件夹下执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rake post title=&amp;quot;a new post&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就可以新建一篇文章。内容支持markdown。&lt;/p&gt;
+&lt;p&gt;其实就是在_post目录下新建了一个md文件，文件名格式为&lt;code&gt;年-月-日-标题.md&lt;/code&gt;。 文件开始是一些元信息，比如本文的md文件开头是这样的：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;---
+layout: post
+title: &amp;#34;github pages 配置&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&#34;tags-jekyllgithub-pagessetup&#34;&gt;layout: post
+title: &amp;quot;github pages 配置&amp;quot;
+description: &amp;quot;&amp;quot;
+category: misc
+tags: [jekyll,github pages,setup]&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。
+comments :
+	    provider : disqus
+	    disqus :
+	      short_name : YOUR_DISQUS_SITE_NAME
+	      
+你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。
+$ CHCP 65001
+如果是在git bash中的话，需要设置如下环境变量： 
+	
+	export LC_ALL = enUS.UTF-8
+	export LANG   = enUS.UTF-8
+然后就可以 `jekyll serve --watch`了。
+gem uninstall pygments.rb --version &amp;amp;quot;&amp;amp;gt;0.5.0&amp;amp;quot;
+	gem install pygments.rb --version &amp;amp;quot;=0.5.0&amp;amp;quot;&amp;#34;
+category: misc
+tags: [jekyll,github pages,setup]
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;写好了内容部分，直接&lt;code&gt;git commit&lt;/code&gt;然后&lt;code&gt;git push&lt;/code&gt;到master分支就可以了。&lt;/p&gt;</description>
     </item>
     <item>
       <title>为gem install 提速</title>
       <link>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</link>
       <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-19-gem-acceleration/</guid>
-      <description>```&amp;lt;br/&amp;gt;:bulk_threshold: 1000&amp;lt;br/&amp;gt;:backtrace: false&amp;lt;br/&amp;gt;gemcutter_key: XXXXX&amp;lt;br/&amp;gt;gem: --no-ri --no-rdoc&amp;lt;br/&amp;gt;:benchmark: false&amp;lt;br/&amp;gt;:verbose: true&amp;lt;br/&amp;gt;:update_sources: true&amp;lt;br/&amp;gt;:sources: &amp;lt;br/&amp;gt;- http://gems.rubyforge.org/&amp;lt;br/&amp;gt;- http://gems.opscode.com&amp;lt;br/&amp;gt;```&amp;lt;br/&amp;gt;主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。</description>
+      <description>&lt;p&gt;编辑&lt;code&gt;.gemrc&lt;/code&gt;，内容如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;:bulk_threshold: 1000
+:backtrace: false
+gemcutter_key: XXXXX
+gem: --no-ri --no-rdoc
+:benchmark: false
+:verbose: true
+:update_sources: true
+:sources: 
+- http://gems.rubyforge.org/
+- http://gems.opscode.com
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要起作用的是&lt;code&gt;gem: --no-ri --no-rdoc&lt;/code&gt;,少下载了很多文档。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Covid Report</title>
@@ -131,7 +397,7 @@
 &lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
 &lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Data are updated weekly.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;link&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

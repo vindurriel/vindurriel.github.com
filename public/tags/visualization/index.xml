@@ -13,21 +13,130 @@
       <link>https://vindurriel.github.io/post/2013-09-04-nest-introduction/</link>
       <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-09-04-nest-introduction/</guid>
-      <description>节点的颜色由数据实体的`type`属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&amp;lt;br/&amp;gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。&amp;lt;br/&amp;gt;现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。&amp;lt;br/&amp;gt;* 左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）</description>
+      <description>&lt;p&gt;nest(&lt;a href=&#34;https://github.com/vindurriel/nest&#34;&gt;https://github.com/vindurriel/nest&lt;/a&gt;)是一个视觉组件，它用图(graph)来展示元素之间的关系。一个节点(node)表示一个元素或者元素的某个属性，节点之间的连线(link)表示元素之间的关系。 元素和关系的类型、属性都可以是任意定制的。使用者可以和图进行交互， 允许的操作包括拖拽、添加、删除、聚焦、平移和放缩。
+节点的颜色由数据实体的&lt;code&gt;type&lt;/code&gt;属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。&lt;/p&gt;
+&lt;h2 id=&#34;为什么要做&#34;&gt;为什么要做&lt;/h2&gt;
+&lt;p&gt;传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。而图可以表示非DAG的拓扑关系，也就是所谓的网络。&lt;/p&gt;
+&lt;p&gt;nest是为了展示图而生的视觉组件，它能在二维平面展示复杂的元素关系，并且用户可以实时地修改图的布局、增删节点。&lt;/p&gt;
+&lt;p&gt;nest可以作为脑图使用，也可以作为更一般意义上的关系展示图，参见下面的&lt;a href=&#34;http://nest.ap01.aws.af.cm/model/artist_23401?theme=light&#34;&gt;例子&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
+&lt;p&gt;音乐地图(&lt;a href=&#34;http://nest.ap01.aws.af.cm/model/artist_23401?theme=light&#34;&gt;http://nest.ap01.aws.af.cm/model/python?theme=light&lt;/a&gt;)是一个探索音乐元素之间关系的动态地图，展示歌曲、艺术家、专辑和精选集之间的关系。数据抓取自&lt;a href=&#34;http://www.xiami.com&#34;&gt;虾米网&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/nest/2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用方法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;搜索框中可搜索音乐。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击&lt;code&gt;see all&lt;/code&gt;可查看其他用户已经探索过的音乐地图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;保存&lt;/code&gt;按钮可以上传当前音乐地图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;?&lt;/code&gt;按钮中可显示图例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键单击节点： 选中该节点，可能会弹出可供扩展的关系节点（如选中歌曲节点，弹出歌曲所在的专辑和歌手）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键拖拽： 空白处平移，节点上调整节点位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;左键双击节点： 扩展该节点，即添加与该节点有关系的新节点。支持svg动画的浏览器上(chrome、firefox、&lt;del&gt;IE&lt;/del&gt;)该节点会振动，并弹出同类型的新节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ctrl+左键单击节点： 同左键双击节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;shift+左键单击节点： 删除该节点，同时一并删除&lt;strong&gt;只与&lt;/strong&gt;该节点有连线的所有节点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;alt+左键单击节点： 将该节点设为根节点。图本身无所谓根节点，根节点的唯一目的在于以该节点的id来存储图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;地址栏中可修改theme参数,支持light和dark。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/nest/3.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;技术&#34;&gt;技术&lt;/h2&gt;
+&lt;p&gt;nest在前台采用了&lt;a href=&#34;https://github.com/mbostock/d3/wiki&#34;&gt;d3.js&lt;/a&gt;，而d3.js采用了svg。 后台是&lt;a href=&#34;http://webpy.org&#34;&gt;web.py&lt;/a&gt;。 前后台通信采用了ajax和json。&lt;/p&gt;
+&lt;p&gt;源代码在github &lt;a href=&#34;https://github.com/vindurriel/nest&#34;&gt;https://github.com/vindurriel/nest&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;开发计划&#34;&gt;开发计划&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将nest组件化， 允许嵌入到任意的html网页中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;固化二次开发的接口， 提供SDK&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
     <item>
       <title>forced graph</title>
       <link>https://vindurriel.github.io/post/2013-07-26-forced-graph/</link>
       <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-26-forced-graph/</guid>
-      <description>- d3.parsets.css&amp;lt;br/&amp;gt;- d3.v3.min.js&amp;lt;br/&amp;gt;- d3.parsets.js&amp;lt;br/&amp;gt;{% highlight text %}&amp;lt;br/&amp;gt;{{ page.title }},d3&amp;lt;br/&amp;gt;{{ page.title }},visualization&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var csv=&amp;amp;quot;post,tag&amp;amp;quot;;&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	{% for tag in post.tags %}&amp;lt;br/&amp;gt;		csv&#43;=&amp;amp;quot; {{post.title}},{{tag}}&amp;amp;quot;;&amp;lt;br/&amp;gt;	{% endfor %}&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;{%endraw%}&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;var chart = d3.parsets()&amp;lt;br/&amp;gt;	  .tension(0.8)&amp;lt;br/&amp;gt;	  .width(&amp;amp;quot;800&amp;amp;quot;)&amp;lt;br/&amp;gt;	  .height(&amp;amp;quot;480&amp;amp;quot;)&amp;lt;br/&amp;gt;      .dimensions([&amp;amp;quot;tag&amp;amp;quot;,&amp;amp;quot;post&amp;amp;quot;]);&amp;lt;br/&amp;gt;var vis = d3.select(&amp;amp;quot;#vis&amp;amp;quot;).append(&amp;amp;quot;svg&amp;amp;quot;)&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;width&amp;amp;quot;, chart.width())&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;height&amp;amp;quot;, chart.height());&amp;lt;br/&amp;gt;var parsed_csv=d3.csv.parse(csv);&amp;lt;br/&amp;gt;vis.datum(parsed_csv).call(chart);&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var posts={};&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	posts[&amp;amp;quot;{{post.title}}&amp;amp;quot;]={&amp;lt;br/&amp;gt;		&amp;amp;quot;url&amp;amp;quot;:&amp;amp;quot;{{post.url}}&amp;amp;quot;,&amp;lt;br/&amp;gt;	};&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;vis.selectAll(&amp;amp;quot;.category text&amp;amp;quot;).on(&amp;amp;quot;click&amp;amp;quot;,function(d){&amp;lt;br/&amp;gt;	if(!</description>
+      <description>&lt;p&gt;下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
+并且施加了两个力场，把post向左推，tag向右推。&lt;/p&gt;
+&lt;p&gt;参考了下面两个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/1021841&#34;&gt;Custom Forces&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bl.ocks.org/mbostock/950642&#34;&gt;Labeled Force Layout&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     <item>
       <title>用d3.js来呈现post-tag的多对多关系</title>
       <link>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</link>
       <pubDate>Mon, 22 Jul 2013 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/post/2013-07-22-post-tag-diagram-with-d3/</guid>
-      <description>- d3.parsets.css&amp;lt;br/&amp;gt;- d3.v3.min.js&amp;lt;br/&amp;gt;- d3.parsets.js&amp;lt;br/&amp;gt;{% highlight text %}&amp;lt;br/&amp;gt;{{ page.title }},d3&amp;lt;br/&amp;gt;{{ page.title }},visualization&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var csv=&amp;amp;quot;post,tag&amp;amp;quot;;&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	{% for tag in post.tags %}&amp;lt;br/&amp;gt;		csv&#43;=&amp;amp;quot; {{post.title}},{{tag}}&amp;amp;quot;;&amp;lt;br/&amp;gt;	{% endfor %}&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;{%endraw%}&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;var chart = d3.parsets()&amp;lt;br/&amp;gt;	  .tension(0.8)&amp;lt;br/&amp;gt;	  .width(&amp;amp;quot;800&amp;amp;quot;)&amp;lt;br/&amp;gt;	  .height(&amp;amp;quot;480&amp;amp;quot;)&amp;lt;br/&amp;gt;      .dimensions([&amp;amp;quot;tag&amp;amp;quot;,&amp;amp;quot;post&amp;amp;quot;]);&amp;lt;br/&amp;gt;var vis = d3.select(&amp;amp;quot;#vis&amp;amp;quot;).append(&amp;amp;quot;svg&amp;amp;quot;)&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;width&amp;amp;quot;, chart.width())&amp;lt;br/&amp;gt;    .attr(&amp;amp;quot;height&amp;amp;quot;, chart.height());&amp;lt;br/&amp;gt;var parsed_csv=d3.csv.parse(csv);&amp;lt;br/&amp;gt;vis.datum(parsed_csv).call(chart);&amp;lt;br/&amp;gt;{% endhighlight %}&amp;lt;br/&amp;gt;{% highlight javascript %}&amp;lt;br/&amp;gt;{%raw%}&amp;lt;br/&amp;gt;var posts={};&amp;lt;br/&amp;gt;{% for post in site.posts %}&amp;lt;br/&amp;gt;	posts[&amp;amp;quot;{{post.title}}&amp;amp;quot;]={&amp;lt;br/&amp;gt;		&amp;amp;quot;url&amp;amp;quot;:&amp;amp;quot;{{post.url}}&amp;amp;quot;,&amp;lt;br/&amp;gt;	};&amp;lt;br/&amp;gt;{% endfor %}&amp;lt;br/&amp;gt;vis.selectAll(&amp;amp;quot;.category text&amp;amp;quot;).on(&amp;amp;quot;click&amp;amp;quot;,function(d){&amp;lt;br/&amp;gt;	if(!</description>
+      <description>&lt;p&gt;最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的&lt;a href=&#34;https://vindurriel.github.io/tags&#34;&gt;标签页面&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;blog和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。&lt;/p&gt;
+&lt;p&gt;平行集是反应两组或以上数据集之间映射关系的图表。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/mbostock/d3/wiki/Gallery&#34;&gt;d3&lt;/a&gt;是一个用javascript的库，主要用途是用svg做数据可视化。&lt;/p&gt;
+&lt;p&gt;d3非常强大，基本上能想到的图表都可以实现。而对于平行集，d3有一个插件&lt;a href=&#34;https://github.com/jasondavies/d3-parsets&#34;&gt;d3.parsets&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;需要添加如下css和js：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d3.parsets.css&lt;/li&gt;
+&lt;li&gt;d3.v3.min.js&lt;/li&gt;
+&lt;li&gt;d3.parsets.js&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后在tags.html里写一些javascript。&lt;/p&gt;
+&lt;p&gt;先构造出所有post和tag的对应数据。&lt;a href=&#34;https://github.com/jasondavies/d3-parsets&#34;&gt;d3.parsets&lt;/a&gt;使用csv格式，所以要先生成一个csv格式的字符串。在这里，列名就是&lt;code&gt;post,tag&lt;/code&gt;。
+比如本篇blog对应两个tag：&lt;code&gt;d3&lt;/code&gt;和&lt;code&gt;visualization&lt;/code&gt;，那么要在csv里添加两行:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ page.title }},d3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{ page.title }},visualization
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;相关代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post,tag&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;site&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tag&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;tags&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\n{{post.title}},{{tag}}&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;endfor&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;endfor&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接着实例化一个chart，再把数据给它：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;parsets&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  .&lt;span style=&#34;color:#a6e22e&#34;&gt;tension&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.8&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  .&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;800&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  .&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;480&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      .&lt;span style=&#34;color:#a6e22e&#34;&gt;dimensions&lt;/span&gt;([&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tag&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt;]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;vis&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#vis&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;svg&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    .&lt;span style=&#34;color:#a6e22e&#34;&gt;attr&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;width&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    .&lt;span style=&#34;color:#a6e22e&#34;&gt;attr&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;height&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;parsed_csv&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;parse&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;csv&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;vis&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;datum&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;parsed_csv&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我还想实现这样一个功能：点击图中的博客时可以跳转到博客页面。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;site&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{post.title}}&amp;#34;&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{post.url}}&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;endfor&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;vis&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.category text&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;click&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;)) &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	window.&lt;span style=&#34;color:#a6e22e&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;].&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;});
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上很独特，非常地描述化。
+&lt;a href=&#34;http://bost.ocks.org/mike/join/&#34;&gt;这篇文章&lt;/a&gt;是作者自己总结的d3处理数据上的一种模式，也就是所谓的&lt;code&gt;join&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Covid Report</title>
@@ -38,7 +147,7 @@
 &lt;p&gt;Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.&lt;/p&gt;
 &lt;p&gt;The source: &lt;a href=&#34;http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml&#34;&gt;National Health Commitee&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Data are updated weekly.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;link&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://vindurriel.github.io/covid_report.html&#34;&gt;demo&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

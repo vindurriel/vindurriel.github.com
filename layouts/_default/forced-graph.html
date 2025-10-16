@@ -1,0 +1,54 @@
+{{- define "main" }}
+{{- if .Title }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+{{ .Content }}
+
+<div id="svg"></div>
+<script type="text/javascript">
+  //准备post和tag的关联数据
+  var graph={
+      "nodes":[],
+      "links":[],
+  };
+  var hash_tag={};
+  var post_id=0,tag_id=0;
+  {{- range .Site.RegularPages }}
+      graph.nodes.push({
+          "name": "{{ .Title }}",
+          "url":"{{ .Permalink}}",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      {{ range .GetTerms "tags" }}
+          if(hash_tag["{{ .Title }}"]===undefined){
+              graph.nodes.push({
+                  "name": "{{ .Title }}",
+                  "url":"{{ .Permalink}}",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["{{ .Title }}"]=tag_id;
+          } else {
+              tag_id=hash_tag["{{ .Title }}"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      {{ end }}
+  {{ end }}
+</script>
+<script type="text/javascript" src="/javascripts/d3.v3.min.js" ></script>
+<script type="text/javascript" src="/javascripts/forced-graph.js" ></script>
+
+{{- end }}

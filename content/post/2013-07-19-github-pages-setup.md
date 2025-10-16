@@ -1,13 +1,5 @@
 ---
 date: "2013-07-19T00:00:00Z"
-description: "comments :<br/>\t    provider : disqus<br/>\t    disqus :<br/>\t      short_name
-  : YOUR_DISQUS_SITE_NAME<br/>\t      <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>$
-  CHCP 65001<br/>如果是在git bash中的话，需要设置如下环境变量： <br/>\t<br/>\texport LC_ALL = enUS.UTF-8<br/>\texport
-  LANG   = enUS.UTF-8<br/>然后就可以 `jekyll serve --watch`了。<br/>comments :<br/>\t    provider
-  : disqus<br/>\t    disqus :<br/>\t      short_name : YOUR_DISQUS_SITE_NAME<br/>\t
-  \     <br/>你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。<br/>如果是在git
-  bash中的话，需要设置如下环境变量： <br/>\t<br/>\texport LC_ALL = enUS.UTF-8<br/>\texport LANG   =
-  enUS.UTF-8"
 tags:
 - jekyll
 - github pages
@@ -28,7 +20,7 @@ git push origin master
 
 这个例子中使用的是[jekyll-bootstrap]("https://github.com/plusjade/jekyll-bootstrap")。
 
-###写文章
+### 写文章
 
 如果装了ruby的话，直接在文件夹下执行
 
@@ -42,7 +34,6 @@ git push origin master
 ---
 layout: post
 title: "github pages 配置"
-description: "rake post title=&quot;a new post&quot;
 ```
 ---
 layout: post
@@ -73,7 +64,7 @@ tags: [jekyll,github pages,setup]
 ```
 写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。
 
-###评论
+### 评论
 
 jekyll-bootstrap本身不提供评论功能，而是通过配置文件引入第三方评论插件， 比如[disqus](http://disqus.com/)。 
 
@@ -88,11 +79,11 @@ jekyll-bootstrap本身不提供评论功能，而是通过配置文件引入第�
 
 disqus插件的语言可以切换为中文，需要在disqus.com登陆后进入admin->settings，也就是 [http://USERNAME.disqus.com/admin/settings/](http://USERNAME.disqus.com/admin/settings/)，里面可以设置language。
 
-###分享
+### 分享
 
 jekyll-bootstrap的分享功能还没写好， 所以我找了个国内比较成熟的社会化分享平台： [加网](http://www.jiathis.com/getcode/icon)。把js粘到模板里就行。
 
-###中文编码问题
+### 中文编码问题
 windows下本jekyll在解析中文的页面时会报编码错误。如果使用cmd的话，需要把代码页改成utf-8：
 
 	$ CHCP 65001
@@ -104,7 +95,7 @@ windows下本jekyll在解析中文的页面时会报编码错误。如果使用c
 
 然后就可以 `jekyll serve --watch`了。
 
-###代码高亮
+### 代码高亮
 
 默认使用pygments.rb。 版本高于0.5.0在windows和ruby1.9.3下显示不出来，需要安装0.5.0，即
 

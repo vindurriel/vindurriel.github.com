@@ -7,7 +7,53 @@
 <meta name="robots" content="index, follow">
 <title>虾米下载介绍 | vindurriel</title>
 <meta name="keywords" content="xiami">
-<meta name="description" content="下载高音质歌曲是收费的，而且官方软件（虾客）不好用。&lt;br/&gt;原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。&lt;br/&gt;然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。&lt;br/&gt;界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。&lt;br/&gt;xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。&lt;br/&gt;做自己每天都会使用的软件，是一件很快乐的事。&lt;br/&gt;百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。">
+<meta name="description" content="每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 xiami_downloader 是我近两年来的宠物项目。
+初心
+最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。
+有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。
+通过google找到了LongkeyMusic(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。
+LKM是用.NET写的，而且作者很厚道地没有做混淆。同事胖子向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。
+第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。
+从此开始了漫长的hacking 之路。
+道阻且长
+xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。
+这个过程中学到了很多东西，总结起来如下：
+产品
+最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。
+做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。
+如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。
+重构
+经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don&rsquo;t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。
+git
+之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。
+异步方法与非阻塞UI
+以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。
+密码学
+包括凯撒方阵、api signature的生成、md5的使用等。
+跨进程通信（IPC）
+主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。
+RESTful API以及OAuth
+虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。
+虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。
+大概是想和第三方app的登录验证兼容吧。
+扁平化设计
+最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。
+自动更新
+考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。
+断点续传与下载器的线程控制
+通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制
+下一站？
+某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：
+
+
+对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。
+
+
+是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。
+
+
+在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。
+对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对xiami_downloader说一声：谢谢，再见。">
 <meta name="author" content="">
 <link rel="canonical" href="https://vindurriel.github.io/post/2013-08-09-xiami-introduction/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
@@ -58,16 +104,88 @@
 </noscript><meta property="og:url" content="https://vindurriel.github.io/post/2013-08-09-xiami-introduction/">
   <meta property="og:site_name" content="vindurriel">
   <meta property="og:title" content="虾米下载介绍">
-  <meta property="og:description" content="下载高音质歌曲是收费的，而且官方软件（虾客）不好用。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。做自己每天都会使用的软件，是一件很快乐的事。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。">
+  <meta property="og:description" content="每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 xiami_downloader 是我近两年来的宠物项目。
+初心 最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。 有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。
+通过google找到了LongkeyMusic(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。
+LKM是用.NET写的，而且作者很厚道地没有做混淆。同事胖子向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。
+第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。
+从此开始了漫长的hacking 之路。
+道阻且长 xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。 这个过程中学到了很多东西，总结起来如下：
+产品 最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。
+做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。
+如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。
+重构 经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don’t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。
+git 之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。
+异步方法与非阻塞UI 以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。
+密码学 包括凯撒方阵、api signature的生成、md5的使用等。
+跨进程通信（IPC） 主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。
+RESTful API以及OAuth 虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。
+虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。 大概是想和第三方app的登录验证兼容吧。
+扁平化设计 最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。
+自动更新 考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。
+断点续传与下载器的线程控制 通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制
+下一站？ 某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：
+对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。
+是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。
+在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。
+对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对xiami_downloader说一声：谢谢，再见。">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2013-08-09T00:00:00+00:00">
     <meta property="article:modified_time" content="2013-08-09T00:00:00+00:00">
     <meta property="article:tag" content="Xiami">
-<meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://vindurriel.github.io/images/xiami/intro.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://vindurriel.github.io/images/xiami/intro.png">
 <meta name="twitter:title" content="虾米下载介绍">
-<meta name="twitter:description" content="下载高音质歌曲是收费的，而且官方软件（虾客）不好用。&lt;br/&gt;原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。&lt;br/&gt;然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。&lt;br/&gt;界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。&lt;br/&gt;xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。&lt;br/&gt;做自己每天都会使用的软件，是一件很快乐的事。&lt;br/&gt;百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。">
+<meta name="twitter:description" content="每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 xiami_downloader 是我近两年来的宠物项目。
+初心
+最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。
+有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。
+通过google找到了LongkeyMusic(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。
+LKM是用.NET写的，而且作者很厚道地没有做混淆。同事胖子向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。
+第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。
+从此开始了漫长的hacking 之路。
+道阻且长
+xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。
+这个过程中学到了很多东西，总结起来如下：
+产品
+最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。
+做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。
+如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。
+重构
+经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don&rsquo;t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。
+git
+之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。
+异步方法与非阻塞UI
+以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。
+密码学
+包括凯撒方阵、api signature的生成、md5的使用等。
+跨进程通信（IPC）
+主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。
+RESTful API以及OAuth
+虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。
+虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。
+大概是想和第三方app的登录验证兼容吧。
+扁平化设计
+最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。
+自动更新
+考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。
+断点续传与下载器的线程控制
+通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制
+下一站？
+某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：
+
+
+对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。
+
+
+是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。
+
+
+在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。
+对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对xiami_downloader说一声：谢谢，再见。">
 
 
 <script type="application/ld+json">
@@ -96,14 +214,14 @@
   "@type": "BlogPosting",
   "headline": "虾米下载介绍",
   "name": "虾米下载介绍",
-  "description": "下载高音质歌曲是收费的，而且官方软件（虾客）不好用。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。做自己每天都会使用的软件，是一件很快乐的事。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。",
+  "description": "每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 xiami_downloader 是我近两年来的宠物项目。\n初心 最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。 有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。\n通过google找到了LongkeyMusic(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。\nLKM是用.NET写的，而且作者很厚道地没有做混淆。同事胖子向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。\n第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。\n从此开始了漫长的hacking 之路。\n道阻且长 xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。 这个过程中学到了很多东西，总结起来如下：\n产品 最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。\n做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。\n如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。\n重构 经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don\u0026rsquo;t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。\ngit 之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。\n异步方法与非阻塞UI 以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。\n密码学 包括凯撒方阵、api signature的生成、md5的使用等。\n跨进程通信（IPC） 主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。\nRESTful API以及OAuth 虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。\n虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。 大概是想和第三方app的登录验证兼容吧。\n扁平化设计 最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。\n自动更新 考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。\n断点续传与下载器的线程控制 通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制\n下一站？ 某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：\n对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。\n是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。\n在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。\n对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对xiami_downloader说一声：谢谢，再见。\n",
   "keywords": [
     "xiami"
   ],
-  "articleBody": "每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 xiami_downloader 是我近两年来的宠物项目。\n##初心\n最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。 有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。\n通过google找到了LongkeyMusic(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。\nLKM是用.NET写的，而且作者很厚道地没有做混淆。同事胖子向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。\n第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。\n从此开始了漫长的hacking 之路。\n##道阻且长\nxiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。 这个过程中学到了很多东西，总结起来如下：\n###产品\n最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。\n做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。\n如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。\n###重构\n经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don’t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。\n###git\n之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。\n###异步方法与非阻塞UI\n以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。\n###密码学\n包括凯撒方阵、api signature的生成、md5的使用等。\n###跨进程通信（IPC）\n主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。\n###RESTful API以及OAuth\n虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。\n虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。 大概是想和第三方app的登录验证兼容吧。\n###扁平化设计\n最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。\n###自动更新\n考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。\n###断点续传与下载器的线程控制\n通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制\n##下一站？\n某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：\n对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。\n是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。\n在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。\n对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对xiami_downloader说一声：谢谢，再见。\n",
+  "articleBody": "每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 xiami_downloader 是我近两年来的宠物项目。\n初心 最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。 有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。\n通过google找到了LongkeyMusic(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。\nLKM是用.NET写的，而且作者很厚道地没有做混淆。同事胖子向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。\n第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。\n从此开始了漫长的hacking 之路。\n道阻且长 xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。 这个过程中学到了很多东西，总结起来如下：\n产品 最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。\n做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。\n如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。\n重构 经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don’t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。\ngit 之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。\n异步方法与非阻塞UI 以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。\n密码学 包括凯撒方阵、api signature的生成、md5的使用等。\n跨进程通信（IPC） 主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。\nRESTful API以及OAuth 虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。\n虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。 大概是想和第三方app的登录验证兼容吧。\n扁平化设计 最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。\n自动更新 考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。\n断点续传与下载器的线程控制 通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制\n下一站？ 某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：\n对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。\n是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。\n在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。\n对于自己创造出的事物，人们很自然的会有一种喜爱之情。因此我想对xiami_downloader说一声：谢谢，再见。\n",
   "wordCount" : "69",
   "inLanguage": "en",
-  "datePublished": "2013-08-09T00:00:00Z",
+  "image":"https://vindurriel.github.io/images/xiami/intro.png","datePublished": "2013-08-09T00:00:00Z",
   "dateModified": "2013-08-09T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -132,7 +250,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -162,8 +279,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -177,7 +294,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -185,56 +302,56 @@
     </nav>
 </header>
 <main class="main">
-
 <article class="post-single">
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       虾米下载介绍
     </h1>
-    <div class="post-description">
-      下载高音质歌曲是收费的，而且官方软件（虾客）不好用。&lt;br/&gt;原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。&lt;br/&gt;然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。&lt;br/&gt;界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。&lt;br/&gt;xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。&lt;br/&gt;做自己每天都会使用的软件，是一件很快乐的事。&lt;br/&gt;百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。
-    </div>
     <div class="post-meta"><span title='2013-08-09 00:00:00 +0000 UTC'>August 9, 2013</span>
 
 </div>
   </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="https://vindurriel.github.io/images/xiami/intro.png" alt="">
+        
+</figure>
   <div class="post-content"><p>每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 <a href="https://github.com/vindurriel/xiami_downloader">xiami_downloader</a> 是我近两年来的宠物项目。</p>
-<p>##初心</p>
+<h2 id="初心">初心<a hidden class="anchor" aria-hidden="true" href="#初心">#</a></h2>
 <p>最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在<a href="http://www.xiami.com/">虾米网</a>在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。
 有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。</p>
 <p>通过google找到了<a href="http://longkeymusic.com/">LongkeyMusic</a>(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。</p>
 <p>LKM是用.NET写的，而且作者很厚道地没有做混淆。同事<a href="http://weibo.com/818871231">胖子</a>向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。</p>
 <p>第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。</p>
 <p>从此开始了漫长的hacking 之路。</p>
-<p>##道阻且长</p>
+<h2 id="道阻且长">道阻且长<a hidden class="anchor" aria-hidden="true" href="#道阻且长">#</a></h2>
 <p>xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。
 这个过程中学到了很多东西，总结起来如下：</p>
-<p>###产品</p>
+<h3 id="产品">产品<a hidden class="anchor" aria-hidden="true" href="#产品">#</a></h3>
 <p>最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。</p>
 <p>做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。</p>
 <p>如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。</p>
-<p>###重构</p>
+<h3 id="重构">重构<a hidden class="anchor" aria-hidden="true" href="#重构">#</a></h3>
 <p>经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don&rsquo;t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。</p>
-<p>###git</p>
+<h3 id="git">git<a hidden class="anchor" aria-hidden="true" href="#git">#</a></h3>
 <p>之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。</p>
-<p>###异步方法与非阻塞UI</p>
+<h3 id="异步方法与非阻塞ui">异步方法与非阻塞UI<a hidden class="anchor" aria-hidden="true" href="#异步方法与非阻塞ui">#</a></h3>
 <p>以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。</p>
-<p>###密码学</p>
+<h3 id="密码学">密码学<a hidden class="anchor" aria-hidden="true" href="#密码学">#</a></h3>
 <p>包括凯撒方阵、api signature的生成、md5的使用等。</p>
-<p>###跨进程通信（IPC）</p>
+<h3 id="跨进程通信ipc">跨进程通信（IPC）<a hidden class="anchor" aria-hidden="true" href="#跨进程通信ipc">#</a></h3>
 <p>主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者<a href="http://www.zeromq.org/">ZeroMq</a>、.NET自带的WCF，还有最原始的基于文件的IPC。</p>
-<p>###RESTful API以及OAuth</p>
+<h3 id="restful-api以及oauth">RESTful API以及OAuth<a hidden class="anchor" aria-hidden="true" href="#restful-api以及oauth">#</a></h3>
 <p>虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。</p>
 <p>虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。
 大概是想和第三方app的登录验证兼容吧。</p>
-<p>###扁平化设计</p>
+<h3 id="扁平化设计">扁平化设计<a hidden class="anchor" aria-hidden="true" href="#扁平化设计">#</a></h3>
 <p>最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。</p>
-<p>###自动更新</p>
+<h3 id="自动更新">自动更新<a hidden class="anchor" aria-hidden="true" href="#自动更新">#</a></h3>
 <p>考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。</p>
-<p>###断点续传与下载器的线程控制</p>
+<h3 id="断点续传与下载器的线程控制">断点续传与下载器的线程控制<a hidden class="anchor" aria-hidden="true" href="#断点续传与下载器的线程控制">#</a></h3>
 <p>通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制</p>
-<p>##下一站？</p>
+<h2 id="下一站">下一站？<a hidden class="anchor" aria-hidden="true" href="#下一站">#</a></h2>
 <p>某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：</p>
 <ol>
 <li>

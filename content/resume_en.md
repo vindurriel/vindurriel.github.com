@@ -1,5 +1,6 @@
 ---
 hideFooter: true
+hideHeader: true
 showBreadCrumbs: false
 ---
 
@@ -24,20 +25,20 @@ Expertised in designing, developing and maitaining online systems which has a pa
 
 Have some experience with natural language processing ( NLP ) / machine learning / and general big data etl tasks.
 
-Can speak and write English, translated two techinical books from English to Chinese ( http://product.dangdang.com/23381404.html http://product.dangdang.com/23688013.html)
+Can speak and write English, translated two technical books from English to Chinese ( http://product.dangdang.com/23381404.html http://product.dangdang.com/23688013.html)
 
 ### Technical skills
 
-.net ELK WPF d3js git golang hadoop java javascript jquery markdown memcache mvc mysql nginx nmq odp openresty php python react redis shell svn swift Unity3D
+AWS, Golang, Kubernetes, Docker, Jenkins, Kafka, .NET, ELK, WPF, d3js, git, golang, hadoop, java, javascript, jquery, markdown, memcache, mvc, mysql, nginx, nmq, openresty, php, Python, React, redis, shell, svn, swift, Unity3D, Slack APIs, Confluence APIs, 
 
 ### Job preference
-Lead r&d / architecture in the internet industry, can code in golang/php/python/java
+Lead API development / architecture in the internet industry, can code in Golang/python/php/java
 
 ### Education history
 
-|date|institute|major|degree|
-|-|-|-|-|
-|2006-2010|Beijing University of Posts and Telecommunications|Artificial Intelligence|Bachelor's|
+date|institute|major|degree
+-|-|-|-
+2006-2010|Beijing University of Posts and Telecommunications|Artificial Intelligence|Bachelor's
 
 ### Career history 
 date|company|business unit|role
@@ -51,16 +52,16 @@ date|company|business unit|role
 ### Project history
 
 #### MRM, Comcast's advertising system
-2018/05-now, at Freewheel, A Comcast Company
+*2018/05-now, Freewheel, A Comcast Company*
 
 Description: an advertising platform for ad serving, inventory managements, yield optimization and more.
 
-My work: design, development and maintainence of support-side plaform (partner service, marketplace)
+My work: design, development and maintainence of support-side plaform (Partner services, Marketplace)
 
-Skills involved : Golang, AWS, Kubernetes, React 16
+Skills involved : Golang, AWS, Kubernetes, React 18
 
 #### Juping advertise platform
-2017/09-now at Baidu Inc.
+*2017/09-now Baidu Inc.*
 
 Description: an o2o advertise platform supporting contract and rtb mode
 
@@ -70,7 +71,7 @@ design and maintainence of a technical co-operation solution which supports over
 Skills involved : nginx tomcat springMVC java python redis mysql
 
 #### One-yuan Crowd Funding
-2017/04-2017/09, at Baidu Inc.
+*2017/04-2017/09, Baidu Inc.*
 
 Description: One-yuan Crowd Funding in Nuomi app
 

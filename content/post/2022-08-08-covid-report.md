@@ -1,10 +1,9 @@
 ---
 date: "2012-08-08T00:00:00Z"
-description: ""
 tags:
 - visualization
 - covid
-- nhc
+- NHC
 title: Covid Report
 ---
 
@@ -16,4 +15,4 @@ The source: [National Health Commitee](http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.
 
 Data are updated weekly.
 
-[link](/covid_report.html)
+[demo](/covid_report.html)

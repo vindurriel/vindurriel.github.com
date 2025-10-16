@@ -63,8 +63,8 @@
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2014-03-26T00:00:00+00:00">
-    <meta property="article:modified_time" content="2014-03-26T00:00:00+00:00">
+    <meta property="article:published_time" content="2014-03-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2014-03-25T00:00:00+00:00">
     <meta property="article:tag" content="Python">
     <meta property="article:tag" content="Tutorial">
 <meta name="twitter:card" content="summary">
@@ -102,11 +102,11 @@
   "keywords": [
     "python", "tutorial"
   ],
-  "articleBody": "本文是[系列]({% post_url 2014-03-26-python-1 %})的第二篇。\n##rest服务 这里有简介 ##json Json\nJson与pojo ###Python处理json的库\nimport json #基本库 import simplejson #需用pip安装 Json-\u003epython object：\njson.loads(string_of_json) Python object-\u003ejson:\nJson.dumps(json, indent=2) #indent为缩进空格数 ##Requests：http for humans 这里有中文简介\n个人认为，requests是对Python价值观最好的体现。\n##示例2 pm2.5 问题：寻找可用的api，获取城市的pm2.5及空气质量数据\n知识点：用requests写rest客户端\n子问题1：寻找可用的api\n通过google，找到这个有态度的网站 子问题2： 使用api\n子问题3：结果缓存与定时获取\n代码如下\n#encoding=utf-8 u''' pm25.py Usage: pm25.py Options: 城市名 ''' from docopt import docopt def wget_pm25(city): token=\"5j1znBVAsnSf5xQyNQyq\" import requests as r result=r.get(\"http://www.pm25.in/api/querys/pm2_5.json\",params={ \"city\":city, \"token\":token, }) return result.json() def needs_refresh(filename,timeout=3600): return False import os,time mtime=os.path.getmtime(filename) now=time.time() return now-mtime\u003etimeout def get_pm25(city): filename='pm25.data.{}.json'.format(city) import os,json data=None if os.path.isfile(filename) and not needs_refresh(filename): data=file(filename,'r').read() data=json.loads(data) else: data=wget_pm25(city) if type(data)==type({}): print data['error'] return -1 else: file(filename,'w').write(json.dumps(data,indent=2)) return data[-1][\"pm2_5\"] if __name__ == '__main__': args=docopt(__doc__) cities=args[''] print get_pm25(args['']) ##示例3 使用flask-rest搭建rest服务 flask-rest 是一个使用flash框架搭建rest服务的工具，使用方法如下：\n安装pip，方法见这个网页\npip install flask-restful\nhello flask-rest\nfrom flask import Flask from flask.ext import restful app = Flask(__name__) api = restful.Api(app) class HelloWorld(restful.Resource): def get(self): return {'hello': 'world'} api.add_resource(HelloWorld, '/') if __name__ == '__main__': app.run(debug=True) 4.在此基础上调用pm25.py，并且把作为http get的参数传递\n代码如下：\nfrom flask import Flask from flask.ext import restful app = Flask(__name__) api = restful.Api(app) class PM25(restful.Resource): def get(self,city): import pm25 res=pm25.get_pm25(city) return {city: res} api.add_resource(PM25, '/pm25/') if __name__ == '__main__': app.run(debug=True) ##思考题2\n写一个天气服务\n输入:\nhttp:///\n输出json：\n{ \"city_name\":\"beijing\", \"high_temperature\":\"5\", \"low_temperature\":\"-3\", } 数据源可选择如下api：\nhttp://www.thinkpage.cn/weather/api/#all.json\nhttp://li600-131.members.linode.com/mapi/?term=beijing\u0026jsoncallback=jQuery17100569556609261781_1363159265751\nhttp://blog.csdn.net/duxinfeng2010/article/details/7830136\n也可以自己找。\n##拓展阅读\nPython Shortcuts for the Python Beginner\n",
-  "wordCount" : "203",
+  "articleBody": "本文是系列的第二篇。\nrest服务 这里有简介\njson Json\nJson与pojo\nPython处理json的库 import json #基本库 import simplejson #需用pip安装 Json-\u003epython object：\njson.loads(string_of_json) Python object-\u003ejson:\nJson.dumps(json, indent=2) #indent为缩进空格数 Requests：http for humans 这里有中文简介\n个人认为，requests是对Python价值观最好的体现。\n示例2 pm2.5 问题：寻找可用的api，获取城市的pm2.5及空气质量数据\n知识点：用requests写rest客户端\n子问题1：寻找可用的api\n通过google，找到这个有态度的网站 子问题2： 使用api\n子问题3：结果缓存与定时获取\n代码如下\n# encoding=utf-8 u''' pm25.py Usage: pm25.py Options: 城市名 ''' from docopt import docopt def wget_pm25(city): token=\"5j1znBVAsnSf5xQyNQyq\" import requests as r result=r.get(\"http://www.pm25.in/api/querys/pm2_5.json\",params={ \"city\":city, \"token\":token, }) return result.json() def needs_refresh(filename,timeout=3600): return False import os,time mtime=os.path.getmtime(filename) now=time.time() return now-mtime\u003etimeout def get_pm25(city): filename='pm25.data.{}.json'.format(city) import os,json data=None if os.path.isfile(filename) and not needs_refresh(filename): data=file(filename,'r').read() data=json.loads(data) else: data=wget_pm25(city) if type(data)==type({}): print data['error'] return -1 else: file(filename,'w').write(json.dumps(data,indent=2)) return data[-1][\"pm2_5\"] if __name__ == '__main__': args=docopt(__doc__) cities=args[''] print get_pm25(args['']) 示例3 使用flask-rest搭建rest服务 flask-rest 是一个使用flash框架搭建rest服务的工具，使用方法如下：\n安装pip，方法见这个网页\npip install flask-restful\nhello flask-rest\nfrom flask import Flask from flask.ext import restful app = Flask(__name__) api = restful.Api(app) class HelloWorld(restful.Resource): def get(self): return {'hello': 'world'} api.add_resource(HelloWorld, '/') if __name__ == '__main__': app.run(debug=True) 4.在此基础上调用pm25.py，并且把作为http get的参数传递\n代码如下：\nfrom flask import Flask from flask.ext import restful app = Flask(__name__) api = restful.Api(app) class PM25(restful.Resource): def get(self,city): import pm25 res=pm25.get_pm25(city) return {city: res} api.add_resource(PM25, '/pm25/') if __name__ == '__main__': app.run(debug=True) 思考题2 写一个天气服务\n输入:\nhttp:///\n输出json：\n{ \"city_name\":\"beijing\", \"high_temperature\":\"5\", \"low_temperature\":\"-3\", } 数据源可选择如下api：\nhttp://www.thinkpage.cn/weather/api/#all.json\nhttp://li600-131.members.linode.com/mapi/?term=beijing\u0026jsoncallback=jQuery17100569556609261781_1363159265751\nhttp://blog.csdn.net/duxinfeng2010/article/details/7830136\n也可以自己找。\n拓展阅读 Python Shortcuts for the Python Beginner\n",
+  "wordCount" : "201",
   "inLanguage": "en",
-  "datePublished": "2014-03-26T00:00:00Z",
-  "dateModified": "2014-03-26T00:00:00Z",
+  "datePublished": "2014-03-25T00:00:00Z",
+  "dateModified": "2014-03-25T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://vindurriel.github.io/post/2014-03-26-python-2/"
@@ -134,7 +134,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -164,8 +163,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -179,7 +178,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -187,7 +186,6 @@
     </nav>
 </header>
 <main class="main">
-
 <article class="post-single">
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
@@ -197,28 +195,28 @@
     <div class="post-description">
       最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。&lt;br&gt;本文是系列的第二篇。
     </div>
-    <div class="post-meta"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span>
+    <div class="post-meta"><span title='2014-03-25 00:00:00 +0000 UTC'>March 25, 2014</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>本文是[系列]({% post_url 2014-03-26-python-1 %})的第二篇。</p>
-<p>##rest服务
-<a href="http://www.cnblogs.com/shanyou/archive/2012/05/12/2496959.html">这里</a>有简介
-##json
-<a href="http://json.org/json-zh.html">Json</a></p>
-<p><a href="http://blog.csdn.net/kevonz/article/details/5111550">Json与pojo</a>
-###Python处理json的库</p>
+  <div class="post-content"><p>本文是<a href="/post/2014-03-26-python-1">系列</a>的第二篇。</p>
+<h2 id="rest服务">rest服务<a hidden class="anchor" aria-hidden="true" href="#rest服务">#</a></h2>
+<p><a href="http://www.cnblogs.com/shanyou/archive/2012/05/12/2496959.html">这里</a>有简介</p>
+<h2 id="json">json<a hidden class="anchor" aria-hidden="true" href="#json">#</a></h2>
+<p><a href="http://json.org/json-zh.html">Json</a></p>
+<p><a href="http://blog.csdn.net/kevonz/article/details/5111550">Json与pojo</a></p>
+<h3 id="python处理json的库">Python处理json的库<a hidden class="anchor" aria-hidden="true" href="#python处理json的库">#</a></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json  <span style="color:#75715e">#基本库</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> simplejson  <span style="color:#75715e">#需用pip安装</span>
 </span></span></code></pre></div><p>Json-&gt;python object：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>json<span style="color:#f92672">.</span>loads(string_of_json)
 </span></span></code></pre></div><p>Python object-&gt;json:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Json<span style="color:#f92672">.</span>dumps(json, indent<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>) <span style="color:#75715e">#indent为缩进空格数 </span>
-</span></span></code></pre></div><p>##Requests：http for humans
-<a href="http://cn.python-requests.org/en/latest/user/quickstart.html">这里</a>有中文简介</p>
+</span></span></code></pre></div><h2 id="requestshttp-for-humans">Requests：http for humans<a hidden class="anchor" aria-hidden="true" href="#requestshttp-for-humans">#</a></h2>
+<p><a href="http://cn.python-requests.org/en/latest/user/quickstart.html">这里</a>有中文简介</p>
 <p>个人认为，requests是对<a href="http://cn.python-requests.org/en/latest/user/intro.html#id2">Python价值观</a>最好的体现。</p>
-<p>##示例2 pm2.5
-问题：寻找可用的api，获取城市的pm2.5及空气质量数据</p>
+<h2 id="示例2-pm25">示例2 pm2.5<a hidden class="anchor" aria-hidden="true" href="#示例2-pm25">#</a></h2>
+<p>问题：寻找可用的api，获取城市的pm2.5及空气质量数据</p>
 <p>知识点：用requests写rest客户端</p>
 <p>子问题1：寻找可用的api</p>
 <ul>
@@ -227,7 +225,7 @@
 <p>子问题2： 使用api</p>
 <p>子问题3：结果缓存与定时获取</p>
 <p>代码如下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#encoding=utf-8</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># encoding=utf-8</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;&#39;&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">pm25.py
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Usage:
@@ -270,8 +268,8 @@
 </span></span><span style="display:flex;"><span>	args<span style="color:#f92672">=</span>docopt(__doc__)
 </span></span><span style="display:flex;"><span>	cities<span style="color:#f92672">=</span>args[<span style="color:#e6db74">&#39;&lt;cityname&gt;&#39;</span>]
 </span></span><span style="display:flex;"><span>	print get_pm25(args[<span style="color:#e6db74">&#39;&lt;cityname&gt;&#39;</span>])
-</span></span></code></pre></div><p>##示例3 使用flask-rest搭建rest服务
-<a href="http://flask-restful.readthedocs.org/en/latest/">flask-rest</a>
+</span></span></code></pre></div><h2 id="示例3-使用flask-rest搭建rest服务">示例3 使用flask-rest搭建rest服务<a hidden class="anchor" aria-hidden="true" href="#示例3-使用flask-rest搭建rest服务">#</a></h2>
+<p><a href="http://flask-restful.readthedocs.org/en/latest/">flask-rest</a>
 是一个使用flash框架搭建rest服务的工具，使用方法如下：</p>
 <ol>
 <li>
@@ -315,7 +313,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
 </span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span></code></pre></div><p>##思考题2</p>
+</span></span></code></pre></div><h2 id="思考题2">思考题2<a hidden class="anchor" aria-hidden="true" href="#思考题2">#</a></h2>
 <p>写一个天气服务</p>
 <p>输入:</p>
 <p><code>http://&lt;hostname&gt;/&lt;city_name&gt;</code></p>
@@ -330,7 +328,7 @@
 <p><a href="http://li600-131.members.linode.com/mapi/?term=beijing&amp;jsoncallback=jQuery17100569556609261781_1363159265751">http://li600-131.members.linode.com/mapi/?term=beijing&amp;jsoncallback=jQuery17100569556609261781_1363159265751</a></p>
 <p><a href="http://blog.csdn.net/duxinfeng2010/article/details/7830136">http://blog.csdn.net/duxinfeng2010/article/details/7830136</a></p>
 <p>也可以自己找。</p>
-<p>##拓展阅读</p>
+<h2 id="拓展阅读">拓展阅读<a hidden class="anchor" aria-hidden="true" href="#拓展阅读">#</a></h2>
 <p><a href="http://maxburstein.com/blog/python-shortcuts-for-the-python-beginner/">Python Shortcuts for the Python Beginner</a></p>
 
 

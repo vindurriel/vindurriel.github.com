@@ -1,0 +1,59 @@
+{{- define "main" }}
+
+{{- if .Title }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+<ul class="terms-tags">
+    {{- $type := .Type }}
+    {{- range $key, $value := .Data.Terms.Alphabetical }}
+    {{- $name := .Name }}
+    {{- $count := .Count }}
+    {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+    <li>
+        <a href="{{- .Permalink }}">{{- .Name }} <sup><strong><sup>{{- $count }}</sup></strong></sup> </a>
+    </li>
+    {{- end }}
+    {{- end }}
+</ul>
+<div id="vis"></div>
+<link rel="stylesheet" href="/stylesheets/d3.parsets.css" />
+<script type="text/javascript" src="/javascripts/d3.v3.min.js" ></script>
+<script type="text/javascript" src="/javascripts/d3.parsets.js" ></script>
+<script type="text/javascript">
+	var csv="post,tag";
+	var posts={};
+	{{- range .Site.RegularPages }}
+    {{ $pageTitle := .Title }}
+		posts["{{ $pageTitle }}"]={
+			"url":"{{ .RelPermalink }}",
+		};
+    {{- range .GetTerms "tags" }}
+      csv+="\n{{ $pageTitle }},{{ .Title }}";
+    {{ end }}
+	{{- end}}
+	var chart = d3.parsets()
+		  .tension(0.8)
+		  .width(800)
+		  .height(480)
+	    .dimensions(["tag","post"]);
+	var vis = d3.select("#vis").append("svg")
+	    .attr("width", chart.width())
+	    .attr("height", chart.height());
+	var parsed_csv=d3.csv.parse(csv);
+	vis.datum(parsed_csv).call(chart);
+	vis.selectAll(".category text").on("click",function(d){
+		if(!(d.name in posts)) return;
+		window.open(posts[d.name].url);
+	});
+</script>
+
+
+{{- end }}{{/* end main */ -}}

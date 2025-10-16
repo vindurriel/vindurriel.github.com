@@ -7,7 +7,13 @@
 <meta name="robots" content="index, follow">
 <title>forced graph | vindurriel</title>
 <meta name="keywords" content="d3, visualization, physics, graph">
-<meta name="description" content="- d3.parsets.css&lt;br/&gt;- d3.v3.min.js&lt;br/&gt;- d3.parsets.js&lt;br/&gt;{% highlight text %}&lt;br/&gt;{{ page.title }},d3&lt;br/&gt;{{ page.title }},visualization&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;{%raw%}&lt;br/&gt;var csv=&amp;quot;post,tag&amp;quot;;&lt;br/&gt;{% for post in site.posts %}&lt;br/&gt;	{% for tag in post.tags %}&lt;br/&gt;		csv&#43;=&amp;quot; {{post.title}},{{tag}}&amp;quot;;&lt;br/&gt;	{% endfor %}&lt;br/&gt;{% endfor %}&lt;br/&gt;{%endraw%}&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;var chart = d3.parsets()&lt;br/&gt;	  .tension(0.8)&lt;br/&gt;	  .width(&amp;quot;800&amp;quot;)&lt;br/&gt;	  .height(&amp;quot;480&amp;quot;)&lt;br/&gt;      .dimensions([&amp;quot;tag&amp;quot;,&amp;quot;post&amp;quot;]);&lt;br/&gt;var vis = d3.select(&amp;quot;#vis&amp;quot;).append(&amp;quot;svg&amp;quot;)&lt;br/&gt;    .attr(&amp;quot;width&amp;quot;, chart.width())&lt;br/&gt;    .attr(&amp;quot;height&amp;quot;, chart.height());&lt;br/&gt;var parsed_csv=d3.csv.parse(csv);&lt;br/&gt;vis.datum(parsed_csv).call(chart);&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;{%raw%}&lt;br/&gt;var posts={};&lt;br/&gt;{% for post in site.posts %}&lt;br/&gt;	posts[&amp;quot;{{post.title}}&amp;quot;]={&lt;br/&gt;		&amp;quot;url&amp;quot;:&amp;quot;{{post.url}}&amp;quot;,&lt;br/&gt;	};&lt;br/&gt;{% endfor %}&lt;br/&gt;vis.selectAll(&amp;quot;.category text&amp;quot;).on(&amp;quot;click&amp;quot;,function(d){&lt;br/&gt;	if(!">
+<meta name="description" content="下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
+并且施加了两个力场，把post向左推，tag向右推。
+参考了下面两个例子：
+
+Custom Forces
+Labeled Force Layout
+">
 <meta name="author" content="">
 <link rel="canonical" href="https://vindurriel.github.io/post/2013-07-26-forced-graph/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
@@ -58,7 +64,9 @@
 </noscript><meta property="og:url" content="https://vindurriel.github.io/post/2013-07-26-forced-graph/">
   <meta property="og:site_name" content="vindurriel">
   <meta property="og:title" content="forced graph">
-  <meta property="og:description" content="- d3.parsets.css- d3.v3.min.js- d3.parsets.js{% highlight text %}{{ page.title }},d3{{ page.title }},visualization{% endhighlight %}{% highlight javascript %}{%raw%}var csv=&#34;post,tag&#34;;{% for post in site.posts %}	{% for tag in post.tags %}	csv&#43;=&#34; {{post.title}},{{tag}}&#34;;	{% endfor %}{% endfor %}{%endraw%}{% endhighlight %}{% highlight javascript %}var chart = d3.parsets()	.tension(0.8)	.width(&#34;800&#34;)	.height(&#34;480&#34;) .dimensions([&#34;tag&#34;,&#34;post&#34;]);var vis = d3.select(&#34;#vis&#34;).append(&#34;svg&#34;) .attr(&#34;width&#34;, chart.width()) .attr(&#34;height&#34;, chart.height());var parsed_csv=d3.csv.parse(csv);vis.datum(parsed_csv).call(chart);{% endhighlight %}{% highlight javascript %}{%raw%}var posts={};{% for post in site.posts %}	posts[&#34;{{post.title}}&#34;]={	&#34;url&#34;:&#34;{{post.url}}&#34;,	};{% endfor %}vis.selectAll(&#34;.category text&#34;).on(&#34;click&#34;,function(d){	if(!">
+  <meta property="og:description" content="下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色， 并且施加了两个力场，把post向左推，tag向右推。
+参考了下面两个例子：
+Custom Forces Labeled Force Layout ">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -70,7 +78,13 @@
     <meta property="article:tag" content="Graph">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="forced graph">
-<meta name="twitter:description" content="- d3.parsets.css&lt;br/&gt;- d3.v3.min.js&lt;br/&gt;- d3.parsets.js&lt;br/&gt;{% highlight text %}&lt;br/&gt;{{ page.title }},d3&lt;br/&gt;{{ page.title }},visualization&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;{%raw%}&lt;br/&gt;var csv=&amp;quot;post,tag&amp;quot;;&lt;br/&gt;{% for post in site.posts %}&lt;br/&gt;	{% for tag in post.tags %}&lt;br/&gt;		csv&#43;=&amp;quot; {{post.title}},{{tag}}&amp;quot;;&lt;br/&gt;	{% endfor %}&lt;br/&gt;{% endfor %}&lt;br/&gt;{%endraw%}&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;var chart = d3.parsets()&lt;br/&gt;	  .tension(0.8)&lt;br/&gt;	  .width(&amp;quot;800&amp;quot;)&lt;br/&gt;	  .height(&amp;quot;480&amp;quot;)&lt;br/&gt;      .dimensions([&amp;quot;tag&amp;quot;,&amp;quot;post&amp;quot;]);&lt;br/&gt;var vis = d3.select(&amp;quot;#vis&amp;quot;).append(&amp;quot;svg&amp;quot;)&lt;br/&gt;    .attr(&amp;quot;width&amp;quot;, chart.width())&lt;br/&gt;    .attr(&amp;quot;height&amp;quot;, chart.height());&lt;br/&gt;var parsed_csv=d3.csv.parse(csv);&lt;br/&gt;vis.datum(parsed_csv).call(chart);&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;{%raw%}&lt;br/&gt;var posts={};&lt;br/&gt;{% for post in site.posts %}&lt;br/&gt;	posts[&amp;quot;{{post.title}}&amp;quot;]={&lt;br/&gt;		&amp;quot;url&amp;quot;:&amp;quot;{{post.url}}&amp;quot;,&lt;br/&gt;	};&lt;br/&gt;{% endfor %}&lt;br/&gt;vis.selectAll(&amp;quot;.category text&amp;quot;).on(&amp;quot;click&amp;quot;,function(d){&lt;br/&gt;	if(!">
+<meta name="twitter:description" content="下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
+并且施加了两个力场，把post向左推，tag向右推。
+参考了下面两个例子：
+
+Custom Forces
+Labeled Force Layout
+">
 
 
 <script type="application/ld+json">
@@ -99,12 +113,12 @@
   "@type": "BlogPosting",
   "headline": "forced graph",
   "name": "forced graph",
-  "description": "- d3.parsets.css- d3.v3.min.js- d3.parsets.js{% highlight text %}{{ page.title }},d3{{ page.title }},visualization{% endhighlight %}{% highlight javascript %}{%raw%}var csv=\u0026quot;post,tag\u0026quot;;{% for post in site.posts %}\t{% for tag in post.tags %}\tcsv+=\u0026quot; {{post.title}},{{tag}}\u0026quot;;\t{% endfor %}{% endfor %}{%endraw%}{% endhighlight %}{% highlight javascript %}var chart = d3.parsets()\t.tension(0.8)\t.width(\u0026quot;800\u0026quot;)\t.height(\u0026quot;480\u0026quot;) .dimensions([\u0026quot;tag\u0026quot;,\u0026quot;post\u0026quot;]);var vis = d3.select(\u0026quot;#vis\u0026quot;).append(\u0026quot;svg\u0026quot;) .attr(\u0026quot;width\u0026quot;, chart.width()) .attr(\u0026quot;height\u0026quot;, chart.height());var parsed_csv=d3.csv.parse(csv);vis.datum(parsed_csv).call(chart);{% endhighlight %}{% highlight javascript %}{%raw%}var posts={};{% for post in site.posts %}\tposts[\u0026quot;{{post.title}}\u0026quot;]={\t\u0026quot;url\u0026quot;:\u0026quot;{{post.url}}\u0026quot;,\t};{% endfor %}vis.selectAll(\u0026quot;.category text\u0026quot;).on(\u0026quot;click\u0026quot;,function(d){\tif(!",
+  "description": "下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色， 并且施加了两个力场，把post向左推，tag向右推。\n参考了下面两个例子：\nCustom Forces Labeled Force Layout ",
   "keywords": [
     "d3", "visualization", "physics", "graph"
   ],
-  "articleBody": "下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色， 并且施加了两个力场，把post向左推，tag向右推。\n{% raw %} //准备post和tag的关联数据 var graph={ \"nodes\":[], \"links\":[], }; var hash_tag={}; var post_id=0,tag_id=0; {% for post in site.posts %} graph.nodes.push({ \"name\": \"{{ post.title }}\", \"url\":\"{{post.url}}\", \"type\":\"post\", }); post_id=graph.nodes.length-1; {% for tag in post.tags %} if(hash_tag[\"{{tag}}\"]===undefined){ graph.nodes.push({ \"name\": \"{{ tag }}\", \"url\":\"/tags.html\", \"type\":\"tag\", }); tag_id=graph.nodes.length-1; hash_tag[\"{{tag}}\"]=tag_id; } else { tag_id=hash_tag[\"{{tag}}\"]; } graph.links.push({ \"source\":post_id, \"target\":tag_id, \"value\":1 }); {% endfor %} {% endfor %} //数据准备完毕，开始画图 var width = 400, height = 400; //两个力场的中心位置 var foci={ \"post\":{\"x\":0,\"y\":height/2}, \"tag\":{\"x\":width,\"y\":height/2}, }; var color = d3.scale.category10(); var force = d3.layout.force() .linkDistance(100) .linkStrength(.3) .gravity(0) .size([width, height]); var svg = d3.select(\"#svg\").append(\"svg\") .attr(\"width\", width) .attr(\"height\", height); force .charge(-400) .nodes(graph.nodes) .links(graph.links) .start(); var link = svg.selectAll(\".link\") .data(graph.links) .enter().append(\"line\") .attr(\"class\", \"link\"); var node = svg.selectAll(\".node\") .data(graph.nodes) .enter().append(\"circle\") .attr(\"class\", \"node\") .attr(\"r\",10) .on(\"click\",function(d){ window.open(d.url); }) .style(\"cursor\",\"pointer\") .style(\"fill\", function(d) { return color(d.type); }) .call(force.drag); node.append(\"title\") .text(function(d) { return d.name; }); force.on(\"tick\", function(e) { link.attr(\"x1\", function(d) { return d.source.x; }) .attr(\"y1\", function(d) { return d.source.y; }) .attr(\"x2\", function(d) { return d.target.x; }) .attr(\"y2\", function(d) { return d.target.y; }); //e.alpha是“温度”，粒子的“活性”与之相关，它是一个不断下降的变量，模拟冷却过程。 var k = .5 * e.alpha; //让每个粒子都被力场减速吸向中心，直到温度为0 //同时每个粒子还受到库仑力(由force.charge定义)，从而彼此不会聚合在一起。 graph.nodes.forEach(function(o, i) { o.y += (foci[o.type].y - o.y) * k; o.x += (foci[o.type].x - o.x) * k; }); node.attr(\"cx\", function(d) { return d.x; }) .attr(\"cy\", function(d) { return d.y; }); }); {% endraw %} 效果如下：\n参考了下面两个例子：\nCustom Forces Labeled Force Layout ",
-  "wordCount" : "215",
+  "articleBody": "下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色， 并且施加了两个力场，把post向左推，tag向右推。\n参考了下面两个例子：\nCustom Forces Labeled Force Layout ",
+  "wordCount" : "9",
   "inLanguage": "en",
   "datePublished": "2013-07-26T00:00:00Z",
   "dateModified": "2013-07-26T00:00:00Z",
@@ -135,7 +149,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -165,8 +178,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -180,7 +193,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -188,114 +201,12 @@
     </nav>
 </header>
 <main class="main">
+<header class="page-header">
+    <h1>forced graph</h1>
+</header>
 
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
-    <h1 class="post-title entry-hint-parent">
-      forced graph
-    </h1>
-    <div class="post-description">
-      - d3.parsets.css&lt;br/&gt;- d3.v3.min.js&lt;br/&gt;- d3.parsets.js&lt;br/&gt;{% highlight text %}&lt;br/&gt;{{ page.title }},d3&lt;br/&gt;{{ page.title }},visualization&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;{%raw%}&lt;br/&gt;var csv=&amp;quot;post,tag&amp;quot;;&lt;br/&gt;{% for post in site.posts %}&lt;br/&gt;	{% for tag in post.tags %}&lt;br/&gt;		csv&#43;=&amp;quot; {{post.title}},{{tag}}&amp;quot;;&lt;br/&gt;	{% endfor %}&lt;br/&gt;{% endfor %}&lt;br/&gt;{%endraw%}&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;var chart = d3.parsets()&lt;br/&gt;	  .tension(0.8)&lt;br/&gt;	  .width(&amp;quot;800&amp;quot;)&lt;br/&gt;	  .height(&amp;quot;480&amp;quot;)&lt;br/&gt;      .dimensions([&amp;quot;tag&amp;quot;,&amp;quot;post&amp;quot;]);&lt;br/&gt;var vis = d3.select(&amp;quot;#vis&amp;quot;).append(&amp;quot;svg&amp;quot;)&lt;br/&gt;    .attr(&amp;quot;width&amp;quot;, chart.width())&lt;br/&gt;    .attr(&amp;quot;height&amp;quot;, chart.height());&lt;br/&gt;var parsed_csv=d3.csv.parse(csv);&lt;br/&gt;vis.datum(parsed_csv).call(chart);&lt;br/&gt;{% endhighlight %}&lt;br/&gt;{% highlight javascript %}&lt;br/&gt;{%raw%}&lt;br/&gt;var posts={};&lt;br/&gt;{% for post in site.posts %}&lt;br/&gt;	posts[&amp;quot;{{post.title}}&amp;quot;]={&lt;br/&gt;		&amp;quot;url&amp;quot;:&amp;quot;{{post.url}}&amp;quot;,&lt;br/&gt;	};&lt;br/&gt;{% endfor %}&lt;br/&gt;vis.selectAll(&amp;quot;.category text&amp;quot;).on(&amp;quot;click&amp;quot;,function(d){&lt;br/&gt;	if(!
-    </div>
-    <div class="post-meta"><span title='2013-07-26 00:00:00 +0000 UTC'>July 26, 2013</span>
-
-</div>
-  </header> 
-  <div class="post-content"><p>下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
+<p>下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色，
 并且施加了两个力场，把post向左推，tag向右推。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{<span style="color:#f92672">%</span> <span style="color:#a6e22e">raw</span> <span style="color:#f92672">%</span>}
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//准备post和tag的关联数据
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">graph</span><span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;nodes&#34;</span><span style="color:#f92672">:</span>[],
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;links&#34;</span><span style="color:#f92672">:</span>[],
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">hash_tag</span><span style="color:#f92672">=</span>{};
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">post_id</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">tag_id</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">%</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">post</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">site</span>.<span style="color:#a6e22e">posts</span> <span style="color:#f92672">%</span>}
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">push</span>({
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{{ post.title }}&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;{{post.url}}&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;post&#34;</span>, 
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">post_id</span><span style="color:#f92672">=</span><span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>    {<span style="color:#f92672">%</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">tag</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">tags</span> <span style="color:#f92672">%</span>}
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">hash_tag</span>[<span style="color:#e6db74">&#34;{{tag}}&#34;</span>]<span style="color:#f92672">===</span><span style="color:#66d9ef">undefined</span>){
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">push</span>({
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{{ tag }}&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;/tags.html&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;tag&#34;</span>,
-</span></span><span style="display:flex;"><span>            });
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tag_id</span><span style="color:#f92672">=</span><span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">hash_tag</span>[<span style="color:#e6db74">&#34;{{tag}}&#34;</span>]<span style="color:#f92672">=</span><span style="color:#a6e22e">tag_id</span>;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tag_id</span><span style="color:#f92672">=</span><span style="color:#a6e22e">hash_tag</span>[<span style="color:#e6db74">&#34;{{tag}}&#34;</span>];
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">links</span>.<span style="color:#a6e22e">push</span>({
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;source&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">post_id</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;target&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">tag_id</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;value&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>    
-</span></span><span style="display:flex;"><span>        });
-</span></span><span style="display:flex;"><span>    {<span style="color:#f92672">%</span> <span style="color:#a6e22e">endfor</span> <span style="color:#f92672">%</span>}
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">%</span> <span style="color:#a6e22e">endfor</span> <span style="color:#f92672">%</span>}
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//数据准备完毕，开始画图
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">400</span>,
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">400</span>;
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//两个力场的中心位置
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">foci</span><span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;post&#34;</span><span style="color:#f92672">:</span>{<span style="color:#e6db74">&#34;x&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#e6db74">&#34;y&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">height</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>},
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tag&#34;</span><span style="color:#f92672">:</span>{<span style="color:#e6db74">&#34;x&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">width</span>,<span style="color:#e6db74">&#34;y&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">height</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>},
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scale</span>.<span style="color:#a6e22e">category10</span>();
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">force</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">layout</span>.<span style="color:#a6e22e">force</span>()
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">linkDistance</span>(<span style="color:#ae81ff">100</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">linkStrength</span>(.<span style="color:#ae81ff">3</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">gravity</span>(<span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">size</span>([<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>]);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#34;#svg&#34;</span>).<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;svg&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;width&#34;</span>, <span style="color:#a6e22e">width</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;height&#34;</span>, <span style="color:#a6e22e">height</span>);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">force</span>
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">charge</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">400</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">nodes</span>(<span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">nodes</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">links</span>(<span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">links</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">link</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;.link&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">links</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">enter</span>().<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;line&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;class&#34;</span>, <span style="color:#e6db74">&#34;link&#34;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">node</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;.node&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">nodes</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">enter</span>().<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;circle&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;class&#34;</span>, <span style="color:#e6db74">&#34;node&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;r&#34;</span>,<span style="color:#ae81ff">10</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;click&#34;</span>,<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>){
-</span></span><span style="display:flex;"><span>        window.<span style="color:#a6e22e">open</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">url</span>);
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#34;cursor&#34;</span>,<span style="color:#e6db74">&#34;pointer&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#34;fill&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">color</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">type</span>); })
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">force</span>.<span style="color:#a6e22e">drag</span>);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;title&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">text</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">name</span>; });
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">force</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;tick&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">link</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;x1&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">source</span>.<span style="color:#a6e22e">x</span>; })
-</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;y1&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">source</span>.<span style="color:#a6e22e">y</span>; })
-</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;x2&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">x</span>; })
-</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;y2&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">y</span>; });
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//e.alpha是“温度”，粒子的“活性”与之相关，它是一个不断下降的变量，模拟冷却过程。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">=</span> .<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">alpha</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//让每个粒子都被力场减速吸向中心，直到温度为0
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//同时每个粒子还受到库仑力(由force.charge定义)，从而彼此不会聚合在一起。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">graph</span>.<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">o</span>, <span style="color:#a6e22e">i</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">foci</span>[<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">type</span>].<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">y</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">k</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">foci</span>[<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">type</span>].<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">x</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">k</span>;
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;cx&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>; })
-</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;cy&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>; });
-</span></span><span style="display:flex;"><span>});
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">%</span> <span style="color:#a6e22e">endraw</span> <span style="color:#f92672">%</span>}</span></span></code></pre></div>
-<p>效果如下：</p>
-<!-- raw HTML omitted -->
 <p>参考了下面两个例子：</p>
 <ul>
 <li><a href="http://bl.ocks.org/mbostock/1021841">Custom Forces</a></li>
@@ -303,17 +214,748 @@
 </ul>
 
 
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://vindurriel.github.io/tags/d3/">D3</a></li>
-      <li><a href="https://vindurriel.github.io/tags/visualization/">Visualization</a></li>
-      <li><a href="https://vindurriel.github.io/tags/physics/">Physics</a></li>
-      <li><a href="https://vindurriel.github.io/tags/graph/">Graph</a></li>
-    </ul>
-  </footer>
-</article>
+<div id="svg"></div>
+<script type="text/javascript">
+  
+  var graph={
+      "nodes":[],
+      "links":[],
+  };
+  var hash_tag={};
+  var post_id=0,tag_id=0;
+      graph.nodes.push({
+          "name": "想跳槽？学学人猿泰山",
+          "url":"https:\/\/vindurriel.github.io\/post\/2014-04-10-tarzan\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Job"]===undefined){
+              graph.nodes.push({
+                  "name": "Job",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/job\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Job"]=tag_id;
+          } else {
+              tag_id=hash_tag["Job"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "用Python做文本摘要",
+          "url":"https:\/\/vindurriel.github.io\/post\/2014-03-26-python-3\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Python"]===undefined){
+              graph.nodes.push({
+                  "name": "Python",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/python\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Python"]=tag_id;
+          } else {
+              tag_id=hash_tag["Python"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Tutorial"]===undefined){
+              graph.nodes.push({
+                  "name": "Tutorial",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/tutorial\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Tutorial"]=tag_id;
+          } else {
+              tag_id=hash_tag["Tutorial"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "Python web api",
+          "url":"https:\/\/vindurriel.github.io\/post\/2014-03-26-python-2\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Python"]===undefined){
+              graph.nodes.push({
+                  "name": "Python",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/python\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Python"]=tag_id;
+          } else {
+              tag_id=hash_tag["Python"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Tutorial"]===undefined){
+              graph.nodes.push({
+                  "name": "Tutorial",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/tutorial\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Tutorial"]=tag_id;
+          } else {
+              tag_id=hash_tag["Tutorial"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "Python 初探",
+          "url":"https:\/\/vindurriel.github.io\/post\/2014-03-26-python-1\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Python"]===undefined){
+              graph.nodes.push({
+                  "name": "Python",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/python\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Python"]=tag_id;
+          } else {
+              tag_id=hash_tag["Python"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Tutorial"]===undefined){
+              graph.nodes.push({
+                  "name": "Tutorial",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/tutorial\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Tutorial"]=tag_id;
+          } else {
+              tag_id=hash_tag["Tutorial"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "程序调试心得",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-12-05-debug-tips\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Problem Solving"]===undefined){
+              graph.nodes.push({
+                  "name": "Problem Solving",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/problem-solving\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Problem Solving"]=tag_id;
+          } else {
+              tag_id=hash_tag["Problem Solving"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Tips"]===undefined){
+              graph.nodes.push({
+                  "name": "Tips",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/tips\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Tips"]=tag_id;
+          } else {
+              tag_id=hash_tag["Tips"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "如何使用互联网解决编程问题",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-12-03-how-to-solve-problems-online\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Problem Solving"]===undefined){
+              graph.nodes.push({
+                  "name": "Problem Solving",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/problem-solving\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Problem Solving"]=tag_id;
+          } else {
+              tag_id=hash_tag["Problem Solving"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Tips"]===undefined){
+              graph.nodes.push({
+                  "name": "Tips",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/tips\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Tips"]=tag_id;
+          } else {
+              tag_id=hash_tag["Tips"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "电子游戏让你上瘾的5个可怕方法",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-09-09-why-video-games-is-addictive\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Translation"]===undefined){
+              graph.nodes.push({
+                  "name": "Translation",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/translation\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Translation"]=tag_id;
+          } else {
+              tag_id=hash_tag["Translation"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Psychology"]===undefined){
+              graph.nodes.push({
+                  "name": "Psychology",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/psychology\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Psychology"]=tag_id;
+          } else {
+              tag_id=hash_tag["Psychology"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "nest介绍之音乐地图",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-09-04-nest-introduction\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Visualization"]===undefined){
+              graph.nodes.push({
+                  "name": "Visualization",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/visualization\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Visualization"]=tag_id;
+          } else {
+              tag_id=hash_tag["Visualization"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Graph"]===undefined){
+              graph.nodes.push({
+                  "name": "Graph",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/graph\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Graph"]=tag_id;
+          } else {
+              tag_id=hash_tag["Graph"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["D3"]===undefined){
+              graph.nodes.push({
+                  "name": "D3",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/d3\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["D3"]=tag_id;
+          } else {
+              tag_id=hash_tag["D3"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "凯撒方阵",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-09-03-caesar-encryption\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Xiami"]===undefined){
+              graph.nodes.push({
+                  "name": "Xiami",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/xiami\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Xiami"]=tag_id;
+          } else {
+              tag_id=hash_tag["Xiami"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Cryptography"]===undefined){
+              graph.nodes.push({
+                  "name": "Cryptography",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/cryptography\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Cryptography"]=tag_id;
+          } else {
+              tag_id=hash_tag["Cryptography"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "虾米下载介绍",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-08-09-xiami-introduction\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Xiami"]===undefined){
+              graph.nodes.push({
+                  "name": "Xiami",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/xiami\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Xiami"]=tag_id;
+          } else {
+              tag_id=hash_tag["Xiami"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "forced graph",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-07-26-forced-graph\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["D3"]===undefined){
+              graph.nodes.push({
+                  "name": "D3",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/d3\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["D3"]=tag_id;
+          } else {
+              tag_id=hash_tag["D3"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Visualization"]===undefined){
+              graph.nodes.push({
+                  "name": "Visualization",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/visualization\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Visualization"]=tag_id;
+          } else {
+              tag_id=hash_tag["Visualization"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Physics"]===undefined){
+              graph.nodes.push({
+                  "name": "Physics",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/physics\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Physics"]=tag_id;
+          } else {
+              tag_id=hash_tag["Physics"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Graph"]===undefined){
+              graph.nodes.push({
+                  "name": "Graph",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/graph\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Graph"]=tag_id;
+          } else {
+              tag_id=hash_tag["Graph"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "用d3.js来呈现post-tag的多对多关系",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-07-22-post-tag-diagram-with-d3\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["D3"]===undefined){
+              graph.nodes.push({
+                  "name": "D3",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/d3\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["D3"]=tag_id;
+          } else {
+              tag_id=hash_tag["D3"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Visualization"]===undefined){
+              graph.nodes.push({
+                  "name": "Visualization",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/visualization\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Visualization"]=tag_id;
+          } else {
+              tag_id=hash_tag["Visualization"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "删除github pages的master分支",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-07-21-delete-master-branch-on-github-pages\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Github Pages"]===undefined){
+              graph.nodes.push({
+                  "name": "Github Pages",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/github-pages\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Github Pages"]=tag_id;
+          } else {
+              tag_id=hash_tag["Github Pages"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "github pages 配置",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-07-19-github-pages-setup\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Jekyll"]===undefined){
+              graph.nodes.push({
+                  "name": "Jekyll",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/jekyll\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Jekyll"]=tag_id;
+          } else {
+              tag_id=hash_tag["Jekyll"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Github Pages"]===undefined){
+              graph.nodes.push({
+                  "name": "Github Pages",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/github-pages\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Github Pages"]=tag_id;
+          } else {
+              tag_id=hash_tag["Github Pages"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Setup"]===undefined){
+              graph.nodes.push({
+                  "name": "Setup",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/setup\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Setup"]=tag_id;
+          } else {
+              tag_id=hash_tag["Setup"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "为gem install 提速",
+          "url":"https:\/\/vindurriel.github.io\/post\/2013-07-19-gem-acceleration\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Gem"]===undefined){
+              graph.nodes.push({
+                  "name": "Gem",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/gem\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Gem"]=tag_id;
+          } else {
+              tag_id=hash_tag["Gem"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Ruby"]===undefined){
+              graph.nodes.push({
+                  "name": "Ruby",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/ruby\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Ruby"]=tag_id;
+          } else {
+              tag_id=hash_tag["Ruby"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "Covid Report",
+          "url":"https:\/\/vindurriel.github.io\/post\/2022-08-08-covid-report\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Visualization"]===undefined){
+              graph.nodes.push({
+                  "name": "Visualization",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/visualization\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Visualization"]=tag_id;
+          } else {
+              tag_id=hash_tag["Visualization"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Covid"]===undefined){
+              graph.nodes.push({
+                  "name": "Covid",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/covid\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Covid"]=tag_id;
+          } else {
+              tag_id=hash_tag["Covid"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["NHC"]===undefined){
+              graph.nodes.push({
+                  "name": "NHC",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/nhc\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["NHC"]=tag_id;
+          } else {
+              tag_id=hash_tag["NHC"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
+          "name": "",
+          "url":"https:\/\/vindurriel.github.io\/resume\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+  
+      graph.nodes.push({
+          "name": "",
+          "url":"https:\/\/vindurriel.github.io\/resume_en\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+  
+      graph.nodes.push({
+          "name": "Archive",
+          "url":"https:\/\/vindurriel.github.io\/archives\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+  
+</script>
+<script type="text/javascript" src="/javascripts/d3.v3.min.js" ></script>
+<script type="text/javascript" src="/javascripts/forced-graph.js" ></script>
     </main>
     
 <footer class="footer">

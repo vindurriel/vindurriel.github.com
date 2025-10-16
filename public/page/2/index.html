@@ -92,7 +92,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -122,8 +121,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span class="active">Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -137,8 +136,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
-                    <span class="active">RSS feed</span>
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
+                    <span>RSS feed</span>
                 </a>
             </li>
         </ul>
@@ -153,8 +152,8 @@
   </header>
   <div class="entry-content">
     <p>下图是用d3中的forced graph画出的post和tag的关联关系。为了区别post和tag，使用了两种颜色， 并且施加了两个力场，把post向左推，tag向右推。
-{% raw %} //准备post和tag的关联数据 var graph={ &#34;nodes&#34;:[], &#34;links&#34;:[], }; var hash_tag={}; var post_id=0,tag_id=0; {% for post in site.posts %} graph.nodes.push({ &#34;name&#34;: &#34;{{ post.title }}&#34;, &#34;url&#34;:&#34;{{post.url}}&#34;, &#34;type&#34;:&#34;post&#34;, }); post_id=graph.nodes.length-1; {% for tag in post.tags %} if(hash_tag[&#34;{{tag}}&#34;]===undefined){ graph.nodes.push({ &#34;name&#34;: &#34;{{ tag }}&#34;, &#34;url&#34;:&#34;/tags.html&#34;, &#34;type&#34;:&#34;tag&#34;, }); tag_id=graph.nodes.length-1; hash_tag[&#34;{{tag}}&#34;]=tag_id; } else { tag_id=hash_tag[&#34;{{tag}}&#34;]; } graph.links.push({ &#34;source&#34;:post_id, &#34;target&#34;:tag_id, &#34;value&#34;:1 }); {% endfor %} {% endfor %} //数据准备完毕，开始画图 var width = 400, height = 400; //两个力场的中心位置 var foci={ &#34;post&#34;:{&#34;x&#34;:0,&#34;y&#34;:height/2}, &#34;tag&#34;:{&#34;x&#34;:width,&#34;y&#34;:height/2}, }; var color = d3.scale.category10(); var force = d3.layout.force() .linkDistance(100) .linkStrength(.3) .gravity(0) .size([width, height]); var svg = d3.select(&#34;#svg&#34;).append(&#34;svg&#34;) .attr(&#34;width&#34;, width) .attr(&#34;height&#34;, height); force .charge(-400) .nodes(graph.nodes) .links(graph.links) .start(); var link = svg.selectAll(&#34;.link&#34;) .data(graph.links) .enter().append(&#34;line&#34;) .attr(&#34;class&#34;, &#34;link&#34;); var node = svg.selectAll(&#34;.node&#34;) .data(graph.nodes) .enter().append(&#34;circle&#34;) .attr(&#34;class&#34;, &#34;node&#34;) .attr(&#34;r&#34;,10) .on(&#34;click&#34;,function(d){ window.open(d.url); }) .style(&#34;cursor&#34;,&#34;pointer&#34;) .style(&#34;fill&#34;, function(d) { return color(d.type); }) .call(force.drag); node.append(&#34;title&#34;) .text(function(d) { return d.name; }); force.on(&#34;tick&#34;, function(e) { link.attr(&#34;x1&#34;, function(d) { return d.source.x; }) .attr(&#34;y1&#34;, function(d) { return d.source.y; }) .attr(&#34;x2&#34;, function(d) { return d.target.x; }) .attr(&#34;y2&#34;, function(d) { return d.target.y; }); //e.alpha是“温度”，粒子的“活性”与之相关，它是一个不断下降的变量，模拟冷却过程。 var k = .5 * e.alpha; //让每个粒子都被力场减速吸向中心，直到温度为0 //同时每个粒子还受到库仑力(由force.charge定义)，从而彼此不会聚合在一起。 graph.nodes.forEach(function(o, i) { o.y &#43;= (foci[o.type].y - o.y) * k; o.x &#43;= (foci[o.type].x - o.x) * k; }); node.attr(&#34;cx&#34;, function(d) { return d.x; }) .attr(&#34;cy&#34;, function(d) { return d.y; }); }); {% endraw %} 效果如下：
-...</p>
+参考了下面两个例子：
+Custom Forces Labeled Force Layout </p>
   </div>
   <footer class="entry-footer"><span title='2013-07-26 00:00:00 +0000 UTC'>July 26, 2013</span></footer>
   <a class="entry-link" aria-label="post link to forced graph" href="https://vindurriel.github.io/post/2013-07-26-forced-graph/"></a>
@@ -167,7 +166,7 @@
   </header>
   <div class="entry-content">
     <p>最近想用更好的方式呈现blog和tag之间的关系，也就是重写本博客的标签页面。
-log和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。
+blog和tag之间是多对多的关系，就是说一篇blog可以有多个tag，一个tag可以包含多篇blog。适合表现这种映射关系的图表叫做平行集（Parallel Set）。
 平行集是反应两组或以上数据集之间映射关系的图表。
 d3是一个用javascript的库，主要用途是用svg做数据可视化。
 d3非常强大，基本上能想到的图表都可以实现。而对于平行集，d3有一个插件d3.parsets。
@@ -175,9 +174,9 @@ d3非常强大，基本上能想到的图表都可以实现。而对于平行集
 d3.parsets.css d3.v3.min.js d3.parsets.js 然后在tags.html里写一些javascript。
 先构造出所有post和tag的对应数据。d3.parsets使用csv格式，所以要先生成一个csv格式的字符串。在这里，列名就是post,tag。 比如本篇blog对应两个tag：d3和visualization，那么要在csv里添加两行:
 {{ page.title }},d3 {{ page.title }},visualization 相关代码如下：
-{%raw%} var csv=&#34;post,tag&#34;; {% for post in site.posts %} {% for tag in post.tags %} csv&#43;=&#34;\n{{post.title}},{{tag}}&#34;; {% endfor %} {% endfor %} {%endraw%} 接着实例化一个chart，再把数据给它：
+var csv=&#34;post,tag&#34;; {% for post in site.posts %} {% for tag in post.tags %} csv&#43;=&#34;\n{{post.title}},{{tag}}&#34;; {% endfor %} {% endfor %} 接着实例化一个chart，再把数据给它：
 var chart = d3.parsets() .tension(0.8) .width(&#34;800&#34;) .height(&#34;480&#34;) .dimensions([&#34;tag&#34;,&#34;post&#34;]); var vis = d3.select(&#34;#vis&#34;).append(&#34;svg&#34;) .attr(&#34;width&#34;, chart.width()) .attr(&#34;height&#34;, chart.height()); var parsed_csv=d3.csv.parse(csv); vis.datum(parsed_csv).call(chart); 我还想实现这样一个功能：点击图中的博客时可以跳转到博客页面。
-{%raw%} var posts={}; {% for post in site.posts %} posts[&#34;{{post.title}}&#34;]={ &#34;url&#34;:&#34;{{post.url}}&#34;, }; {% endfor %} vis.selectAll(&#34;.category text&#34;).on(&#34;click&#34;,function(d){ if(!(d.name in posts)) return; window.open(posts[d.name].url); }); {%endraw%} d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上很独特，非常的描述化。 这篇文章是作者自己总结的d3处理数据上的一种模式，也就是所谓的join。
+var posts={}; {% for post in site.posts %} posts[&#34;{{post.title}}&#34;]={ &#34;url&#34;:&#34;{{post.url}}&#34;, }; {% endfor %} vis.selectAll(&#34;.category text&#34;).on(&#34;click&#34;,function(d){ if(!(d.name in posts)) return; window.open(posts[d.name].url); }); d3虽然可以看到很多jQuery的影子， 但在data和view的生成方式上很独特，非常地描述化。 这篇文章是作者自己总结的d3处理数据上的一种模式，也就是所谓的join。
 </p>
   </div>
   <footer class="entry-footer"><span title='2013-07-22 00:00:00 +0000 UTC'>July 22, 2013</span></footer>
@@ -193,8 +192,7 @@ var chart = d3.parsets() .tension(0.8) .width(&#34;800&#34;) .height(&#34;480&#3
     <p>github pages默认使用两个分支：master和gh-pages。 在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。
 但是可以删除master。 首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 git branch -D master 删除master分支。
 但是删除master后，发现远端页面更新非常缓慢，而且页面状态不稳定（有的页面更新了，有的则没有）。因此后来恢复了用两个分支。有文章介绍可以用post commit hook来保持两个分支的一致性。
-###update 2013-08-07
-写了一个bat脚本，取名push.bat
+update 2013-08-07 写了一个bat脚本，取名push.bat
 @echo off rem 提示用户输入comment set /p comment=&#34;comments:&#34; rem 在master分支上commit git commit -am &#34;%comment%&#34; git checkout gh-pages rem rebase命令使得gh-pages和master同步，然后生成一个commit git rebase master git checkout master git push 使用时直接输入push
 </p>
   </div>
@@ -211,11 +209,10 @@ var chart = d3.parsets() .tension(0.8) .width(&#34;800&#34;) .height(&#34;480&#3
     <p>首先去github pages申请一个页面，默认的域名是http://USERNAME.github.io，其中USERNAME是你的github用户名。
 github使用jekyll做解析引擎。可以直接克隆一个别人写好的jekyll，然后把上传路径改成自己的，像这样：
 git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com cd USERNAME.github.com git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git git push origin master 这个例子中使用的是jekyll-bootstrap。
-###写文章
-如果装了ruby的话，直接在文件夹下执行
+写文章 如果装了ruby的话，直接在文件夹下执行
 rake post title=&#34;a new post&#34; 就可以新建一篇文章。内容支持markdown。
 其实就是在_post目录下新建了一个md文件，文件名格式为年-月-日-标题.md。 文件开始是一些元信息，比如本文的md文件开头是这样的：
---- layout: post title: &#34;github pages 配置&#34; description: &#34;rake post title=&amp;quot;a new post&amp;quot; layout: post title: &#34;github pages 配置&#34; description: &#34;&#34; category: misc tags: [jekyll,github pages,setup] 写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。 comments : provider : disqus disqus : short_name : YOUR_DISQUS_SITE_NAME 你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。 $ CHCP 65001 如果是在git bash中的话，需要设置如下环境变量： export LC_ALL = enUS.UTF-8 export LANG = enUS.UTF-8 然后就可以 `jekyll serve --watch`了。 gem uninstall pygments.rb --version &amp;quot;&amp;gt;0.5.0&amp;quot; gem install pygments.rb --version &amp;quot;=0.5.0&amp;quot;&#34; category: misc tags: [jekyll,github pages,setup] --- 写好了内容部分，直接git commit然后git push到master分支就可以了。
+--- layout: post title: &#34;github pages 配置&#34; layout: post title: &#34;github pages 配置&#34; description: &#34;&#34; category: misc tags: [jekyll,github pages,setup] 写好了内容部分，直接`git commit`然后`git push`到master分支就可以了。 comments : provider : disqus disqus : short_name : YOUR_DISQUS_SITE_NAME 你需要去disqus.com注册一个用户，然后在dashboard中新建一个站点，注意把`short_name`设置为配置文件中的那个`YOUR_DISQUS_SITE_NAME`。 $ CHCP 65001 如果是在git bash中的话，需要设置如下环境变量： export LC_ALL = enUS.UTF-8 export LANG = enUS.UTF-8 然后就可以 `jekyll serve --watch`了。 gem uninstall pygments.rb --version &amp;quot;&amp;gt;0.5.0&amp;quot; gem install pygments.rb --version &amp;quot;=0.5.0&amp;quot;&#34; category: misc tags: [jekyll,github pages,setup] --- 写好了内容部分，直接git commit然后git push到master分支就可以了。
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2013-07-19 00:00:00 +0000 UTC'>July 19, 2013</span></footer>
@@ -246,7 +243,7 @@ rake post title=&#34;a new post&#34; 就可以新建一篇文章。内容支持m
 Move the slider to see daily data since Feburary 2020. Click on the button to travel through time.
 The source: National Health Commitee
 Data are updated weekly.
-link
+demo
 </p>
   </div>
   <footer class="entry-footer"><span title='2012-08-08 00:00:00 +0000 UTC'>August 8, 2012</span></footer>

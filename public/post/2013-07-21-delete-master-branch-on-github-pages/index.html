@@ -100,7 +100,7 @@
   "keywords": [
     "github pages"
   ],
-  "articleBody": "github pages默认使用两个分支：master和gh-pages。 在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。\n但是可以删除master。 首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 git branch -D master 删除master分支。\n但是删除master后，发现远端页面更新非常缓慢，而且页面状态不稳定（有的页面更新了，有的则没有）。因此后来恢复了用两个分支。有文章介绍可以用post commit hook来保持两个分支的一致性。\n###update 2013-08-07\n写了一个bat脚本，取名push.bat\n@echo off rem 提示用户输入comment set /p comment=\"comments:\" rem 在master分支上commit git commit -am \"%comment%\" git checkout gh-pages rem rebase命令使得gh-pages和master同步，然后生成一个commit git rebase master git checkout master git push 使用时直接输入push\n",
+  "articleBody": "github pages默认使用两个分支：master和gh-pages。 在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。\n但是可以删除master。 首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 git branch -D master 删除master分支。\n但是删除master后，发现远端页面更新非常缓慢，而且页面状态不稳定（有的页面更新了，有的则没有）。因此后来恢复了用两个分支。有文章介绍可以用post commit hook来保持两个分支的一致性。\nupdate 2013-08-07 写了一个bat脚本，取名push.bat\n@echo off rem 提示用户输入comment set /p comment=\"comments:\" rem 在master分支上commit git commit -am \"%comment%\" git checkout gh-pages rem rebase命令使得gh-pages和master同步，然后生成一个commit git rebase master git checkout master git push 使用时直接输入push\n",
   "wordCount" : "44",
   "inLanguage": "en",
   "datePublished": "2013-07-21T00:00:00Z",
@@ -132,7 +132,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -162,8 +161,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -177,7 +176,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -185,7 +184,6 @@
     </nav>
 </header>
 <main class="main">
-
 <article class="post-single">
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
@@ -200,10 +198,10 @@
 </div>
   </header> 
   <div class="post-content"><p>github pages默认使用两个分支：master和gh-pages。 在两个分支间切换很不方便：在gh-pages写了一些blog， 然后切回master进行一次push，才能让服务器重新build。</p>
-<p><!-- raw HTML omitted -->但是可以删除master。 首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 <code>git branch -D master</code> 删除master分支。<!-- raw HTML omitted --></p>
+<p><del>但是可以删除master。 首先到github.com的repo设置里面把默认分支设为gh-pages，然后删除master分支，最后回到本地，用 <code>git branch -D master</code> 删除master分支。</del></p>
 <p>但是删除master后，发现远端页面更新非常缓慢，而且页面状态不稳定（有的页面更新了，有的则没有）。因此后来恢复了用两个分支。<a href="http://lea.verou.me/2011/10/easily-keep-gh-pages-in-sync-with-master/">有文章</a>介绍可以用post commit hook来保持两个分支的一致性。</p>
 <hr>
-<p>###update 2013-08-07</p>
+<h3 id="update-2013-08-07">update 2013-08-07<a hidden class="anchor" aria-hidden="true" href="#update-2013-08-07">#</a></h3>
 <p>写了一个bat脚本，取名<code>push.bat</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>@<span style="color:#66d9ef">echo</span> off
 </span></span><span style="display:flex;"><span><span style="color:#75715e">rem 提示用户输入comment</span>

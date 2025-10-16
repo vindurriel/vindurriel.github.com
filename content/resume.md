@@ -1,4 +1,5 @@
 ---
+hideHeader: true
 hideFooter: true
 showBreadCrumbs: false
 ---

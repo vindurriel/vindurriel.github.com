@@ -93,7 +93,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -123,8 +122,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -138,7 +137,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -167,65 +166,12 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Python web api
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>本文是[系列]({% post_url 2014-03-26-python-1 %})的第二篇。
-##rest服务 这里有简介 ##json Json
-Json与pojo ###Python处理json的库
-import json #基本库 import simplejson #需用pip安装 Json-&gt;python object：
-json.loads(string_of_json) Python object-&gt;json:
-Json.dumps(json, indent=2) #indent为缩进空格数 ##Requests：http for humans 这里有中文简介
-个人认为，requests是对Python价值观最好的体现。
-##示例2 pm2.5 问题：寻找可用的api，获取城市的pm2.5及空气质量数据
-知识点：用requests写rest客户端
-子问题1：寻找可用的api
-通过google，找到这个有态度的网站 子问题2： 使用api
-子问题3：结果缓存与定时获取
-代码如下
-#encoding=utf-8 u&#39;&#39;&#39; pm25.py Usage: pm25.py &lt;cityname&gt; Options: &lt;cityname&gt; 城市名 &#39;&#39;&#39; from docopt import docopt def wget_pm25(city): token=&#34;5j1znBVAsnSf5xQyNQyq&#34; import requests as r result=r.get(&#34;http://www.pm25.in/api/querys/pm2_5.json&#34;,params={ &#34;city&#34;:city, &#34;token&#34;:token, }) return result.json() def needs_refresh(filename,timeout=3600): return False import os,time mtime=os.path.getmtime(filename) now=time.time() return now-mtime&gt;timeout def get_pm25(city): filename=&#39;pm25.data.{}.json&#39;.format(city) import os,json data=None if os.path.isfile(filename) and not needs_refresh(filename): data=file(filename,&#39;r&#39;).read() data=json.loads(data) else: data=wget_pm25(city) if type(data)==type({}): print data[&#39;error&#39;] return -1 else: file(filename,&#39;w&#39;).write(json.dumps(data,indent=2)) return data[-1][&#34;pm2_5&#34;] if __name__ == &#39;__main__&#39;: args=docopt(__doc__) cities=args[&#39;&lt;cityname&gt;&#39;] print get_pm25(args[&#39;&lt;cityname&gt;&#39;]) ##示例3 使用flask-rest搭建rest服务 flask-rest 是一个使用flash框架搭建rest服务的工具，使用方法如下：
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span></footer>
-  <a class="entry-link" aria-label="post link to Python web api" href="https://vindurriel.github.io/post/2014-03-26-python-2/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">python 初探
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。
-###python 初探 ###[Python web api]({% post_url 2014-03-26-python-2 %}) ###[用Python做文本摘要]({% post_url 2014-03-26-python-3 %})
-本文是系列的第一篇。
-##起源 ###作者 Guido Van Rossum (GvR)
-“仁慈的终身独裁者”
-###得名
-“1989年12月，我在寻找一门“课余”编程项目来打发圣诞节前后的时间。我的办公室会关门，但我有一台家用电脑，而且没有太多其它东西。我决定为当时我正构思的一个新的脚本语言写一个解释器，它是 ABC 语言的后代，对 UNIX / C 程序员会有吸引力。作为一个略微有些无关想法的人，和一个蒙提·派森（Monty Python）的飞行马戏团的狂热爱好者，我选择了 Python 作为项目的标题。”
-###每个人都会 1999年，Guido向DARPA阐述Python语言的特性：
-简单、直观、强大 开源，以便任何人都可以为它做贡献 代码像纯英语那样容易理解 适用于短期开发的日常任务 这些想法中的一些已经成为现实。Python 已经成为一门流行的 编程语言，尤其是在互联网环境下。
-##特性 ###交互式命令行(Interactive console) Python可以单步直译运行。运行Python解释器进入交互式。
-命令行的环境，你可以在提示符号»&gt;旁输入代码，按Enter键输出结果：
-&gt;&gt;&gt;print(&#34;Hello, Python!&#34;) Hello, Python! 有点像Shell 脚本的执行方式。
-不只是脚本 “脚本语言”如Linux shell script、windows batch file等，只能处理简单的任务。
-而Python是面向对象编程（OOP)的，支持异常处理和类型检查。Python的支持者较喜欢称它为一种高阶动态编程语言
-###强大易用的标准库 核心库不超过10Mb
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span></footer>
-  <a class="entry-link" aria-label="post link to python 初探" href="https://vindurriel.github.io/post/2014-03-26-python-1/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">用Python做文本摘要
     </h2>
   </header>
   <div class="entry-content">
-    <p>本文是[系列]({% post_url 2014-03-26-python-1 %})的第三篇。
-##文本摘要 以下新闻来自雷锋网
+    <p>本文是系列的第三篇。
+文本摘要 以下新闻来自雷锋网
 Yahoo收购新闻摘要应用Summly
 宗仁 2013-03-26 07:53 没有评论
 标签：Summly 新闻摘要
@@ -237,11 +183,23 @@ Summly采用了自然语言处理算法，可将新闻内容提炼为不足400�
 尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。
 这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。
 下面我们就来看看做文本摘要的大致思路。
-##大致思路
-文本摘要 顾名思义，就是找出一部分重要的句子。 这句话有三个逻辑重点。
-###1. 找出一部分重要的句子 也就是说要把文章切成句子。比较直观的想法是根据标点符号以及空格、换行符等。断句这个问题，英文反而比中文要复杂，例如句号.和单引号&#39;都是有多个意思的，都不一定能标明一句话的结尾。 ###2. 找出一部分重要的句子 如何衡量一篇文章里的每句话是否重要？怎样量化这个重要性？有以下思考的角度。
+大致思路 文本摘要 顾名思义，就是找出一部分重要的句子。 这句话有三个逻辑重点。
+1. 找出一部分重要的句子 也就是说要把文章切成句子。比较直观的想法是根据标点符号以及空格、换行符等。断句这个问题，英文反而比中文要复杂，例如句号.和单引号&#39;都是有多个意思的，都不一定能标明一句话的结尾。
+2. 找出一部分重要的句子 如何衡量一篇文章里的每句话是否重要？怎样量化这个重要性？有以下思考的角度。
 根据位置（标题、导语、段首段尾） 一般来说，文章尤其是新闻的标题、节标题、导语和段首段尾比较重要。对于html解析而言，就是title、h1、h2、a、strong等标记中的文字更重要。
 根据内容 内容方面，需要把粒度细分到词的重要程度，如果一句话中的词很重要，那么这句话很重要。
+那么就有下面的两个问题：
+怎么获得一句话中的词？也就是分词问题。
+词的重要程度如何衡量？
+下面分别来介绍这两个问题。
+2.1 分词 就是在词与词之间插入标记，一般是空格。英文文本不需要这一步，本来就有空格。但中文没有，而且一词多义现象很多， 语法结构还会随着词的位置而变化，因此中文分词是一个比较独特的问题。
+但是中文分词和语音识别很像，因为语音信号在词与词之间也是没有空格的，因此可共用技术（HMM，CRF）。
+Python比较好的中文分词工具有：
+结巴分词
+genius分词
+2.2 词的重要程度如何衡量？ 词频（TF） 需要去掉词频太高的词（停用词）
+固定搭配的频率 N-Gram
+词性 名词、动词一般比副词、形容词重要
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>March 26, 2014</span></footer>
@@ -250,22 +208,76 @@ Summly采用了自然语言处理算法，可将新闻内容提炼为不足400�
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Python web api
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>本文是系列的第二篇。
+rest服务 这里有简介
+json Json
+Json与pojo
+Python处理json的库 import json #基本库 import simplejson #需用pip安装 Json-&gt;python object：
+json.loads(string_of_json) Python object-&gt;json:
+Json.dumps(json, indent=2) #indent为缩进空格数 Requests：http for humans 这里有中文简介
+个人认为，requests是对Python价值观最好的体现。
+示例2 pm2.5 问题：寻找可用的api，获取城市的pm2.5及空气质量数据
+知识点：用requests写rest客户端
+子问题1：寻找可用的api
+通过google，找到这个有态度的网站 子问题2： 使用api
+子问题3：结果缓存与定时获取
+代码如下
+# encoding=utf-8 u&#39;&#39;&#39; pm25.py Usage: pm25.py &lt;cityname&gt; Options: &lt;cityname&gt; 城市名 &#39;&#39;&#39; from docopt import docopt def wget_pm25(city): token=&#34;5j1znBVAsnSf5xQyNQyq&#34; import requests as r result=r.get(&#34;http://www.pm25.in/api/querys/pm2_5.json&#34;,params={ &#34;city&#34;:city, &#34;token&#34;:token, }) return result.json() def needs_refresh(filename,timeout=3600): return False import os,time mtime=os.path.getmtime(filename) now=time.time() return now-mtime&gt;timeout def get_pm25(city): filename=&#39;pm25.data.{}.json&#39;.format(city) import os,json data=None if os.path.isfile(filename) and not needs_refresh(filename): data=file(filename,&#39;r&#39;).read() data=json.loads(data) else: data=wget_pm25(city) if type(data)==type({}): print data[&#39;error&#39;] return -1 else: file(filename,&#39;w&#39;).write(json.dumps(data,indent=2)) return data[-1][&#34;pm2_5&#34;] if __name__ == &#39;__main__&#39;: args=docopt(__doc__) cities=args[&#39;&lt;cityname&gt;&#39;] print get_pm25(args[&#39;&lt;cityname&gt;&#39;]) 示例3 使用flask-rest搭建rest服务 flask-rest 是一个使用flash框架搭建rest服务的工具，使用方法如下：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-03-25 00:00:00 +0000 UTC'>March 25, 2014</span></footer>
+  <a class="entry-link" aria-label="post link to Python web api" href="https://vindurriel.github.io/post/2014-03-26-python-2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Python 初探
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近在公司做了一些python的技术分享，都是比较基础的东西，用到的一些题材还挺有意思的，和大家分享。
+本文是系列的第一篇。 第二篇：Python web api 第三篇：用Python做文本摘要
+起源 作者 Guido Van Rossum (GvR)
+“仁慈的终身独裁者”
+得名 “1989年12月，我在寻找一门“课余”编程项目来打发圣诞节前后的时间。我的办公室会关门，但我有一台家用电脑，而且没有太多其它东西。我决定为当时我正构思的一个新的脚本语言写一个解释器，它是 ABC 语言的后代，对 UNIX / C 程序员会有吸引力。作为一个略微有些无关想法的人，和一个蒙提·派森（Monty Python）的飞行马戏团的狂热爱好者，我选择了 Python 作为项目的标题。”
+每个人都会 1999年，Guido向DARPA阐述Python语言的特性：
+简单、直观、强大 开源，以便任何人都可以为它做贡献 代码像纯英语那样容易理解 适用于短期开发的日常任务 这些想法中的一些已经成为现实。Python 已经成为一门流行的 编程语言，尤其是在互联网环境下。
+特性 交互式命令行(Interactive console) Python可以单步直译运行。运行Python解释器进入交互式。
+命令行的环境，你可以在提示符号»&gt;旁输入代码，按Enter键输出结果：
+&gt;&gt;&gt;print(&#34;Hello, Python!&#34;) Hello, Python! 有点像Shell 脚本的执行方式。
+不只是脚本 “脚本语言”如Linux shell script、windows batch file等，只能处理简单的任务。
+而Python是面向对象编程（OOP)的，支持异常处理和类型检查。Python的支持者较喜欢称它为一种高阶动态编程语言
+强大易用的标准库 核心库不超过10Mb
+Html、Xml解析：BeautifulSoup, Expat
+字符串处理：字典、数组切片、正则表达式 re
+单元测试： PyUnit
+代码版本控制： PySVN
+网络访问： urllib2
+图形模块： Tkinter、PyTCL、WxPython
+串行化、多线程等
+扩展标准库十分容易
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-03-24 00:00:00 +0000 UTC'>March 24, 2014</span></footer>
+  <a class="entry-link" aria-label="post link to Python 初探" href="https://vindurriel.github.io/post/2014-03-26-python-1/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">程序调试心得
     </h2>
   </header>
   <div class="entry-content">
-    <p>###1.首先建立从改动到输出的管道
-必须保证你改的代码，可以很方便地看到结果（或影响）。可见是可控的必要条件。
-###2.尽可能缩短反应链
-尽可能缩短输入改动到输出改动的时间，最好是所见即所得（WYSIWYG）。曾经做过一个项目，在做出某些修改后，需要先编译半分钟，然后把编译后的文件上传到服务器上，再重启服务器，才能看到结果的改动，特别崩溃。这就好像大型食草恐龙的神经系统一样，切下它的尾巴，大概半分钟后神经信号才会传到大脑。 动态语言（python、javascirpt、ruby等）在这方面有天生的优势，而静态语言（c&#43;&#43;、java）则可以通过IDE的自动编译和自动化脚本来缩短反应链。如果IDE不可用，编写自动编译脚本和测试工具绝对事半功倍。如果反应链无法缩减，那么做出任何改动之前都必须深思熟虑，还得有那么一点运气，再加上代码是你自己写的，才能一针见效。
-###3.理性思考的能力对于调试是很重要的，包括：
-做出假设（问题出在哪里），然后以最小的代价（以时间或代码量来衡量）来验证这个假设。 单变量控制。一次改动太多的地方，就无法判断结果的变化是哪处改动造成的。 分离有问题的部分，做手术的创口尽可能小。这和上面提到的缩短反应链是一脉相承的。 极端情况下，也可以合理使用暴力手段。比如使用log或其他手段，只能定位到bug出在file1的第10行到第30行中间（假设顺序执行），那么可以用折半查找法，在第20行输出调试信息…
-###4.善于总结
-问题的出现往往是重构的机会，一个bug往往能牵出更多的bug。如果同类的问题频繁出现，有可能标志着编写者思考方式上的漏洞。 class的职责是否不够清晰和专一？ 是否缺乏合理的错误记录和处理机制？文档结构和变量命名是否规范、无歧义？ 擅长总结，有助于编写者认识和弥补这些思维和编程实践上的不足，从而提升职业素养。
-###5.源代码管理是你最好的朋友
-问题往往是日积月累才出现的，而且往往无独有偶。在着手解决bug之前，先看看有没有类似的bug被提交或解决过。除了查看代码本身的注释，也要查看出错文件的提交历史。当然，前提是大家在提交代码的时候能提供有用的注释。
-###6.持续重构，持续思考
-排计划时要为重构预留出时间，定期做代码质量的改善，比如每周抽出1天时间来重构、写注释和说明文档。这有助于减少技术债务，提升编程能力。
+    <p>1.首先建立从改动到输出的管道 必须保证你改的代码，可以很方便地看到结果（或影响）。可见是可控的必要条件。
+2.尽可能缩短反应链 尽可能缩短输入改动到输出改动的时间，最好是所见即所得（WYSIWYG）。曾经做过一个项目，在做出某些修改后，需要先编译半分钟，然后把编译后的文件上传到服务器上，再重启服务器，才能看到结果的改动，特别崩溃。这就好像大型食草恐龙的神经系统一样，切下它的尾巴，大概半分钟后神经信号才会传到大脑。 动态语言（python、javascirpt、ruby等）在这方面有天生的优势，而静态语言（c&#43;&#43;、java）则可以通过IDE的自动编译和自动化脚本来缩短反应链。如果IDE不可用，编写自动编译脚本和测试工具绝对事半功倍。如果反应链无法缩减，那么做出任何改动之前都必须深思熟虑，还得有那么一点运气，再加上代码是你自己写的，才能一针见效。
+3.理性思考的能力对于调试是很重要的，包括： 做出假设（问题出在哪里），然后以最小的代价（以时间或代码量来衡量）来验证这个假设。 单变量控制。一次改动太多的地方，就无法判断结果的变化是哪处改动造成的。 分离有问题的部分，做手术的创口尽可能小。这和上面提到的缩短反应链是一脉相承的。 极端情况下，也可以合理使用暴力手段。比如使用log或其他手段，只能定位到bug出在file1的第10行到第30行中间（假设顺序执行），那么可以用折半查找法，在第20行输出调试信息…
+4.善于总结 问题的出现往往是重构的机会，一个bug往往能牵出更多的bug。如果同类的问题频繁出现，有可能标志着编写者思考方式上的漏洞。 class的职责是否不够清晰和专一？ 是否缺乏合理的错误记录和处理机制？文档结构和变量命名是否规范、无歧义？ 擅长总结，有助于编写者认识和弥补这些思维和编程实践上的不足，从而提升职业素养。
+5.源代码管理是你最好的朋友 问题往往是日积月累才出现的，而且往往无独有偶。在着手解决bug之前，先看看有没有类似的bug被提交或解决过。除了查看代码本身的注释，也要查看出错文件的提交历史。当然，前提是大家在提交代码的时候能提供有用的注释。
+6.持续重构，持续思考 排计划时要为重构预留出时间，定期做代码质量的改善，比如每周抽出1天时间来重构、写注释和说明文档。这有助于减少技术债务，提升编程能力。
 </p>
   </div>
   <footer class="entry-footer"><span title='2013-12-05 00:00:00 +0000 UTC'>December 5, 2013</span></footer>
@@ -278,23 +290,18 @@ Summly采用了自然语言处理算法，可将新闻内容提炼为不足400�
     </h2>
   </header>
   <div class="entry-content">
-    <p>###1.学会使用关键词来描述问题
-虽然搜索引擎的自然语言理解能力在进步，但现在还不能无障碍地和人类交流。要向搜索引擎请教问题，必须要用它的语言——关键词。 关键词之间必须要加上空格， 以免不好的分词系统造成对你要求的误解。
+    <p>1.学会使用关键词来描述问题 虽然搜索引擎的自然语言理解能力在进步，但现在还不能无障碍地和人类交流。要向搜索引擎请教问题，必须要用它的语言——关键词。 关键词之间必须要加上空格， 以免不好的分词系统造成对你要求的误解。
 有的时候用关键词描述问题能更好地帮你看清问题的本质，即：要描述或定义我的问题，哪些词是不可能绕过去的？哪些词能帮我迅速缩小搜索的范围？
-###2.客观地描述问题本身，而不是预想的解决方案 看过一个很有意思的评论：
+2.客观地描述问题本身，而不是预想的解决方案 看过一个很有意思的评论：
 用户的需求不是买电脑，而是玩魔兽。 用户常常会把自己的解决方案当成需求提给你。
 问路的时候，请不要说“附近哪有487路公交车站”，而是直接询问如何到达最终的目的地。当地人可能会给出更直接、更快捷的交通路线。
-###3.尽量少做假设
-当你在论坛问“为什么我一用你们的软件就死机”的时候，其实你假设了 a) 别人知道你的软硬件配置 b) 别人知道你近期做了哪些操作，或者说，你认为 c) 以上这些信息对于解决问题没有意义。
+3.尽量少做假设 当你在论坛问“为什么我一用你们的软件就死机”的时候，其实你假设了 a) 别人知道你的软硬件配置 b) 别人知道你近期做了哪些操作，或者说，你认为 c) 以上这些信息对于解决问题没有意义。
 一方面要提供有助于定位和解决问题的信息，另一方面要尽量使用大家都知道的词语或常识等。不要假设能解决你的问题的人和你有同样的认知水平。
 很多时候假设是潜在的，所谓“当局者迷”。这时候，对结果的分析就很重要，有助于你认识到自己做了哪些假设，哪些假设是符合意图的，哪些是不合理的。
-###4.根据搜索结果中修正你的关键词。
-搜索结果和你预期的不一样，一般有两类原因：1.你提问的方式不对，导致搜索引擎（以及搜到的回答）是基于一种错误的解读。 2.你提问的方式正确，但是问题本身，不是你想的那样，你需要重新审视你的问题。 对于第一类，你可能需要修改你的关键词，它是不是太宽泛，还是太狭隘，还是有歧义？等等。 对于第二类，你需要重新定位和描述你的问题，了解它所处的领域和背景。
+4.根据搜索结果中修正你的关键词。 搜索结果和你预期的不一样，一般有两类原因：1.你提问的方式不对，导致搜索引擎（以及搜到的回答）是基于一种错误的解读。 2.你提问的方式正确，但是问题本身，不是你想的那样，你需要重新审视你的问题。 对于第一类，你可能需要修改你的关键词，它是不是太宽泛，还是太狭隘，还是有歧义？等等。 对于第二类，你需要重新定位和描述你的问题，了解它所处的领域和背景。
 简单地说，要么换个问法，要么换个问题。
-###5.寻找和关键词同义的核心词汇
-书上的信息与网上搜索得到的信息有一个很大的不同：一本书上的信息是用一种相对统一的语言风格来传达的，你能大致预期作者会怎样去描述一个东西。但是互联网上搜索得到的信息缺乏这种统一性，很可能语言风格差别很大的两篇文章，说的是同一个事。我经常会发现，对于一个概念，我使用词语A，而大多数人都使用词语B，即B是约定俗成的“术语”，这时就要用B来代替A作为我的搜索关键词。要做到辨别这一点，必须总结一些特定领域的核心词汇，也就是上文提到的不可能绕过去的那些词。
-###6.信息的来源和信息的内容同等重要，甚至来源比内容更重要
-在搜索决策上，去哪搜&gt;搜什么&gt;怎么搜。
+5.寻找和关键词同义的核心词汇 书上的信息与网上搜索得到的信息有一个很大的不同：一本书上的信息是用一种相对统一的语言风格来传达的，你能大致预期作者会怎样去描述一个东西。但是互联网上搜索得到的信息缺乏这种统一性，很可能语言风格差别很大的两篇文章，说的是同一个事。我经常会发现，对于一个概念，我使用词语A，而大多数人都使用词语B，即B是约定俗成的“术语”，这时就要用B来代替A作为我的搜索关键词。要做到辨别这一点，必须总结一些特定领域的核心词汇，也就是上文提到的不可能绕过去的那些词。
+6.信息的来源和信息的内容同等重要，甚至来源比内容更重要 在搜索决策上，去哪搜&gt;搜什么&gt;怎么搜。
 举个例子，形如“如何用A在B中实现C功能”这样的编程问题，直接在google中输入英文关键词，然后site:stackoverflow.com，一般都能命中。
 再如，位置相关的搜索，如北京周边的美食、酒店什么的，百度的服务一般优于google的。
 高大上或者nerdy的问题就知乎、quora，而“见对象的家长该穿什么”，贴吧、天涯什么的更靠谱。
@@ -356,12 +363,10 @@ So What’s The Problem? 有什么问题吗？ 你能想象她坐在那，看着
   </header>
   <div class="entry-content">
     <p>nest(https://github.com/vindurriel/nest)是一个视觉组件，它用图(graph)来展示元素之间的关系。一个节点(node)表示一个元素或者元素的某个属性，节点之间的连线(link)表示元素之间的关系。 元素和关系的类型、属性都可以是任意定制的。使用者可以和图进行交互， 允许的操作包括拖拽、添加、删除、聚焦、平移和放缩。 节点的颜色由数据实体的type属性决定，不同type即颜色之间的节点，使用一种特殊type的节点连接，这种节点的type是relationship(关系)。
-##为什么要做
-传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。而图可以表示非DAG的拓扑关系，也就是所谓的网络。
+为什么要做 传统的展示元素和关系的视觉组件有列表、树等，但是所能展示的拓扑关系必须是有向无环图(DAG)，通俗的比喻，张三的儿子的儿子不可能是他爹。现实生活中很多元素间的关系满足DAG， 但是不满足例子也很多，比如朋友关系，张三的朋友的朋友可能也是张三的朋友，这在关系上就形成了一个环，不满足DAG。而图可以表示非DAG的拓扑关系，也就是所谓的网络。
 nest是为了展示图而生的视觉组件，它能在二维平面展示复杂的元素关系，并且用户可以实时地修改图的布局、增删节点。
 nest可以作为脑图使用，也可以作为更一般意义上的关系展示图，参见下面的例子。
-##例子
-音乐地图(http://nest.ap01.aws.af.cm/model/python?theme=light)是一个探索音乐元素之间关系的动态地图，展示歌曲、艺术家、专辑和精选集之间的关系。数据抓取自虾米网。
+例子 音乐地图(http://nest.ap01.aws.af.cm/model/python?theme=light)是一个探索音乐元素之间关系的动态地图，展示歌曲、艺术家、专辑和精选集之间的关系。数据抓取自虾米网。
 使用方法如下：
 搜索框中可搜索音乐。
 点击see all可查看其他用户已经探索过的音乐地图。
@@ -374,11 +379,9 @@ ctrl&#43;左键单击节点： 同左键双击节点。
 shift&#43;左键单击节点： 删除该节点，同时一并删除只与该节点有连线的所有节点
 alt&#43;左键单击节点： 将该节点设为根节点。图本身无所谓根节点，根节点的唯一目的在于以该节点的id来存储图。
 地址栏中可修改theme参数,支持light和dark。
-##技术
-nest在前台采用了d3.js，而d3.js采用了svg。 后台是web.py。 前后台通信采用了ajax和json。
+技术 nest在前台采用了d3.js，而d3.js采用了svg。 后台是web.py。 前后台通信采用了ajax和json。
 源代码在github https://github.com/vindurriel/nest。
-##开发计划
-将nest组件化， 允许嵌入到任意的html网页中
+开发计划 将nest组件化， 允许嵌入到任意的html网页中
 固化二次开发的接口， 提供SDK
 </p>
   </div>
@@ -414,39 +417,26 @@ h2xt912653. tFi%%959E5m t%a22%2457p p2mFF2%%%%3 %Fi23F55553 3f.371EEEE A1n21412_
   </header>
   <div class="entry-content">
     <p>每个程序员都应该有一个宠物项目(pet project)， 用来尝试想法、磨练技巧。 xiami_downloader 是我近两年来的宠物项目。
-##初心
-最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。 有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。
+初心 最初就是想做一个虾米网的免费下载软件。几年前开始，喜欢在虾米网在线听歌。下载高音质歌曲是收费的，而且官方软件（虾客）不好用。 有人可能问，为什么不直接在线收听，非要下载。原因是我有在手机听歌的习惯，但是没有开通3G服务，据说地铁里信号不好。
 通过google找到了LongkeyMusic(以下简称LKM)，这个软件的功能是从虾米网批量下载一张专辑的歌曲。然而如果你想下载某张精选集里的歌曲，或者歌曲的歌词等，这个软件爱莫能助，当时的LKM没有这些功能。
 LKM是用.NET写的，而且作者很厚道地没有做混淆。同事胖子向我展示了反编译利器.NET Reflector的厉害。 在此想对原作者表示感谢（和抱歉）。
 第一版的xiami_downloader是直接对LongKeyMusic的hack，功能方面主要增加了我想要的精选集歌曲下载、歌词下载。界面部分LKM采用.NET 3.5下的WinForm，而我们用的是WPF（.NET 4.0推出的界面库）。
 从此开始了漫长的hacking 之路。
-##道阻且长
-xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。 这个过程中学到了很多东西，总结起来如下：
-###产品
-最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。
+道阻且长 xiami_downloader经过了几次大的重构，增加了很多新的功能，界面更是换了不知道多少次。 这个过程中学到了很多东西，总结起来如下：
+产品 最大的收获可能就是如何去规划和实现一个产品。从收集和过滤用户需求开始，到界面和功能设计、实现，再到代码重构、自动部署。
 做自己每天都会使用的软件，是一件很快乐的事。动力当然不是问题， 但更加需要有对开发价值的判断。我是一个相信奥卡姆剃刀法则的人。 如果一个功能可有可无， 那么宁愿砍掉。
 如果一个UI元素不需要时刻都出现，那么就隐藏它，避免破坏画面简洁的美感。
-###重构
-经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don’t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。
-###git
-之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。
-###异步方法与非阻塞UI
-以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。
-###密码学
-包括凯撒方阵、api signature的生成、md5的使用等。
-###跨进程通信（IPC）
-主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。
-###RESTful API以及OAuth
-虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。
+重构 经过了几次大的重构，每次目的不一样，大体上可归纳为在两个方面增加便利性：新增和除错。要使新增方便，必然要提高代码的重用性，比较极端的是源自ruby的DRY（don’t repeat yourself）原则。要使除错方便，必须改进代码的逻辑结构，并且在各种渠道提高错误的能见度，比如log、tip、MessageBox等。
+git 之前一直用SVN做代码管理，与之相比，git的commit与push分离让offline状态下的工作有了更大的灵活性。 1个人的项目基本只用两个分支：master和dev，多了麻烦。
+异步方法与非阻塞UI 以前在silverlight中接触过异步方法，而在xiami_downloader中，我体会到要获得流畅的用户体验，需要在很多的方面使用异步方法，目的是不阻塞UI线程。WPF在这方面提供了很多编程上的条件，包括Dispatcher、Task等。
+密码学 包括凯撒方阵、api signature的生成、md5的使用等。
+跨进程通信（IPC） 主程序代码是C#，需要和C#、AutoHotKey(AHK)以及python进行IPC。先后接触到了IPC方面的集大成者ZeroMq、.NET自带的WCF，还有最原始的基于文件的IPC。
+RESTful API以及OAuth 虾米推出了自己在iOS和android平台的apps, 伴随而来的是一套用于pc和平台的RESTful API。虽然没有对外公布，但是在android的apk源码里看得到。还有一部分api的入口点是google到的，曾经能在google快照中看到虾米内部api的wiki，用python写的。
 虾米采用了一种奇怪的OAuth验证，获取access token时要输入用户的密码（用md5加密）。 大概是想和第三方app的登录验证兼容吧。
-###扁平化设计
-最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。
-###自动更新
-考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。
-###断点续传与下载器的线程控制
-通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制
-##下一站？
-某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：
+扁平化设计 最初是从windows 8和gmail接触到了扁平化设计，和我的审美理念很一致。然而实践扁平化设计并非易事， 对于颜色对比、留白大小的要求更加严格，找到能望图知义的icon也更加困难。
+自动更新 考虑了自动更新的基本原理。开始时把可执行程序托管到github上，但后来由于众所周知的访问限制，选择了国内的云存储服务：百度网盘。百度网盘采用的是更为标准的、继承自dropbox的RESTful API，即所谓的PCS。
+断点续传与下载器的线程控制 通过实现断点续传功能，对http协议有了更底层的了解。而多任务下载的需求，让我接触到了锁、资源池等概念，以及.NET 4.5引入的async/await机制
+下一站？ 某种意义上，一个软件的开发过程不应该有自然的结束，因为需求和资源总是在变化之中。但是写这篇文章的目的，就是为这个伴随我两年的宠物项目画上一个(暂时的)句号。原因有二：
 对项目目前的状态比较满意，能想到的功能基本上都实现（或者否决）了。需要输入更多用户的反馈，才能继续向前走。
 是时候培养一个新的pet project，来尝试一些更加不一样的想法和技巧了。 毕竟xiami_downloader是一个pc 客户端， 涉及到web和移动平台方面的相关技术和思想，强行整合的话也不是不行，但是别扭。
 在接下来的一段时间，不会再对该项目进行开发，而是会写一些总结性、介绍性的文字，承前启后，继往开来。

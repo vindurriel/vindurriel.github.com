@@ -39,6 +39,7 @@
 </script>
 {{- end }}
 
+{{- if not .Params.hideHeader }}
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -149,3 +150,4 @@
         </ul>
     </nav>
 </header>
+{{- end}}

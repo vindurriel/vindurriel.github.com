@@ -7,7 +7,18 @@
 <meta name="robots" content="index, follow">
 <title>为gem install 提速 | vindurriel</title>
 <meta name="keywords" content="gem, ruby">
-<meta name="description" content="```&lt;br/&gt;:bulk_threshold: 1000&lt;br/&gt;:backtrace: false&lt;br/&gt;gemcutter_key: XXXXX&lt;br/&gt;gem: --no-ri --no-rdoc&lt;br/&gt;:benchmark: false&lt;br/&gt;:verbose: true&lt;br/&gt;:update_sources: true&lt;br/&gt;:sources: &lt;br/&gt;- http://gems.rubyforge.org/&lt;br/&gt;- http://gems.opscode.com&lt;br/&gt;```&lt;br/&gt;主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。">
+<meta name="description" content="编辑.gemrc，内容如下：
+:bulk_threshold: 1000
+:backtrace: false
+gemcutter_key: XXXXX
+gem: --no-ri --no-rdoc
+:benchmark: false
+:verbose: true
+:update_sources: true
+:sources: 
+- http://gems.rubyforge.org/
+- http://gems.opscode.com
+主要起作用的是gem: --no-ri --no-rdoc,少下载了很多文档。">
 <meta name="author" content="">
 <link rel="canonical" href="https://vindurriel.github.io/post/2013-07-19-gem-acceleration/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
@@ -58,7 +69,8 @@
 </noscript><meta property="og:url" content="https://vindurriel.github.io/post/2013-07-19-gem-acceleration/">
   <meta property="og:site_name" content="vindurriel">
   <meta property="og:title" content="为gem install 提速">
-  <meta property="og:description" content="```:bulk_threshold: 1000:backtrace: falsegemcutter_key: XXXXXgem: --no-ri --no-rdoc:benchmark: false:verbose: true:update_sources: true:sources: - http://gems.rubyforge.org/- http://gems.opscode.com```主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。">
+  <meta property="og:description" content="编辑.gemrc，内容如下：
+:bulk_threshold: 1000 :backtrace: false gemcutter_key: XXXXX gem: --no-ri --no-rdoc :benchmark: false :verbose: true :update_sources: true :sources: - http://gems.rubyforge.org/ - http://gems.opscode.com 主要起作用的是gem: --no-ri --no-rdoc,少下载了很多文档。">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -68,7 +80,18 @@
     <meta property="article:tag" content="Ruby">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为gem install 提速">
-<meta name="twitter:description" content="```&lt;br/&gt;:bulk_threshold: 1000&lt;br/&gt;:backtrace: false&lt;br/&gt;gemcutter_key: XXXXX&lt;br/&gt;gem: --no-ri --no-rdoc&lt;br/&gt;:benchmark: false&lt;br/&gt;:verbose: true&lt;br/&gt;:update_sources: true&lt;br/&gt;:sources: &lt;br/&gt;- http://gems.rubyforge.org/&lt;br/&gt;- http://gems.opscode.com&lt;br/&gt;```&lt;br/&gt;主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。">
+<meta name="twitter:description" content="编辑.gemrc，内容如下：
+:bulk_threshold: 1000
+:backtrace: false
+gemcutter_key: XXXXX
+gem: --no-ri --no-rdoc
+:benchmark: false
+:verbose: true
+:update_sources: true
+:sources: 
+- http://gems.rubyforge.org/
+- http://gems.opscode.com
+主要起作用的是gem: --no-ri --no-rdoc,少下载了很多文档。">
 
 
 <script type="application/ld+json">
@@ -97,7 +120,7 @@
   "@type": "BlogPosting",
   "headline": "为gem install 提速",
   "name": "为gem install 提速",
-  "description": "```:bulk_threshold: 1000:backtrace: falsegemcutter_key: XXXXXgem: --no-ri --no-rdoc:benchmark: false:verbose: true:update_sources: true:sources: - http://gems.rubyforge.org/- http://gems.opscode.com```主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。",
+  "description": "编辑.gemrc，内容如下：\n:bulk_threshold: 1000 :backtrace: false gemcutter_key: XXXXX gem: --no-ri --no-rdoc :benchmark: false :verbose: true :update_sources: true :sources: - http://gems.rubyforge.org/ - http://gems.opscode.com 主要起作用的是gem: --no-ri --no-rdoc,少下载了很多文档。\n",
   "keywords": [
     "gem", "ruby"
   ],
@@ -133,7 +156,6 @@
     }
 
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -163,8 +185,8 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vindurriel.github.io/" title="vindurriel">
-                    <span>Home</span>
+                <a href="https://vindurriel.github.io/archives/" title="Archive">
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -178,7 +200,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://vindurriel.github.io/" title="RSS feed">
+                <a href="https://vindurriel.github.io/index.xml" title="RSS feed">
                     <span>RSS feed</span>
                 </a>
             </li>
@@ -186,16 +208,12 @@
     </nav>
 </header>
 <main class="main">
-
 <article class="post-single">
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://vindurriel.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       为gem install 提速
     </h1>
-    <div class="post-description">
-      ```&lt;br/&gt;:bulk_threshold: 1000&lt;br/&gt;:backtrace: false&lt;br/&gt;gemcutter_key: XXXXX&lt;br/&gt;gem: --no-ri --no-rdoc&lt;br/&gt;:benchmark: false&lt;br/&gt;:verbose: true&lt;br/&gt;:update_sources: true&lt;br/&gt;:sources: &lt;br/&gt;- http://gems.rubyforge.org/&lt;br/&gt;- http://gems.opscode.com&lt;br/&gt;```&lt;br/&gt;主要起作用的是`gem: --no-ri --no-rdoc`,少下载了很多文档。
-    </div>
     <div class="post-meta"><span title='2013-07-19 00:00:00 +0000 UTC'>July 19, 2013</span>
 
 </div>
