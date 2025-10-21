@@ -2,8 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://vindurriel.github.io/tags/book/</loc>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://vindurriel.github.io/en/tags/book/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://vindurriel.github.io/tags/book/"
+                />
+  </url><url>
+    <loc>https://vindurriel.github.io/tags/dtx/</loc>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://vindurriel.github.io/en/tags/dtx/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://vindurriel.github.io/tags/dtx/"
+                />
+  </url><url>
+    <loc>https://vindurriel.github.io/post/dtx/</loc>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://vindurriel.github.io/en/post/dtx/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://vindurriel.github.io/post/dtx/"
+                />
+  </url><url>
     <loc>https://vindurriel.github.io/post/</loc>
-    <lastmod>2014-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -15,8 +54,21 @@
                 href="https://vindurriel.github.io/post/"
                 />
   </url><url>
+    <loc>https://vindurriel.github.io/tags/</loc>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://vindurriel.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://vindurriel.github.io/tags/"
+                />
+  </url><url>
     <loc>https://vindurriel.github.io/</loc>
-    <lastmod>2014-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -30,19 +82,6 @@
   </url><url>
     <loc>https://vindurriel.github.io/tags/python/</loc>
     <lastmod>2014-03-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://vindurriel.github.io/tags/</loc>
-    <lastmod>2014-03-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://vindurriel.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://vindurriel.github.io/tags/"
-                />
   </url><url>
     <loc>https://vindurriel.github.io/tags/tutorial/</loc>
     <lastmod>2014-03-26T00:00:00+00:00</lastmod>

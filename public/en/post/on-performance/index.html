@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>On Performance | vindurriel</title>
+<meta name="keywords" content="prose">
+<meta name="description" content="Why ?
+
+economic efficiency ( do more and faster with less)
+a major goal in code refactoring/optimization phase ( build first, optimize later )
+
+Aspects of performance
+Metrics ( monitoring )
+
+availibility: down times, crash times, GC times
+response time: average, .95 quantile
+throughput: query per second, degree of concurrency
+resource usage: cpu idle, memory used, disk used &amp; io, network io, instance counts
+
+Profiling analysis ( what costs how much )
+request cost distribution over phases:">
+<meta name="author" content="">
+<link rel="canonical" href="https://vindurriel.github.io/en/post/on-performance/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://vindurriel.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://vindurriel.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vindurriel.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://vindurriel.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://vindurriel.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/en/post/on-performance/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://vindurriel.github.io/en/post/on-performance/">
+  <meta property="og:site_name" content="vindurriel">
+  <meta property="og:title" content="On Performance">
+  <meta property="og:description" content="Why ? economic efficiency ( do more and faster with less) a major goal in code refactoring/optimization phase ( build first, optimize later ) Aspects of performance Metrics ( monitoring ) availibility: down times, crash times, GC times response time: average, .95 quantile throughput: query per second, degree of concurrency resource usage: cpu idle, memory used, disk used &amp; io, network io, instance counts Profiling analysis ( what costs how much ) request cost distribution over phases:">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2018-09-06T01:00:00+00:00">
+    <meta property="article:modified_time" content="2018-09-06T01:00:00+00:00">
+    <meta property="article:tag" content="Prose">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="On Performance">
+<meta name="twitter:description" content="Why ?
+
+economic efficiency ( do more and faster with less)
+a major goal in code refactoring/optimization phase ( build first, optimize later )
+
+Aspects of performance
+Metrics ( monitoring )
+
+availibility: down times, crash times, GC times
+response time: average, .95 quantile
+throughput: query per second, degree of concurrency
+resource usage: cpu idle, memory used, disk used &amp; io, network io, instance counts
+
+Profiling analysis ( what costs how much )
+request cost distribution over phases:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://vindurriel.github.io/en/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "On Performance",
+      "item": "https://vindurriel.github.io/en/post/on-performance/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "On Performance",
+  "name": "On Performance",
+  "description": "Why ? economic efficiency ( do more and faster with less) a major goal in code refactoring/optimization phase ( build first, optimize later ) Aspects of performance Metrics ( monitoring ) availibility: down times, crash times, GC times response time: average, .95 quantile throughput: query per second, degree of concurrency resource usage: cpu idle, memory used, disk used \u0026amp; io, network io, instance counts Profiling analysis ( what costs how much ) request cost distribution over phases:\n",
+  "keywords": [
+    "prose"
+  ],
+  "articleBody": "Why ? economic efficiency ( do more and faster with less) a major goal in code refactoring/optimization phase ( build first, optimize later ) Aspects of performance Metrics ( monitoring ) availibility: down times, crash times, GC times response time: average, .95 quantile throughput: query per second, degree of concurrency resource usage: cpu idle, memory used, disk used \u0026 io, network io, instance counts Profiling analysis ( what costs how much ) request cost distribution over phases:\nbrowser rendering time external network latency internal network latency business backend execution time database execution latency time resource usage distribution over lines of codes:\nmemory allocation \u0026 release ( memory leak detection ) file handle allocation \u0026 release ( file handle leaks ) Dependency analysis ( what depends on what ) dependency defintion \u0026 managements ( package management tools, artifact repos ) dependency loops detection ( must be DAG to build and run ) conflicts resolution visualization of dependencies Benchmarking (comparison of changes) set up test group and control group (baseline) input \u0026 output standarization \u0026 quantification statistical metric comparation of groups and times Common bottlenecks of performance single points of failure: any “master” node without backup or automatic election mechanism\nDatabase slow queries no index vague or wrong usage of index too many data rows Business logic defects unecessary nested loops or recursion unecessary synchronized and/or sequential execution flow (n+1 issue) How to improve performance Code level add specific and proper indexes use batch execution use connection pools (use random sleep) guard read with cache middlewares throttle write with message queues use statics and consts when possible proactively clean up costly objects less synchronized logs Arch level parallelization and asynchronization when possible scale up and down service instances with flow \u0026 load changes do data partitions read and write flow separation hot and cold data separation build up performance environments for testing Build up performance environments for testing real requests recording \u0026 playback containment and provision tests management for benchmarking Tools metrics collection: filebeat, fluentd for logs; prometheus for key-value metrics metrics aggregation: logstash, fluentd frontend solutions: kibana, grafana visualization diagrams: comparison: histograms; analysis: flamegraph; relationship: force-directed graphs, circos http request load \u0026 stress test: gatlin, ab profiling: pprof for golang Design patterns \u0026 mindsets epoll in a loop ( servers ) async \u0026 await ( avoiding callback hell ) divide \u0026 conquer ( map then reduce ) trading time for space ( like file sorts ), or space for time ( any kinds of indexes ) event based ( fire and forget ) master-minions separate list from detail in distributed systems: pick two among consistency, availability and partition-tolerance ",
+  "wordCount" : "437",
+  "inLanguage": "en",
+  "datePublished": "2018-09-06T01:00:00Z",
+  "dateModified": "2018-09-06T01:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://vindurriel.github.io/en/post/on-performance/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "vindurriel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vindurriel.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://vindurriel.github.io/en/" accesskey="h" title="vindurriel (Alt + H)">vindurriel</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://vindurriel.github.io/" title="简体中文 🇨🇳"
+                                aria-label="简体中文 :cn:">简体中文 🇨🇳</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://vindurriel.github.io/en/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vindurriel.github.io/en/resume/" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vindurriel.github.io/en/index.xml" title="RSS feed">
+                    <span>RSS feed</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://vindurriel.github.io/en/">Home</a>&nbsp;»&nbsp;<a href="https://vindurriel.github.io/en/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      On Performance
+    </h1>
+    <div class="post-meta"><span title='2018-09-06 01:00:00 +0000 UTC'>September 6, 2018</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="why-">Why ?<a hidden class="anchor" aria-hidden="true" href="#why-">#</a></h2>
+<ul>
+<li>economic efficiency ( do more and faster with less)</li>
+<li>a major goal in code refactoring/optimization phase ( build first, optimize later )</li>
+</ul>
+<h2 id="aspects-of-performance">Aspects of performance<a hidden class="anchor" aria-hidden="true" href="#aspects-of-performance">#</a></h2>
+<h3 id="metrics--monitoring-">Metrics ( monitoring )<a hidden class="anchor" aria-hidden="true" href="#metrics--monitoring-">#</a></h3>
+<ul>
+<li>availibility: down times, crash times, GC times</li>
+<li>response time: average, .95 quantile</li>
+<li>throughput: query per second, degree of concurrency</li>
+<li>resource usage: cpu idle, memory used, disk used &amp; io, network io, instance counts</li>
+</ul>
+<h3 id="profiling-analysis--what-costs-how-much-">Profiling analysis ( what costs how much )<a hidden class="anchor" aria-hidden="true" href="#profiling-analysis--what-costs-how-much-">#</a></h3>
+<p>request cost distribution over phases:</p>
+<ul>
+<li>browser rendering time</li>
+<li>external network latency</li>
+<li>internal network latency</li>
+<li>business backend execution time</li>
+<li>database execution latency time</li>
+</ul>
+<p>resource usage distribution over lines of codes:</p>
+<ul>
+<li>memory allocation &amp; release ( memory leak detection )</li>
+<li>file handle allocation &amp; release ( file handle leaks )</li>
+</ul>
+<h3 id="dependency-analysis--what-depends-on-what-">Dependency analysis ( what depends on what )<a hidden class="anchor" aria-hidden="true" href="#dependency-analysis--what-depends-on-what-">#</a></h3>
+<ul>
+<li>dependency defintion &amp; managements ( package management tools, artifact repos )</li>
+<li>dependency loops detection ( must be DAG to build and run )</li>
+<li>conflicts resolution</li>
+<li>visualization of dependencies</li>
+</ul>
+<h3 id="benchmarking-comparison-of-changes">Benchmarking (comparison of changes)<a hidden class="anchor" aria-hidden="true" href="#benchmarking-comparison-of-changes">#</a></h3>
+<ul>
+<li>set up test group and control group (baseline)</li>
+<li>input &amp; output standarization &amp; quantification</li>
+<li>statistical metric comparation of groups and times</li>
+</ul>
+<h2 id="common-bottlenecks-of-performance">Common bottlenecks of performance<a hidden class="anchor" aria-hidden="true" href="#common-bottlenecks-of-performance">#</a></h2>
+<p>single points of failure: any &ldquo;master&rdquo; node without backup or automatic election mechanism</p>
+<h3 id="database-slow-queries">Database slow queries<a hidden class="anchor" aria-hidden="true" href="#database-slow-queries">#</a></h3>
+<ul>
+<li>no index</li>
+<li>vague or wrong usage of index</li>
+<li>too many data rows</li>
+</ul>
+<h3 id="business-logic-defects">Business logic defects<a hidden class="anchor" aria-hidden="true" href="#business-logic-defects">#</a></h3>
+<ul>
+<li>unecessary nested loops or recursion</li>
+<li>unecessary synchronized and/or sequential execution flow (n+1 issue)</li>
+</ul>
+<h2 id="how-to-improve-performance">How to improve performance<a hidden class="anchor" aria-hidden="true" href="#how-to-improve-performance">#</a></h2>
+<h3 id="code-level">Code level<a hidden class="anchor" aria-hidden="true" href="#code-level">#</a></h3>
+<ul>
+<li>add specific and proper indexes</li>
+<li>use batch execution</li>
+<li>use connection pools (use random sleep)</li>
+<li>guard read with cache middlewares</li>
+<li>throttle write with message queues</li>
+<li>use statics and consts when possible</li>
+<li>proactively clean up costly objects</li>
+<li>less synchronized logs</li>
+</ul>
+<h3 id="arch-level">Arch level<a hidden class="anchor" aria-hidden="true" href="#arch-level">#</a></h3>
+<ul>
+<li>parallelization and asynchronization when possible</li>
+<li>scale up and down service instances with flow &amp; load changes</li>
+<li>do data partitions</li>
+<li>read and write flow separation</li>
+<li>hot and cold data separation</li>
+<li>build up performance environments for testing</li>
+</ul>
+<h2 id="build-up-performance-environments-for-testing">Build up performance environments for testing<a hidden class="anchor" aria-hidden="true" href="#build-up-performance-environments-for-testing">#</a></h2>
+<ul>
+<li>real requests recording &amp; playback</li>
+<li>containment and provision</li>
+<li>tests management for benchmarking</li>
+</ul>
+<h2 id="tools">Tools<a hidden class="anchor" aria-hidden="true" href="#tools">#</a></h2>
+<ul>
+<li>metrics collection: filebeat, fluentd for logs; prometheus for key-value metrics</li>
+<li>metrics aggregation: logstash, fluentd</li>
+<li>frontend solutions: kibana, grafana</li>
+<li>visualization diagrams: comparison: histograms; analysis: flamegraph; relationship: force-directed graphs, circos</li>
+<li>http request load &amp; stress test: gatlin, ab</li>
+<li>profiling: pprof for golang</li>
+</ul>
+<h2 id="design-patterns--mindsets">Design patterns &amp; mindsets<a hidden class="anchor" aria-hidden="true" href="#design-patterns--mindsets">#</a></h2>
+<ul>
+<li>epoll in a loop ( servers )</li>
+<li>async &amp; await ( avoiding callback hell )</li>
+<li>divide &amp; conquer ( map then reduce )</li>
+<li>trading time for space ( like file sorts ), or space for time ( any kinds of indexes )</li>
+<li>event based ( fire and forget )</li>
+<li>master-minions</li>
+<li>separate list from detail</li>
+<li>in distributed systems: pick two among consistency, availability and partition-tolerance</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://vindurriel.github.io/en/tags/prose/">Prose</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://vindurriel.github.io/en/">vindurriel</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -153,6 +153,21 @@ Why Innovation matters to business Companies want to make more money for a longe
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Retry and  timeouts
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Use cases Achieve high availability (HA) from the standpoint of Users or Proxies assuming that:
+the failure of some attempt is temporary or localized to some of the workers workers are redundant and interchangeable there are enough time and workers There are several types or levels of retrying:
+A general control flow of retries: Polling for a status change without knowing when it’ll happen Sleep interval can be linear or exponential, based on your modeling of probability distribution of when the change will happen.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-24 00:00:00 +0000 UTC'>August 24, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to Retry and  timeouts" href="https://vindurriel.github.io/en/post/retry-n-timeout/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Deployment evolutions
     </h2>
   </header>
@@ -191,6 +206,36 @@ Gen 3. Cloud (AWS EC2 &#43; Amazon ElasticSearch Service) To get rid of on-premi
   </div>
   <footer class="entry-footer"><span title='2021-06-20 00:00:00 +0000 UTC'>June 20, 2021</span></footer>
   <a class="entry-link" aria-label="post link to On Testing" href="https://vindurriel.github.io/en/post/on-testing/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">On Performance
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Why ? economic efficiency ( do more and faster with less) a major goal in code refactoring/optimization phase ( build first, optimize later ) Aspects of performance Metrics ( monitoring ) availibility: down times, crash times, GC times response time: average, .95 quantile throughput: query per second, degree of concurrency resource usage: cpu idle, memory used, disk used &amp; io, network io, instance counts Profiling analysis ( what costs how much ) request cost distribution over phases:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-09-06 01:00:00 +0000 UTC'>September 6, 2018</span></footer>
+  <a class="entry-link" aria-label="post link to On Performance" href="https://vindurriel.github.io/en/post/on-performance/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">On Dev-Ops
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>dev: executable &#43; configuration (dependency, parameters)
+integration: some devs &#43; networking
+dev-ops: integration &#43; resources &#43; changes
+Networking: connecting the dots a phone call metaphor:
+who is it? ( domain names, Layer 7 in OSI ) can you hear me? ( data transfer through Layer 1-4 of OSI ) do you understand? ( messaging, Layer 5-7 in OSI) How does k8s tackle networking problems k8s abstracts a networking topology as:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-09-06 00:00:00 +0000 UTC'>September 6, 2018</span></footer>
+  <a class="entry-link" aria-label="post link to On Dev-Ops" href="https://vindurriel.github.io/en/post/on-dev-ops/"></a>
 </article>
     </main>
     

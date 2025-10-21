@@ -30,6 +30,27 @@
 &lt;p&gt;In Two steps: exploration and exploitation.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Retry and  timeouts</title>
+      <link>https://vindurriel.github.io/en/post/retry-n-timeout/</link>
+      <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/retry-n-timeout/</guid>
+      <description>&lt;h2 id=&#34;use-cases&#34;&gt;Use cases&lt;/h2&gt;
+&lt;h3 id=&#34;achieve-high-availability-ha-from-the-standpoint-of-users-or-proxies&#34;&gt;Achieve high availability (HA) from the standpoint of Users or Proxies&lt;/h3&gt;
+&lt;p&gt;assuming that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the failure of some attempt is temporary or localized to some of the workers&lt;/li&gt;
+&lt;li&gt;workers are redundant and interchangeable&lt;/li&gt;
+&lt;li&gt;there are enough time and workers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are several types or levels of retrying:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/retry-n-timeout/type.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A general control flow of retries:
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/retry-n-timeout/workflow.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;polling-for-a-status-change-without-knowing-when-itll-happen&#34;&gt;Polling for a status change without knowing when it&amp;rsquo;ll happen&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/retry-n-timeout/poll.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Sleep interval can be linear or exponential, based on your modeling of probability distribution of when the change will happen.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Deployment evolutions</title>
       <link>https://vindurriel.github.io/en/post/deployment/</link>
       <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
@@ -283,6 +304,45 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;variances-of-simulation-objects&#34;&gt;Variances of simulation objects&lt;/h3&gt;
 &lt;p&gt;excerpt from &lt;a href=&#34;http://xunitpatterns.com/Test%20Double%20Patterns.html&#34;&gt;http://xunitpatterns.com/Test%20Double%20Patterns.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>On Performance</title>
+      <link>https://vindurriel.github.io/en/post/on-performance/</link>
+      <pubDate>Thu, 06 Sep 2018 01:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-performance/</guid>
+      <description>&lt;h2 id=&#34;why-&#34;&gt;Why ?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;economic efficiency ( do more and faster with less)&lt;/li&gt;
+&lt;li&gt;a major goal in code refactoring/optimization phase ( build first, optimize later )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aspects-of-performance&#34;&gt;Aspects of performance&lt;/h2&gt;
+&lt;h3 id=&#34;metrics--monitoring-&#34;&gt;Metrics ( monitoring )&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;availibility: down times, crash times, GC times&lt;/li&gt;
+&lt;li&gt;response time: average, .95 quantile&lt;/li&gt;
+&lt;li&gt;throughput: query per second, degree of concurrency&lt;/li&gt;
+&lt;li&gt;resource usage: cpu idle, memory used, disk used &amp;amp; io, network io, instance counts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;profiling-analysis--what-costs-how-much-&#34;&gt;Profiling analysis ( what costs how much )&lt;/h3&gt;
+&lt;p&gt;request cost distribution over phases:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>On Dev-Ops</title>
+      <link>https://vindurriel.github.io/en/post/on-dev-ops/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-dev-ops/</guid>
+      <description>&lt;p&gt;dev: executable + configuration (dependency, parameters)&lt;/p&gt;
+&lt;p&gt;integration: some devs + networking&lt;/p&gt;
+&lt;p&gt;dev-ops: integration + resources + changes&lt;/p&gt;
+&lt;h2 id=&#34;networking--connecting-the-dots&#34;&gt;Networking:  connecting the dots&lt;/h2&gt;
+&lt;p&gt;a phone call metaphor:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;who is it?  ( domain names, Layer 7 in OSI )&lt;/li&gt;
+&lt;li&gt;can you hear me?  ( data transfer through Layer 1-4 of OSI )&lt;/li&gt;
+&lt;li&gt;do you understand?  ( messaging, Layer 5-7 in OSI)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-does-k8s-tackle-networking-problems&#34;&gt;How does k8s tackle networking problems&lt;/h2&gt;
+&lt;p&gt;k8s abstracts a networking topology as:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

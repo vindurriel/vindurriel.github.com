@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Deployment evolutions | vindurriel</title>
-<meta name="keywords" content="aws, deployement, container, elasticsearch, slack">
+<meta name="keywords" content="aws, deployement, container, elasticsearch, slack, prose">
 <meta name="description" content="Case 1. &ldquo;/whatis&rdquo;: a slack command server
 Business: When Slack users input a command like &ldquo;/whatis GDPR&rdquo;, search on wiki pages and respond in 3 seconds what GDPR is.
 Generation 1. servers on machines
@@ -84,6 +84,7 @@ Gen 3. Cloud (AWS EC2 &#43; Amazon ElasticSearch Service) To get rid of on-premi
     <meta property="article:tag" content="Container">
     <meta property="article:tag" content="Elasticsearch">
     <meta property="article:tag" content="Slack">
+    <meta property="article:tag" content="Prose">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deployment evolutions">
 <meta name="twitter:description" content="Case 1. &ldquo;/whatis&rdquo;: a slack command server
@@ -128,7 +129,7 @@ To get rid of on-premise server room, which occasionally suffers from power outa
   "name": "Deployment evolutions",
   "description": "Case 1. \u0026ldquo;/whatis\u0026rdquo;: a slack command server Business: When Slack users input a command like \u0026ldquo;/whatis GDPR\u0026rdquo;, search on wiki pages and respond in 3 seconds what GDPR is.\nGeneration 1. servers on machines ElasticSearch: to respond in less than a second\nNgrok: to pierce the private network\nGen 2. containerized Docker: to make deployments reliable\nGen 3. Cloud (AWS EC2 + Amazon ElasticSearch Service) To get rid of on-premise server room, which occasionally suffers from power outages.\n",
   "keywords": [
-    "aws", "deployement", "container", "elasticsearch", "slack"
+    "aws", "deployement", "container", "elasticsearch", "slack", "prose"
   ],
   "articleBody": "Case 1. “/whatis”: a slack command server Business: When Slack users input a command like “/whatis GDPR”, search on wiki pages and respond in 3 seconds what GDPR is.\nGeneration 1. servers on machines ElasticSearch: to respond in less than a second\nNgrok: to pierce the private network\nGen 2. containerized Docker: to make deployments reliable\nGen 3. Cloud (AWS EC2 + Amazon ElasticSearch Service) To get rid of on-premise server room, which occasionally suffers from power outages.\nEC2: a drop-in replacement of bare metals\nAWS ElasticSearch Service: a drop-in replacement of Elastic Search servers\nGen 4. Serverless (AWS API Gateway + AWS Lambda + EventBridge) To get rid of EC2, which is occasionally stopped and need to manually restart and change slack configurations\nAPI Gateway: ingress gateway; authentication\nLambda: pay-as-you-go; fast cold-starts\nEventBridge: cron jobs\nCase 2. “GODIVA”: Go Dependency Visualizer Business: A static site, internal network access only\nGeneration 1. Nginx + Docker + static files Nginx: to host a static site.\nDocker: to make deployments reliable\nGen 2. Cloud To get rid of BJO server room, which occasionally suffers from power outages.\nRoute 53: a DNS to resolve host to EC2’s ip\nEC2: to migrate from bare metals\nGen 3. API Gateway + S3 To get rid of EC2, which is occasionally stopped and need to manually restart.\nRoute 53: a DNS to resolve host to API Gateway’s execution endpoint\nAPI Gateway: ingress gateway; authentication\nS3 files: a drop-in replacement of local files\n",
   "wordCount" : "246",
@@ -274,6 +275,7 @@ To get rid of on-premise server room, which occasionally suffers from power outa
       <li><a href="/tags/container/">Container</a></li>
       <li><a href="/tags/elasticsearch/">Elasticsearch</a></li>
       <li><a href="/tags/slack/">Slack</a></li>
+      <li><a href="/tags/prose/">Prose</a></li>
     </ul>
   </footer>
 </article>

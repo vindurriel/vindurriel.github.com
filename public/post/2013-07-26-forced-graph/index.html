@@ -225,6 +225,48 @@ Labeled Force Layout
   var hash_tag={};
   var post_id=0,tag_id=0;
       graph.nodes.push({
+          "name": "FreeWheel 核心业务系统的分布式事务方案和实践",
+          "url":"https:\/\/vindurriel.github.io\/post\/dtx\/",
+          "type":"post", 
+      });
+      post_id=graph.nodes.length-1;
+      
+          if(hash_tag["Book"]===undefined){
+              graph.nodes.push({
+                  "name": "Book",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/book\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Book"]=tag_id;
+          } else {
+              tag_id=hash_tag["Book"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+          if(hash_tag["Dtx"]===undefined){
+              graph.nodes.push({
+                  "name": "Dtx",
+                  "url":"https:\/\/vindurriel.github.io\/tags\/dtx\/",
+                  "type":"tag",
+              });
+              tag_id=graph.nodes.length-1;
+              hash_tag["Dtx"]=tag_id;
+          } else {
+              tag_id=hash_tag["Dtx"];
+          }
+          graph.links.push({
+              "source":post_id,
+              "target":tag_id,
+              "value":1    
+          });
+      
+  
+      graph.nodes.push({
           "name": "用Python做文本摘要",
           "url":"https:\/\/vindurriel.github.io\/post\/2014-03-26-python-3\/",
           "type":"post", 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <script src="/javascripts/d3.v5.min.js"></script>
-  <script src="/javascripts/d3-simple-slider.js"></script>
+  <script src="/javascripts/d3-simple-slider.min.js"></script>
   <style>
     .slider .handle {
       outline: none;
@@ -79,7 +79,7 @@
         const pIndex = {};
         provinces.forEach((p) => (pIndex[p.id] = p.index));
         const numberOfDays = d.days.length;
-        const day = d.days[numberOfDays - 1];
+        const day = d.days[0];
         dailyData = day;
         const colorPattern = d3.scaleSequential().interpolator(d3.interpolatePlasma).domain([2000, 1e-8]);
         const colorValue = (d) => d * 10 + 200;
@@ -233,7 +233,7 @@
           .step(1)
           .width(1100)
           .height(120)
-          .value(numberOfDays - 1)
+          .value(0)
           .displayValue(true)
           .tickFormat((v) => d.days[v].ts)
           .ticks(10)

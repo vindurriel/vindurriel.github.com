@@ -6,8 +6,29 @@
     <description>Recent content in Aws on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 13 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Aug 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/en/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Retry and  timeouts</title>
+      <link>https://vindurriel.github.io/en/post/retry-n-timeout/</link>
+      <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/retry-n-timeout/</guid>
+      <description>&lt;h2 id=&#34;use-cases&#34;&gt;Use cases&lt;/h2&gt;
+&lt;h3 id=&#34;achieve-high-availability-ha-from-the-standpoint-of-users-or-proxies&#34;&gt;Achieve high availability (HA) from the standpoint of Users or Proxies&lt;/h3&gt;
+&lt;p&gt;assuming that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the failure of some attempt is temporary or localized to some of the workers&lt;/li&gt;
+&lt;li&gt;workers are redundant and interchangeable&lt;/li&gt;
+&lt;li&gt;there are enough time and workers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are several types or levels of retrying:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/retry-n-timeout/type.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A general control flow of retries:
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/retry-n-timeout/workflow.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;polling-for-a-status-change-without-knowing-when-itll-happen&#34;&gt;Polling for a status change without knowing when it&amp;rsquo;ll happen&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/retry-n-timeout/poll.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Sleep interval can be linear or exponential, based on your modeling of probability distribution of when the change will happen.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Deployment evolutions</title>
       <link>https://vindurriel.github.io/en/post/deployment/</link>

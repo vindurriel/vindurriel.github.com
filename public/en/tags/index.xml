@@ -39,7 +39,7 @@
     <item>
       <title>Aws</title>
       <link>https://vindurriel.github.io/en/tags/aws/</link>
-      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/tags/aws/</guid>
       <description></description>
     </item>
@@ -83,6 +83,34 @@
       <link>https://vindurriel.github.io/en/tags/testing/</link>
       <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/tags/testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Book</title>
+      <link>https://vindurriel.github.io/en/tags/book/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/book/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dtx</title>
+      <link>https://vindurriel.github.io/en/tags/dtx/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/dtx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dev-Ops</title>
+      <link>https://vindurriel.github.io/en/tags/dev-ops/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/dev-ops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>K8s</title>
+      <link>https://vindurriel.github.io/en/tags/k8s/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/tags/k8s/</guid>
       <description></description>
     </item>
   </channel>

@@ -6,8 +6,22 @@
     <description>Recent content in Tags on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Mar 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Book</title>
+      <link>https://vindurriel.github.io/tags/book/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/tags/book/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dtx</title>
+      <link>https://vindurriel.github.io/tags/dtx/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/tags/dtx/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Python</title>
       <link>https://vindurriel.github.io/tags/python/</link>

@@ -6,8 +6,86 @@
     <description>Recent content on vindurriel</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Mar 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FreeWheel 核心业务系统的分布式事务方案和实践</title>
+      <link>https://vindurriel.github.io/post/dtx/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/post/dtx/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;声明：本文是一本已经出版的技术图书的其中一章的原稿:
+&lt;a href=&#34;https://book.douban.com/subject/35680546/&#34;&gt;云原生应用架构：微服务开发最佳实战&lt;/a&gt;。 作者是我和FreeWheel的前同事们。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;引言&#34;&gt;引言&lt;/h1&gt;
+&lt;p&gt;随着软件系统从单体应用迈向微服务架构以及数据库选型去中心化、异构化的趋势，传统的ACID事务在分布式系统上能否延续，如何落地，有哪些注意事项？本文将围绕分布式事务这一技术议题，介绍FreeWheel核心业务系统在相关领域的业务需求、技术决策和线上实践。&lt;/p&gt;
+&lt;h1 id=&#34;分布式事务的挑战&#34;&gt;分布式事务的挑战&lt;/h1&gt;
+&lt;h2 id=&#34;技术演进&#34;&gt;技术演进&lt;/h2&gt;
+&lt;p&gt;FreeWheel核心业务产品历经十多年的积累和迭代，伴随着数据体量和功能复杂度的上升，支撑FreeWheel核心业务的工程团队所采用和探索的技术也在不断演化和革新。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统拓扑方面：
+&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/dtx/1.zh.png&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;早期FreeWheel核心业务系统是一个&lt;em&gt;单体应用（Monolith）&lt;/em&gt;：在同一台服务器的同一个进程中，完成接收客户请求、处理请求、数据存储、返回响应等步骤。为了提升系统整体的可靠性，方便各个模块的独立演化，工程团队对单体应用进行了拆分部署和服务化，迈向了面向服务的架构（&lt;em&gt;SOA&lt;/em&gt;）。随着服务的不断细分，单个服务的功能变得更加聚焦，基础服务和公用设施的组合/编排逻辑则变得更加错综复杂，有向&lt;em&gt;微服务&lt;/em&gt;发展的趋势。依托近年来蓬勃发展的云计算平台AWS，FreeWheel的技术团队还在积极探索*无服务（Serverless）*技术。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据存储方面：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/dtx/2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;FreeWheel核心业务系统最早广泛使用了以MySQL为代表的&lt;em&gt;关系型数据库（RDBMS）&lt;/em&gt;。后来为了满足多样化索引和查询数据的需求，引入了以Apache Solr和ElasticSearch为代表的&lt;em&gt;搜素引擎（Search Engine）&lt;/em&gt;。随着数据体量的增长，传统的关系型数据库已无法满足分布式存取海量数据的需求，为此又引入了以Amazon DynamoDB和MongoDB为代表的&lt;em&gt;NoSQL&lt;/em&gt;数据库 。&lt;/p&gt;
+&lt;h2 id=&#34;事务类需求&#34;&gt;事务类需求&lt;/h2&gt;
+&lt;p&gt;在诸多变化背后，客户多年积累下来的使用习惯其实是难以改变的。而看上去日新月异的产品迭代需求，经过抽象不难发现一些恒定的规律和模式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同步和有序的数据变更：客户习惯于在集中的入口（UI / API）提交一组数据变更请求，希望在尽可能短的时间内，得到返回结果（成功或失败）；接下来做何种操作，提交什么数据，取决于之前步骤的执行结果。&lt;/li&gt;
+&lt;li&gt;批量修改，统一结果：一次请求如果对应多条数据变更操作（增加、删除、修改数据），不管这些操作发生在哪些服务、落到哪个数据库，最好要么都成功，要么都失败。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;传统关系型数据库中，一批数据操作同时成功、同时失败的这类需求共性被抽象为事务性，英文缩写为ACID：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A （Atomicity, 原子性）：一组数据操作如果其中某步操作失败，之前的操作也要回滚，不允许出现部分成功部分失败的情况。&lt;/li&gt;
+&lt;li&gt;C（Consistency，一致性）：数据操作符合某种业务约束。这个概念来源于财务对账领域，拓展到数据库设计上的含义比较模糊，众说纷纭。甚至有资料说C是为了凑成ACID这个缩写而添加的。&lt;/li&gt;
+&lt;li&gt;I（Isolation，隔离性）：对并发的数据操作有一定的隔离性。Isolation是分等级的， 最差的情况是毫无隔离、互相干扰；最好的情况是并发操作等效于一系列串行操作（Serializable，可串行化）。Isolation等级越高，数据库需要的资源越多，存取数据的性能（如吞吐量、延迟）越差。&lt;/li&gt;
+&lt;li&gt;D（Durability，持久性）：到达数据库的请求不会“轻易”丢失。通常数据库设计文档会对“轻易”做具体的定义，比如在磁盘坏道，机器停电重启等条件下不会丢数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;随着系统的服务拓扑从单体应用迈向微服务时代，以及数据库数量和种类的增长，分布式系统在满足传统ACID标准的事务性需求上，面临着新的挑战。所谓的CAP三选二定理是说，任何一个分布式系统不能同时满足以下三个特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C（Consistency，强一致性）：分布式系统的任何节点对同一个key的读写请求，得到的结果完全一致。也叫线性一致性。&lt;/li&gt;
+&lt;li&gt;A（Availability，可用性）：每次请求都能得到及时和正常的响应，但不保证数据是最新的。&lt;/li&gt;
+&lt;li&gt;P（Partition tolerance，承受网络分隔）：分布式系统在节点之间无法连通或者连接超时的前提下还能维持运转。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在CAP三个特性中，P通常是分布式系统无法规避的既定事实，设计者只能在C和A之间进行取舍。大部分系统经过综合考虑，都选择了A而放弃C，目标是高可用，最终一致（不过达成一致需要的时间无上限）。少部分系统坚持C而放弃A，即选择强一致、低可用（单节点故障将导致服务不可用，可用率取决于故障频度和恢复时间，无上限）。&lt;/p&gt;
+&lt;h1 id=&#34;技术选型与方案设计&#34;&gt;技术选型与方案设计&lt;/h1&gt;
+&lt;h2 id=&#34;设计目标&#34;&gt;设计目标&lt;/h2&gt;
+&lt;p&gt;我们考虑通过引入一套分布式事务方案，达成以下各项设计目标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;事务性提交：即ACID中的Atomicity。业务根据需要，可以定义一组数据操作，即分布式事务，这组操作无论发生在哪个服务和数据库，要么同时成功，要么同时失败。事务中只要任何一个操作出现失败， 之前的操作都需要回滚。&lt;/li&gt;
+&lt;li&gt;系统高可用：当部分服务的部分节点出现故障时，系统整体仍然可用。通过支持服务快速扩容和缩容，实现系统整体的高吞吐量，尽可能缩短数据达成一致性的延迟。框架本身消耗的资源低，引入的额外延迟小。&lt;/li&gt;
+&lt;li&gt;数据最终一致性：并发操作同一条数据的请求到达各个服务和数据库的次序保持一致，不出现丢失、乱序。 举一个顺序不一致的例子：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/dtx/3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如上图，A、B、C 是三个服务/数据库， 1和2为并发修改同一个key的两个请求。由于随机网络延迟，最终落在三个服务/数据库的值不一致，A为2的值，B和C为1的值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;支持服务独立演化和部署：除了支持使用RPC和给定协议进行通信之外，不对服务的实现方式做过多要求和假设。&lt;/li&gt;
+&lt;li&gt;支持服务使用异构的数据存储技术：使用不同的数据存储技术（关系型数据库、NoSQL、搜索引擎等），是FreeWheel核心业务系统的各个服务的现状和努力方向。&lt;/li&gt;
+&lt;li&gt;架构侵入性低，易于采用：不改动或少改动现有系统的代码和部署，尽量只通过新增代码以及服务部署，来实现分布式事务的运行环境和具体业务流程。框架和业务的分工明确，框架代码维持100%测试覆盖率， 业务代码100%可测试，测试成本低。保持系统高可见性和可预测性，尽可能为快速故障定位和恢复提供便利。&lt;/li&gt;
+&lt;li&gt;支持同步和异步流程：提供一种机制，将UI/API和后端入口服务之间的同步交互流程，与可能出现的后端服务之间的异步流程衔接起来。&lt;/li&gt;
+&lt;li&gt;支持事务步骤依赖：事务里面某个步骤的数据操作是否执行、如何执行，取决于前面的步骤的操作结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;技术选型&#34;&gt;技术选型&lt;/h2&gt;
+&lt;h3 id=&#34;xa协议和多阶段提交&#34;&gt;XA协议和多阶段提交&lt;/h3&gt;
+&lt;p&gt;XA协议通过引入一个协调者的角色，以及要求所有参与事务的数据库支持Two-phase Commit（2PC，两阶段提交，即先准备，后提交或回滚）来实现分布式事务。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://vindurriel.github.io/images/dtx/4.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;（图片来源：https://docs.particular.net/nservicebus/azure/understanding-transactionality-in-azure ）&lt;/p&gt;
+&lt;p&gt;使用XA实现分布式事务的优点有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;强一致性：实现了数据在多个数据库上的强一致提交。&lt;/li&gt;
+&lt;li&gt;业务侵入性小：完全靠数据库本身的支持实现分布式事务，不需要改动业务逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用XA实现分布式事务的缺点也很明显：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单点故障：协调者或者任意一个XA数据库都是能引起故障的单点（Single point of failure)。&lt;/li&gt;
+&lt;li&gt;低性能：支持XA特性的数据库在设计上有大量的阻塞和资源占位操作， 数据体量和吞吐量扩展性差。&lt;/li&gt;
+&lt;li&gt;数据库选型限制：对于服务的数据库选型引入了支持XA协议这个限制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;XA在设计上没有考虑到分布式系统的特点，事实上是一个强一致、低可用的设计方案，对网络分隔的容忍度较差。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>用Python做文本摘要</title>
       <link>https://vindurriel.github.io/post/2014-03-26-python-3/</link>

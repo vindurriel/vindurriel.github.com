@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>K8s on vindurriel</title>
+    <link>https://vindurriel.github.io/en/tags/k8s/</link>
+    <description>Recent content in K8s on vindurriel</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 06 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vindurriel.github.io/en/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Dev-Ops</title>
+      <link>https://vindurriel.github.io/en/post/on-dev-ops/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://vindurriel.github.io/en/post/on-dev-ops/</guid>
+      <description>&lt;p&gt;dev: executable + configuration (dependency, parameters)&lt;/p&gt;
+&lt;p&gt;integration: some devs + networking&lt;/p&gt;
+&lt;p&gt;dev-ops: integration + resources + changes&lt;/p&gt;
+&lt;h2 id=&#34;networking--connecting-the-dots&#34;&gt;Networking:  connecting the dots&lt;/h2&gt;
+&lt;p&gt;a phone call metaphor:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;who is it?  ( domain names, Layer 7 in OSI )&lt;/li&gt;
+&lt;li&gt;can you hear me?  ( data transfer through Layer 1-4 of OSI )&lt;/li&gt;
+&lt;li&gt;do you understand?  ( messaging, Layer 5-7 in OSI)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-does-k8s-tackle-networking-problems&#34;&gt;How does k8s tackle networking problems&lt;/h2&gt;
+&lt;p&gt;k8s abstracts a networking topology as:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

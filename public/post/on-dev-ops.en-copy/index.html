@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>On Dev-Ops | vindurriel</title>
+<meta name="keywords" content="prose, dev-ops, k8s">
+<meta name="description" content="dev: executable &#43; configuration (dependency, parameters)
+integration: some devs &#43; networking
+dev-ops: integration &#43; resources &#43; changes
+Networking:  connecting the dots
+a phone call metaphor:
+
+who is it?  ( domain names, Layer 7 in OSI )
+can you hear me?  ( data transfer through Layer 1-4 of OSI )
+do you understand?  ( messaging, Layer 5-7 in OSI)
+
+How does k8s tackle networking problems
+k8s abstracts a networking topology as:">
+<meta name="author" content="">
+<link rel="canonical" href="/post/on-dev-ops.en-copy/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="/post/on-dev-ops.en-copy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="/post/on-dev-ops.en-copy/">
+  <meta property="og:site_name" content="vindurriel">
+  <meta property="og:title" content="On Dev-Ops">
+  <meta property="og:description" content="dev: executable &#43; configuration (dependency, parameters)
+integration: some devs &#43; networking
+dev-ops: integration &#43; resources &#43; changes
+Networking: connecting the dots a phone call metaphor:
+who is it? ( domain names, Layer 7 in OSI ) can you hear me? ( data transfer through Layer 1-4 of OSI ) do you understand? ( messaging, Layer 5-7 in OSI) How does k8s tackle networking problems k8s abstracts a networking topology as:">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2018-09-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-09-06T00:00:00+00:00">
+    <meta property="article:tag" content="Prose">
+    <meta property="article:tag" content="Dev-Ops">
+    <meta property="article:tag" content="K8s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="On Dev-Ops">
+<meta name="twitter:description" content="dev: executable &#43; configuration (dependency, parameters)
+integration: some devs &#43; networking
+dev-ops: integration &#43; resources &#43; changes
+Networking:  connecting the dots
+a phone call metaphor:
+
+who is it?  ( domain names, Layer 7 in OSI )
+can you hear me?  ( data transfer through Layer 1-4 of OSI )
+do you understand?  ( messaging, Layer 5-7 in OSI)
+
+How does k8s tackle networking problems
+k8s abstracts a networking topology as:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/post/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "On Dev-Ops",
+      "item": "/post/on-dev-ops.en-copy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "On Dev-Ops",
+  "name": "On Dev-Ops",
+  "description": "dev: executable + configuration (dependency, parameters)\nintegration: some devs + networking\ndev-ops: integration + resources + changes\nNetworking: connecting the dots a phone call metaphor:\nwho is it? ( domain names, Layer 7 in OSI ) can you hear me? ( data transfer through Layer 1-4 of OSI ) do you understand? ( messaging, Layer 5-7 in OSI) How does k8s tackle networking problems k8s abstracts a networking topology as:\n",
+  "keywords": [
+    "prose", "dev-ops", "k8s"
+  ],
+  "articleBody": "dev: executable + configuration (dependency, parameters)\nintegration: some devs + networking\ndev-ops: integration + resources + changes\nNetworking: connecting the dots a phone call metaphor:\nwho is it? ( domain names, Layer 7 in OSI ) can you hear me? ( data transfer through Layer 1-4 of OSI ) do you understand? ( messaging, Layer 5-7 in OSI) How does k8s tackle networking problems k8s abstracts a networking topology as:\nCluster: a set of nodes Nodes: machines (bare-metal, virtual) Pods: in-node application units, works on Layer 4 Containers: in-pod, one for each process Services: cross-node naming on Layer 7, load-balancing to Pods matched by labels Why Pods? one container = one process, end of discussion. ( key contribution to the containerization community ) for tightly-coupled containers / processes ( e.g. sharing files ), compose them into an pod / application ( side-car mode ) one pod = one ip = one container network Why Services? for callers: depend on interface, not implementation: A-\u003eB =\u003e A-\u003eInterface-\u003eB , easy for testing and issue isolation for callees: load-balancing, high-availability loose coupling: caller do not need to know callee’s routes. more controllable and efficient than DNS, which is cached and propagated How does routing work in k8s? same pod: use file (socket) or localhost:port across-pod, same node: use service, pod1 -\u003e service2 -\u003e pod2 across-node, in cluster: also use service, pod1 -\u003e service2 -\u003e node1 -\u003e node2 -\u003e pod2 cluster -\u003e outside: not controlled by k8s, pod1 -\u003e node1 -\u003e … -\u003e outside cluster \u003c- outside: special services (LoadBalancer/NodePort) Ingress (a Layer 7 proxy mapping domain names to in-cluster services) Resources: all we got is all we need kinds of resources:\nallocated (exclusive): names (e.g. service name) ip port sharing (non-exclusive, limited in sum): cpu memory disk space IO (disk, network) How does k8s tackle resource problems? allocated: names: using namespaces to contain and distinguish names ip: every service and pod have an ip, so no conflict on node ip (if do not use nodePort) port: support the same ports on different pods / services sharing: cpu / memory: user specifies required and limits on container level, k8s reduces usage by not creating / killing pods disk space: k8s kills pods on low disk space ( even kills itself ) IO: not managed Changes: an orchestration of operations typical system operations:\nroll-out ( new++, old– ) roll-back ( asap ) health-check based high-availability execute in sequential steps autoscale for traffic changes How does k8s orchestrate incremental changes? roll-out and roll-back k8s uses Deployments for roll-out and roll-backs\nDeployments: defines wanted state and how to get there ReplicaSet Old: a set of interchangable old pods old Pods– in a roll-out ReplicaSet New: a set of interchangable new pods new Pods++ in a roll-out Health-check based high-availability k8s uses two kinds of Probes on two kinds of objects:\nprobe on object checks if … what to do on repeated success what to do on repeated failure liveness container the process within is up container is killed and restarted readiness container the process within is ready to accept traffic readiness pod all containers within are ready to accept traffic pod is attached to service with matching label pod is removed from service with matching label Execute in sequential steps k8s uses Init Containers to execute sequential steps for a pod.\neach init container starts in sequence, runs to exit, then next.\nfor example, init containers can be used to wait for dependencies.\nAutoscaling for traffic changes k8s provides horizontal pod autoscale\nmoreover, operator pattern is k8s’ key contribution to dev-ops community, by defining 3rd-party resource and writing operators on it, users could turn declarative descriptions of system states to imperative execution plans, translating what to how:\nwanted_state: redis-slave: version: 3.2 replicas: 3 wait-for-service: [\"redis-master\"] def operator(wanted_state): while(True): if current_state() == wanted_state: break do_operate() ",
+  "wordCount" : "636",
+  "inLanguage": "zh",
+  "datePublished": "2018-09-06T00:00:00Z",
+  "dateModified": "2018-09-06T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/on-dev-ops.en-copy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "vindurriel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="vindurriel (Alt + H)">vindurriel</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="/en/" title="English US 🇺🇸"
+                                aria-label="English US :us:">English US 🇺🇸</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/archives/" title="Archive">
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/resume/" title="简历">
+                    <span>简历</span>
+                </a>
+            </li>
+            <li>
+                <a href="/index.xml" title="RSS 源">
+                    <span>RSS 源</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="/">主页</a>&nbsp;»&nbsp;<a href="/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      On Dev-Ops
+    </h1>
+    <div class="post-meta"><span title='2018-09-06 00:00:00 +0000 UTC'>2018年9月6日</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>dev: executable + configuration (dependency, parameters)</p>
+<p>integration: some devs + networking</p>
+<p>dev-ops: integration + resources + changes</p>
+<h2 id="networking--connecting-the-dots">Networking:  connecting the dots<a hidden class="anchor" aria-hidden="true" href="#networking--connecting-the-dots">#</a></h2>
+<p>a phone call metaphor:</p>
+<ul>
+<li>who is it?  ( domain names, Layer 7 in OSI )</li>
+<li>can you hear me?  ( data transfer through Layer 1-4 of OSI )</li>
+<li>do you understand?  ( messaging, Layer 5-7 in OSI)</li>
+</ul>
+<h2 id="how-does-k8s-tackle-networking-problems">How does k8s tackle networking problems<a hidden class="anchor" aria-hidden="true" href="#how-does-k8s-tackle-networking-problems">#</a></h2>
+<p>k8s abstracts a networking topology as:</p>
+<ul>
+<li>Cluster: a set of nodes
+<ul>
+<li>Nodes: machines (bare-metal, virtual)
+<ul>
+<li>Pods: in-node application units, works on Layer 4
+<ul>
+<li>Containers: in-pod, one for each process</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Services: cross-node naming on Layer 7, load-balancing to Pods matched by labels</li>
+</ul>
+</li>
+</ul>
+<h2 id="why-pods">Why Pods?<a hidden class="anchor" aria-hidden="true" href="#why-pods">#</a></h2>
+<ol>
+<li>one container = one process, end of discussion. ( key contribution to the containerization community )</li>
+<li>for tightly-coupled containers / processes ( e.g. sharing files ), compose them into an pod / application ( side-car mode )</li>
+<li>one pod = one ip = one container network</li>
+</ol>
+<h2 id="why-services">Why Services?<a hidden class="anchor" aria-hidden="true" href="#why-services">#</a></h2>
+<ol>
+<li>for callers: depend on interface, not implementation:  A-&gt;B =&gt; A-&gt;Interface-&gt;B , easy for testing and issue isolation</li>
+<li>for callees: load-balancing, high-availability</li>
+<li>loose coupling: caller do not need to know callee&rsquo;s routes.</li>
+<li>more controllable and efficient than DNS, which is cached and propagated</li>
+</ol>
+<h2 id="how-does-routing-work-in-k8s">How does routing work in k8s?<a hidden class="anchor" aria-hidden="true" href="#how-does-routing-work-in-k8s">#</a></h2>
+<ul>
+<li>same pod: use file (socket) or localhost:port</li>
+<li>across-pod, same node: use service, pod1 -&gt; service2 -&gt; pod2</li>
+<li>across-node, in cluster: also use service, pod1 -&gt; service2 -&gt; node1 -&gt; node2 -&gt; pod2</li>
+<li>cluster -&gt; outside: not controlled by k8s, pod1 -&gt; node1 -&gt; &hellip; -&gt; outside</li>
+<li>cluster &lt;- outside:
+<ul>
+<li>special services (LoadBalancer/NodePort)</li>
+<li>Ingress (a Layer 7 proxy mapping domain names to in-cluster services)</li>
+</ul>
+</li>
+</ul>
+<h2 id="resources-all-we-got-is-all-we-need">Resources: all we got is all we need<a hidden class="anchor" aria-hidden="true" href="#resources-all-we-got-is-all-we-need">#</a></h2>
+<p>kinds of resources:</p>
+<ul>
+<li>allocated (exclusive):
+<ul>
+<li>names (e.g. service name)</li>
+<li>ip</li>
+<li>port</li>
+</ul>
+</li>
+<li>sharing (non-exclusive, limited in sum):
+<ul>
+<li>cpu</li>
+<li>memory</li>
+<li>disk space</li>
+<li>IO (disk, network)</li>
+</ul>
+</li>
+</ul>
+<h2 id="how-does-k8s-tackle-resource-problems">How does k8s tackle resource problems?<a hidden class="anchor" aria-hidden="true" href="#how-does-k8s-tackle-resource-problems">#</a></h2>
+<ul>
+<li>allocated:
+<ul>
+<li>names: using namespaces to contain and distinguish names</li>
+<li>ip: every service and pod have an ip, so no conflict on node ip (if do not use nodePort)</li>
+<li>port: support the same ports on different pods /  services</li>
+</ul>
+</li>
+<li>sharing:
+<ul>
+<li>cpu / memory: user specifies required and limits on container level, k8s reduces usage by not creating / killing pods</li>
+<li>disk space: k8s kills pods on low disk space ( even kills itself )</li>
+<li>IO: not managed</li>
+</ul>
+</li>
+</ul>
+<h2 id="changes-an-orchestration-of-operations">Changes: an orchestration of operations<a hidden class="anchor" aria-hidden="true" href="#changes-an-orchestration-of-operations">#</a></h2>
+<p>typical system operations:</p>
+<ul>
+<li>roll-out ( new++, old&ndash; )</li>
+<li>roll-back ( asap )</li>
+<li>health-check based high-availability</li>
+<li>execute in sequential steps</li>
+<li>autoscale for traffic changes</li>
+</ul>
+<h2 id="how-does-k8s-orchestrate-incremental-changes">How does k8s orchestrate incremental changes?<a hidden class="anchor" aria-hidden="true" href="#how-does-k8s-orchestrate-incremental-changes">#</a></h2>
+<h3 id="roll-out-and-roll-back">roll-out and roll-back<a hidden class="anchor" aria-hidden="true" href="#roll-out-and-roll-back">#</a></h3>
+<p>k8s uses <em>Deployments</em> for roll-out and roll-backs</p>
+<ul>
+<li><em>Deployments</em>: defines wanted state and how to get there
+<ul>
+<li><em>ReplicaSet Old</em>: a set of interchangable old pods
+<ul>
+<li>old Pods&ndash; in a roll-out</li>
+</ul>
+</li>
+<li><em>ReplicaSet New</em>: a set of interchangable new pods
+<ul>
+<li>new Pods++ in a roll-out</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="health-check-based-high-availability">Health-check based high-availability<a hidden class="anchor" aria-hidden="true" href="#health-check-based-high-availability">#</a></h3>
+<p>k8s uses two kinds of Probes on two kinds of objects:</p>
+<table>
+  <thead>
+      <tr>
+          <th>probe</th>
+          <th>on object</th>
+          <th>checks if &hellip;</th>
+          <th>what to do on repeated success</th>
+          <th>what to do on repeated failure</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>liveness</td>
+          <td>container</td>
+          <td>the process within is up</td>
+          <td></td>
+          <td>container is killed and restarted</td>
+      </tr>
+      <tr>
+          <td>readiness</td>
+          <td>container</td>
+          <td>the process within is ready to accept traffic</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>readiness</td>
+          <td>pod</td>
+          <td>all containers within are ready to accept traffic</td>
+          <td>pod is attached to service with matching label</td>
+          <td>pod is removed from service with matching label</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="execute-in-sequential-steps">Execute in sequential steps<a hidden class="anchor" aria-hidden="true" href="#execute-in-sequential-steps">#</a></h3>
+<p>k8s uses Init Containers to execute sequential steps for a pod.</p>
+<p>each init container starts in sequence, runs to exit, then next.</p>
+<p>for example, init containers can be used to wait for dependencies.</p>
+<h3 id="autoscaling-for-traffic-changes">Autoscaling for traffic changes<a hidden class="anchor" aria-hidden="true" href="#autoscaling-for-traffic-changes">#</a></h3>
+<p>k8s provides <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale">horizontal pod autoscale</a></p>
+<p>moreover, <em>operator pattern</em> is k8s&rsquo; key contribution to dev-ops community, by defining 3rd-party resource and writing operators on it, users could turn declarative descriptions of system states to imperative execution plans, translating what to how:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">wanted_state</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">redis-slave</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">version</span>: <span style="color:#ae81ff">3.2</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">wait-for-service</span>: [<span style="color:#e6db74">&#34;redis-master&#34;</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">operator</span>(wanted_state):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> current_state() <span style="color:#f92672">==</span> wanted_state:
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>		do_operate()
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/prose/">Prose</a></li>
+      <li><a href="/tags/dev-ops/">Dev-Ops</a></li>
+      <li><a href="/tags/k8s/">K8s</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="/">vindurriel</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

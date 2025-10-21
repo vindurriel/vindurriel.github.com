@@ -70,7 +70,10 @@
                 />
   </url><url>
     <loc>https://vindurriel.github.io/en/tags/aws/</loc>
-    <lastmod>2021-08-13T00:00:00+00:00</lastmod>
+    <lastmod>2021-08-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://vindurriel.github.io/en/post/retry-n-timeout/</loc>
+    <lastmod>2021-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://vindurriel.github.io/en/tags/container/</loc>
     <lastmod>2021-08-13T00:00:00+00:00</lastmod>
@@ -98,6 +101,57 @@
   </url><url>
     <loc>https://vindurriel.github.io/en/tags/testing/</loc>
     <lastmod>2021-06-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://vindurriel.github.io/en/tags/book/</loc>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://vindurriel.github.io/tags/book/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://vindurriel.github.io/en/tags/book/"
+                />
+  </url><url>
+    <loc>https://vindurriel.github.io/en/post/dtx/</loc>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://vindurriel.github.io/post/dtx/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://vindurriel.github.io/en/post/dtx/"
+                />
+  </url><url>
+    <loc>https://vindurriel.github.io/en/tags/dtx/</loc>
+    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://vindurriel.github.io/tags/dtx/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://vindurriel.github.io/en/tags/dtx/"
+                />
+  </url><url>
+    <loc>https://vindurriel.github.io/en/post/on-performance/</loc>
+    <lastmod>2018-09-06T01:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://vindurriel.github.io/en/tags/dev-ops/</loc>
+    <lastmod>2018-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://vindurriel.github.io/en/tags/k8s/</loc>
+    <lastmod>2018-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://vindurriel.github.io/en/post/on-dev-ops/</loc>
+    <lastmod>2018-09-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://vindurriel.github.io/en/resume/</loc>
     <xhtml:link
