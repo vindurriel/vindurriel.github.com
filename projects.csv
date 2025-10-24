@@ -1,0 +1,174 @@
+Year,Kind,Topic,my role in topic,project,my role in project,related person,time
+2019,Biz,MMO Squad,dev,DSP migration,all,,January
+2019,Biz,MMO Squad,dev,debug tool for Deals,all,,April
+2019,Biz,MMO Squad,dev,debug tool testing framework design,all,,June
+2019,Biz,MMO Squad,lead,DAL adoption for partner service,"design, part of coding and testing",,Feb-May
+2019,Biz,MMO Squad,dev,automation testing containerization with docker-switch for partner service,all,,January
+2019,Biz,MMO Squad,dev,creative ingest dashboard,"design, part of coding",,August
+2019,Tech,Dev-ops,dev,Kage: a K8S sandbox solution based on namespace,all,,Jan-Jul
+2019,Tech,Dev-ops,dev,Docker-switch: dev and testing environment containers,"design, part of coding and testing",,Jan-Sep
+2019,Tech,BSAP,dev,UUID service,"part of design, coding, and testing",,April-May
+2019,Tech,BSAP,dev,unit test practices,"design, part of coding and documentation",,October
+2019,Tech,BSAP,dev,distributed transaction,"part of design, coding, testing, documentations",,Jul-Sep
+2019,Tech,etc,dev,ElasticAlert alternatives (Grafana alerts),deploy Grafana; write alerts,,June
+2019,Others,Internship,mentor,mentoring for summer intern,all,,Jun-Aug
+2019,Tech,Hackathon,dev,GODIVA,"service dependency graph
+golang package dependency graph",,May-Jul
+2019,Tech,Hackathon,dev,/whatis: a slack command to search terms,"top usage charts
+handle same words on different sources",,Jan-Jul
+2019,Tech,Hackathon,dev,"ITO-150 Sphinx, a slack command dispatcher","design, coding, testing",,July
+2019,Tech,Hackathon,dev,"ITO-142 waiter, a dependency middleware for SOA system deployments",all,,July
+2019,Tech,T2,dev,/t2 schedule message sender for Slack,all,,
+2019,Tech,T2,dev,mini-ui: move lt_asset tables from mysql to DynamoDB and Solr,all,,October
+2019,Tech,T2,dev,mini-ui: change paginations to load millions of child assets,all,,October
+2019,Biz,T2,dev,mini-ui: rogue site sections: a tool to find unexpected site section deliveries caused by mirror,all,,Oct-Nov
+2019,Tech,T2,dev,production quality dashboard: code optimizations,all,,October
+2022,Biz,BDW,key contributor,supporting flash forecast,investigation,"lxu, lljiang",Q2
+2022,Biz,BDW,key contributor,filter eligible buyers by ES aggregation,design and coding,"pelbaor, zzhang",Jan
+2022,Biz,Bidder (SSP Order),contributor,unique key change,design and coding,whuang,Jun
+2022,Biz,Bidder (SSP Order),contributor,test network isolation,coding,xblv,Jul
+2022,Biz,Bidder (SSP Order),contributor,editing SSP orders,design and coding,yezhu,Mar
+2022,Biz,Bidder (SSP Order),contributor,list linked placement,design and coding,yezhu,Jan
+2022,Biz,Creative Approval,contributor,show DS audience definitions on order,,mstrang,Q3
+2022,Biz,Creative Approval,contributor,investigating on MPP approval,investigation,eho,Q2
+2022,Biz,LMD,key contributor,error on unfinished onboarding,coding,ssdeng,Apr
+2022,Biz,MPP Migration,key contributor,Marketplace Topology,design and coding,"haochang, yezhu, jxcao","Q2, Q4"
+2022,Biz,MPP Migration,key contributor,Non-G listing support content duration,coding,yezhu,Jun
+2022,Biz,Order Revision,key contributor,"A revision framework for MPP revisions, both seller and buyer",design and coding,"yezhu, haochang",Q3
+2022,Biz,Order Revision,key contributor,Support CM revisions,design and coding,"jsurena, pengli, apark",Q4
+2022,Biz,Political Pilot Support,key contributor,write internal APIs to reduce onboarding ESC efforts,design and coding,,Q1
+2022,Biz,Political Pilot Support,key contributor,work with SE to refine onboarding process,write wiki and discussions,cblanco,Apr
+2022,Biz,Political Pilot Support,key contributor,Project briefing to Dr. Cai,MKPL tech part,haochang,Feb
+2022,Biz,Political Pilot Support,key contributor,Technical sharing to Identity team,MKPL part,zrsun,Jul
+2022,Biz,MKPL Common,reviewer,SA Visibility Framework,Code review and approach discussions,zzhang,Jun
+2022,Tech,Access Control,contributor,access control by client,design and coding,"kxpi, wfli",Aug
+2022,Tech,Bingo,contributor,lambda url onboarding and usage,investigation and prototyping,"lding, ycao",Aug
+2022,Tech,Bingo,contributor,add app - service tag,design and coding,hrli,Jun
+2022,Tech,Bingo,contributor,client usage analysis,investigate and write wiki,qiwang,Mar
+2022,Tech,Cache,contributor,Blinc service,Approach design (DDB with ttl),xblv,Q1
+2022,Tech,Eng practice,contributor,code review practice,investigate and write wiki,kxpi,Jul
+2022,Tech,Cost Efficiency,contributor,unifiy protocols of the same service,investigate and write adoption code for MKPL services,rfma,Q1
+2022,Tech,Cost Efficiency,contributor,HPA by QPS,"design, coding and test in uuid service",rfma,Jun
+2022,Tech,Elastic Search,key contributor,support aggregation by a single field,design and coding,zzhang,Jan
+2022,Tech,Elastic Search,key contributor,"a major version v2, add retry and timeout, use opensearch client sdk",design and coding,kxpi,Q4
+2022,Tech,Elastic Search,key contributor,sync ES data with CI / CD,consultation,"jdu, nyang",Q2
+2022,Tech,Intern Projects,"interviewer,
+consultant",Docker alternatives,consultation,wtang,Q3
+2022,Tech,Disaster Recovery,contributor,MKPL ES support us-west-2,design and coding,"ckjiang, xywang",Q2
+2022,Tech,Dev experience,contributor,Fake solr in local dev,design and write wiki,,Mar
+2022,Tech,API Management,contributor,protobuf management / upgrade approach,investigate and write wiki,"kxpi, wangwei",Apr
+2022,Tech,API Management,contributor,dependency graph,design and coding,,Apr
+2022,Tech,API Management,contributor,support cross repo triggering,coding,jxcao,May
+2022,Tech,API Management,contributor,support release branches,coding,wangwei,Apr
+2022,Tech,API Management,contributor,support jsonpb.go,coding,wangwei,Mar
+2022,Others,Book translaction,contributor,Chapter 5 and Section 1.3 of Chapter 2,translate,rfma,Q3
+2022,Others,Hackathon,key contributor,Covid report,design and coding,lljiang,Oct
+2022,Others,Tooling,key contributor,Slack assistant for T3 / oncall,"migrate to Lambda;
+Support trigger by attachment titles;
+adopt to MKPL team channels",nndong,"Feb, June"
+2022,Others,Tooling,key contributor,Slack group check,design and coding,"haochang, ssdeng",Apr
+2022,Others,Tooling,key contributor,Slack command /whatis,"update release calendar;
+support bingo customization","haochang, glewin, qiwang",Oct
+2022,Others,Process Improvements,contributor,automate Slack mentioning on-call for failed cases and alerts,design and write code,,May
+2022,Others,T3,contributor,Redis server capacity issue,collect issues from multi services and push infra to upgrade the cache server,"zlgao, lding, xdzhao, wjli, tyliu",Q3
+2022,Others,T3,contributor,P2 handling: transcoding expired,join bridge call and diagnose issues,csong,Sep
+2023,Biz,partner tag,developer,,,,
+2023,Biz,partner tag,,inventory package targeting,owner,"UI: jxcao, pengli",Jan
+2023,Biz,partner tag,,consolidate pass-back,developer,"UI: wangwei
+ADS: rcliu",Oct
+2023,Biz,creative,developer,,,,
+2023,Biz,creative,,split MPP creative approval scope,owner,"UI: ycao
+ADS: kkguo",Jul
+2023,Biz,MKPL onboarding / migration,developer,,,,
+2023,Biz,MKPL onboarding / migration,,bulk uploading inventory packages,owner,"pm: yezhu
+ui: zzhang, kxpi",Feb
+2023,Biz,MKPL onboarding / migration,,bulk uploading listings and updating orders / rules,owner,"pm: yezhu
+ui: zzhang, lljiang",
+2023,Biz,bidder,developer,,,,
+2023,Biz,bidder,,supply source package with ssp orders,developer,"ui: xblv, bwguan",Mar
+2023,Biz,MPP,developer,,,,
+2023,Biz,MPP,,buyer approval on seller priority change,developer,pm: jsurena,Apr
+2023,Biz,MPP,,supply source package with mkpl orders,developer,pm: yezhu,
+2023,Tech,security/compliance,lead developer,,,,
+2023,Tech,security/compliance,lead developer,secret-inject solution tech design and alignment,leading eng,"UI: jdu; SRE: lding; DBA: lili, xiaolongwang",Q1-Q3
+2023,Tech,security/compliance,lead developer,secret-inject solution adoption for mkpl services,developer,UI: kxpi,
+2023,Tech,security/compliance,lead developer,fix security issues found in code scanning for mkpl services,developer,"UI: kxpi, nyang",Q1-Q4
+2023,Tech,security/compliance,lead developer,oltp access control: migrate mkpl topology tool to cd jenkins and presto gateway,developer,"UI: jdu
+sre-dev: jxzhao",Jun
+2023,Tech,security/compliance,lead developer,,,,
+2023,Tech,Observability,developer,,,,
+2023,Tech,Observability,developer,add prom to nofitication system,,,
+2023,Tech,Observability,developer,,,,
+2023,Tech,Developer Tooling,developer,,,,
+2023,Tech,Developer Tooling,developer,fwbuf support detect dependency,developer,ui: wangwei,
+2023,Tech,Developer Tooling,developer,,,,
+2023,Other,Jarvis the slack-bot,owner,jarvis move to public repo,owner,"eng-us: dsaifuding;
+kmt: vnasso, scolleen",
+2023,Other,Jarvis the slack-bot,owner,support release calendar in 2024,,"pm: glewin, qlma",
+2023,Other,Jarvis the slack-bot,owner,support client-facing release calendar on the hub,owner,"eng-us: dsaifuding;
+kmt: smcbeen",
+2023,Other,Tech sharing,participant,,,,
+2023,Other,Tech sharing,participant,ElasticSearch sharing to global US team,lecturer,eng-us: ekomarovsky,
+2023,Other,Tech sharing,participant,group sync meeting sharing: how to start mkpl frontend with micro-frontend,lecturer,,
+2023,Other,Tech sharing,participant,group sync meeting sharing: migrate mkpl topology tool to cd jenkins and presto gateway,lecturer,,
+2023,Other,Tech sharing,participant,group sync meeting sharing: biz-ui security practise updates,lecturer,,
+2023,Other,Hackathon,contender,Game of Marketplaces,team member,"ui: lljiang, kxpi, wfli, xblv, wangwei
+pm: yezhu",
+2023,Other,Hackathon,contender,"How to hack your hackathon, updated data in 2023",owner,,
+2023,Other,T3 on-call,T3,,,,
+2024,Biz,Marketplace Search,lead developer,build search all from dashboard,owner,pm: jean surena,q2-q4
+2024,Biz,MKPL partnership,developer,build distributor tags and partner sites page,developer,"pm: yezhu
+ui: lljiang",q4
+2024,Biz,MKPL partnership,developer,search listing/order by partner network ids,developer,"pm: yezhu
+ui: lljiang, wangwei",July
+2024,Biz,MKPL onboarding,developer,bulk uploading tools support all ad unit slots,developer,"pm: yezhu
+ui lljiang",May
+2024,Biz,MPP Order/Listing Revision,lead developer,support revision setting framework on the network and listing level,developer,"pm: jean surena
+ui: kxpi",q1-q2
+2024,Biz,MPP Order / Listing Revision,lead developer,CPM revision,developer,pm: jean surena,q2
+2024,Biz,Partner Tag,developer,provide RCA for ESC-67357 unexpected passback reset,lecturer,"ui: kxpi, jxcao",July
+2024,Biz,Partner Tag,developer,partner tag passback implementation migration,developer,ads: rcliu,June
+2024,Biz,Inventory Package,developer,handle ESC ESC-66469 invalid targeting criteria type in boolean expression,developer & lecturer,"ui: pengli, bwguan",May
+2024,Biz,Inventory Package,developer,simplify export targeting tree,developer,"pm: mvarghese
+ui: pengli",May
+2024,Biz,MKPL Sales management,developer,supply source package support exchange listing,developer,pm: hchen,March
+2024,Tech,Security & Compliance,developer,migrate UI tools ec2,developer,"ui: nayang, jxcao, smwang",q2-q3
+2024,Tech,Security & Compliance,developer,add access control for mkpl topology tool,developer,ep: chengzhang,Feburary
+2024,Tech,Service structure optimization,developer,merge mkpl listing service into mkpl order service,developer,ui: kxpi,q1-q4
+2024,Tech,Marketplace Search,lead developer,deprecate display_status,owner,"ui: kxpi, dsaifuding",q3
+2024,Tech,Marketplace Search,lead developer,monitor data diff of ES and oltp,developer,ui: kxpi,q1
+2024,Tech,Marketplace Search,lead developer,upgrade ES cluster to impore stability,developer,sre: lding,April
+2024,Tech,Marketplace Search,lead developer,build ES usage analysis and dashboards,developer,,April
+2024,Other,Jarvis the slack-bot,owner,support release calendar in 2025,developer,"pm: glewin, qlma",October
+2024,Other,"Vision, yet another AI chatbot",owner,build Vision from Jarvis' data sources and various large language models,owner,"ui: snow zhang, kxu",q1-q2
+2024,Other,"Vision, yet another AI chatbot",owner,"support mrm user guide, FW openapi doc and hackathon projects; support gpt-4o",owner,ui: ysong,q2-q4
+2024,Other,Dev Tools,developer,slack bookmarks and pinned message exporter,owner,,September
+2024,Other,Dev Tools,developer,rotate slack user group members from a wiki page,owner,"ui: ysong, ycren",March
+2024,Other,CIEC hiring,tech reviewer,review candidates,reviewer,ui: wangwei,q2-q3
+2024,Other,CIEC hiring,tech reviewer,provide quiz repo,developer,ui: jlguo,June
+2024,Other,Tech sharing,participant,recommended a technical book to Freewheelers by video,lecturer,hr: luliu,May
+2024,Other,Patent,participant,finalized patent application for UUID generator by getting the application ID and certificate,participant,ui: ycao,May
+2024,Other,Hackathon,contender,Vision,team member,ui: wfli,October
+2024,Other,Hackathon,contender,"How to hack your hackathon, updated data in 2024",owner,,November
+2024,Other,T3 on-call,T3,rotate oncall for 4 times,T3,,q1-q4
+2025,Biz,Marketplace Search,lead,Search Targeting Items of Inventory Packages,lead,pm: minnu,q1
+2025,Tech,Marketplace Search,lead,Change the implementation of query ES by item ids,dev,eng: kxpi,q1
+2025,Tech,Marketplace Search,lead,use table join for entity id queries,lead,eng: zzhang,q2
+2025,Biz,Inventory Split Approval,lead,Inventory Split activation approval,lead,pm: jurena,q1-q2
+2025,Tech,MKPL general,dev,mkpl change history support chunk fetch,dev,eng: kxpi,q2
+2025,Tech,Vision,lead,onboard Twinkle managed aws knowledge base,lead,eng: snow zhang,q1
+2025,Biz,Creative Approval,dev,Creative Approval for Inventory Split,dev,pm: zainab,q1
+2025,Biz,Creative approval,dev,Sunset managed (global) creative approval,"design, frontend and backend dev",pm: zainab,q2
+2025,Biz,Creative Approval,dev,Sunset no approval,"design, frontend and backend dev",pm: zainab,q1-q2
+2025,Biz,Creative Approval,dev,Consolidate creative approval config APIs,dev,,q2
+2025,Tech,Safety,lead,adopt AWS IMDSv2 for mkpl repos,dev,eng: nyang,q2
+2025,Tech,Marketplace Search,lead,update ES lib for ES version upgrading,dev,,q2
+2025,Tech,Marketplace Search,lead,upgrade MKPL ES version to OpenSearch 1.3,dev,sre: lding,q2
+2025,Tech,Marketplace Search,lead,upgrade MKPL ES version to OpenSearch 2.17,dev,sre: rui_li,q2
+2025,Biz,Data Retention: Recycle Bin,dev,suppport filtering archived MKPL listings in ES,dev,eng: xfzhu,q2
+2025,Biz,Marketplace Search,dev,introduce completed status to MPP listing,dev,pm: jurena,q2-q3
+2025,Biz,knowledge transfer,lead,transfer business knowledge to US and CIEC teams,dev,eng: ekomarovsky,q3-q4
+2025,Tech,Jarvis,lead,migrate incoming hooks for Jarvis,"design, dev",,q3
+2025,Biz,Optimized Yield,dev,support demand level risk settings,"design, backend dev",eng: xlhu,q3-q4
+2025,Biz,Creative Approval,dev,auto rejection configuration,schema design,"pm: afuentes
+eng: wfli",q3

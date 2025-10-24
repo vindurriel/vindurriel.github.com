@@ -4,7 +4,7 @@
     <title>vindurriel</title>
     <link>https://vindurriel.github.io/</link>
     <description>Recent content on vindurriel</description>
-    <generator>Hugo -- 0.151.0</generator>
+    <generator>Hugo -- 0.152.1</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +15,8 @@
       <guid>https://vindurriel.github.io/post/dtx/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;声明：本文是一本已经出版的技术图书的其中一章的原稿:
-&lt;a href=&#34;https://book.douban.com/subject/35680546/&#34;&gt;云原生应用架构：微服务开发最佳实战&lt;/a&gt;。 作者是我和FreeWheel的前同事们。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;a href=&#34;https://book.douban.com/subject/35680546/&#34;&gt;云原生应用架构：微服务开发最佳实战&lt;/a&gt;。 作者是我和FreeWheel的前同事们。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h1 id=&#34;引言&#34;&gt;引言&lt;/h1&gt;
 &lt;p&gt;随着软件系统从单体应用迈向微服务架构以及数据库选型去中心化、异构化的趋势，传统的ACID事务在分布式系统上能否延续，如何落地，有哪些注意事项？本文将围绕分布式事务这一技术议题，介绍FreeWheel核心业务系统在相关领域的业务需求、技术决策和线上实践。&lt;/p&gt;
 &lt;h1 id=&#34;分布式事务的挑战&#34;&gt;分布式事务的挑战&lt;/h1&gt;
@@ -95,23 +96,32 @@
 &lt;h2 id=&#34;文本摘要&#34;&gt;文本摘要&lt;/h2&gt;
 &lt;p&gt;以下新闻来自&lt;a href=&#34;http://www.leiphone.com/yahoo-summly.html&#34;&gt;雷锋网&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Yahoo收购新闻摘要应用Summly&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Yahoo收购新闻摘要应用Summly&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;宗仁 2013-03-26 07:53 没有评论&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;宗仁 2013-03-26 07:53 没有评论&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;标签：Summly 新闻摘要&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;标签：Summly 新闻摘要&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Yahoo 昨日宣布收购新闻摘要移动公司Summly，&lt;strong&gt;价格可能为3000万美金&lt;/strong&gt;，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Yahoo 昨日宣布收购新闻摘要移动公司Summly，&lt;strong&gt;价格可能为3000万美金&lt;/strong&gt;，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Summly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Summly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;以下是雅虎在其官方博客上发布的声明：&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;以下是雅虎在其官方博客上发布的声明：&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用&lt;/strong&gt;。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用&lt;/strong&gt;。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。&lt;/p&gt;
 &lt;p&gt;下面我们就来看看做文本摘要的大致思路。&lt;/p&gt;
 &lt;h2 id=&#34;大致思路&#34;&gt;大致思路&lt;/h2&gt;
@@ -151,7 +161,126 @@
 &lt;h4 id=&#34;固定搭配的频率&#34;&gt;固定搭配的频率&lt;/h4&gt;
 &lt;p&gt;N-Gram&lt;/p&gt;
 &lt;h4 id=&#34;词性&#34;&gt;词性&lt;/h4&gt;
-&lt;p&gt;名词、动词一般比副词、形容词重要&lt;/p&gt;</description>
+&lt;p&gt;名词、动词一般比副词、形容词重要&lt;/p&gt;
+&lt;h4 id=&#34;专业词典文章分类信息&#34;&gt;专业词典+文章分类信息&lt;/h4&gt;
+&lt;p&gt;有了专业词典以及文章分类的数据，就可以用更高级的统计工具，甚至是信息论的知识，利用词在不同类别和领域中的分布差异以及权重，
+计算词对文章的互信息。这方面简单的方法有TF-IDF，相对复杂的方法有LDA（主题词的提取）。&lt;/p&gt;
+&lt;h3 id=&#34;3-找出一部分重要的句子&#34;&gt;3. 找出&lt;em&gt;一部分&lt;/em&gt;重要的句子&lt;/h3&gt;
+&lt;p&gt;需要根据重要性对句子进行一个排序，选出排名靠前的，加入最后的摘要。最后，最好能恢复句子原有的顺序，以便人们阅读和理解。&lt;/p&gt;
+&lt;p&gt;到底要几句？摘要的长度应该是可以参数化的，策略可以采取最少一句，最多N句，N是参数，也可以用百分比来定义，即文章总句数的x%，x为参数。&lt;/p&gt;
+&lt;h2 id=&#34;示例4-一个简单的文本摘要的python实现&#34;&gt;示例4 一个简单的文本摘要的python实现&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# encoding=utf-8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; collections &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; defaultdict
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;frequencies&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;defaultdict(int)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;stop_words&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;set()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DISPLAY_FULLTEXT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SUMMARY_RATIO&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;init_stopwords&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; stop_words
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	stop_words&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; set(&lt;span style=&#34;color:#e6db74&#34;&gt;u&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;where the of is and to in that we for an are by be as on with can if from which you it this then at have all not one has or that&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	file_stopwords&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stop_words.txt&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; os
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;isfile(file_stopwords):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		lines&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;file(file_stopwords,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		stop_words&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;stop_words &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; set(lines)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;split_to_sentences&lt;/span&gt;(text):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;Very simple spliting to sentences by [.!?] and paragraphs.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;	In real life we&amp;#39;ll be much more fancy.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;	&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nltk.data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	tokenizer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nltk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;data&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;tokenizers/punkt/english.pickle&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	text &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(tokenizer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;tokenize(text))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sentences&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	start &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;finditer(&lt;span style=&#34;color:#e6db74&#34;&gt;u&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;(\s*[。？！]\s*)|(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{2,})&amp;#39;&lt;/span&gt;, text):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		sentences&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(text[start:&lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;end()]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;strip())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		start &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;end()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sentences&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;filter(&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; x:len(x)&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,sentences)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sentences
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tokenize&lt;/span&gt;(text):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;tokenize using jieba
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;	&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; jieba
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; jieba&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cut(text)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;token_frequency&lt;/span&gt;(text):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;Return frequency (count) for each token in the text&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; defaultdict(int)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; token &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; tokenize(text):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		res[token] &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sentence_score&lt;/span&gt;(sentences):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;get sentence score using word frequencey&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; frequencies,stop_words
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; len(stop_words):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		init_stopwords()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	scores&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; math
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	num_sentences&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;len(sentences)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	len_sentences&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;map(len,sentences)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	max_len_sentences&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;max(len_sentences)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	min_len_sentences&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;min(len_sentences)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i,sentence &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; enumerate(sentences):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		tokens&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tokenize(sentence)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;#词频的和，去掉停用词&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		score&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sum((frequencies[token] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; token &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; tokens &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; token &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; stop_words))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;#削弱句子长度的影响&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		length_factor&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1.0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(len_sentences[i]&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;min_len_sentences)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;max_len_sentences
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		score&lt;span style=&#34;color:#f92672&#34;&gt;*=&lt;/span&gt;length_factor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;#增加句子位置的影响(越靠前越好)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		position_factor&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;num_sentences
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		score&lt;span style=&#34;color:#f92672&#34;&gt;*=&lt;/span&gt;position_factor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		scores&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(score)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; scores
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;create_summary&lt;/span&gt;(sentences):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; frequencies
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	summary &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; math
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	len_sentence&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;int(math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ceil(len(sentences)&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;SUMMARY_RATIO))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	len_sentence&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;max(len_sentence,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	len_sentence&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;min(len_sentence,&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	score&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;sentence_score(sentences)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	score&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[(i,s) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i,s &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; enumerate(score)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;#根据得分排序&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	score&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sort(key&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; s:s[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;],reverse&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;#取出得分靠前的句子&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	score&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;score[:len_sentence]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;#恢复原来句子的顺序&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	score&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sort(key&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; s:s[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	summary&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[sentences[x[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; score]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; set([x[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; score])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;# return &amp;#39;\n&amp;#39;.join(summary)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;decode_text&lt;/span&gt;(text):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;gbk&amp;#39;&lt;/span&gt;]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; text&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;decode(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exception&lt;/span&gt;, e:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#66d9ef&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exception&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cannot decode using all codings&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(text):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; frequencies
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	text&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;decode_text(text)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	frequencies &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; token_frequency(text)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sentences &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; split_to_sentences(text)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; len(sentences):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; ([],set())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; create_summary(sentences)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (sentences,index)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; colorize &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Color
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	clr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Color()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;file(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test.txt&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sentences,index&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;summarize(s)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i,sentence &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; enumerate(sentences):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;sentence&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;encode(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;gbk&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; index:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			print s
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#75715e&#34;&gt;# clr.print_red_text(s)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; DISPLAY_FULLTEXT:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			print s
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	print sorted(list(index))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;思考题3&#34;&gt;思考题3&lt;/h2&gt;
+&lt;p&gt;请从句子的位置和内容两方面入手，思考如何改进上面简单文本摘要程序的表现。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python web api</title>
@@ -457,31 +586,84 @@ gem: --no-ri --no-rdoc
       <guid>https://vindurriel.github.io/resume/</guid>
       <description>&lt;h1 id=&#34;杨帆的简历&#34;&gt;杨帆的简历&lt;/h1&gt;
 &lt;h3 id=&#34;联系方式&#34;&gt;联系方式&lt;/h3&gt;
-&lt;p&gt;邮箱: &lt;a href=&#34;mailto:vindurriel&amp;#43;job@gmail.com&#34;&gt;vindurriel+job@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;github/twitter: vindurriel&lt;/p&gt;
-&lt;h3 id=&#34;自我介绍&#34;&gt;自我介绍&lt;/h3&gt;
-&lt;p&gt;男, 1987年生，现居住于北京通州区&lt;/p&gt;
-&lt;p&gt;2010年毕业于北京邮电大学&lt;/p&gt;
-&lt;p&gt;具有8年软件/互联网行业研发经验，熟悉内容资讯类网站、电商、抽奖、搜索引擎、抢购等系统的常用架构、轮子和设计模式，有一定项目管理经验&lt;/p&gt;
-&lt;p&gt;设计、开发、维护过日访问量过亿的在线系统(百度文库)，以及业务流程复杂的面向企业用户的系统（百度糯米mis、b端、广告平台）&lt;/p&gt;
-&lt;p&gt;有自然语言处理/机器学习/大数据处理经验&lt;/p&gt;
-&lt;p&gt;英语可日常交流，笔译过两本英文技术书籍 &lt;a href=&#34;http://product.dangdang.com/23381404.html&#34;&gt;http://product.dangdang.com/23381404.html&lt;/a&gt; &lt;a href=&#34;http://product.dangdang.com/23688013.html&#34;&gt;http://product.dangdang.com/23688013.html&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;技术栈&#34;&gt;技术栈&lt;/h3&gt;
-&lt;p&gt;.net ELK WPF d3js git hadoop java javascript jquery markdown memcache mvc mysql nginx nmq odp openresty php python react redis shell svn Unity3D&lt;/p&gt;
-&lt;h3 id=&#34;求职意向&#34;&gt;求职意向&lt;/h3&gt;
-&lt;p&gt;互联网行业后端高级研发/架构, php/python/java 均可&lt;/p&gt;
-&lt;h3 id=&#34;教育经历&#34;&gt;教育经历&lt;/h3&gt;
-&lt;p&gt;时间|院校|专业|学历/学位
--|-
-2006-2010|北京邮电大学|智能科学与技术|本科/学士&lt;/p&gt;
-&lt;h3 id=&#34;工作经历&#34;&gt;工作经历&lt;/h3&gt;
-&lt;p&gt;时间|公司|部门|职责
--|-
-2018/05-今 | FreeWheel, a Comcast Company | Biz-UI 团队 | 高级软件工程师
-2016/05-2018/04 | 百度 | 百度糯米研发部 | 后端研发T5
-2014/05-2016/04 | 百度 | 教育事业部-产品及研发部 | 后端研发T4
-2013/05-2014/04 | 安世亚太科技（北京）有限公司 | 研究院 | 研发经理
-2010/09-2013/04 | 安世亚太科技（北京）有限公司 | 研究院 | 全栈研发&lt;/p&gt;</description>
+&lt;p&gt;email: &lt;a href=&#34;mailto:vindurriel&amp;#43;job@gmail.com&#34;&gt;vindurriel+job@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;github: vindurriel&lt;/p&gt;
+&lt;h3 id=&#34;关于我&#34;&gt;关于我&lt;/h3&gt;
+&lt;p&gt;男性，生于1987年，目前居住在中国北京市通州区&lt;/p&gt;
+&lt;p&gt;2010年毕业于北京邮电大学并获得学士学位&lt;/p&gt;
+&lt;p&gt;拥有多年的软件/互联网行业研发经验，熟悉内容信息网站、电子商务、数字彩票、高并发系统等的常见架构、框架及设计模式，同时拥有一定的产品管理经验。&lt;/p&gt;
+&lt;p&gt;擅长设计、开发和维护日均页面浏览量超过1亿的在线系统（例如：https://wenku.baidu.com），以及面向企业客户复杂业务逻辑的系统（例如糯米APP的后台管理系统/面向B端APP/广告平台）。&lt;/p&gt;
+&lt;p&gt;在自然语言处理(NLP)、机器学习以及通用大数据ETL任务方面亦有一定经验。&lt;/p&gt;
+&lt;p&gt;能够进行英语听说读写，曾将两本技术类书籍从英文翻译为中文（http://product.dangdang.com/23381404.html &lt;a href=&#34;http://product.dangdang.com/23688013.html&#34;&gt;http://product.dangdang.com/23688013.html&lt;/a&gt;）。&lt;/p&gt;
+&lt;h3 id=&#34;技术技能&#34;&gt;技术技能&lt;/h3&gt;
+&lt;p&gt;AWS, Golang, Kubernetes, Docker, Jenkins, Kafka, .NET, ELK, WPF, d3js, git, golang, hadoop, java, javascript, jquery, markdown, memcache, mvc, mysql, nginx, nmq, openresty, php, Python, React, redis, shell, svn, swift, Unity3D, Slack APIs, Confluence APIs&lt;/p&gt;
+&lt;h3 id=&#34;职业偏好&#34;&gt;职业偏好&lt;/h3&gt;
+&lt;p&gt;希望在互联网行业从事API开发/架构相关的领导岗位，可使用Golang/python/php/java进行编码。&lt;/p&gt;
+&lt;h3 id=&#34;教育背景&#34;&gt;教育背景&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;日期&lt;/th&gt;
+          &lt;th&gt;院校&lt;/th&gt;
+          &lt;th&gt;专业&lt;/th&gt;
+          &lt;th&gt;学位&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2006-2010&lt;/td&gt;
+          &lt;td&gt;北京邮电大学&lt;/td&gt;
+          &lt;td&gt;人工智能&lt;/td&gt;
+          &lt;td&gt;学士&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;职业经历&#34;&gt;职业经历&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;日期&lt;/th&gt;
+          &lt;th&gt;公司&lt;/th&gt;
+          &lt;th&gt;部门&lt;/th&gt;
+          &lt;th&gt;职位&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2018/05-至今&lt;/td&gt;
+          &lt;td&gt;FreeWheel, a Comcast Company&lt;/td&gt;
+          &lt;td&gt;Biz-UI部门&lt;/td&gt;
+          &lt;td&gt;高级软件工程师&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2016/05-2018/04&lt;/td&gt;
+          &lt;td&gt;百度&lt;/td&gt;
+          &lt;td&gt;糯米&lt;/td&gt;
+          &lt;td&gt;高级后端研发工程师&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2014/05-2016/04&lt;/td&gt;
+          &lt;td&gt;百度&lt;/td&gt;
+          &lt;td&gt;教育&lt;/td&gt;
+          &lt;td&gt;后端研发工程师&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2013/05-2014/04&lt;/td&gt;
+          &lt;td&gt;Pera Global&lt;/td&gt;
+          &lt;td&gt;研究院&lt;/td&gt;
+          &lt;td&gt;项目经理&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2010/09-2013/04&lt;/td&gt;
+          &lt;td&gt;Pera Global&lt;/td&gt;
+          &lt;td&gt;研究院&lt;/td&gt;
+          &lt;td&gt;全栈开发工程师&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;项目经历&#34;&gt;项目经历&lt;/h3&gt;
+&lt;h4 id=&#34;mrmcomcast的广告系统&#34;&gt;MRM，Comcast的广告系统&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;2018/05-至今, Freewheel, A Comcast Company&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

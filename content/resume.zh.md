@@ -5,152 +5,145 @@ showBreadCrumbs: false
 ---
 
 # 杨帆的简历
-
+        
 ### 联系方式
-邮箱: vindurriel+job@gmail.com
+email: vindurriel+job@gmail.com
 
-github/twitter: vindurriel
+github: vindurriel
 
-### 自我介绍
-男, 1987年生，现居住于北京通州区
+### 关于我
 
-2010年毕业于北京邮电大学
+男性，生于1987年，目前居住在中国北京市通州区
 
-具有8年软件/互联网行业研发经验，熟悉内容资讯类网站、电商、抽奖、搜索引擎、抢购等系统的常用架构、轮子和设计模式，有一定项目管理经验
+2010年毕业于北京邮电大学并获得学士学位
 
-设计、开发、维护过日访问量过亿的在线系统(百度文库)，以及业务流程复杂的面向企业用户的系统（百度糯米mis、b端、广告平台）
+拥有多年的软件/互联网行业研发经验，熟悉内容信息网站、电子商务、数字彩票、高并发系统等的常见架构、框架及设计模式，同时拥有一定的产品管理经验。
 
-有自然语言处理/机器学习/大数据处理经验
+擅长设计、开发和维护日均页面浏览量超过1亿的在线系统（例如：https://wenku.baidu.com），以及面向企业客户复杂业务逻辑的系统（例如糯米APP的后台管理系统/面向B端APP/广告平台）。
 
-英语可日常交流，笔译过两本英文技术书籍 http://product.dangdang.com/23381404.html http://product.dangdang.com/23688013.html
+在自然语言处理(NLP)、机器学习以及通用大数据ETL任务方面亦有一定经验。
 
-### 技术栈
+能够进行英语听说读写，曾将两本技术类书籍从英文翻译为中文（http://product.dangdang.com/23381404.html http://product.dangdang.com/23688013.html）。
 
-.net ELK WPF d3js git hadoop java javascript jquery markdown memcache mvc mysql nginx nmq odp openresty php python react redis shell svn Unity3D
+### 技术技能
 
-### 求职意向
-互联网行业后端高级研发/架构, php/python/java 均可
+AWS, Golang, Kubernetes, Docker, Jenkins, Kafka, .NET, ELK, WPF, d3js, git, golang, hadoop, java, javascript, jquery, markdown, memcache, mvc, mysql, nginx, nmq, openresty, php, Python, React, redis, shell, svn, swift, Unity3D, Slack APIs, Confluence APIs 
 
-### 教育经历
-时间|院校|专业|学历/学位
--|-
-2006-2010|北京邮电大学|智能科学与技术|本科/学士
+### 职业偏好
+希望在互联网行业从事API开发/架构相关的领导岗位，可使用Golang/python/php/java进行编码。
 
-### 工作经历
-时间|公司|部门|职责
--|-
-2018/05-今 | FreeWheel, a Comcast Company | Biz-UI 团队 | 高级软件工程师
-2016/05-2018/04 | 百度 | 百度糯米研发部 | 后端研发T5
-2014/05-2016/04 | 百度 | 教育事业部-产品及研发部 | 后端研发T4
-2013/05-2014/04 | 安世亚太科技（北京）有限公司 | 研究院 | 研发经理
-2010/09-2013/04 | 安世亚太科技（北京）有限公司 | 研究院 | 全栈研发
+### 教育背景
+
+日期|院校|专业|学位
+-|-|-|-
+2006-2010|北京邮电大学|人工智能|学士
+
+### 职业经历 
+日期|公司|部门|职位
+-|-|-|-
+2018/05-至今 | FreeWheel, a Comcast Company | Biz-UI部门 | 高级软件工程师
+2016/05-2018/04 | 百度 | 糯米 | 高级后端研发工程师
+2014/05-2016/04 | 百度 | 教育 | 后端研发工程师
+2013/05-2014/04 | Pera Global | 研究院 | 项目经理
+2010/09-2013/04 | Pera Global | 研究院 | 全栈开发工程师
 
 ### 项目经历
 
-#### MRM, Comcast 广告系统 2018/05-今
-公司/部门: Freewheel, A Comcast Company
+#### MRM，Comcast的广告系统
+*2018/05-至今, Freewheel, A Comcast Company*
 
-项目描述: 具有广告计算、内容管理、变现优化等功能的广告平台
+描述：一个广告服务、库存管理、收益优化等功能的一体化广告平台。
 
-我负责: SSP系统（partner serivce, marketplace）设计、开发和维护
+职责：设计、开发与维护支持侧平台（Partner services, Marketplace）。
 
-技术栈: Golang, AWS, Kubernetes, React 16
+应用技术：Golang, AWS, Kubernetes, React 18
 
+#### 聚屏广告平台
+*2017/09-至今, 百度*
 
-#### 聚屏广告 2017/09-2018/04
-公司/部门: 百度-糯米研发部 
-项目描述: 支持合约、rtb等多种合作模式的o2o广告平台
+描述：支持合同和实时竞价模式的O2O广告平台。
 
-我负责: 服务侧平台（ssp）的设计、开发和维护,服务商合作解决方案的设计和维护，接入广告位服务商30+，日请求十万级
+职责：设计、开发与维护支持侧平台（SSP）；设计并维护一个技术合作解决方案，为超过30家广告媒体提供商支持，日查询量超过10万。
 
-技术栈: nginx tomcat springMVC java python redis mysql
+应用技术：nginx tomcat springMVC java python redis mysql
 
-#### 一元夺宝 2017/04-2017/09
+#### 一元众筹
+*2017/04-2017/09, 百度*
 
-公司/部门: 百度-糯米研发部
+描述：糯米APP上的一元众筹功能。
 
-项目描述: 糯米app一元夺宝模块功能
+职责：设计、开发与维护一个日活跃用户数达10万、日收益10万元的后端系统。
 
-我负责: 后端设计、开发和维护，日活十万级，日利润十万级
+应用技术：nginx odp php redis mysql
 
-技术栈: nginx odp php redis mysql
+#### 糯米APP数据分析平台
+*2017/03-2017/12, 百度*
 
-#### 糯米数据分析平台 2017/03-2017/12
+描述：糯米APP数据分析平台。
 
-公司/部门: 百度-糯米研发部
+职责：数据仓库模型管理，直接维护超过1000个hive ETL和调度任务。
 
-项目描述: 糯米数据分析
+应用技术：nginx CodeIgniter php python mysql hadoop hive 
 
-我负责: 数据仓库模型、数据etl任务维护，hql任务数量1000+
+#### 糯米APP会员卡
+*2016/05-2017/02, 百度*
 
-技术栈: nginx CodeIgniter php python mysql hadoop hive 
+描述：糯米APP的会员卡功能。
 
-#### 糯米储值卡 2016/05-2017/02
+职责：开发与维护一个日活跃用户数达10万、日交易金额10万元的后端系统。
 
-公司/部门: 百度-糯米研发部
+应用技术：nginx odp php redis mysql hadoop hive
 
-项目描述: 糯米app储值卡模块功能
+#### youke.baidu.com
+*2015/10-2016/04, 百度教育*
 
-我负责: 储值卡模块的迭代开发和维护，日活十万级，日流水十万级
+描述：一个为K-12老师服务的教育资源共享平台。
 
-技术栈: nginx odp php redis mysql hadoop hive
+职责：开发与维护拥有日均访问量1万、超过100万教育资源的后端系统。
 
-#### 百度优课 2015/10-2016/04
+应用技术：nginx odp php redis nmq mysql bos
 
-公司/部门: 百度-教育事业部-研发
+#### 高考志愿估分平台
+*2015/05-2016/04, 百度教育*
 
-项目描述: 面向k12教师的教育资源平台
+描述：为高考生提供志愿估分服务的平台，巅峰期日均页面浏览量超过1亿。
 
-我负责: 后端设计、开发和维护，pc端日访问量万级，mis端资源导入量百万级
+职责：负责设计、开发与维护估分服务，解决跨地域服务器部署、读写分离、多级缓存与队列等技术问题。
 
-技术栈: nginx odp php redis nmq mysql bos
+应用技术：nginx odp php redis nmq mysql
 
-#### 高考在线估分平台 2015/05-2016/04
+#### 百度文库会员系统
+*2015/03-2016/04, 百度教育*
 
-公司/部门: 百度-教育事业部-研发
+描述：百度文库的会员系统。
 
-项目描述: 面向高考考生的在线估分平台，峰值日访问量1.5亿
+职责：设计、开发与维护会员特权系统，日收益达10万元。
 
-我负责: 估分系统的后端设计、开发和维护，包括异地多活部署、读写分离、多级缓存、队列的设计使用等等。
+应用技术：nginx odp php redis nmq mysql
 
-技术栈: nginx odp php redis nmq mysql
+#### 百度文库后台管理系统
+*2014/05-2016/04, 百度教育*
 
-#### 百度文库会员系统 2015/03-2016/04
+描述：百度文库后台管理系统，包括文档审核、反垃圾、反盗版等功能。
 
-公司/部门: 百度-教育事业部-研发
+职责：设计、开发与维护文档审核、反垃圾及反盗版系统。
 
-项目描述: 百度文库会员系统，包含收银台、会员权益等
+应用技术：nginx odp php redis nmq mysql bos dsim
 
-我负责: 会员权益系统的后端设计、开发和维护，日利润十万级
+#### 百度文库组织系统
+*2014/05-2015/06, 百度教育*
 
-技术栈: nginx odp php redis nmq mysql
+描述：百度文库组织系统，包括管理组织账户的文档及合作伙伴之间收益分成。
 
-#### 百度文库运营平台 2014/05-2016/04
+职责：设计、开发与维护组织验证、文档上传以及收益分成功能。
 
-公司/部门: 百度-教育事业部-研发
+应用技术：nginx odp php redis nmq mysql bos
 
-项目描述: 百度文库运营平台，包含文档审核、反作弊、反盗版等系统
+#### K-Darwin，知识管理系统
+*2013-2014, Pera Global研究院*
 
-我负责: 文档审核、反作弊、反盗版系统的设计、开发和维护，去重后文档数量2亿，日新增文档百万级，正版文档库10万级
+描述：一个为企业研发人员服务的知识管理系统，具有聚合搜索、知识发现、基于规则的知识蜘蛛与内容推荐等功能。
 
-技术栈: nginx odp php redis nmq mysql bos dsim
+职责：项目管理；设计与开发算法集成和数据可视化系统。
 
-#### 百度文库机构系统 2014/05-2015/06
-
-公司/部门: 百度-教育事业部-研发
-
-项目描述: 管理机构文档，文档下载收入和机构分成
-
-我负责: 机构认证、文档上传、收入结算分成等模块的设计和实现
-
-技术栈: nginx odp php redis nmq mysql bos
-
-#### K-Darwin知识库 2013-2014
-
-公司/部门: 安世亚太-研究院
-
-项目描述: 一个知识管理系统，目标群体为企业研发人员，功能包括聚合搜索、知识发现、基于策略的知识爬虫、推荐等
-
-我负责: 项目管理、算法集成、数据可视化模块的设计、开发
-
-技术栈: IIS .net javascript d3js python mysql neo4j
+应用技术：IIS .net javascript d3js python mysql neo4j

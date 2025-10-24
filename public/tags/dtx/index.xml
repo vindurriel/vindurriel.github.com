@@ -4,7 +4,7 @@
     <title>Dtx on vindurriel</title>
     <link>https://vindurriel.github.io/tags/dtx/</link>
     <description>Recent content in Dtx on vindurriel</description>
-    <generator>Hugo -- 0.151.0</generator>
+    <generator>Hugo -- 0.152.1</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/tags/dtx/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +15,8 @@
       <guid>https://vindurriel.github.io/post/dtx/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;声明：本文是一本已经出版的技术图书的其中一章的原稿:
-&lt;a href=&#34;https://book.douban.com/subject/35680546/&#34;&gt;云原生应用架构：微服务开发最佳实战&lt;/a&gt;。 作者是我和FreeWheel的前同事们。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;a href=&#34;https://book.douban.com/subject/35680546/&#34;&gt;云原生应用架构：微服务开发最佳实战&lt;/a&gt;。 作者是我和FreeWheel的前同事们。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h1 id=&#34;引言&#34;&gt;引言&lt;/h1&gt;
 &lt;p&gt;随着软件系统从单体应用迈向微服务架构以及数据库选型去中心化、异构化的趋势，传统的ACID事务在分布式系统上能否延续，如何落地，有哪些注意事项？本文将围绕分布式事务这一技术议题，介绍FreeWheel核心业务系统在相关领域的业务需求、技术决策和线上实践。&lt;/p&gt;
 &lt;h1 id=&#34;分布式事务的挑战&#34;&gt;分布式事务的挑战&lt;/h1&gt;

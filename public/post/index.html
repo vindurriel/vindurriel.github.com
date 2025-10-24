@@ -19,8 +19,8 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://vindurriel.github.io/post/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/en/post/">
 <link rel="alternate" hreflang="zh" href="https://vindurriel.github.io/post/">
+<link rel="alternate" hreflang="en" href="https://vindurriel.github.io/en/post/">
 <noscript>
     <style>
         #theme-toggle,
@@ -217,7 +217,11 @@ genius分词
 2.2 词的重要程度如何衡量？ 词频（TF） 需要去掉词频太高的词（停用词）
 固定搭配的频率 N-Gram
 词性 名词、动词一般比副词、形容词重要
-...</p>
+专业词典&#43;文章分类信息 有了专业词典以及文章分类的数据，就可以用更高级的统计工具，甚至是信息论的知识，利用词在不同类别和领域中的分布差异以及权重， 计算词对文章的互信息。这方面简单的方法有TF-IDF，相对复杂的方法有LDA（主题词的提取）。
+3. 找出一部分重要的句子 需要根据重要性对句子进行一个排序，选出排名靠前的，加入最后的摘要。最后，最好能恢复句子原有的顺序，以便人们阅读和理解。
+到底要几句？摘要的长度应该是可以参数化的，策略可以采取最少一句，最多N句，N是参数，也可以用百分比来定义，即文章总句数的x%，x为参数。
+示例4 一个简单的文本摘要的python实现 # encoding=utf-8 from collections import defaultdict frequencies=defaultdict(int) stop_words=set() DISPLAY_FULLTEXT=False SUMMARY_RATIO= 0.1 def init_stopwords(): global stop_words stop_words= set(u&#34;where the of is and to in that we for an are by be as on with can if from which you it this then at have all not one has or that&#34;.split()) file_stopwords=&#34;stop_words.txt&#34; import os if os.path.isfile(file_stopwords): lines=file(file_stopwords,&#39;r&#39;).read().split(&#34;\n&#34;) stop_words=stop_words | set(lines) def split_to_sentences(text): &#39;&#39;&#39;Very simple spliting to sentences by [.!?] and paragraphs. In real life we&#39;ll be much more fancy. &#39;&#39;&#39; import nltk.data tokenizer = nltk.data.load(&#39;tokenizers/punkt/english.pickle&#39;) text =&#34;\n\n&#34;.join(tokenizer.tokenize(text)) import re sentences=[] start = 0 for match in re.finditer(u&#39;(\s*[。？！]\s*)|(\n{2,})&#39;, text): sentences.append(text[start:match.end()].strip()) start = match.end() sentences=filter(lambda x:len(x)&gt;2,sentences) return sentences def tokenize(text): &#39;&#39;&#39;tokenize using jieba &#39;&#39;&#39; import jieba return jieba.cut(text) def token_frequency(text): &#39;&#39;&#39;Return frequency (count) for each token in the text&#39;&#39;&#39; res = defaultdict(int) for token in tokenize(text): res[token] &#43;= 1 return res def sentence_score(sentences): &#39;&#39;&#39;get sentence score using word frequencey&#39;&#39;&#39; global frequencies,stop_words if not len(stop_words): init_stopwords() scores=[] import math num_sentences=len(sentences) len_sentences=map(len,sentences) max_len_sentences=max(len_sentences) min_len_sentences=min(len_sentences) for i,sentence in enumerate(sentences): tokens=tokenize(sentence) #词频的和，去掉停用词 score= sum((frequencies[token] for token in tokens if token not in stop_words)) #削弱句子长度的影响 length_factor=1-1.0*(len_sentences[i]-min_len_sentences)/max_len_sentences score*=length_factor #增加句子位置的影响(越靠前越好) position_factor=1-0.3*i/num_sentences score*=position_factor scores.append(score) return scores def create_summary(sentences): global frequencies summary = [] import math len_sentence=int(math.ceil(len(sentences)*SUMMARY_RATIO)) len_sentence=max(len_sentence,1) len_sentence=min(len_sentence,10) score=sentence_score(sentences) score=[(i,s) for i,s in enumerate(score)] #根据得分排序 score.sort(key=lambda s:s[1],reverse=1) #取出得分靠前的句子 score=score[:len_sentence] #恢复原来句子的顺序 score.sort(key=lambda s:s[0]) summary=[sentences[x[0]] for x in score] return set([x[0] for x in score]) # return &#39;\n&#39;.join(summary) def decode_text(text): for x in [&#39;utf-8&#39;,&#39;gbk&#39;]: try: return text.decode(x) except Exception, e: pass raise Exception(&#39;cannot decode using all codings&#39;) def summarize(text): global frequencies text=decode_text(text) frequencies = token_frequency(text) sentences = split_to_sentences(text) if not len(sentences): return ([],set()) index = create_summary(sentences) return (sentences,index) if __name__ == &#39;__main__&#39;: from colorize import Color clr = Color() s=file(&#39;test.txt&#39;,&#39;r&#39;).read() sentences,index=summarize(s) for i,sentence in enumerate(sentences): s=sentence.encode(&#39;gbk&#39;) if i in index: print s # clr.print_red_text(s) elif DISPLAY_FULLTEXT: print s print sorted(list(index)) 思考题3 请从句子的位置和内容两方面入手，思考如何改进上面简单文本摘要程序的表现。
+</p>
   </div>
   <footer class="entry-footer"><span title='2014-03-26 00:00:00 +0000 UTC'>2014年3月26日</span></footer>
   <a class="entry-link" aria-label="post link to 用Python做文本摘要" href="https://vindurriel.github.io/post/2014-03-26-python-3/"></a>
@@ -277,6 +281,7 @@ Html、Xml解析：BeautifulSoup, Expat
 图形模块： Tkinter、PyTCL、WxPython
 串行化、多线程等
 扩展标准库十分容易
+胶水语言(glue language) Python经常用作将不同语言编写的程序“粘”在一起的胶水语言。 Google内部的很多项目使用C&#43;&#43;编写性能要求极高的部分，然后用Python调用相应的模块。
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2014-03-24 00:00:00 +0000 UTC'>2014年3月24日</span></footer>
@@ -367,6 +372,7 @@ No. 3 让你自己去按下拉杆 想象一下箱子里的小白鼠。或者如�
 她没赢。总有人更沉迷。
 So What’s The Problem? 有什么问题吗？ 你能想象她坐在那，看着她的小人在箱子旁边，一遍又一遍地点对话框，一遍又一遍地看同样的动画效果，就这样消耗掉一小时又一小时？
 如果你不了解，你会觉得她有严重的心理疾病。一个有理性的人怎么可能表现出这种“雨人”一样的强迫症行为？
+B. F. Skinner了解。他称这种训练过程为“塑形”。小小的奖励，步步引诱，就像链条上的环节。在WoW中你想要拿到拉风的T10套装。你需要5个部件。集齐套装需要400个冰霜灰烬，这种物品从某些敌人身上一次掉两三个。然后需要把每个装备部件用神圣印记升级。然后再用英雄的神圣印记升级。要得到这些你需要重复完成同样的任务，一天又一天地坐在那里点鼠标，玩游戏。软妹子怨念中。
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2013-09-09 00:00:00 +0000 UTC'>2013年9月9日</span></footer>

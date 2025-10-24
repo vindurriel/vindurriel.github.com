@@ -13,21 +13,30 @@
 
 Yahoo收购新闻摘要应用Summly
 
+
 宗仁 2013-03-26 07:53 没有评论
+
 
 标签：Summly 新闻摘要
 
+
 Yahoo 昨日宣布收购新闻摘要移动公司Summly，价格可能为3000万美金，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。
+
 
 Summly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。
 
+
 自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。
+
 
 以下是雅虎在其官方博客上发布的声明：
 
+
 今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。
 
+
 尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。
+
 这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。
 下面我们就来看看做文本摘要的大致思路。
 大致思路
@@ -67,7 +76,126 @@ genius分词
 固定搭配的频率
 N-Gram
 词性
-名词、动词一般比副词、形容词重要">
+名词、动词一般比副词、形容词重要
+专业词典&#43;文章分类信息
+有了专业词典以及文章分类的数据，就可以用更高级的统计工具，甚至是信息论的知识，利用词在不同类别和领域中的分布差异以及权重，
+计算词对文章的互信息。这方面简单的方法有TF-IDF，相对复杂的方法有LDA（主题词的提取）。
+3. 找出一部分重要的句子
+需要根据重要性对句子进行一个排序，选出排名靠前的，加入最后的摘要。最后，最好能恢复句子原有的顺序，以便人们阅读和理解。
+到底要几句？摘要的长度应该是可以参数化的，策略可以采取最少一句，最多N句，N是参数，也可以用百分比来定义，即文章总句数的x%，x为参数。
+示例4 一个简单的文本摘要的python实现
+# encoding=utf-8
+from collections import defaultdict
+frequencies=defaultdict(int)
+stop_words=set()
+DISPLAY_FULLTEXT=False
+SUMMARY_RATIO= 0.1
+def init_stopwords():
+	global stop_words
+	stop_words= set(u&#34;where the of is and to in that we for an are by be as on with can if from which you it this then at have all not one has or that&#34;.split())
+	file_stopwords=&#34;stop_words.txt&#34;
+	import os
+	if os.path.isfile(file_stopwords):
+		lines=file(file_stopwords,&#39;r&#39;).read().split(&#34;\n&#34;)
+		stop_words=stop_words | set(lines)
+def split_to_sentences(text):
+	&#39;&#39;&#39;Very simple spliting to sentences by [.!?] and paragraphs.
+	In real life we&#39;ll be much more fancy.
+	&#39;&#39;&#39;
+	import nltk.data
+	tokenizer = nltk.data.load(&#39;tokenizers/punkt/english.pickle&#39;)
+	text =&#34;\n\n&#34;.join(tokenizer.tokenize(text))
+	import re
+	sentences=[]
+	start = 0
+	for match in re.finditer(u&#39;(\s*[。？！]\s*)|(\n{2,})&#39;, text):
+		sentences.append(text[start:match.end()].strip())
+		start = match.end()
+	sentences=filter(lambda x:len(x)&gt;2,sentences)
+	return sentences
+def tokenize(text):
+	&#39;&#39;&#39;tokenize using jieba
+	&#39;&#39;&#39;
+	import jieba
+	return jieba.cut(text)
+def token_frequency(text):
+	&#39;&#39;&#39;Return frequency (count) for each token in the text&#39;&#39;&#39;
+	res = defaultdict(int)
+	for token in tokenize(text):
+		res[token] &#43;= 1
+	return res
+def sentence_score(sentences):
+	&#39;&#39;&#39;get sentence score using word frequencey&#39;&#39;&#39;
+	global frequencies,stop_words
+	if not len(stop_words):
+		init_stopwords()
+	scores=[]
+	import math
+	num_sentences=len(sentences)
+	len_sentences=map(len,sentences)
+	max_len_sentences=max(len_sentences)
+	min_len_sentences=min(len_sentences)
+	for i,sentence in enumerate(sentences):
+		tokens=tokenize(sentence)
+		#词频的和，去掉停用词
+		score= sum((frequencies[token] for token in tokens if token not in stop_words))
+		#削弱句子长度的影响
+		length_factor=1-1.0*(len_sentences[i]-min_len_sentences)/max_len_sentences
+		score*=length_factor
+		#增加句子位置的影响(越靠前越好)
+		position_factor=1-0.3*i/num_sentences
+		score*=position_factor
+		scores.append(score)
+	return scores
+def create_summary(sentences):
+	global frequencies
+	summary = []
+	import math
+	len_sentence=int(math.ceil(len(sentences)*SUMMARY_RATIO))
+	len_sentence=max(len_sentence,1)
+	len_sentence=min(len_sentence,10)
+	score=sentence_score(sentences)
+	score=[(i,s) for i,s in enumerate(score)]
+	#根据得分排序
+	score.sort(key=lambda s:s[1],reverse=1)
+	#取出得分靠前的句子
+	score=score[:len_sentence]
+	#恢复原来句子的顺序
+	score.sort(key=lambda s:s[0])
+	summary=[sentences[x[0]] for x in score]
+	return set([x[0] for x in score])
+	# return &#39;\n&#39;.join(summary)
+def decode_text(text):
+	for x in [&#39;utf-8&#39;,&#39;gbk&#39;]:
+		try:
+			return text.decode(x)
+		except Exception, e:
+			pass
+	raise Exception(&#39;cannot decode using all codings&#39;)
+def summarize(text):
+	global frequencies
+	text=decode_text(text)
+	frequencies = token_frequency(text)
+	sentences = split_to_sentences(text)
+	if not len(sentences):
+		return ([],set())
+	index = create_summary(sentences)
+	return (sentences,index)
+if __name__ == &#39;__main__&#39;:
+	from colorize import Color
+	clr = Color()  
+	s=file(&#39;test.txt&#39;,&#39;r&#39;).read()
+	sentences,index=summarize(s)
+	for i,sentence in enumerate(sentences):
+		s=sentence.encode(&#39;gbk&#39;)
+		if i in index:
+			print s
+			# clr.print_red_text(s)
+		elif DISPLAY_FULLTEXT:
+			print s
+	print sorted(list(index))
+思考题3
+请从句子的位置和内容两方面入手，思考如何改进上面简单文本摘要程序的表现。">
 <meta name="author" content="">
 <link rel="canonical" href="https://vindurriel.github.io/post/2014-03-26-python-3/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
@@ -147,7 +275,11 @@ Python比较好的中文分词工具有：
 genius分词
 2.2 词的重要程度如何衡量？ 词频（TF） 需要去掉词频太高的词（停用词）
 固定搭配的频率 N-Gram
-词性 名词、动词一般比副词、形容词重要">
+词性 名词、动词一般比副词、形容词重要
+专业词典&#43;文章分类信息 有了专业词典以及文章分类的数据，就可以用更高级的统计工具，甚至是信息论的知识，利用词在不同类别和领域中的分布差异以及权重， 计算词对文章的互信息。这方面简单的方法有TF-IDF，相对复杂的方法有LDA（主题词的提取）。
+3. 找出一部分重要的句子 需要根据重要性对句子进行一个排序，选出排名靠前的，加入最后的摘要。最后，最好能恢复句子原有的顺序，以便人们阅读和理解。
+到底要几句？摘要的长度应该是可以参数化的，策略可以采取最少一句，最多N句，N是参数，也可以用百分比来定义，即文章总句数的x%，x为参数。
+示例4 一个简单的文本摘要的python实现 # encoding=utf-8 from collections import defaultdict frequencies=defaultdict(int) stop_words=set() DISPLAY_FULLTEXT=False SUMMARY_RATIO= 0.1 def init_stopwords(): global stop_words stop_words= set(u&#34;where the of is and to in that we for an are by be as on with can if from which you it this then at have all not one has or that&#34;.split()) file_stopwords=&#34;stop_words.txt&#34; import os if os.path.isfile(file_stopwords): lines=file(file_stopwords,&#39;r&#39;).read().split(&#34;\n&#34;) stop_words=stop_words | set(lines) def split_to_sentences(text): &#39;&#39;&#39;Very simple spliting to sentences by [.!?] and paragraphs. In real life we&#39;ll be much more fancy. &#39;&#39;&#39; import nltk.data tokenizer = nltk.data.load(&#39;tokenizers/punkt/english.pickle&#39;) text =&#34;\n\n&#34;.join(tokenizer.tokenize(text)) import re sentences=[] start = 0 for match in re.finditer(u&#39;(\s*[。？！]\s*)|(\n{2,})&#39;, text): sentences.append(text[start:match.end()].strip()) start = match.end() sentences=filter(lambda x:len(x)&gt;2,sentences) return sentences def tokenize(text): &#39;&#39;&#39;tokenize using jieba &#39;&#39;&#39; import jieba return jieba.cut(text) def token_frequency(text): &#39;&#39;&#39;Return frequency (count) for each token in the text&#39;&#39;&#39; res = defaultdict(int) for token in tokenize(text): res[token] &#43;= 1 return res def sentence_score(sentences): &#39;&#39;&#39;get sentence score using word frequencey&#39;&#39;&#39; global frequencies,stop_words if not len(stop_words): init_stopwords() scores=[] import math num_sentences=len(sentences) len_sentences=map(len,sentences) max_len_sentences=max(len_sentences) min_len_sentences=min(len_sentences) for i,sentence in enumerate(sentences): tokens=tokenize(sentence) #词频的和，去掉停用词 score= sum((frequencies[token] for token in tokens if token not in stop_words)) #削弱句子长度的影响 length_factor=1-1.0*(len_sentences[i]-min_len_sentences)/max_len_sentences score*=length_factor #增加句子位置的影响(越靠前越好) position_factor=1-0.3*i/num_sentences score*=position_factor scores.append(score) return scores def create_summary(sentences): global frequencies summary = [] import math len_sentence=int(math.ceil(len(sentences)*SUMMARY_RATIO)) len_sentence=max(len_sentence,1) len_sentence=min(len_sentence,10) score=sentence_score(sentences) score=[(i,s) for i,s in enumerate(score)] #根据得分排序 score.sort(key=lambda s:s[1],reverse=1) #取出得分靠前的句子 score=score[:len_sentence] #恢复原来句子的顺序 score.sort(key=lambda s:s[0]) summary=[sentences[x[0]] for x in score] return set([x[0] for x in score]) # return &#39;\n&#39;.join(summary) def decode_text(text): for x in [&#39;utf-8&#39;,&#39;gbk&#39;]: try: return text.decode(x) except Exception, e: pass raise Exception(&#39;cannot decode using all codings&#39;) def summarize(text): global frequencies text=decode_text(text) frequencies = token_frequency(text) sentences = split_to_sentences(text) if not len(sentences): return ([],set()) index = create_summary(sentences) return (sentences,index) if __name__ == &#39;__main__&#39;: from colorize import Color clr = Color() s=file(&#39;test.txt&#39;,&#39;r&#39;).read() sentences,index=summarize(s) for i,sentence in enumerate(sentences): s=sentence.encode(&#39;gbk&#39;) if i in index: print s # clr.print_red_text(s) elif DISPLAY_FULLTEXT: print s print sorted(list(index)) 思考题3 请从句子的位置和内容两方面入手，思考如何改进上面简单文本摘要程序的表现。">
   <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -163,21 +295,30 @@ genius分词
 
 Yahoo收购新闻摘要应用Summly
 
+
 宗仁 2013-03-26 07:53 没有评论
+
 
 标签：Summly 新闻摘要
 
+
 Yahoo 昨日宣布收购新闻摘要移动公司Summly，价格可能为3000万美金，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。
+
 
 Summly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。
 
+
 自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。
+
 
 以下是雅虎在其官方博客上发布的声明：
 
+
 今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。
 
+
 尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。
+
 这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。
 下面我们就来看看做文本摘要的大致思路。
 大致思路
@@ -217,7 +358,126 @@ genius分词
 固定搭配的频率
 N-Gram
 词性
-名词、动词一般比副词、形容词重要">
+名词、动词一般比副词、形容词重要
+专业词典&#43;文章分类信息
+有了专业词典以及文章分类的数据，就可以用更高级的统计工具，甚至是信息论的知识，利用词在不同类别和领域中的分布差异以及权重，
+计算词对文章的互信息。这方面简单的方法有TF-IDF，相对复杂的方法有LDA（主题词的提取）。
+3. 找出一部分重要的句子
+需要根据重要性对句子进行一个排序，选出排名靠前的，加入最后的摘要。最后，最好能恢复句子原有的顺序，以便人们阅读和理解。
+到底要几句？摘要的长度应该是可以参数化的，策略可以采取最少一句，最多N句，N是参数，也可以用百分比来定义，即文章总句数的x%，x为参数。
+示例4 一个简单的文本摘要的python实现
+# encoding=utf-8
+from collections import defaultdict
+frequencies=defaultdict(int)
+stop_words=set()
+DISPLAY_FULLTEXT=False
+SUMMARY_RATIO= 0.1
+def init_stopwords():
+	global stop_words
+	stop_words= set(u&#34;where the of is and to in that we for an are by be as on with can if from which you it this then at have all not one has or that&#34;.split())
+	file_stopwords=&#34;stop_words.txt&#34;
+	import os
+	if os.path.isfile(file_stopwords):
+		lines=file(file_stopwords,&#39;r&#39;).read().split(&#34;\n&#34;)
+		stop_words=stop_words | set(lines)
+def split_to_sentences(text):
+	&#39;&#39;&#39;Very simple spliting to sentences by [.!?] and paragraphs.
+	In real life we&#39;ll be much more fancy.
+	&#39;&#39;&#39;
+	import nltk.data
+	tokenizer = nltk.data.load(&#39;tokenizers/punkt/english.pickle&#39;)
+	text =&#34;\n\n&#34;.join(tokenizer.tokenize(text))
+	import re
+	sentences=[]
+	start = 0
+	for match in re.finditer(u&#39;(\s*[。？！]\s*)|(\n{2,})&#39;, text):
+		sentences.append(text[start:match.end()].strip())
+		start = match.end()
+	sentences=filter(lambda x:len(x)&gt;2,sentences)
+	return sentences
+def tokenize(text):
+	&#39;&#39;&#39;tokenize using jieba
+	&#39;&#39;&#39;
+	import jieba
+	return jieba.cut(text)
+def token_frequency(text):
+	&#39;&#39;&#39;Return frequency (count) for each token in the text&#39;&#39;&#39;
+	res = defaultdict(int)
+	for token in tokenize(text):
+		res[token] &#43;= 1
+	return res
+def sentence_score(sentences):
+	&#39;&#39;&#39;get sentence score using word frequencey&#39;&#39;&#39;
+	global frequencies,stop_words
+	if not len(stop_words):
+		init_stopwords()
+	scores=[]
+	import math
+	num_sentences=len(sentences)
+	len_sentences=map(len,sentences)
+	max_len_sentences=max(len_sentences)
+	min_len_sentences=min(len_sentences)
+	for i,sentence in enumerate(sentences):
+		tokens=tokenize(sentence)
+		#词频的和，去掉停用词
+		score= sum((frequencies[token] for token in tokens if token not in stop_words))
+		#削弱句子长度的影响
+		length_factor=1-1.0*(len_sentences[i]-min_len_sentences)/max_len_sentences
+		score*=length_factor
+		#增加句子位置的影响(越靠前越好)
+		position_factor=1-0.3*i/num_sentences
+		score*=position_factor
+		scores.append(score)
+	return scores
+def create_summary(sentences):
+	global frequencies
+	summary = []
+	import math
+	len_sentence=int(math.ceil(len(sentences)*SUMMARY_RATIO))
+	len_sentence=max(len_sentence,1)
+	len_sentence=min(len_sentence,10)
+	score=sentence_score(sentences)
+	score=[(i,s) for i,s in enumerate(score)]
+	#根据得分排序
+	score.sort(key=lambda s:s[1],reverse=1)
+	#取出得分靠前的句子
+	score=score[:len_sentence]
+	#恢复原来句子的顺序
+	score.sort(key=lambda s:s[0])
+	summary=[sentences[x[0]] for x in score]
+	return set([x[0] for x in score])
+	# return &#39;\n&#39;.join(summary)
+def decode_text(text):
+	for x in [&#39;utf-8&#39;,&#39;gbk&#39;]:
+		try:
+			return text.decode(x)
+		except Exception, e:
+			pass
+	raise Exception(&#39;cannot decode using all codings&#39;)
+def summarize(text):
+	global frequencies
+	text=decode_text(text)
+	frequencies = token_frequency(text)
+	sentences = split_to_sentences(text)
+	if not len(sentences):
+		return ([],set())
+	index = create_summary(sentences)
+	return (sentences,index)
+if __name__ == &#39;__main__&#39;:
+	from colorize import Color
+	clr = Color()  
+	s=file(&#39;test.txt&#39;,&#39;r&#39;).read()
+	sentences,index=summarize(s)
+	for i,sentence in enumerate(sentences):
+		s=sentence.encode(&#39;gbk&#39;)
+		if i in index:
+			print s
+			# clr.print_red_text(s)
+		elif DISPLAY_FULLTEXT:
+			print s
+	print sorted(list(index))
+思考题3
+请从句子的位置和内容两方面入手，思考如何改进上面简单文本摘要程序的表现。">
 
 
 <script type="application/ld+json">
@@ -246,7 +506,7 @@ N-Gram
   "@type": "BlogPosting",
   "headline": "用Python做文本摘要",
   "name": "用Python做文本摘要",
-  "description": "本文是系列的第三篇。\n文本摘要 以下新闻来自雷锋网\nYahoo收购新闻摘要应用Summly\n宗仁 2013-03-26 07:53 没有评论\n标签：Summly 新闻摘要\nYahoo 昨日宣布收购新闻摘要移动公司Summly，价格可能为3000万美金，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。\nSummly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。\n自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。\n以下是雅虎在其官方博客上发布的声明：\n今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。\n尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。\n这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。\n下面我们就来看看做文本摘要的大致思路。\n大致思路 文本摘要 顾名思义，就是找出一部分重要的句子。 这句话有三个逻辑重点。\n1. 找出一部分重要的句子 也就是说要把文章切成句子。比较直观的想法是根据标点符号以及空格、换行符等。断句这个问题，英文反而比中文要复杂，例如句号.和单引号'都是有多个意思的，都不一定能标明一句话的结尾。\n2. 找出一部分重要的句子 如何衡量一篇文章里的每句话是否重要？怎样量化这个重要性？有以下思考的角度。\n根据位置（标题、导语、段首段尾） 一般来说，文章尤其是新闻的标题、节标题、导语和段首段尾比较重要。对于html解析而言，就是title、h1、h2、a、strong等标记中的文字更重要。\n根据内容 内容方面，需要把粒度细分到词的重要程度，如果一句话中的词很重要，那么这句话很重要。\n那么就有下面的两个问题：\n怎么获得一句话中的词？也就是分词问题。\n词的重要程度如何衡量？\n下面分别来介绍这两个问题。\n2.1 分词 就是在词与词之间插入标记，一般是空格。英文文本不需要这一步，本来就有空格。但中文没有，而且一词多义现象很多， 语法结构还会随着词的位置而变化，因此中文分词是一个比较独特的问题。\n但是中文分词和语音识别很像，因为语音信号在词与词之间也是没有空格的，因此可共用技术（HMM，CRF）。\nPython比较好的中文分词工具有：\n结巴分词\ngenius分词\n2.2 词的重要程度如何衡量？ 词频（TF） 需要去掉词频太高的词（停用词）\n固定搭配的频率 N-Gram\n词性 名词、动词一般比副词、形容词重要\n",
+  "description": "本文是系列的第三篇。\n文本摘要 以下新闻来自雷锋网\nYahoo收购新闻摘要应用Summly\n宗仁 2013-03-26 07:53 没有评论\n标签：Summly 新闻摘要\nYahoo 昨日宣布收购新闻摘要移动公司Summly，价格可能为3000万美金，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。\nSummly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。\n自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。\n以下是雅虎在其官方博客上发布的声明：\n今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。\n尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。\n这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。\n下面我们就来看看做文本摘要的大致思路。\n大致思路 文本摘要 顾名思义，就是找出一部分重要的句子。 这句话有三个逻辑重点。\n1. 找出一部分重要的句子 也就是说要把文章切成句子。比较直观的想法是根据标点符号以及空格、换行符等。断句这个问题，英文反而比中文要复杂，例如句号.和单引号'都是有多个意思的，都不一定能标明一句话的结尾。\n2. 找出一部分重要的句子 如何衡量一篇文章里的每句话是否重要？怎样量化这个重要性？有以下思考的角度。\n根据位置（标题、导语、段首段尾） 一般来说，文章尤其是新闻的标题、节标题、导语和段首段尾比较重要。对于html解析而言，就是title、h1、h2、a、strong等标记中的文字更重要。\n根据内容 内容方面，需要把粒度细分到词的重要程度，如果一句话中的词很重要，那么这句话很重要。\n那么就有下面的两个问题：\n怎么获得一句话中的词？也就是分词问题。\n词的重要程度如何衡量？\n下面分别来介绍这两个问题。\n2.1 分词 就是在词与词之间插入标记，一般是空格。英文文本不需要这一步，本来就有空格。但中文没有，而且一词多义现象很多， 语法结构还会随着词的位置而变化，因此中文分词是一个比较独特的问题。\n但是中文分词和语音识别很像，因为语音信号在词与词之间也是没有空格的，因此可共用技术（HMM，CRF）。\nPython比较好的中文分词工具有：\n结巴分词\ngenius分词\n2.2 词的重要程度如何衡量？ 词频（TF） 需要去掉词频太高的词（停用词）\n固定搭配的频率 N-Gram\n词性 名词、动词一般比副词、形容词重要\n专业词典+文章分类信息 有了专业词典以及文章分类的数据，就可以用更高级的统计工具，甚至是信息论的知识，利用词在不同类别和领域中的分布差异以及权重， 计算词对文章的互信息。这方面简单的方法有TF-IDF，相对复杂的方法有LDA（主题词的提取）。\n3. 找出一部分重要的句子 需要根据重要性对句子进行一个排序，选出排名靠前的，加入最后的摘要。最后，最好能恢复句子原有的顺序，以便人们阅读和理解。\n到底要几句？摘要的长度应该是可以参数化的，策略可以采取最少一句，最多N句，N是参数，也可以用百分比来定义，即文章总句数的x%，x为参数。\n示例4 一个简单的文本摘要的python实现 # encoding=utf-8 from collections import defaultdict frequencies=defaultdict(int) stop_words=set() DISPLAY_FULLTEXT=False SUMMARY_RATIO= 0.1 def init_stopwords(): global stop_words stop_words= set(u\u0026#34;where the of is and to in that we for an are by be as on with can if from which you it this then at have all not one has or that\u0026#34;.split()) file_stopwords=\u0026#34;stop_words.txt\u0026#34; import os if os.path.isfile(file_stopwords): lines=file(file_stopwords,\u0026#39;r\u0026#39;).read().split(\u0026#34;\\n\u0026#34;) stop_words=stop_words | set(lines) def split_to_sentences(text): \u0026#39;\u0026#39;\u0026#39;Very simple spliting to sentences by [.!?] and paragraphs. In real life we\u0026#39;ll be much more fancy. \u0026#39;\u0026#39;\u0026#39; import nltk.data tokenizer = nltk.data.load(\u0026#39;tokenizers/punkt/english.pickle\u0026#39;) text =\u0026#34;\\n\\n\u0026#34;.join(tokenizer.tokenize(text)) import re sentences=[] start = 0 for match in re.finditer(u\u0026#39;(\\s*[。？！]\\s*)|(\\n{2,})\u0026#39;, text): sentences.append(text[start:match.end()].strip()) start = match.end() sentences=filter(lambda x:len(x)\u0026gt;2,sentences) return sentences def tokenize(text): \u0026#39;\u0026#39;\u0026#39;tokenize using jieba \u0026#39;\u0026#39;\u0026#39; import jieba return jieba.cut(text) def token_frequency(text): \u0026#39;\u0026#39;\u0026#39;Return frequency (count) for each token in the text\u0026#39;\u0026#39;\u0026#39; res = defaultdict(int) for token in tokenize(text): res[token] += 1 return res def sentence_score(sentences): \u0026#39;\u0026#39;\u0026#39;get sentence score using word frequencey\u0026#39;\u0026#39;\u0026#39; global frequencies,stop_words if not len(stop_words): init_stopwords() scores=[] import math num_sentences=len(sentences) len_sentences=map(len,sentences) max_len_sentences=max(len_sentences) min_len_sentences=min(len_sentences) for i,sentence in enumerate(sentences): tokens=tokenize(sentence) #词频的和，去掉停用词 score= sum((frequencies[token] for token in tokens if token not in stop_words)) #削弱句子长度的影响 length_factor=1-1.0*(len_sentences[i]-min_len_sentences)/max_len_sentences score*=length_factor #增加句子位置的影响(越靠前越好) position_factor=1-0.3*i/num_sentences score*=position_factor scores.append(score) return scores def create_summary(sentences): global frequencies summary = [] import math len_sentence=int(math.ceil(len(sentences)*SUMMARY_RATIO)) len_sentence=max(len_sentence,1) len_sentence=min(len_sentence,10) score=sentence_score(sentences) score=[(i,s) for i,s in enumerate(score)] #根据得分排序 score.sort(key=lambda s:s[1],reverse=1) #取出得分靠前的句子 score=score[:len_sentence] #恢复原来句子的顺序 score.sort(key=lambda s:s[0]) summary=[sentences[x[0]] for x in score] return set([x[0] for x in score]) # return \u0026#39;\\n\u0026#39;.join(summary) def decode_text(text): for x in [\u0026#39;utf-8\u0026#39;,\u0026#39;gbk\u0026#39;]: try: return text.decode(x) except Exception, e: pass raise Exception(\u0026#39;cannot decode using all codings\u0026#39;) def summarize(text): global frequencies text=decode_text(text) frequencies = token_frequency(text) sentences = split_to_sentences(text) if not len(sentences): return ([],set()) index = create_summary(sentences) return (sentences,index) if __name__ == \u0026#39;__main__\u0026#39;: from colorize import Color clr = Color() s=file(\u0026#39;test.txt\u0026#39;,\u0026#39;r\u0026#39;).read() sentences,index=summarize(s) for i,sentence in enumerate(sentences): s=sentence.encode(\u0026#39;gbk\u0026#39;) if i in index: print s # clr.print_red_text(s) elif DISPLAY_FULLTEXT: print s print sorted(list(index)) 思考题3 请从句子的位置和内容两方面入手，思考如何改进上面简单文本摘要程序的表现。\n",
   "keywords": [
     "python", "tutorial"
   ],
@@ -350,23 +610,32 @@ N-Gram
 <h2 id="文本摘要">文本摘要<a hidden class="anchor" aria-hidden="true" href="#文本摘要">#</a></h2>
 <p>以下新闻来自<a href="http://www.leiphone.com/yahoo-summly.html">雷锋网</a></p>
 <blockquote>
-<p><strong>Yahoo收购新闻摘要应用Summly</strong></p></blockquote>
+<p><strong>Yahoo收购新闻摘要应用Summly</strong></p>
+</blockquote>
 <blockquote>
-<p>宗仁 2013-03-26 07:53 没有评论</p></blockquote>
+<p>宗仁 2013-03-26 07:53 没有评论</p>
+</blockquote>
 <blockquote>
-<p>标签：Summly 新闻摘要</p></blockquote>
+<p>标签：Summly 新闻摘要</p>
+</blockquote>
 <blockquote>
-<p>Yahoo 昨日宣布收购新闻摘要移动公司Summly，<strong>价格可能为3000万美金</strong>，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。</p></blockquote>
+<p>Yahoo 昨日宣布收购新闻摘要移动公司Summly，<strong>价格可能为3000万美金</strong>，App本身允许你快速浏览和分享新闻，创始人Nick D’Aloisio17岁，曾获得Horizons Ventures, betaworks, Shakil Khan, Matt Mullenweg, Troy Carter的投资，而且跟新闻集团合作来采集内容。</p>
+</blockquote>
 <blockquote>
-<p>Summly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。</p></blockquote>
+<p>Summly采用了自然语言处理算法，可将新闻内容提炼为不足400字的短句。用户可以快速浏览新闻话题，遇到感兴趣的内容再点击进入原始链接阅读全文。Summly在苹果AppStore应用商店中的下载量已超过50万次。</p>
+</blockquote>
 <blockquote>
-<p>自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。</p></blockquote>
+<p>自从玛丽莎·梅耶（MarissaMayer）上任CEO后，雅虎几乎在任何事情上都恢复了步调。就在五天前，该公司收购了社交推荐公司Jybe，并获得了随同这次收购一起回到公司的前雅虎职员。</p>
+</blockquote>
 <blockquote>
-<p>以下是雅虎在其官方博客上发布的声明：</p></blockquote>
+<p>以下是雅虎在其官方博客上发布的声明：</p>
+</blockquote>
 <blockquote>
-<p>今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。</p></blockquote>
+<p>今天我们很高兴地告诉大家，我们将收购Summly，一家本着简化我们获得信息的方式，使之更快、更容易、更简单的精神创立的移动产品公司。</p>
+</blockquote>
 <blockquote>
-<p><strong>尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用</strong>。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。</p></blockquote>
+<p><strong>尼克·德洛伊西奥在15岁时就在伦敦的家中开发了Summly应用</strong>。其始于一种见解——我们生活在一个信息世界里，需要新的方式简化我们寻找对我们很重要的报道，只需看一眼。移动设备正在改变我们的日常生活和工作，用户不但改变了他们消费的信息，也改变了信息的数量。</p>
+</blockquote>
 <p>这篇新闻有两个值得注意的地方，第一，文本摘要很有价值；第二，技术不会很难，毕竟15岁的孩子都可以开发。</p>
 <p>下面我们就来看看做文本摘要的大致思路。</p>
 <h2 id="大致思路">大致思路<a hidden class="anchor" aria-hidden="true" href="#大致思路">#</a></h2>

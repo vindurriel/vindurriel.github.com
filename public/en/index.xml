@@ -4,7 +4,7 @@
     <title>vindurriel</title>
     <link>https://vindurriel.github.io/en/</link>
     <description>Recent content on vindurriel</description>
-    <generator>Hugo -- 0.151.0</generator>
+    <generator>Hugo -- 0.152.1</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vindurriel.github.io/en/index.xml" rel="self" type="application/rss+xml" />
@@ -322,7 +322,8 @@
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/post/dtx/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;Disclaimer: this is the manuscript of a chapter in a published technical book: &lt;a href=&#34;https://www.amazon.com/Cloud-Native-Application-Architecture-Microservice-Development-ebook/dp/B0BS3BK37F&#34;&gt;Cloud-Native Application Architecture: Microservice Development Best Practice&lt;/a&gt; which is co-authored by several of my ex-colleagues at FreeWheel.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Disclaimer: this is the manuscript of a chapter in a published technical book: &lt;a href=&#34;https://www.amazon.com/Cloud-Native-Application-Architecture-Microservice-Development-ebook/dp/B0BS3BK37F&#34;&gt;Cloud-Native Application Architecture: Microservice Development Best Practice&lt;/a&gt; which is co-authored by several of my ex-colleagues at FreeWheel.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;As software systems move from monolithic applications to microservices and cloud-native services, and with the trend of decentralized and heterogeneous database selection, can ACID transactions, previously built on monolithic applications and single traditional relational databases, achieve the same functionality on distributed systems and diverse databases? If so, what pitfalls and considerations are essential in the transitional mindset? This chapter will introduce our team’s experience and practice pertaining to the technical topic of distributed transactions.&lt;/p&gt;</description>
     </item>
     <item>
