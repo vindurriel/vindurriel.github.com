@@ -371,16 +371,67 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://vindurriel.github.io/en/resume/</guid>
       <description>&lt;h1 id=&#34;fan-yangs-resume&#34;&gt;Fan YANG&amp;rsquo;s resume&lt;/h1&gt;
-&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;
-&lt;p&gt;email: &lt;a href=&#34;mailto:vindurriel&amp;#43;job@gmail.com&#34;&gt;vindurriel+job@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;github: vindurriel&lt;/p&gt;
-&lt;h3 id=&#34;about-me&#34;&gt;About me&lt;/h3&gt;
-&lt;p&gt;Male, born in 1987, currently resides in Tongzhou District, Beijing, China&lt;/p&gt;
-&lt;p&gt;Graduated and got bachelor&amp;rsquo;s degree from Beijing University of Posts and Telecommunications in 2010&lt;/p&gt;
-&lt;p&gt;Years of research and development experience in software/internet industry, familiar with common architectures, frameworks and design patterns of content/info website,
-e-commercials, digital lottery, high concurrency systems, etc. had some experience in product managements.&lt;/p&gt;
-&lt;p&gt;Expertised in designing, developing and maitaining online systems which has a page view of over 100 million per day (&lt;a href=&#34;https://wenku.baidu.com&#34;&gt;https://wenku.baidu.com&lt;/a&gt;), as well as enterprise client oriented systems
-with complicated business logic (e.g. nuomi app&amp;rsquo;s admin system/to-b app/advertise platform).&lt;/p&gt;</description>
+&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fast learner, builder and innovator, full-stack coding skills and analytical mindsets&lt;/li&gt;
+&lt;li&gt;Battle-hardened expertise of mix-cloud software system architecture, frameworks and design patterns&lt;/li&gt;
+&lt;li&gt;T-shaped technical perspective of the Advertising, Web 2.0 and online education industries&lt;/li&gt;
+&lt;li&gt;Core inventor of 1 US patent; Co-authored and published two technical books, translated another two English technical books into Chinese&lt;/li&gt;
+&lt;li&gt;Had some experiences and interests in frontend coding, graphical design and product managements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;
+&lt;h3 id=&#34;beijing-university-of-posts-and-telecommunications-2006-2010&#34;&gt;&lt;a href=&#34;https://www.bupt.edu.cn&#34;&gt;Beijing University of Posts and Telecommunications&lt;/a&gt; &lt;code&gt;2006-2010&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Bachelor of Engineering Degree, never failed to pass any tests&lt;/li&gt;
+&lt;li&gt;Majored in Science and Technology of Artificial Intelligence, in School of Computer Science&lt;/li&gt;
+&lt;li&gt;Main courses: Data Structure &amp;amp; Algorithm, Information Theory, Machine Learning, Natural Language Processing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;work&#34;&gt;Work&lt;/h2&gt;
+&lt;h3 id=&#34;freewheel-a-comcast-company-2018---now&#34;&gt;&lt;a href=&#34;https://freewheel.com&#34;&gt;FreeWheel, a Comcast company&lt;/a&gt; &lt;code&gt;2018 - now&lt;/code&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;lead-software-engineer-2021---now&#34;&gt;Lead software engineer &lt;code&gt;2021 - now&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Tech lead for &lt;a href=&#34;https://mrm.freewheel.tv/&#34;&gt;MRM&lt;/a&gt;, an Ad monetization relationship management and Exchange platform&lt;/li&gt;
+&lt;li&gt;Expertise in complicated Ad network topology and spec negotiation workflows&lt;/li&gt;
+&lt;li&gt;Spear-heading engineering practise for Marketplace Search based on ElasticSearch&lt;/li&gt;
+&lt;li&gt;Designed a distributed transaction framework in Go for both RDBMS and NoSQL Databases&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;senior-software-engineer-2018---2021&#34;&gt;Senior software engineer &lt;code&gt;2018 - 2021&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Developed a DynamoDB cross-account syncing tool based on AWS Lambda and s3&lt;/li&gt;
+&lt;li&gt;Developed an AI Chatbot based on RAG worflow, ElasticSearch and LLMs&lt;/li&gt;
+&lt;li&gt;Loved hackathons, designed a card game to teach Ad trading workflows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;baidu-inc-2014---2018&#34;&gt;&lt;a href=&#34;https://www.baidu.com&#34;&gt;Baidu Inc.&lt;/a&gt; &lt;code&gt;2014 - 2018&lt;/code&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;senior-backend-software-engineer-2016---2018&#34;&gt;Senior backend software engineer &lt;code&gt;2016 - 2018&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Core developer for Nuomi, an O2O E-commerce platform of Baidu&lt;/li&gt;
+&lt;li&gt;Core developer for Ad serving system (SSP) of Nuomi&lt;/li&gt;
+&lt;li&gt;Developed a digital lottery system&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;backend-software-engineer-2014---2016&#34;&gt;Backend software engineer &lt;code&gt;2014 - 2016&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Tech lead for &lt;a href=&#34;https://youke.baidu.com&#34;&gt;Youke&lt;/a&gt;, an online course platform for both teachers and students&lt;/li&gt;
+&lt;li&gt;Core developer of &lt;a href=&#34;https://wenku.baidu.com&#34;&gt;Wenku&lt;/a&gt;, a document resource sharing plaform of Baidu Inc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pera-global-2010---2014&#34;&gt;&lt;a href=&#34;https://www.peraglobal.com/&#34;&gt;Pera Global&lt;/a&gt; &lt;code&gt;2010 - 2014&lt;/code&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;research-team-manager-2013---2014&#34;&gt;Research team manager &lt;code&gt;2013 - 2014&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Lead a team of 5 scientists and engineers for National funded researches&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;full-stack-developer-and-researcher-2010---2013&#34;&gt;Full-Stack developer and researcher &lt;code&gt;2010 - 2013&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Core developer for K-Darwin, a knowledge exploration system for enterprise research faculties&lt;/li&gt;
+&lt;li&gt;Core developer for the Pera-Ansys platform, a computer-aided engineering and simulation plaform for Aircraft manufacturers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Coding Languages &amp;amp; Frameworks: Go, Python, Perl, Java, C++ Swift, Typescript, React, Unity 3D, Figma&lt;/li&gt;
+&lt;li&gt;Software Systems: MySQL, ElasticSearch, DynamoDB, Kafka, Redis, Nginx, Kubernetes, Docker&lt;/li&gt;
+&lt;li&gt;Cloud Services &amp;amp; Tooling: AWS, Jenkins, Github, Slack, Confluence, Terraform&lt;/li&gt;
+&lt;li&gt;Human Languages: English (fluent speaker), Chinese (native)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;contact&#34;&gt;Contact&lt;/h2&gt;
+&lt;p&gt;Email: &lt;a href=&#34;mailto:vindurriel@gmail.com&#34;&gt;vindurriel@gmail.com&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
