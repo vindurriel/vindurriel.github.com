@@ -74,3 +74,5 @@ showBreadCrumbs: false
 邮箱: vindurriel@gmail.com
 
 网站: https://vindurriel.github.io
+
+LinkedIn: https://www.linkedin.com/in/vindurriel/

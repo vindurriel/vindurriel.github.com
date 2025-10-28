@@ -74,3 +74,5 @@ showBreadCrumbs: false
 Email: vindurriel@gmail.com
 
 Website: https://vindurriel.github.io
+
+LinkedIn: https://www.linkedin.com/in/vindurriel/
