@@ -62,7 +62,7 @@ showBreadCrumbs: false
 - 企业研发团队知识探索系统 K-Darwin 的核心开发者
 - 服务于飞机制造商的计算机辅助工程和模拟平台 Pera-Ansys 平台的核心开发者
 
-## 技能
+## 专业技能
 
 - 编程语言与框架：Go, Python, Perl, Java, C++ Swift, Typescript, React, Unity 3D, Figma
 - 软件系统：MySQL, ElasticSearch, DynamoDB, Kafka, Redis, Nginx, Kubernetes, Docker
